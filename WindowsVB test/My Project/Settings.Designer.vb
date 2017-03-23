@@ -64,6 +64,17 @@ Namespace My
                 Return CType(Me("WMdbConnectionString"),String)
             End Get
         End Property
+        
+        <Global.System.Configuration.ApplicationScopedSettingAttribute(),  _
+         Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.Configuration.SpecialSettingAttribute(Global.System.Configuration.SpecialSetting.ConnectionString),  _
+         Global.System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-UUF0FDC\SQLEXPRESS;Initial Catalog=WMdb;Integrated Security=T"& _ 
+            "rue")>  _
+        Public ReadOnly Property WMdbConnectionString1() As String
+            Get
+                Return CType(Me("WMdbConnectionString1"),String)
+            End Get
+        End Property
     End Class
 End Namespace
 
