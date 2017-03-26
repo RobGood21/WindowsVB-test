@@ -1,5 +1,5 @@
 ﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
-Partial Class Wisselmotor
+Partial Class F_Start
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
@@ -23,18 +23,18 @@ Partial Class Wisselmotor
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(Wisselmotor))
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Start))
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.ContextMenuStrip1 = New System.Windows.Forms.ContextMenuStrip(Me.components)
         Me.EersteToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.DoeIetsLeuksToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.StatusStrip1 = New System.Windows.Forms.StatusStrip()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.KnopProducten = New System.Windows.Forms.Button()
-        Me.Button2 = New System.Windows.Forms.Button()
-        Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
+        Me.Button3 = New System.Windows.Forms.Button()
+        Me.Button2 = New System.Windows.Forms.Button()
+        Me.KnopProducten = New System.Windows.Forms.Button()
         Me.MenuStrip1.SuspendLayout()
         Me.ContextMenuStrip1.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
@@ -68,6 +68,12 @@ Partial Class Wisselmotor
         Me.EersteToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
         Me.EersteToolStripMenuItem.Text = "Opent form artikel"
         '
+        'DoeIetsLeuksToolStripMenuItem
+        '
+        Me.DoeIetsLeuksToolStripMenuItem.Name = "DoeIetsLeuksToolStripMenuItem"
+        Me.DoeIetsLeuksToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
+        Me.DoeIetsLeuksToolStripMenuItem.Text = "Doe iets leuks"
+        '
         'StatusStrip1
         '
         Me.StatusStrip1.Location = New System.Drawing.Point(0, 472)
@@ -75,12 +81,6 @@ Partial Class Wisselmotor
         Me.StatusStrip1.Size = New System.Drawing.Size(777, 22)
         Me.StatusStrip1.TabIndex = 3
         Me.StatusStrip1.Text = "StatusStrip1"
-        '
-        'DoeIetsLeuksToolStripMenuItem
-        '
-        Me.DoeIetsLeuksToolStripMenuItem.Name = "DoeIetsLeuksToolStripMenuItem"
-        Me.DoeIetsLeuksToolStripMenuItem.Size = New System.Drawing.Size(171, 22)
-        Me.DoeIetsLeuksToolStripMenuItem.Text = "Doe iets leuks"
         '
         'GroupBox1
         '
@@ -95,6 +95,36 @@ Partial Class Wisselmotor
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Menu"
         '
+        'Button4
+        '
+        Me.Button4.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.Button4.Location = New System.Drawing.Point(6, 58)
+        Me.Button4.Name = "Button4"
+        Me.Button4.Size = New System.Drawing.Size(75, 23)
+        Me.Button4.TabIndex = 4
+        Me.Button4.Text = "Knop1"
+        Me.Button4.UseVisualStyleBackColor = True
+        '
+        'Button3
+        '
+        Me.Button3.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.Button3.Location = New System.Drawing.Point(6, 87)
+        Me.Button3.Name = "Button3"
+        Me.Button3.Size = New System.Drawing.Size(75, 23)
+        Me.Button3.TabIndex = 3
+        Me.Button3.Text = "Knop1"
+        Me.Button3.UseVisualStyleBackColor = True
+        '
+        'Button2
+        '
+        Me.Button2.ContextMenuStrip = Me.ContextMenuStrip1
+        Me.Button2.Location = New System.Drawing.Point(6, 116)
+        Me.Button2.Name = "Button2"
+        Me.Button2.Size = New System.Drawing.Size(75, 23)
+        Me.Button2.TabIndex = 2
+        Me.Button2.Text = "Knop1"
+        Me.Button2.UseVisualStyleBackColor = True
+        '
         'KnopProducten
         '
         Me.KnopProducten.BackColor = System.Drawing.SystemColors.ButtonFace
@@ -108,37 +138,7 @@ Partial Class Wisselmotor
         Me.KnopProducten.Text = "Producten"
         Me.KnopProducten.UseVisualStyleBackColor = False
         '
-        'Button2
-        '
-        Me.Button2.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.Button2.Location = New System.Drawing.Point(6, 116)
-        Me.Button2.Name = "Button2"
-        Me.Button2.Size = New System.Drawing.Size(75, 23)
-        Me.Button2.TabIndex = 2
-        Me.Button2.Text = "Knop1"
-        Me.Button2.UseVisualStyleBackColor = True
-        '
-        'Button3
-        '
-        Me.Button3.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.Button3.Location = New System.Drawing.Point(6, 87)
-        Me.Button3.Name = "Button3"
-        Me.Button3.Size = New System.Drawing.Size(75, 23)
-        Me.Button3.TabIndex = 3
-        Me.Button3.Text = "Knop1"
-        Me.Button3.UseVisualStyleBackColor = True
-        '
-        'Button4
-        '
-        Me.Button4.ContextMenuStrip = Me.ContextMenuStrip1
-        Me.Button4.Location = New System.Drawing.Point(6, 58)
-        Me.Button4.Name = "Button4"
-        Me.Button4.Size = New System.Drawing.Size(75, 23)
-        Me.Button4.TabIndex = 4
-        Me.Button4.Text = "Knop1"
-        Me.Button4.UseVisualStyleBackColor = True
-        '
-        'Wisselmotor
+        'F_Start
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
@@ -149,8 +149,8 @@ Partial Class Wisselmotor
         Me.Controls.Add(Me.MenuStrip1)
         Me.HelpButton = True
         Me.MainMenuStrip = Me.MenuStrip1
-        Me.Name = "Wisselmotor"
-        Me.Text = "Wisselmotor Onderhoud"
+        Me.Name = "F_Start"
+        Me.Text = "Startpagina"
         Me.MenuStrip1.ResumeLayout(False)
         Me.MenuStrip1.PerformLayout()
         Me.ContextMenuStrip1.ResumeLayout(False)
