@@ -120,9 +120,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>WMdbDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="WMdbDataSet.vb">
-      <DependentUpon>WMdbDataSet.xsd</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="F_Product.resx">
