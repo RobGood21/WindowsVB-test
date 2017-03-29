@@ -1,5 +1,5 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
-<xs:schema id="OefenDbDataSet" targetNamespace="http://tempuri.org/OefenDbDataSet.xsd" xmlns:mstns="http://tempuri.org/OefenDbDataSet.xsd" xmlns="http://tempuri.org/OefenDbDataSet.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
+<xs:schema id="OefenDbDataSetnew" targetNamespace="http://tempuri.org/OefenDbDataSetnew.xsd" xmlns:mstns="http://tempuri.org/OefenDbDataSetnew.xsd" xmlns="http://tempuri.org/OefenDbDataSetnew.xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata" xmlns:msprop="urn:schemas-microsoft-com:xml-msprop" attributeFormDefault="qualified" elementFormDefault="qualified">
   <xs:annotation>
     <xs:appinfo source="urn:schemas-microsoft-com:xml-msdatasource">
       <DataSource DefaultConnectionIndex="0" FunctionsComponentName="QueriesTableAdapter" Modifier="AutoLayout, AnsiClass, Class, Public" SchemaSerializationMode="IncludeSchema" xmlns="urn:schemas-microsoft-com:xml-msdatasource">
@@ -75,7 +75,7 @@ SELECT ID, Naam, Woonplaats, Leeftijd FROM Gebruiker WHERE (ID = @ID)</CommandTe
       </DataSource>
     </xs:appinfo>
   </xs:annotation>
-  <xs:element name="OefenDbDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="OefenDbDataSet" msprop:Generator_UserDSName="OefenDbDataSet">
+  <xs:element name="OefenDbDataSetnew" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="OefenDbDataSetnew" msprop:Generator_UserDSName="OefenDbDataSetnew">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
         <xs:element name="Gebruiker" msprop:Generator_TableClassName="GebruikerDataTable" msprop:Generator_TableVarName="tableGebruiker" msprop:Generator_TablePropName="Gebruiker" msprop:Generator_RowDeletingName="GebruikerRowDeleting" msprop:Generator_RowChangingName="GebruikerRowChanging" msprop:Generator_RowEvHandlerName="GebruikerRowChangeEventHandler" msprop:Generator_RowDeletedName="GebruikerRowDeleted" msprop:Generator_UserTableName="Gebruiker" msprop:Generator_RowChangedName="GebruikerRowChanged" msprop:Generator_RowEvArgName="GebruikerRowChangeEvent" msprop:Generator_RowClassName="GebruikerRow">
