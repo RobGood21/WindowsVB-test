@@ -862,10 +862,10 @@ Namespace OefenDbDataSetnewTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Gebruiker] WHERE (([ID] = @Original_ID) AND ((@IsNull_Naam = 1"& _ 
-                " AND [Naam] IS NULL) OR ([Naam] = @Original_Naam)) AND ((@IsNull_Woonplaats = 1 "& _ 
-                "AND [Woonplaats] IS NULL) OR ([Woonplaats] = @Original_Woonplaats)) AND ((@IsNul"& _ 
-                "l_Leeftijd = 1 AND [Leeftijd] IS NULL) OR ([Leeftijd] = @Original_Leeftijd)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Gebruiker] WHERE (([ID] = @Original_ID) AND ((@IsNull_Naam = 1 AND ["& _ 
+                "Naam] IS NULL) OR ([Naam] = @Original_Naam)) AND ((@IsNull_Woonplaats = 1 AND [W"& _ 
+                "oonplaats] IS NULL) OR ([Woonplaats] = @Original_Woonplaats)) AND ((@IsNull_Leef"& _ 
+                "tijd = 1 AND [Leeftijd] IS NULL) OR ([Leeftijd] = @Original_Leeftijd)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_Naam", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Naam", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -876,21 +876,21 @@ Namespace OefenDbDataSetnewTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_Leeftijd", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Leeftijd", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Gebruiker] ([Naam], [Woonplaats], [Leeftijd]) VALUES (@Naam, @"& _ 
-                "Woonplaats, @Leeftijd);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Naam, Woonplaats, Leeftijd FROM Gebruiker WH"& _ 
-                "ERE (ID = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Gebruiker] ([Naam], [Woonplaats], [Leeftijd]) VALUES (@Naam, @Woonpl"& _ 
+                "aats, @Leeftijd);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Naam, Woonplaats, Leeftijd FROM Gebruiker WHERE (I"& _ 
+                "D = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Woonplaats", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Woonplaats", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Leeftijd", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Leeftijd", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Gebruiker] SET [Naam] = @Naam, [Woonplaats] = @Woonplaats, [Leeftij"& _ 
-                "d] = @Leeftijd WHERE (([ID] = @Original_ID) AND ((@IsNull_Naam = 1 AND [Naam] IS"& _ 
-                " NULL) OR ([Naam] = @Original_Naam)) AND ((@IsNull_Woonplaats = 1 AND [Woonplaat"& _ 
-                "s] IS NULL) OR ([Woonplaats] = @Original_Woonplaats)) AND ((@IsNull_Leeftijd = 1"& _ 
-                " AND [Leeftijd] IS NULL) OR ([Leeftijd] = @Original_Leeftijd)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Naa"& _ 
-                "m, Woonplaats, Leeftijd FROM Gebruiker WHERE (ID = @ID)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Gebruiker] SET [Naam] = @Naam, [Woonplaats] = @Woonplaats, [Leeftijd] = @"& _ 
+                "Leeftijd WHERE (([ID] = @Original_ID) AND ((@IsNull_Naam = 1 AND [Naam] IS NULL)"& _ 
+                " OR ([Naam] = @Original_Naam)) AND ((@IsNull_Woonplaats = 1 AND [Woonplaats] IS "& _ 
+                "NULL) OR ([Woonplaats] = @Original_Woonplaats)) AND ((@IsNull_Leeftijd = 1 AND ["& _ 
+                "Leeftijd] IS NULL) OR ([Leeftijd] = @Original_Leeftijd)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID, Naam, Woo"& _ 
+                "nplaats, Leeftijd FROM Gebruiker WHERE (ID = @ID)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Woonplaats", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "Woonplaats", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -918,16 +918,23 @@ Namespace OefenDbDataSetnewTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID, Naam, Woonplaats, Leeftijd FROM dbo.Gebruiker"
+            Me._commandCollection(0).CommandText = "SELECT        ID, Naam, Woonplaats, Leeftijd"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Gebruiker"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE   "& _ 
+                "     (Naam LIKE @Param1)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Param1", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As OefenDbDataSetnew.GebruikerDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As OefenDbDataSetnew.GebruikerDataTable, ByVal Param1 As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Param1 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -939,8 +946,13 @@ Namespace OefenDbDataSetnewTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As OefenDbDataSetnew.GebruikerDataTable
+        Public Overloads Overridable Function GetData(ByVal Param1 As String) As OefenDbDataSetnew.GebruikerDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Param1 Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Param1,String)
+            End If
             Dim dataTable As OefenDbDataSetnew.GebruikerDataTable = New OefenDbDataSetnew.GebruikerDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable

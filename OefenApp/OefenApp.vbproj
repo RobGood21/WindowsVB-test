@@ -85,6 +85,12 @@
       <DependentUpon>Form1.vb</DependentUpon>
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="AlleenDatagrid.Designer.vb">
+      <DependentUpon>AlleenDatagrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="AlleenDatagrid.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
     <Compile Include="My Project\Application.Designer.vb">
       <AutoGen>True</AutoGen>
@@ -113,6 +119,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>OefenDbDataSetnew.xsd</DependentUpon>
     </Compile>
+    <Compile Include="OefenDbDataSetnew.vb">
+      <DependentUpon>OefenDbDataSetnew.xsd</DependentUpon>
+    </Compile>
     <Compile Include="OPnieuw1.Designer.vb">
       <DependentUpon>OPnieuw1.vb</DependentUpon>
     </Compile>
@@ -121,6 +130,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="AlleenDatagrid.resx">
+      <DependentUpon>AlleenDatagrid.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="AlweerOpnieuw.resx">
       <DependentUpon>AlweerOpnieuw.vb</DependentUpon>
     </EmbeddedResource>
@@ -172,6 +184,9 @@
     <None Include="OefenDbDataSetnew.xss">
       <DependentUpon>OefenDbDataSetnew.xsd</DependentUpon>
     </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Content Include="Beschrijving Readme.txt" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

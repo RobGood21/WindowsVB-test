@@ -29,15 +29,15 @@ Partial Class Form1
         Dim LeeftijdLabel As System.Windows.Forms.Label
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
-        Me.TXTID = New System.Windows.Forms.TextBox()
+        Me.TXT1 = New System.Windows.Forms.TextBox()
         Me.IDTextBox = New System.Windows.Forms.TextBox()
+        Me.GebruikerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.OefenDbDataSet = New OefenApp.OefenDbDataSet()
         Me.NaamTextBox = New System.Windows.Forms.TextBox()
         Me.WoonplaatsTextBox = New System.Windows.Forms.TextBox()
         Me.LeeftijdTextBox = New System.Windows.Forms.TextBox()
         Me.Button3 = New System.Windows.Forms.Button()
         Me.Button4 = New System.Windows.Forms.Button()
-        Me.GebruikerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.OefenDbDataSet = New OefenApp.OefenDbDataSet()
         Me.GebruikerTableAdapter = New OefenApp.OefenDbDataSetTableAdapters.GebruikerTableAdapter()
         Me.TableAdapterManager = New OefenApp.OefenDbDataSetTableAdapters.TableAdapterManager()
         Me.TXTNAAM = New System.Windows.Forms.TextBox()
@@ -45,12 +45,20 @@ Partial Class Form1
         Me.TXTLeeftijd = New System.Windows.Forms.TextBox()
         Me.Button5 = New System.Windows.Forms.Button()
         Me.Button6 = New System.Windows.Forms.Button()
+        Me.CB_KiesRecord = New System.Windows.Forms.ComboBox()
+        Me.GebruikerBindingSource1 = New System.Windows.Forms.BindingSource(Me.components)
+        Me.LB_Lijstkies = New System.Windows.Forms.ListBox()
+        Me.DG_oefen = New System.Windows.Forms.DataGridView()
+        Me.OefenDbDataSetnew = New OefenApp.OefenDbDataSetnew()
         IDLabel = New System.Windows.Forms.Label()
         NaamLabel = New System.Windows.Forms.Label()
         WoonplaatsLabel = New System.Windows.Forms.Label()
         LeeftijdLabel = New System.Windows.Forms.Label()
         CType(Me.GebruikerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OefenDbDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GebruikerBindingSource1, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DG_oefen, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.OefenDbDataSetnew, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'IDLabel
@@ -107,12 +115,12 @@ Partial Class Form1
         Me.Button2.Text = "Reload"
         Me.Button2.UseVisualStyleBackColor = True
         '
-        'TXTID
+        'TXT1
         '
-        Me.TXTID.Location = New System.Drawing.Point(362, 42)
-        Me.TXTID.Name = "TXTID"
-        Me.TXTID.Size = New System.Drawing.Size(201, 20)
-        Me.TXTID.TabIndex = 4
+        Me.TXT1.Location = New System.Drawing.Point(362, 42)
+        Me.TXT1.Name = "TXT1"
+        Me.TXT1.Size = New System.Drawing.Size(201, 20)
+        Me.TXT1.TabIndex = 4
         '
         'IDTextBox
         '
@@ -121,6 +129,16 @@ Partial Class Form1
         Me.IDTextBox.Name = "IDTextBox"
         Me.IDTextBox.Size = New System.Drawing.Size(190, 20)
         Me.IDTextBox.TabIndex = 5
+        '
+        'GebruikerBindingSource
+        '
+        Me.GebruikerBindingSource.DataMember = "Gebruiker"
+        Me.GebruikerBindingSource.DataSource = Me.OefenDbDataSet
+        '
+        'OefenDbDataSet
+        '
+        Me.OefenDbDataSet.DataSetName = "OefenDbDataSet"
+        Me.OefenDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'NaamTextBox
         '
@@ -163,16 +181,6 @@ Partial Class Form1
         Me.Button4.TabIndex = 12
         Me.Button4.Text = ">>"
         Me.Button4.UseVisualStyleBackColor = True
-        '
-        'GebruikerBindingSource
-        '
-        Me.GebruikerBindingSource.DataMember = "Gebruiker"
-        Me.GebruikerBindingSource.DataSource = Me.OefenDbDataSet
-        '
-        'OefenDbDataSet
-        '
-        Me.OefenDbDataSet.DataSetName = "OefenDbDataSet"
-        Me.OefenDbDataSet.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GebruikerTableAdapter
         '
@@ -224,11 +232,54 @@ Partial Class Form1
         Me.Button6.Text = "Nieuw"
         Me.Button6.UseVisualStyleBackColor = True
         '
+        'CB_KiesRecord
+        '
+        Me.CB_KiesRecord.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.GebruikerBindingSource, "Naam", True))
+        Me.CB_KiesRecord.DataSource = Me.GebruikerBindingSource
+        Me.CB_KiesRecord.DisplayMember = "Naam"
+        Me.CB_KiesRecord.FormattingEnabled = True
+        Me.CB_KiesRecord.Location = New System.Drawing.Point(590, 161)
+        Me.CB_KiesRecord.Name = "CB_KiesRecord"
+        Me.CB_KiesRecord.Size = New System.Drawing.Size(190, 21)
+        Me.CB_KiesRecord.TabIndex = 18
+        '
+        'GebruikerBindingSource1
+        '
+        Me.GebruikerBindingSource1.DataSource = Me.OefenDbDataSetnew
+        Me.GebruikerBindingSource1.Filter = ""
+        Me.GebruikerBindingSource1.Position = 0
+        '
+        'LB_Lijstkies
+        '
+        Me.LB_Lijstkies.DataSource = Me.GebruikerBindingSource
+        Me.LB_Lijstkies.DisplayMember = "Naam"
+        Me.LB_Lijstkies.FormattingEnabled = True
+        Me.LB_Lijstkies.Location = New System.Drawing.Point(590, 32)
+        Me.LB_Lijstkies.Name = "LB_Lijstkies"
+        Me.LB_Lijstkies.Size = New System.Drawing.Size(190, 108)
+        Me.LB_Lijstkies.TabIndex = 19
+        '
+        'DG_oefen
+        '
+        Me.DG_oefen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DG_oefen.Location = New System.Drawing.Point(146, 278)
+        Me.DG_oefen.Name = "DG_oefen"
+        Me.DG_oefen.Size = New System.Drawing.Size(634, 150)
+        Me.DG_oefen.TabIndex = 20
+        '
+        'OefenDbDataSetnew
+        '
+        Me.OefenDbDataSetnew.DataSetName = "OefenDbDataSetnew"
+        Me.OefenDbDataSetnew.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
         'Form1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(703, 503)
+        Me.ClientSize = New System.Drawing.Size(949, 503)
+        Me.Controls.Add(Me.DG_oefen)
+        Me.Controls.Add(Me.LB_Lijstkies)
+        Me.Controls.Add(Me.CB_KiesRecord)
         Me.Controls.Add(Me.Button6)
         Me.Controls.Add(Me.Button5)
         Me.Controls.Add(Me.TXTLeeftijd)
@@ -244,13 +295,16 @@ Partial Class Form1
         Me.Controls.Add(Me.NaamTextBox)
         Me.Controls.Add(IDLabel)
         Me.Controls.Add(Me.IDTextBox)
-        Me.Controls.Add(Me.TXTID)
+        Me.Controls.Add(Me.TXT1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Name = "Form1"
         Me.Text = "Form1"
         CType(Me.GebruikerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OefenDbDataSet, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GebruikerBindingSource1, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DG_oefen, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.OefenDbDataSetnew, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -262,7 +316,7 @@ Partial Class Form1
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
     Friend WithEvents GebruikerBindingSource As BindingSource
-    Friend WithEvents TXTID As TextBox
+    Friend WithEvents TXT1 As TextBox
     Friend WithEvents IDTextBox As TextBox
     Friend WithEvents NaamTextBox As TextBox
     Friend WithEvents WoonplaatsTextBox As TextBox
@@ -274,4 +328,9 @@ Partial Class Form1
     Friend WithEvents TXTLeeftijd As TextBox
     Friend WithEvents Button5 As Button
     Friend WithEvents Button6 As Button
+    Friend WithEvents CB_KiesRecord As ComboBox
+    Friend WithEvents GebruikerBindingSource1 As BindingSource
+    Friend WithEvents LB_Lijstkies As ListBox
+    Friend WithEvents DG_oefen As DataGridView
+    Friend WithEvents OefenDbDataSetnew As OefenDbDataSetnew
 End Class
