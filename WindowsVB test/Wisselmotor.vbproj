@@ -87,17 +87,22 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="F_Opening.Designer.vb">
+      <DependentUpon>F_Opening.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Opening.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Product.Designer.vb">
       <DependentUpon>F_Product.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Product.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_Start.vb">
-      <SubType>Form</SubType>
+    <Compile Include="F_Wisselmotor.Designer.vb">
+      <DependentUpon>F_Wisselmotor.vb</DependentUpon>
     </Compile>
-    <Compile Include="F_Start.Designer.vb">
-      <DependentUpon>F_Start.vb</DependentUpon>
+    <Compile Include="F_Wisselmotor.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -122,17 +127,20 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="F_Opening.resx">
+      <DependentUpon>F_Opening.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Product.resx">
       <DependentUpon>F_Product.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Wisselmotor.resx">
+      <DependentUpon>F_Wisselmotor.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
-    </EmbeddedResource>
-    <EmbeddedResource Include="F_Start.resx">
-      <DependentUpon>F_Start.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
