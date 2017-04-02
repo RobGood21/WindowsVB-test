@@ -23,10 +23,12 @@ Partial Class OPnieuw1
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim Knop_Reload As System.Windows.Forms.Button
+        Dim Knop_CB1instellen As System.Windows.Forms.Button
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(OPnieuw1))
         Me.GebruikerBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.GebruikerBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.BS_Gebruiker = New System.Windows.Forms.BindingSource(Me.components)
         Me.OefenDbDataSet = New OefenApp.OefenDbDataSet()
         Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
@@ -44,19 +46,49 @@ Partial Class OPnieuw1
         Me.NaamDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.WoonplaatsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LeeftijdDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TXT_Zoektekst = New System.Windows.Forms.TextBox()
         Me.GebruikerTableAdapter = New OefenApp.OefenDbDataSetTableAdapters.GebruikerTableAdapter()
         Me.TableAdapterManager = New OefenApp.OefenDbDataSetTableAdapters.TableAdapterManager()
+        Me.CB_1 = New System.Windows.Forms.ComboBox()
+        Me.Label1 = New System.Windows.Forms.Label()
+        Me.BS_Gebruiker_apparaat = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ApparaatTableAdapter = New OefenApp.OefenDbDataSetTableAdapters.ApparaatTableAdapter()
+        Me.txt_output = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Knop_Reload = New System.Windows.Forms.Button()
+        Knop_CB1instellen = New System.Windows.Forms.Button()
         CType(Me.GebruikerBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GebruikerBindingNavigator.SuspendLayout()
-        CType(Me.GebruikerBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BS_Gebruiker, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.OefenDbDataSet, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GebruikerDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.BS_Gebruiker_apparaat, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'Knop_Reload
+        '
+        Knop_Reload.Location = New System.Drawing.Point(240, 304)
+        Knop_Reload.Name = "Knop_Reload"
+        Knop_Reload.Size = New System.Drawing.Size(75, 23)
+        Knop_Reload.TabIndex = 3
+        Knop_Reload.Text = "Reload"
+        Knop_Reload.UseVisualStyleBackColor = True
+        AddHandler Knop_Reload.Click, AddressOf Me.Knop_Reload_Click
+        '
+        'Knop_CB1instellen
+        '
+        Knop_CB1instellen.Location = New System.Drawing.Point(424, 336)
+        Knop_CB1instellen.Name = "Knop_CB1instellen"
+        Knop_CB1instellen.Size = New System.Drawing.Size(144, 23)
+        Knop_CB1instellen.TabIndex = 6
+        Knop_CB1instellen.Text = "Stel combobox in "
+        Knop_CB1instellen.UseVisualStyleBackColor = True
+        AddHandler Knop_CB1instellen.Click, AddressOf Me.Knop_CB1instellen_Click
         '
         'GebruikerBindingNavigator
         '
         Me.GebruikerBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.GebruikerBindingNavigator.BindingSource = Me.GebruikerBindingSource
+        Me.GebruikerBindingNavigator.BindingSource = Me.BS_Gebruiker
         Me.GebruikerBindingNavigator.CountItem = Me.BindingNavigatorCountItem
         Me.GebruikerBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
         Me.GebruikerBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.GebruikerBindingNavigatorSaveItem})
@@ -67,7 +99,7 @@ Partial Class OPnieuw1
         Me.GebruikerBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
         Me.GebruikerBindingNavigator.Name = "GebruikerBindingNavigator"
         Me.GebruikerBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.GebruikerBindingNavigator.Size = New System.Drawing.Size(631, 25)
+        Me.GebruikerBindingNavigator.Size = New System.Drawing.Size(712, 25)
         Me.GebruikerBindingNavigator.TabIndex = 0
         Me.GebruikerBindingNavigator.Text = "BindingNavigator1"
         '
@@ -80,10 +112,10 @@ Partial Class OPnieuw1
         Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
         Me.BindingNavigatorAddNewItem.Text = "Add new"
         '
-        'GebruikerBindingSource
+        'BS_Gebruiker
         '
-        Me.GebruikerBindingSource.DataMember = "Gebruiker"
-        Me.GebruikerBindingSource.DataSource = Me.OefenDbDataSet
+        Me.BS_Gebruiker.DataMember = "Gebruiker"
+        Me.BS_Gebruiker.DataSource = Me.OefenDbDataSet
         '
         'OefenDbDataSet
         '
@@ -179,7 +211,7 @@ Partial Class OPnieuw1
         Me.GebruikerDataGridView.AutoGenerateColumns = False
         Me.GebruikerDataGridView.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
         Me.GebruikerDataGridView.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDDataGridViewTextBoxColumn, Me.NaamDataGridViewTextBoxColumn, Me.WoonplaatsDataGridViewTextBoxColumn, Me.LeeftijdDataGridViewTextBoxColumn})
-        Me.GebruikerDataGridView.DataSource = Me.GebruikerBindingSource
+        Me.GebruikerDataGridView.DataSource = Me.BS_Gebruiker
         Me.GebruikerDataGridView.Location = New System.Drawing.Point(68, 69)
         Me.GebruikerDataGridView.Name = "GebruikerDataGridView"
         Me.GebruikerDataGridView.Size = New System.Drawing.Size(500, 220)
@@ -210,21 +242,82 @@ Partial Class OPnieuw1
         Me.LeeftijdDataGridViewTextBoxColumn.HeaderText = "Leeftijd"
         Me.LeeftijdDataGridViewTextBoxColumn.Name = "LeeftijdDataGridViewTextBoxColumn"
         '
+        'TXT_Zoektekst
+        '
+        Me.TXT_Zoektekst.Location = New System.Drawing.Point(68, 308)
+        Me.TXT_Zoektekst.Name = "TXT_Zoektekst"
+        Me.TXT_Zoektekst.Size = New System.Drawing.Size(144, 20)
+        Me.TXT_Zoektekst.TabIndex = 2
+        '
         'GebruikerTableAdapter
         '
         Me.GebruikerTableAdapter.ClearBeforeFill = True
         '
         'TableAdapterManager
         '
+        Me.TableAdapterManager.ApparaatTableAdapter = Nothing
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.GebruikerTableAdapter = Me.GebruikerTableAdapter
         Me.TableAdapterManager.UpdateOrder = OefenApp.OefenDbDataSetTableAdapters.TableAdapterManager.UpdateOrderOption.UpdateInsertDelete
+        '
+        'CB_1
+        '
+        Me.CB_1.DataSource = Me.BS_Gebruiker
+        Me.CB_1.DisplayMember = "Naam"
+        Me.CB_1.FormattingEnabled = True
+        Me.CB_1.Location = New System.Drawing.Point(424, 308)
+        Me.CB_1.Name = "CB_1"
+        Me.CB_1.Size = New System.Drawing.Size(144, 21)
+        Me.CB_1.TabIndex = 4
+        Me.CB_1.ValueMember = "ID"
+        '
+        'Label1
+        '
+        Me.Label1.AutoSize = True
+        Me.Label1.Location = New System.Drawing.Point(361, 311)
+        Me.Label1.Name = "Label1"
+        Me.Label1.Size = New System.Drawing.Size(57, 13)
+        Me.Label1.TabIndex = 5
+        Me.Label1.Text = "Combobox"
+        '
+        'BS_Gebruiker_apparaat
+        '
+        Me.BS_Gebruiker_apparaat.DataMember = "Gebruiker_Apparaat"
+        Me.BS_Gebruiker_apparaat.DataSource = Me.BS_Gebruiker
+        '
+        'ApparaatTableAdapter
+        '
+        Me.ApparaatTableAdapter.ClearBeforeFill = True
+        '
+        'txt_output
+        '
+        Me.txt_output.Location = New System.Drawing.Point(424, 366)
+        Me.txt_output.Multiline = True
+        Me.txt_output.Name = "txt_output"
+        Me.txt_output.Size = New System.Drawing.Size(144, 76)
+        Me.txt_output.TabIndex = 7
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(379, 372)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(39, 13)
+        Me.Label2.TabIndex = 8
+        Me.Label2.Text = "Output"
         '
         'OPnieuw1
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(631, 458)
+        Me.ClientSize = New System.Drawing.Size(712, 454)
+        Me.Controls.Add(Me.Label2)
+        Me.Controls.Add(Me.txt_output)
+        Me.Controls.Add(Knop_CB1instellen)
+        Me.Controls.Add(Me.Label1)
+        Me.Controls.Add(Me.CB_1)
+        Me.Controls.Add(Knop_Reload)
+        Me.Controls.Add(Me.TXT_Zoektekst)
         Me.Controls.Add(Me.GebruikerDataGridView)
         Me.Controls.Add(Me.GebruikerBindingNavigator)
         Me.Name = "OPnieuw1"
@@ -232,16 +325,17 @@ Partial Class OPnieuw1
         CType(Me.GebruikerBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GebruikerBindingNavigator.ResumeLayout(False)
         Me.GebruikerBindingNavigator.PerformLayout()
-        CType(Me.GebruikerBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BS_Gebruiker, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.OefenDbDataSet, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GebruikerDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.BS_Gebruiker_apparaat, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
     Friend WithEvents OefenDbDataSet As OefenDbDataSet
-    Friend WithEvents GebruikerBindingSource As BindingSource
+    Friend WithEvents BS_Gebruiker As BindingSource
     Friend WithEvents TableAdapterManager As OefenDbDataSetTableAdapters.TableAdapterManager
     Friend WithEvents GebruikerBindingNavigator As BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
@@ -262,4 +356,11 @@ Partial Class OPnieuw1
     Friend WithEvents WoonplaatsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents LeeftijdDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents GebruikerTableAdapter As OefenDbDataSetTableAdapters.GebruikerTableAdapter
+    Friend WithEvents TXT_Zoektekst As TextBox
+    Friend WithEvents CB_1 As ComboBox
+    Friend WithEvents Label1 As Label
+    Friend WithEvents BS_Gebruiker_apparaat As BindingSource
+    Friend WithEvents ApparaatTableAdapter As OefenDbDataSetTableAdapters.ApparaatTableAdapter
+    Friend WithEvents txt_output As TextBox
+    Friend WithEvents Label2 As Label
 End Class

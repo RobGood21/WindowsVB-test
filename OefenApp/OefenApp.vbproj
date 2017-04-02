@@ -96,11 +96,20 @@
     <Compile Include="AlweerOpnieuw.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Form1.vb">
-      <SubType>Form</SubType>
+    <Compile Include="DataSetJoin.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DataSetJoin.xsd</DependentUpon>
     </Compile>
-    <Compile Include="Form1.Designer.vb">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <Compile Include="JoinDataset.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>JoinDataset.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="JoinTest.Designer.vb">
+      <DependentUpon>JoinTest.vb</DependentUpon>
+    </Compile>
+    <Compile Include="JoinTest.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="My Project\AssemblyInfo.vb" />
@@ -126,14 +135,6 @@
     <Compile Include="OefenDbDataSet.vb">
       <DependentUpon>OefenDbDataSet.xsd</DependentUpon>
     </Compile>
-    <Compile Include="OefenDbDataSetnew.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>OefenDbDataSetnew.xsd</DependentUpon>
-    </Compile>
-    <Compile Include="OefenDbDataSetnew.vb">
-      <DependentUpon>OefenDbDataSetnew.xsd</DependentUpon>
-    </Compile>
     <Compile Include="OPnieuw1.Designer.vb">
       <DependentUpon>OPnieuw1.vb</DependentUpon>
     </Compile>
@@ -145,8 +146,8 @@
     <EmbeddedResource Include="AlweerOpnieuw.resx">
       <DependentUpon>AlweerOpnieuw.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Form1.resx">
-      <DependentUpon>Form1.vb</DependentUpon>
+    <EmbeddedResource Include="JoinTest.resx">
+      <DependentUpon>JoinTest.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="My Project\Resources.resx">
       <Generator>VbMyResourcesResXFileCodeGenerator</Generator>
@@ -159,6 +160,28 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DataSetJoin.xsc">
+      <DependentUpon>DataSetJoin.xsd</DependentUpon>
+    </None>
+    <None Include="DataSetJoin.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DataSetJoin.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DataSetJoin.xss">
+      <DependentUpon>DataSetJoin.xsd</DependentUpon>
+    </None>
+    <None Include="JoinDataset.xsc">
+      <DependentUpon>JoinDataset.xsd</DependentUpon>
+    </None>
+    <None Include="JoinDataset.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>JoinDataset.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="JoinDataset.xss">
+      <DependentUpon>JoinDataset.xsd</DependentUpon>
+    </None>
     <None Include="My Project\app.manifest" />
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
@@ -182,17 +205,6 @@
     </None>
     <None Include="OefenDbDataSet.xss">
       <DependentUpon>OefenDbDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="OefenDbDataSetnew.xsc">
-      <DependentUpon>OefenDbDataSetnew.xsd</DependentUpon>
-    </None>
-    <None Include="OefenDbDataSetnew.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>OefenDbDataSetnew.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="OefenDbDataSetnew.xss">
-      <DependentUpon>OefenDbDataSetnew.xsd</DependentUpon>
     </None>
   </ItemGroup>
   <ItemGroup>

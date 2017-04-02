@@ -25,6 +25,7 @@ Partial Class AlweerOpnieuw
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
+        Me.CB_1 = New System.Windows.Forms.ComboBox()
         Me.SuspendLayout()
         '
         'TextBox1
@@ -52,11 +53,21 @@ Partial Class AlweerOpnieuw
         Me.Button2.Text = "Button2"
         Me.Button2.UseVisualStyleBackColor = True
         '
+        'CB_1
+        '
+        Me.CB_1.FormattingEnabled = True
+        Me.CB_1.Items.AddRange(New Object() {"rob", "piet", "klaas", "jantje"})
+        Me.CB_1.Location = New System.Drawing.Point(63, 199)
+        Me.CB_1.Name = "CB_1"
+        Me.CB_1.Size = New System.Drawing.Size(218, 21)
+        Me.CB_1.TabIndex = 3
+        '
         'AlweerOpnieuw
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(500, 392)
+        Me.ClientSize = New System.Drawing.Size(703, 480)
+        Me.Controls.Add(Me.CB_1)
         Me.Controls.Add(Me.Button2)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.TextBox1)
@@ -70,4 +81,5 @@ Partial Class AlweerOpnieuw
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents Button1 As Button
     Friend WithEvents Button2 As Button
+    Friend WithEvents CB_1 As ComboBox
 End Class
