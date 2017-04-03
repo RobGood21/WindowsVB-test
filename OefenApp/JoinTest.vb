@@ -5,7 +5,7 @@
         'TODO: This line of code loads data into the 'JoinDataset.Apparaat' table. You can move, or remove it, as needed.
         'Me.ApparaatTableAdapter.Fill(Me.JoinDataset.Apparaat)
         'TODO: This line of code loads data into the 'JoinDataset.Apparaat' table. You can move, or remove it, as needed.
-        Me.ApparaatTableAdapter.FillBy(Me.JoinDataset.Apparaat)
+        'Me.ApparaatTableAdapter.FillBy(Me.JoinDataset.Apparaat)
         'TODO: This line of code loads data into the 'JoinDataset.Gebruiker' table. You can move, or remove it, as needed.
 
         'Me.GebruikerTableAdapter.Fill(Me.OefenDbDataSet.Gebruiker)

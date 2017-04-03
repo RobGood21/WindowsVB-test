@@ -32,7 +32,7 @@ Namespace My
         
         <Global.System.Diagnostics.DebuggerStepThroughAttribute()>  _
         Protected Overrides Sub OnCreateMainForm()
-            Me.MainForm = Global.OefenApp.JoinTest
+            Me.MainForm = Global.OefenApp.InvoerGebruiker
         End Sub
     End Class
 End Namespace

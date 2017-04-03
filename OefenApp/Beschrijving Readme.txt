@@ -3,6 +3,12 @@ Displaymember is wat je ziet in de combobox
 Valuemember is de waarde die wordt verkregen met [combobox].selectedvalue
 Als je dus de value member op het ID veld zet, wordt met .selectedvalue deze ID verkregen
 
+Bij een opzoekveld van een gekoppelde tabel. Parent bevat de oekopties, child komt de gekozen optie in
+Zet Selectedvalue property op de FK van de child dus bv. GB_ID
+Zet Datasource op een bindingssource met de parenttable, dus de opzoektabel
+Zet valuemember op de PK van de opzoektabel, de parenttabel
+Zet displaymember op het te toenen zoekveld in de parenttabel.
+
 
 
 Alleen datagrid, formulier.

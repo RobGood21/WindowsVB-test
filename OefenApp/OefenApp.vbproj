@@ -101,6 +101,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DataSetJoin.xsd</DependentUpon>
     </Compile>
+    <Compile Include="InvoerGebruiker.Designer.vb">
+      <DependentUpon>InvoerGebruiker.vb</DependentUpon>
+    </Compile>
+    <Compile Include="InvoerGebruiker.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="JoinDataset.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -145,6 +151,9 @@
   <ItemGroup>
     <EmbeddedResource Include="AlweerOpnieuw.resx">
       <DependentUpon>AlweerOpnieuw.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="InvoerGebruiker.resx">
+      <DependentUpon>InvoerGebruiker.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="JoinTest.resx">
       <DependentUpon>JoinTest.vb</DependentUpon>
