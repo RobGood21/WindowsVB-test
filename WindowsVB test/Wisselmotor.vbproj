@@ -87,6 +87,17 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS_Product.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Product.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="F_Groep.Designer.vb">
+      <DependentUpon>F_Groep.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Groep.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Opening.Designer.vb">
       <DependentUpon>F_Opening.vb</DependentUpon>
     </Compile>
@@ -120,13 +131,11 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
-    <Compile Include="WMdbDataSet.Designer.vb">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>WMdbDataSet.xsd</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="F_Groep.resx">
+      <DependentUpon>F_Groep.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Opening.resx">
       <DependentUpon>F_Opening.vb</DependentUpon>
     </EmbeddedResource>
@@ -144,6 +153,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DS_Product.xsc">
+      <DependentUpon>DS_Product.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Product.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Product.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_Product.xss">
+      <DependentUpon>DS_Product.xsd</DependentUpon>
+    </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>
       <LastGenOutput>Application.Designer.vb</LastGenOutput>
@@ -154,17 +174,6 @@
       <LastGenOutput>Settings.Designer.vb</LastGenOutput>
     </None>
     <None Include="App.config" />
-    <None Include="WMdbDataSet.xsc">
-      <DependentUpon>WMdbDataSet.xsd</DependentUpon>
-    </None>
-    <None Include="WMdbDataSet.xsd">
-      <Generator>MSDataSetGenerator</Generator>
-      <LastGenOutput>WMdbDataSet.Designer.vb</LastGenOutput>
-      <SubType>Designer</SubType>
-    </None>
-    <None Include="WMdbDataSet.xss">
-      <DependentUpon>WMdbDataSet.xsd</DependentUpon>
-    </None>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />
