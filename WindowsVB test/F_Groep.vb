@@ -8,7 +8,24 @@
 
     Private Sub F_Groep_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'DS_Product.Groep' table. You can move, or remove it, as needed.
-        Me.GroepTableAdapter.Fill(Me.DS_Product.Groep)
+        MsgBox(IDGROEP)
+
+        If IsDBNull(IDGROEP) = True Or IDGROEP < 1 Then 'form opent alle records
+
+            Me.GroepTableAdapter.Fill(Me.DS_Product.Groep)
+        Else 'form opent  1 record
+            Me.GroepTableAdapter.FillBy(Me.DS_Product.Groep, IDGROEP)
+
+        End If
+
+
+
+
+    End Sub
+
+    Private Sub Knop_Opslaan_Click(sender As Object, e As EventArgs) Handles Knop_Opslaan.Click
+        IDGROEP = -1 'reset publieke variabele
+        Me.Close()
 
     End Sub
 End Class

@@ -23,7 +23,6 @@ Partial Class F_Product
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Product))
         Dim ID_ProductLabel As System.Windows.Forms.Label
         Dim ID_GroepLabel As System.Windows.Forms.Label
         Dim ID_MerkLabel As System.Windows.Forms.Label
@@ -35,37 +34,42 @@ Partial Class F_Product
         Dim PD_Buy_CostLabel As System.Windows.Forms.Label
         Dim PD_VoorraadLabel As System.Windows.Forms.Label
         Dim PD_MinimumVoorraadLabel As System.Windows.Forms.Label
+        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Product))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.GB_Merk = New System.Windows.Forms.ComboBox()
+        Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_Product = New WindowsVB_test.DS_Product()
+        Me.DSProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CB_Groep = New System.Windows.Forms.ComboBox()
+        Me.GroepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.PD_BehuizingTextBox = New System.Windows.Forms.TextBox()
+        Me.PD_WaardeTextBox = New System.Windows.Forms.TextBox()
+        Me.PD_FunctieTextBox = New System.Windows.Forms.TextBox()
+        Me.PD_NaamTextBox = New System.Windows.Forms.TextBox()
+        Me.ID_MerkTextBox = New System.Windows.Forms.TextBox()
+        Me.ID_GroepTextBox = New System.Windows.Forms.TextBox()
+        Me.ID_ProductTextBox = New System.Windows.Forms.TextBox()
         Me.Knop_OpslaanSluiten = New System.Windows.Forms.Button()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.DS_Product = New WindowsVB_test.DS_Product()
-        Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DT_productTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
         Me.DT_productBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
+        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
+        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
+        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
         Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
         Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
         Me.DT_productBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.FillToolStrip = New System.Windows.Forms.ToolStrip()
         Me.IDProductToolStripLabel = New System.Windows.Forms.ToolStripLabel()
         Me.IDProductToolStripTextBox = New System.Windows.Forms.ToolStripTextBox()
         Me.FillToolStripButton = New System.Windows.Forms.ToolStripButton()
-        Me.ID_ProductTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_GroepTextBox = New System.Windows.Forms.TextBox()
-        Me.ID_MerkTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_NaamTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_FunctieTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_WaardeTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_BehuizingTextBox = New System.Windows.Forms.TextBox()
         Me.txt_Beschrijving1 = New System.Windows.Forms.TextBox()
         Me.TXT_Beschrijving2 = New System.Windows.Forms.TextBox()
         Me.PD_Sale_PrijsTextBox = New System.Windows.Forms.TextBox()
@@ -73,9 +77,13 @@ Partial Class F_Product
         Me.PD_VoorraadTextBox = New System.Windows.Forms.TextBox()
         Me.PD_MinimumVoorraadTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox2 = New System.Windows.Forms.GroupBox()
-        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.Label1 = New System.Windows.Forms.Label()
+        Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.GroepTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepTableAdapter()
+        Me.MerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.MerkTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.MerkTableAdapter()
+        Me.Knop_DetailsGroep = New System.Windows.Forms.Button()
         ID_ProductLabel = New System.Windows.Forms.Label()
         ID_GroepLabel = New System.Windows.Forms.Label()
         ID_MerkLabel = New System.Windows.Forms.Label()
@@ -88,17 +96,123 @@ Partial Class F_Product
         PD_VoorraadLabel = New System.Windows.Forms.Label()
         PD_MinimumVoorraadLabel = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DSProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DT_productBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.DT_productBindingNavigator.SuspendLayout()
         Me.FillToolStrip.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'ID_ProductLabel
+        '
+        ID_ProductLabel.AutoSize = True
+        ID_ProductLabel.Location = New System.Drawing.Point(35, 35)
+        ID_ProductLabel.Name = "ID_ProductLabel"
+        ID_ProductLabel.Size = New System.Drawing.Size(61, 13)
+        ID_ProductLabel.TabIndex = 0
+        ID_ProductLabel.Text = "ID Product:"
+        AddHandler ID_ProductLabel.Click, AddressOf Me.ID_ProductLabel_Click
+        '
+        'ID_GroepLabel
+        '
+        ID_GroepLabel.AutoSize = True
+        ID_GroepLabel.Location = New System.Drawing.Point(43, 61)
+        ID_GroepLabel.Name = "ID_GroepLabel"
+        ID_GroepLabel.Size = New System.Drawing.Size(53, 13)
+        ID_GroepLabel.TabIndex = 2
+        ID_GroepLabel.Text = "ID Groep:"
+        '
+        'ID_MerkLabel
+        '
+        ID_MerkLabel.AutoSize = True
+        ID_MerkLabel.Location = New System.Drawing.Point(48, 87)
+        ID_MerkLabel.Name = "ID_MerkLabel"
+        ID_MerkLabel.Size = New System.Drawing.Size(48, 13)
+        ID_MerkLabel.TabIndex = 4
+        ID_MerkLabel.Text = "ID Merk:"
+        '
+        'PD_NaamLabel
+        '
+        PD_NaamLabel.AutoSize = True
+        PD_NaamLabel.Location = New System.Drawing.Point(40, 113)
+        PD_NaamLabel.Name = "PD_NaamLabel"
+        PD_NaamLabel.Size = New System.Drawing.Size(56, 13)
+        PD_NaamLabel.TabIndex = 6
+        PD_NaamLabel.Text = "PD Naam:"
+        '
+        'PD_FunctieLabel
+        '
+        PD_FunctieLabel.AutoSize = True
+        PD_FunctieLabel.Location = New System.Drawing.Point(33, 139)
+        PD_FunctieLabel.Name = "PD_FunctieLabel"
+        PD_FunctieLabel.Size = New System.Drawing.Size(63, 13)
+        PD_FunctieLabel.TabIndex = 8
+        PD_FunctieLabel.Text = "PD Functie:"
+        '
+        'PD_WaardeLabel
+        '
+        PD_WaardeLabel.AutoSize = True
+        PD_WaardeLabel.Location = New System.Drawing.Point(30, 165)
+        PD_WaardeLabel.Name = "PD_WaardeLabel"
+        PD_WaardeLabel.Size = New System.Drawing.Size(66, 13)
+        PD_WaardeLabel.TabIndex = 10
+        PD_WaardeLabel.Text = "PD Waarde:"
+        '
+        'PD_BehuizingLabel
+        '
+        PD_BehuizingLabel.AutoSize = True
+        PD_BehuizingLabel.Location = New System.Drawing.Point(22, 191)
+        PD_BehuizingLabel.Name = "PD_BehuizingLabel"
+        PD_BehuizingLabel.Size = New System.Drawing.Size(74, 13)
+        PD_BehuizingLabel.TabIndex = 12
+        PD_BehuizingLabel.Text = "PD Behuizing:"
+        '
+        'PD_Sale_PrijsLabel
+        '
+        PD_Sale_PrijsLabel.AutoSize = True
+        PD_Sale_PrijsLabel.Location = New System.Drawing.Point(58, 26)
+        PD_Sale_PrijsLabel.Name = "PD_Sale_PrijsLabel"
+        PD_Sale_PrijsLabel.Size = New System.Drawing.Size(71, 13)
+        PD_Sale_PrijsLabel.TabIndex = 18
+        PD_Sale_PrijsLabel.Text = "PD Sale Prijs:"
+        '
+        'PD_Buy_CostLabel
+        '
+        PD_Buy_CostLabel.AutoSize = True
+        PD_Buy_CostLabel.Location = New System.Drawing.Point(59, 52)
+        PD_Buy_CostLabel.Name = "PD_Buy_CostLabel"
+        PD_Buy_CostLabel.Size = New System.Drawing.Size(70, 13)
+        PD_Buy_CostLabel.TabIndex = 20
+        PD_Buy_CostLabel.Text = "PD Buy Cost:"
+        '
+        'PD_VoorraadLabel
+        '
+        PD_VoorraadLabel.AutoSize = True
+        PD_VoorraadLabel.Location = New System.Drawing.Point(58, 78)
+        PD_VoorraadLabel.Name = "PD_VoorraadLabel"
+        PD_VoorraadLabel.Size = New System.Drawing.Size(71, 13)
+        PD_VoorraadLabel.TabIndex = 22
+        PD_VoorraadLabel.Text = "PD Voorraad:"
+        '
+        'PD_MinimumVoorraadLabel
+        '
+        PD_MinimumVoorraadLabel.AutoSize = True
+        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(14, 104)
+        PD_MinimumVoorraadLabel.Name = "PD_MinimumVoorraadLabel"
+        PD_MinimumVoorraadLabel.Size = New System.Drawing.Size(115, 13)
+        PD_MinimumVoorraadLabel.TabIndex = 24
+        PD_MinimumVoorraadLabel.Text = "PD Minimum Voorraad:"
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Knop_DetailsGroep)
+        Me.GroupBox1.Controls.Add(Me.GB_Merk)
+        Me.GroupBox1.Controls.Add(Me.CB_Groep)
         Me.GroupBox1.Controls.Add(PD_BehuizingLabel)
         Me.GroupBox1.Controls.Add(Me.PD_BehuizingTextBox)
         Me.GroupBox1.Controls.Add(PD_WaardeLabel)
@@ -115,10 +229,111 @@ Partial Class F_Product
         Me.GroupBox1.Controls.Add(Me.ID_ProductTextBox)
         Me.GroupBox1.Location = New System.Drawing.Point(34, 53)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(270, 362)
+        Me.GroupBox1.Size = New System.Drawing.Size(319, 362)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Product"
+        '
+        'GB_Merk
+        '
+        Me.GB_Merk.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Merk", True))
+        Me.GB_Merk.DataSource = Me.MerkBindingSource
+        Me.GB_Merk.DisplayMember = "MK_MerkNaam"
+        Me.GB_Merk.FormattingEnabled = True
+        Me.GB_Merk.Location = New System.Drawing.Point(102, 84)
+        Me.GB_Merk.Name = "GB_Merk"
+        Me.GB_Merk.Size = New System.Drawing.Size(150, 21)
+        Me.GB_Merk.TabIndex = 15
+        Me.GB_Merk.ValueMember = "ID_Merk"
+        '
+        'DT_productBindingSource
+        '
+        Me.DT_productBindingSource.DataMember = "DT_product"
+        Me.DT_productBindingSource.DataSource = Me.DS_Product
+        '
+        'DS_Product
+        '
+        Me.DS_Product.DataSetName = "DS_Product"
+        Me.DS_Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'DSProductBindingSource
+        '
+        Me.DSProductBindingSource.DataSource = Me.DS_Product
+        Me.DSProductBindingSource.Position = 0
+        '
+        'CB_Groep
+        '
+        Me.CB_Groep.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Groep", True))
+        Me.CB_Groep.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GroepBindingSource, "GP_Naam", True))
+        Me.CB_Groep.DataSource = Me.GroepBindingSource
+        Me.CB_Groep.DisplayMember = "GP_Naam"
+        Me.CB_Groep.FormattingEnabled = True
+        Me.CB_Groep.Location = New System.Drawing.Point(102, 59)
+        Me.CB_Groep.Name = "CB_Groep"
+        Me.CB_Groep.Size = New System.Drawing.Size(150, 21)
+        Me.CB_Groep.TabIndex = 14
+        Me.CB_Groep.ValueMember = "ID_Groep"
+        '
+        'GroepBindingSource
+        '
+        Me.GroepBindingSource.DataMember = "Groep"
+        Me.GroepBindingSource.DataSource = Me.DS_Product
+        '
+        'PD_BehuizingTextBox
+        '
+        Me.PD_BehuizingTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Behuizing", True))
+        Me.PD_BehuizingTextBox.Location = New System.Drawing.Point(102, 188)
+        Me.PD_BehuizingTextBox.Name = "PD_BehuizingTextBox"
+        Me.PD_BehuizingTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.PD_BehuizingTextBox.TabIndex = 13
+        '
+        'PD_WaardeTextBox
+        '
+        Me.PD_WaardeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Waarde", True))
+        Me.PD_WaardeTextBox.Location = New System.Drawing.Point(102, 162)
+        Me.PD_WaardeTextBox.Name = "PD_WaardeTextBox"
+        Me.PD_WaardeTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.PD_WaardeTextBox.TabIndex = 11
+        '
+        'PD_FunctieTextBox
+        '
+        Me.PD_FunctieTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Functie", True))
+        Me.PD_FunctieTextBox.Location = New System.Drawing.Point(102, 136)
+        Me.PD_FunctieTextBox.Name = "PD_FunctieTextBox"
+        Me.PD_FunctieTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.PD_FunctieTextBox.TabIndex = 9
+        '
+        'PD_NaamTextBox
+        '
+        Me.PD_NaamTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Naam", True))
+        Me.PD_NaamTextBox.Location = New System.Drawing.Point(102, 110)
+        Me.PD_NaamTextBox.Name = "PD_NaamTextBox"
+        Me.PD_NaamTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.PD_NaamTextBox.TabIndex = 7
+        '
+        'ID_MerkTextBox
+        '
+        Me.ID_MerkTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Merk", True))
+        Me.ID_MerkTextBox.Location = New System.Drawing.Point(102, 329)
+        Me.ID_MerkTextBox.Name = "ID_MerkTextBox"
+        Me.ID_MerkTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ID_MerkTextBox.TabIndex = 5
+        '
+        'ID_GroepTextBox
+        '
+        Me.ID_GroepTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Groep", True))
+        Me.ID_GroepTextBox.Location = New System.Drawing.Point(102, 303)
+        Me.ID_GroepTextBox.Name = "ID_GroepTextBox"
+        Me.ID_GroepTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ID_GroepTextBox.TabIndex = 3
+        '
+        'ID_ProductTextBox
+        '
+        Me.ID_ProductTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Product", True))
+        Me.ID_ProductTextBox.Location = New System.Drawing.Point(102, 32)
+        Me.ID_ProductTextBox.Name = "ID_ProductTextBox"
+        Me.ID_ProductTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ID_ProductTextBox.TabIndex = 1
         '
         'Knop_OpslaanSluiten
         '
@@ -137,16 +352,6 @@ Partial Class F_Product
         Me.Button1.TabIndex = 2
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
-        '
-        'DS_Product
-        '
-        Me.DS_Product.DataSetName = "DS_Product"
-        Me.DS_Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DT_productBindingSource
-        '
-        Me.DT_productBindingSource.DataMember = "DT_product"
-        Me.DT_productBindingSource.DataSource = Me.DS_Product
         '
         'DT_productTableAdapter
         '
@@ -178,6 +383,31 @@ Partial Class F_Product
         Me.DT_productBindingNavigator.Size = New System.Drawing.Size(751, 25)
         Me.DT_productBindingNavigator.TabIndex = 3
         Me.DT_productBindingNavigator.Text = "BindingNavigator1"
+        '
+        'BindingNavigatorAddNewItem
+        '
+        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
+        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorAddNewItem.Text = "Add new"
+        '
+        'BindingNavigatorCountItem
+        '
+        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
+        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
+        Me.BindingNavigatorCountItem.Text = "of {0}"
+        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
+        '
+        'BindingNavigatorDeleteItem
+        '
+        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
+        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
+        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
+        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
+        Me.BindingNavigatorDeleteItem.Text = "Delete"
         '
         'BindingNavigatorMoveFirstItem
         '
@@ -211,16 +441,9 @@ Partial Class F_Product
         Me.BindingNavigatorPositionItem.Text = "0"
         Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
         '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
         'BindingNavigatorSeparator1
         '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator"
+        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
         Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
         '
         'BindingNavigatorMoveNextItem
@@ -243,26 +466,8 @@ Partial Class F_Product
         '
         'BindingNavigatorSeparator2
         '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator"
+        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
         Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
         '
         'DT_productBindingNavigatorSaveItem
         '
@@ -299,133 +504,13 @@ Partial Class F_Product
         Me.FillToolStripButton.Size = New System.Drawing.Size(26, 22)
         Me.FillToolStripButton.Text = "Fill"
         '
-        'ID_ProductLabel
-        '
-        ID_ProductLabel.AutoSize = True
-        ID_ProductLabel.Location = New System.Drawing.Point(35, 35)
-        ID_ProductLabel.Name = "ID_ProductLabel"
-        ID_ProductLabel.Size = New System.Drawing.Size(61, 13)
-        ID_ProductLabel.TabIndex = 0
-        ID_ProductLabel.Text = "ID Product:"
-        AddHandler ID_ProductLabel.Click, AddressOf Me.ID_ProductLabel_Click
-        '
-        'ID_ProductTextBox
-        '
-        Me.ID_ProductTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Product", True))
-        Me.ID_ProductTextBox.Location = New System.Drawing.Point(102, 32)
-        Me.ID_ProductTextBox.Name = "ID_ProductTextBox"
-        Me.ID_ProductTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.ID_ProductTextBox.TabIndex = 1
-        '
-        'ID_GroepLabel
-        '
-        ID_GroepLabel.AutoSize = True
-        ID_GroepLabel.Location = New System.Drawing.Point(43, 61)
-        ID_GroepLabel.Name = "ID_GroepLabel"
-        ID_GroepLabel.Size = New System.Drawing.Size(53, 13)
-        ID_GroepLabel.TabIndex = 2
-        ID_GroepLabel.Text = "ID Groep:"
-        '
-        'ID_GroepTextBox
-        '
-        Me.ID_GroepTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Groep", True))
-        Me.ID_GroepTextBox.Location = New System.Drawing.Point(102, 58)
-        Me.ID_GroepTextBox.Name = "ID_GroepTextBox"
-        Me.ID_GroepTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.ID_GroepTextBox.TabIndex = 3
-        '
-        'ID_MerkLabel
-        '
-        ID_MerkLabel.AutoSize = True
-        ID_MerkLabel.Location = New System.Drawing.Point(48, 87)
-        ID_MerkLabel.Name = "ID_MerkLabel"
-        ID_MerkLabel.Size = New System.Drawing.Size(48, 13)
-        ID_MerkLabel.TabIndex = 4
-        ID_MerkLabel.Text = "ID Merk:"
-        '
-        'ID_MerkTextBox
-        '
-        Me.ID_MerkTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Merk", True))
-        Me.ID_MerkTextBox.Location = New System.Drawing.Point(102, 84)
-        Me.ID_MerkTextBox.Name = "ID_MerkTextBox"
-        Me.ID_MerkTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.ID_MerkTextBox.TabIndex = 5
-        '
-        'PD_NaamLabel
-        '
-        PD_NaamLabel.AutoSize = True
-        PD_NaamLabel.Location = New System.Drawing.Point(40, 113)
-        PD_NaamLabel.Name = "PD_NaamLabel"
-        PD_NaamLabel.Size = New System.Drawing.Size(56, 13)
-        PD_NaamLabel.TabIndex = 6
-        PD_NaamLabel.Text = "PD Naam:"
-        '
-        'PD_NaamTextBox
-        '
-        Me.PD_NaamTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Naam", True))
-        Me.PD_NaamTextBox.Location = New System.Drawing.Point(102, 110)
-        Me.PD_NaamTextBox.Name = "PD_NaamTextBox"
-        Me.PD_NaamTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.PD_NaamTextBox.TabIndex = 7
-        '
-        'PD_FunctieLabel
-        '
-        PD_FunctieLabel.AutoSize = True
-        PD_FunctieLabel.Location = New System.Drawing.Point(33, 139)
-        PD_FunctieLabel.Name = "PD_FunctieLabel"
-        PD_FunctieLabel.Size = New System.Drawing.Size(63, 13)
-        PD_FunctieLabel.TabIndex = 8
-        PD_FunctieLabel.Text = "PD Functie:"
-        '
-        'PD_FunctieTextBox
-        '
-        Me.PD_FunctieTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Functie", True))
-        Me.PD_FunctieTextBox.Location = New System.Drawing.Point(102, 136)
-        Me.PD_FunctieTextBox.Name = "PD_FunctieTextBox"
-        Me.PD_FunctieTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.PD_FunctieTextBox.TabIndex = 9
-        '
-        'PD_WaardeLabel
-        '
-        PD_WaardeLabel.AutoSize = True
-        PD_WaardeLabel.Location = New System.Drawing.Point(30, 165)
-        PD_WaardeLabel.Name = "PD_WaardeLabel"
-        PD_WaardeLabel.Size = New System.Drawing.Size(66, 13)
-        PD_WaardeLabel.TabIndex = 10
-        PD_WaardeLabel.Text = "PD Waarde:"
-        '
-        'PD_WaardeTextBox
-        '
-        Me.PD_WaardeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Waarde", True))
-        Me.PD_WaardeTextBox.Location = New System.Drawing.Point(102, 162)
-        Me.PD_WaardeTextBox.Name = "PD_WaardeTextBox"
-        Me.PD_WaardeTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.PD_WaardeTextBox.TabIndex = 11
-        '
-        'PD_BehuizingLabel
-        '
-        PD_BehuizingLabel.AutoSize = True
-        PD_BehuizingLabel.Location = New System.Drawing.Point(22, 191)
-        PD_BehuizingLabel.Name = "PD_BehuizingLabel"
-        PD_BehuizingLabel.Size = New System.Drawing.Size(74, 13)
-        PD_BehuizingLabel.TabIndex = 12
-        PD_BehuizingLabel.Text = "PD Behuizing:"
-        '
-        'PD_BehuizingTextBox
-        '
-        Me.PD_BehuizingTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Behuizing", True))
-        Me.PD_BehuizingTextBox.Location = New System.Drawing.Point(102, 188)
-        Me.PD_BehuizingTextBox.Name = "PD_BehuizingTextBox"
-        Me.PD_BehuizingTextBox.Size = New System.Drawing.Size(100, 20)
-        Me.PD_BehuizingTextBox.TabIndex = 13
-        '
         'txt_Beschrijving1
         '
         Me.txt_Beschrijving1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Beschrijving(1)", True))
-        Me.txt_Beschrijving1.Location = New System.Drawing.Point(9, 19)
+        Me.txt_Beschrijving1.Location = New System.Drawing.Point(6, 19)
         Me.txt_Beschrijving1.Multiline = True
         Me.txt_Beschrijving1.Name = "txt_Beschrijving1"
-        Me.txt_Beschrijving1.Size = New System.Drawing.Size(297, 68)
+        Me.txt_Beschrijving1.Size = New System.Drawing.Size(300, 68)
         Me.txt_Beschrijving1.TabIndex = 15
         '
         'TXT_Beschrijving2
@@ -437,15 +522,6 @@ Partial Class F_Product
         Me.TXT_Beschrijving2.Size = New System.Drawing.Size(300, 66)
         Me.TXT_Beschrijving2.TabIndex = 17
         '
-        'PD_Sale_PrijsLabel
-        '
-        PD_Sale_PrijsLabel.AutoSize = True
-        PD_Sale_PrijsLabel.Location = New System.Drawing.Point(58, 26)
-        PD_Sale_PrijsLabel.Name = "PD_Sale_PrijsLabel"
-        PD_Sale_PrijsLabel.Size = New System.Drawing.Size(71, 13)
-        PD_Sale_PrijsLabel.TabIndex = 18
-        PD_Sale_PrijsLabel.Text = "PD Sale Prijs:"
-        '
         'PD_Sale_PrijsTextBox
         '
         Me.PD_Sale_PrijsTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Sale_Prijs", True))
@@ -453,15 +529,6 @@ Partial Class F_Product
         Me.PD_Sale_PrijsTextBox.Name = "PD_Sale_PrijsTextBox"
         Me.PD_Sale_PrijsTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PD_Sale_PrijsTextBox.TabIndex = 19
-        '
-        'PD_Buy_CostLabel
-        '
-        PD_Buy_CostLabel.AutoSize = True
-        PD_Buy_CostLabel.Location = New System.Drawing.Point(59, 52)
-        PD_Buy_CostLabel.Name = "PD_Buy_CostLabel"
-        PD_Buy_CostLabel.Size = New System.Drawing.Size(70, 13)
-        PD_Buy_CostLabel.TabIndex = 20
-        PD_Buy_CostLabel.Text = "PD Buy Cost:"
         '
         'PD_Buy_CostTextBox
         '
@@ -471,15 +538,6 @@ Partial Class F_Product
         Me.PD_Buy_CostTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PD_Buy_CostTextBox.TabIndex = 21
         '
-        'PD_VoorraadLabel
-        '
-        PD_VoorraadLabel.AutoSize = True
-        PD_VoorraadLabel.Location = New System.Drawing.Point(58, 78)
-        PD_VoorraadLabel.Name = "PD_VoorraadLabel"
-        PD_VoorraadLabel.Size = New System.Drawing.Size(71, 13)
-        PD_VoorraadLabel.TabIndex = 22
-        PD_VoorraadLabel.Text = "PD Voorraad:"
-        '
         'PD_VoorraadTextBox
         '
         Me.PD_VoorraadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
@@ -487,15 +545,6 @@ Partial Class F_Product
         Me.PD_VoorraadTextBox.Name = "PD_VoorraadTextBox"
         Me.PD_VoorraadTextBox.Size = New System.Drawing.Size(100, 20)
         Me.PD_VoorraadTextBox.TabIndex = 23
-        '
-        'PD_MinimumVoorraadLabel
-        '
-        PD_MinimumVoorraadLabel.AutoSize = True
-        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(14, 104)
-        PD_MinimumVoorraadLabel.Name = "PD_MinimumVoorraadLabel"
-        PD_MinimumVoorraadLabel.Size = New System.Drawing.Size(115, 13)
-        PD_MinimumVoorraadLabel.TabIndex = 24
-        PD_MinimumVoorraadLabel.Text = "PD Minimum Voorraad:"
         '
         'PD_MinimumVoorraadTextBox
         '
@@ -524,14 +573,6 @@ Partial Class F_Product
         Me.GroupBox2.TabStop = False
         Me.GroupBox2.Text = "Prijs, voorraad, lokatie"
         '
-        'ListBox1
-        '
-        Me.ListBox1.FormattingEnabled = True
-        Me.ListBox1.Location = New System.Drawing.Point(135, 131)
-        Me.ListBox1.Name = "ListBox1"
-        Me.ListBox1.Size = New System.Drawing.Size(100, 43)
-        Me.ListBox1.TabIndex = 26
-        '
         'Label1
         '
         Me.Label1.AutoSize = True
@@ -540,6 +581,14 @@ Partial Class F_Product
         Me.Label1.Size = New System.Drawing.Size(50, 13)
         Me.Label1.TabIndex = 27
         Me.Label1.Text = "Lokaties:"
+        '
+        'ListBox1
+        '
+        Me.ListBox1.FormattingEnabled = True
+        Me.ListBox1.Location = New System.Drawing.Point(135, 131)
+        Me.ListBox1.Name = "ListBox1"
+        Me.ListBox1.Size = New System.Drawing.Size(100, 43)
+        Me.ListBox1.TabIndex = 26
         '
         'GroupBox3
         '
@@ -551,6 +600,28 @@ Partial Class F_Product
         Me.GroupBox3.TabIndex = 6
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Beschrijving"
+        '
+        'GroepTableAdapter
+        '
+        Me.GroepTableAdapter.ClearBeforeFill = True
+        '
+        'MerkBindingSource
+        '
+        Me.MerkBindingSource.DataMember = "Merk"
+        Me.MerkBindingSource.DataSource = Me.DSProductBindingSource
+        '
+        'MerkTableAdapter
+        '
+        Me.MerkTableAdapter.ClearBeforeFill = True
+        '
+        'Knop_DetailsGroep
+        '
+        Me.Knop_DetailsGroep.Location = New System.Drawing.Point(259, 61)
+        Me.Knop_DetailsGroep.Name = "Knop_DetailsGroep"
+        Me.Knop_DetailsGroep.Size = New System.Drawing.Size(28, 23)
+        Me.Knop_DetailsGroep.TabIndex = 16
+        Me.Knop_DetailsGroep.Text = ">"
+        Me.Knop_DetailsGroep.UseVisualStyleBackColor = True
         '
         'F_Product
         '
@@ -568,8 +639,10 @@ Partial Class F_Product
         Me.Text = "F_Product"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DSProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DT_productBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
         Me.DT_productBindingNavigator.ResumeLayout(False)
         Me.DT_productBindingNavigator.PerformLayout()
@@ -579,6 +652,7 @@ Partial Class F_Product
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -625,4 +699,12 @@ Partial Class F_Product
     Friend WithEvents Label1 As Label
     Friend WithEvents ListBox1 As ListBox
     Friend WithEvents GroupBox3 As GroupBox
+    Friend WithEvents CB_Groep As ComboBox
+    Friend WithEvents GroepBindingSource As BindingSource
+    Friend WithEvents GroepTableAdapter As DS_ProductTableAdapters.GroepTableAdapter
+    Friend WithEvents GB_Merk As ComboBox
+    Friend WithEvents DSProductBindingSource As BindingSource
+    Friend WithEvents MerkBindingSource As BindingSource
+    Friend WithEvents MerkTableAdapter As DS_ProductTableAdapters.MerkTableAdapter
+    Friend WithEvents Knop_DetailsGroep As Button
 End Class
