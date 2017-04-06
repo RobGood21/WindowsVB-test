@@ -92,6 +92,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_Product.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_ProjectProducts.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_ProjectProducts.xsd</DependentUpon>
+    </Compile>
     <Compile Include="F_Groep.Designer.vb">
       <DependentUpon>F_Groep.vb</DependentUpon>
     </Compile>
@@ -108,6 +113,12 @@
       <DependentUpon>F_Product.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Product.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Projecten.Designer.vb">
+      <DependentUpon>F_Projecten.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Projecten.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Wisselmotor.Designer.vb">
@@ -132,6 +143,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="TestGrid.Designer.vb">
+      <DependentUpon>TestGrid.vb</DependentUpon>
+    </Compile>
+    <Compile Include="TestGrid.vb">
+      <SubType>Form</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="F_Groep.resx">
@@ -143,6 +160,9 @@
     <EmbeddedResource Include="F_Product.resx">
       <DependentUpon>F_Product.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_Projecten.resx">
+      <DependentUpon>F_Projecten.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Wisselmotor.resx">
       <DependentUpon>F_Wisselmotor.vb</DependentUpon>
     </EmbeddedResource>
@@ -151,6 +171,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="TestGrid.resx">
+      <DependentUpon>TestGrid.vb</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
@@ -164,6 +187,17 @@
     </None>
     <None Include="DS_Product.xss">
       <DependentUpon>DS_Product.xsd</DependentUpon>
+    </None>
+    <None Include="DS_ProjectProducts.xsc">
+      <DependentUpon>DS_ProjectProducts.xsd</DependentUpon>
+    </None>
+    <None Include="DS_ProjectProducts.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_ProjectProducts.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_ProjectProducts.xss">
+      <DependentUpon>DS_ProjectProducts.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

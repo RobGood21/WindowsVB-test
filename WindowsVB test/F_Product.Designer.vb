@@ -36,9 +36,11 @@ Partial Class F_Product
         Dim PD_MinimumVoorraadLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Product))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.Knop_DetailsGroep = New System.Windows.Forms.Button()
         Me.GB_Merk = New System.Windows.Forms.ComboBox()
         Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
+        Me.MerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DSProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_Groep = New System.Windows.Forms.ComboBox()
         Me.GroepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -81,9 +83,7 @@ Partial Class F_Product
         Me.ListBox1 = New System.Windows.Forms.ListBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.GroepTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepTableAdapter()
-        Me.MerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MerkTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.MerkTableAdapter()
-        Me.Knop_DetailsGroep = New System.Windows.Forms.Button()
         ID_ProductLabel = New System.Windows.Forms.Label()
         ID_GroepLabel = New System.Windows.Forms.Label()
         ID_MerkLabel = New System.Windows.Forms.Label()
@@ -98,6 +98,7 @@ Partial Class F_Product
         Me.GroupBox1.SuspendLayout()
         CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DSProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DT_productBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -105,7 +106,6 @@ Partial Class F_Product
         Me.FillToolStrip.SuspendLayout()
         Me.GroupBox2.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
-        CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ID_ProductLabel
@@ -234,6 +234,15 @@ Partial Class F_Product
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Product"
         '
+        'Knop_DetailsGroep
+        '
+        Me.Knop_DetailsGroep.Location = New System.Drawing.Point(259, 61)
+        Me.Knop_DetailsGroep.Name = "Knop_DetailsGroep"
+        Me.Knop_DetailsGroep.Size = New System.Drawing.Size(28, 23)
+        Me.Knop_DetailsGroep.TabIndex = 16
+        Me.Knop_DetailsGroep.Text = ">"
+        Me.Knop_DetailsGroep.UseVisualStyleBackColor = True
+        '
         'GB_Merk
         '
         Me.GB_Merk.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Merk", True))
@@ -255,6 +264,11 @@ Partial Class F_Product
         '
         Me.DS_Product.DataSetName = "DS_Product"
         Me.DS_Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'MerkBindingSource
+        '
+        Me.MerkBindingSource.DataMember = "Merk"
+        Me.MerkBindingSource.DataSource = Me.DSProductBindingSource
         '
         'DSProductBindingSource
         '
@@ -605,23 +619,9 @@ Partial Class F_Product
         '
         Me.GroepTableAdapter.ClearBeforeFill = True
         '
-        'MerkBindingSource
-        '
-        Me.MerkBindingSource.DataMember = "Merk"
-        Me.MerkBindingSource.DataSource = Me.DSProductBindingSource
-        '
         'MerkTableAdapter
         '
         Me.MerkTableAdapter.ClearBeforeFill = True
-        '
-        'Knop_DetailsGroep
-        '
-        Me.Knop_DetailsGroep.Location = New System.Drawing.Point(259, 61)
-        Me.Knop_DetailsGroep.Name = "Knop_DetailsGroep"
-        Me.Knop_DetailsGroep.Size = New System.Drawing.Size(28, 23)
-        Me.Knop_DetailsGroep.TabIndex = 16
-        Me.Knop_DetailsGroep.Text = ">"
-        Me.Knop_DetailsGroep.UseVisualStyleBackColor = True
         '
         'F_Product
         '
@@ -641,6 +641,7 @@ Partial Class F_Product
         Me.GroupBox1.PerformLayout()
         CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DSProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DT_productBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
@@ -652,7 +653,6 @@ Partial Class F_Product
         Me.GroupBox2.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
-        CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
