@@ -115,10 +115,10 @@
     <Compile Include="F_Product.vb">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="F_Projecten.Designer.vb">
-      <DependentUpon>F_Projecten.vb</DependentUpon>
+    <Compile Include="F_ProductZoek.Designer.vb">
+      <DependentUpon>F_ProductZoek.vb</DependentUpon>
     </Compile>
-    <Compile Include="F_Projecten.vb">
+    <Compile Include="F_ProductZoek.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Wisselmotor.Designer.vb">
@@ -160,8 +160,8 @@
     <EmbeddedResource Include="F_Product.resx">
       <DependentUpon>F_Product.vb</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="F_Projecten.resx">
-      <DependentUpon>F_Projecten.vb</DependentUpon>
+    <EmbeddedResource Include="F_ProductZoek.resx">
+      <DependentUpon>F_ProductZoek.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Wisselmotor.resx">
       <DependentUpon>F_Wisselmotor.vb</DependentUpon>

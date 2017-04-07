@@ -3,7 +3,7 @@
 
     Private Sub TestGrid_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         'TODO: This line of code loads data into the 'DS_ProjectProducts.DataTable1' table. You can move, or remove it, as needed.
-        Me.DataTable1TableAdapter.Fill(Me.DS_ProjectProducts.DataTable1)
+        Me.DataTable1TableAdapter.Fill(Me.DS_ProjectProducts.DataTable1, "%", 1)
 
     End Sub
 

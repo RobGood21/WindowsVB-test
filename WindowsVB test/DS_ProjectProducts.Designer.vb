@@ -37,6 +37,8 @@ Partial Public Class DS_ProjectProducts
     
     Private relationFK_Product_Merk As Global.System.Data.DataRelation
     
+    Private relationFK_Product_Groep1 As Global.System.Data.DataRelation
+    
     Private _schemaSerializationMode As Global.System.Data.SchemaSerializationMode = Global.System.Data.SchemaSerializationMode.IncludeSchema
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -272,6 +274,7 @@ Partial Public Class DS_ProjectProducts
         End If
         Me.relationFK_Product_Groep = Me.Relations("FK_Product_Groep")
         Me.relationFK_Product_Merk = Me.Relations("FK_Product_Merk")
+        Me.relationFK_Product_Groep1 = Me.Relations("FK_Product_Groep1")
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -294,6 +297,8 @@ Partial Public Class DS_ProjectProducts
         Me.Relations.Add(Me.relationFK_Product_Groep)
         Me.relationFK_Product_Merk = New Global.System.Data.DataRelation("FK_Product_Merk", New Global.System.Data.DataColumn() {Me.tableMerk.ID_MerkColumn}, New Global.System.Data.DataColumn() {Me.tableProduct.ID_MerkColumn}, false)
         Me.Relations.Add(Me.relationFK_Product_Merk)
+        Me.relationFK_Product_Groep1 = New Global.System.Data.DataRelation("FK_Product_Groep1", New Global.System.Data.DataColumn() {Me.tableDataTable1.ID_GroepColumn}, New Global.System.Data.DataColumn() {Me.tableProduct.ID_GroepColumn}, false)
+        Me.Relations.Add(Me.relationFK_Product_Groep1)
     End Sub
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1488,6 +1493,12 @@ Partial Public Class DS_ProjectProducts
         
         Private columnPD_Voorraad As Global.System.Data.DataColumn
         
+        Private columnPD_Functie As Global.System.Data.DataColumn
+        
+        Private columnPD_Behuizing As Global.System.Data.DataColumn
+        
+        Private columnID_Groep As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1572,6 +1583,30 @@ Partial Public Class DS_ProjectProducts
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PD_FunctieColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPD_Functie
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PD_BehuizingColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPD_Behuizing
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ID_GroepColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_Groep
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1608,9 +1643,9 @@ Partial Public Class DS_ProjectProducts
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddDataTable1Row(ByVal GP_Naam As String, ByVal MK_MerkNaam As String, ByVal PD_Naam As String, ByVal PD_Waarde As String, ByVal PD_Voorraad As Integer) As DataTable1Row
+        Public Overloads Function AddDataTable1Row(ByVal GP_Naam As String, ByVal MK_MerkNaam As String, ByVal PD_Naam As String, ByVal PD_Waarde As String, ByVal PD_Voorraad As Integer, ByVal PD_Functie As String, ByVal PD_Behuizing As String) As DataTable1Row
             Dim rowDataTable1Row As DataTable1Row = CType(Me.NewRow,DataTable1Row)
-            Dim columnValuesArray() As Object = New Object() {Nothing, GP_Naam, MK_MerkNaam, PD_Naam, PD_Waarde, PD_Voorraad}
+            Dim columnValuesArray() As Object = New Object() {Nothing, GP_Naam, MK_MerkNaam, PD_Naam, PD_Waarde, PD_Voorraad, PD_Functie, PD_Behuizing, Nothing}
             rowDataTable1Row.ItemArray = columnValuesArray
             Me.Rows.Add(rowDataTable1Row)
             Return rowDataTable1Row
@@ -1645,6 +1680,9 @@ Partial Public Class DS_ProjectProducts
             Me.columnPD_Naam = MyBase.Columns("PD_Naam")
             Me.columnPD_Waarde = MyBase.Columns("PD_Waarde")
             Me.columnPD_Voorraad = MyBase.Columns("PD_Voorraad")
+            Me.columnPD_Functie = MyBase.Columns("PD_Functie")
+            Me.columnPD_Behuizing = MyBase.Columns("PD_Behuizing")
+            Me.columnID_Groep = MyBase.Columns("ID_Groep")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1662,6 +1700,12 @@ Partial Public Class DS_ProjectProducts
             MyBase.Columns.Add(Me.columnPD_Waarde)
             Me.columnPD_Voorraad = New Global.System.Data.DataColumn("PD_Voorraad", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPD_Voorraad)
+            Me.columnPD_Functie = New Global.System.Data.DataColumn("PD_Functie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPD_Functie)
+            Me.columnPD_Behuizing = New Global.System.Data.DataColumn("PD_Behuizing", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPD_Behuizing)
+            Me.columnID_Groep = New Global.System.Data.DataColumn("ID_Groep", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_Groep)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_Product}, true))
             Me.columnID_Product.AutoIncrement = true
             Me.columnID_Product.AutoIncrementSeed = -1
@@ -1673,6 +1717,13 @@ Partial Public Class DS_ProjectProducts
             Me.columnMK_MerkNaam.MaxLength = 50
             Me.columnPD_Naam.MaxLength = 50
             Me.columnPD_Waarde.MaxLength = 50
+            Me.columnPD_Functie.MaxLength = 100
+            Me.columnPD_Behuizing.MaxLength = 50
+            Me.columnID_Groep.AutoIncrement = true
+            Me.columnID_Groep.AutoIncrementSeed = -1
+            Me.columnID_Groep.AutoIncrementStep = -1
+            Me.columnID_Groep.AllowDBNull = false
+            Me.columnID_Groep.ReadOnly = true
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2322,6 +2373,17 @@ Partial Public Class DS_ProjectProducts
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property DataTable1Row() As DataTable1Row
+            Get
+                Return CType(Me.GetParentRow(Me.Table.ParentRelations("FK_Product_Groep1")),DataTable1Row)
+            End Get
+            Set
+                Me.SetParentRow(value, Me.Table.ParentRelations("FK_Product_Groep1"))
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsID_GroepNull() As Boolean
             Return Me.IsNull(Me.tableProduct.ID_GroepColumn)
         End Function
@@ -2568,6 +2630,47 @@ Partial Public Class DS_ProjectProducts
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PD_Functie() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDataTable1.PD_FunctieColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Functie' in table 'DataTable1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDataTable1.PD_FunctieColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PD_Behuizing() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableDataTable1.PD_BehuizingColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Behuizing' in table 'DataTable1' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableDataTable1.PD_BehuizingColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID_Groep() As Integer
+            Get
+                Return CType(Me(Me.tableDataTable1.ID_GroepColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableDataTable1.ID_GroepColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsGP_NaamNull() As Boolean
             Return Me.IsNull(Me.tableDataTable1.GP_NaamColumn)
         End Function
@@ -2625,6 +2728,40 @@ Partial Public Class DS_ProjectProducts
         Public Sub SetPD_VoorraadNull()
             Me(Me.tableDataTable1.PD_VoorraadColumn) = Global.System.Convert.DBNull
         End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPD_FunctieNull() As Boolean
+            Return Me.IsNull(Me.tableDataTable1.PD_FunctieColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPD_FunctieNull()
+            Me(Me.tableDataTable1.PD_FunctieColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPD_BehuizingNull() As Boolean
+            Return Me.IsNull(Me.tableDataTable1.PD_BehuizingColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPD_BehuizingNull()
+            Me(Me.tableDataTable1.PD_BehuizingColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function GetProductRows() As ProductRow()
+            If (Me.Table.ChildRelations("FK_Product_Groep1") Is Nothing) Then
+                Return New ProductRow(-1) {}
+            Else
+                Return CType(MyBase.GetChildRows(Me.Table.ChildRelations("FK_Product_Groep1")),ProductRow())
+            End If
+        End Function
     End Class
     
     '''<summary>
@@ -4371,6 +4508,9 @@ Namespace DS_ProjectProductsTableAdapters
             tableMapping.ColumnMappings.Add("PD_Naam", "PD_Naam")
             tableMapping.ColumnMappings.Add("PD_Waarde", "PD_Waarde")
             tableMapping.ColumnMappings.Add("PD_Voorraad", "PD_Voorraad")
+            tableMapping.ColumnMappings.Add("PD_Functie", "PD_Functie")
+            tableMapping.ColumnMappings.Add("PD_Behuizing", "PD_Behuizing")
+            tableMapping.ColumnMappings.Add("ID_Groep", "ID_Groep")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -4388,18 +4528,32 @@ Namespace DS_ProjectProductsTableAdapters
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        Product.ID_Product, Groep.GP_Naam, Merk.MK_MerkNaam, Product.PD_Naa"& _ 
-                "m, Product.PD_Waarde, Product.PD_Voorraad"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Groep INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"   "& _ 
-                "                      Product ON Groep.ID_Groep = Product.ID_Groep INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&" "& _ 
-                "                        Merk ON Product.ID_Merk = Merk.ID_Merk"
+                "m, Product.PD_Waarde, Product.PD_Voorraad, Product.PD_Functie, Product.PD_Behuiz"& _ 
+                "ing, Groep.ID_Groep"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Groep INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         "& _ 
+                "Product ON Groep.ID_Groep = Product.ID_Groep INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  Merk ON Product.ID_Merk = Merk.ID_Merk"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (Product.PD_Naam LIKE @Zo"& _ 
+                "ektxt) AND (Groep.ID_Groep = @IDgroep) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         (Groep.ID_Gr"& _ 
+                "oep = @IDgroep) AND (Merk.MK_MerkNaam LIKE @Zoektxt) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                       "& _ 
+                "  (Groep.ID_Groep = @IDgroep) AND (Product.PD_Functie LIKE @Zoektxt) OR"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"       "& _ 
+                "                  (Groep.ID_Groep = @IDgroep) AND (Product.PD_Behuizing LIKE @Zo"& _ 
+                "ektxt)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Zoektxt", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "PD_Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDgroep", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Groep", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As DS_ProjectProducts.DataTable1DataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As DS_ProjectProducts.DataTable1DataTable, ByVal Zoektxt As String, ByVal IDgroep As Integer) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Zoektxt Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Zoektxt,String)
+            End If
+            Me.Adapter.SelectCommand.Parameters(1).Value = CType(IDgroep,Integer)
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If

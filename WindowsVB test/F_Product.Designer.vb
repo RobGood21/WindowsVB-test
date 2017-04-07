@@ -36,6 +36,9 @@ Partial Class F_Product
         Dim PD_MinimumVoorraadLabel As System.Windows.Forms.Label
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Product))
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.LBL_PN = New System.Windows.Forms.Label()
+        Me.TXT_Productnummer = New System.Windows.Forms.TextBox()
+        Me.Knop_ZoekProduct = New System.Windows.Forms.Button()
         Me.Knop_DetailsGroep = New System.Windows.Forms.Button()
         Me.GB_Merk = New System.Windows.Forms.ComboBox()
         Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -111,7 +114,7 @@ Partial Class F_Product
         'ID_ProductLabel
         '
         ID_ProductLabel.AutoSize = True
-        ID_ProductLabel.Location = New System.Drawing.Point(35, 35)
+        ID_ProductLabel.Location = New System.Drawing.Point(22, 260)
         ID_ProductLabel.Name = "ID_ProductLabel"
         ID_ProductLabel.Size = New System.Drawing.Size(61, 13)
         ID_ProductLabel.TabIndex = 0
@@ -210,6 +213,9 @@ Partial Class F_Product
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.LBL_PN)
+        Me.GroupBox1.Controls.Add(Me.TXT_Productnummer)
+        Me.GroupBox1.Controls.Add(Me.Knop_ZoekProduct)
         Me.GroupBox1.Controls.Add(Me.Knop_DetailsGroep)
         Me.GroupBox1.Controls.Add(Me.GB_Merk)
         Me.GroupBox1.Controls.Add(Me.CB_Groep)
@@ -233,6 +239,32 @@ Partial Class F_Product
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Product"
+        '
+        'LBL_PN
+        '
+        Me.LBL_PN.AutoSize = True
+        Me.LBL_PN.Location = New System.Drawing.Point(12, 27)
+        Me.LBL_PN.Name = "LBL_PN"
+        Me.LBL_PN.Size = New System.Drawing.Size(84, 13)
+        Me.LBL_PN.TabIndex = 20
+        Me.LBL_PN.Text = "Productnummer:"
+        '
+        'TXT_Productnummer
+        '
+        Me.TXT_Productnummer.Location = New System.Drawing.Point(102, 24)
+        Me.TXT_Productnummer.Name = "TXT_Productnummer"
+        Me.TXT_Productnummer.Size = New System.Drawing.Size(100, 20)
+        Me.TXT_Productnummer.TabIndex = 1
+        Me.TXT_Productnummer.TabStop = False
+        '
+        'Knop_ZoekProduct
+        '
+        Me.Knop_ZoekProduct.Location = New System.Drawing.Point(208, 22)
+        Me.Knop_ZoekProduct.Name = "Knop_ZoekProduct"
+        Me.Knop_ZoekProduct.Size = New System.Drawing.Size(79, 23)
+        Me.Knop_ZoekProduct.TabIndex = 18
+        Me.Knop_ZoekProduct.Text = "Zoek.."
+        Me.Knop_ZoekProduct.UseVisualStyleBackColor = True
         '
         'Knop_DetailsGroep
         '
@@ -344,9 +376,9 @@ Partial Class F_Product
         'ID_ProductTextBox
         '
         Me.ID_ProductTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Product", True))
-        Me.ID_ProductTextBox.Location = New System.Drawing.Point(102, 32)
+        Me.ID_ProductTextBox.Location = New System.Drawing.Point(89, 257)
         Me.ID_ProductTextBox.Name = "ID_ProductTextBox"
-        Me.ID_ProductTextBox.Size = New System.Drawing.Size(100, 20)
+        Me.ID_ProductTextBox.Size = New System.Drawing.Size(64, 20)
         Me.ID_ProductTextBox.TabIndex = 1
         '
         'Knop_OpslaanSluiten
@@ -707,4 +739,7 @@ Partial Class F_Product
     Friend WithEvents MerkBindingSource As BindingSource
     Friend WithEvents MerkTableAdapter As DS_ProductTableAdapters.MerkTableAdapter
     Friend WithEvents Knop_DetailsGroep As Button
+    Friend WithEvents Knop_ZoekProduct As Button
+    Friend WithEvents LBL_PN As Label
+    Friend WithEvents TXT_Productnummer As TextBox
 End Class

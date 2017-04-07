@@ -1,4 +1,8 @@
 ﻿Public Class F_Product
+    Dim ProductID As Integer
+
+
+
     Private Sub Knop_OpslaanSluiten_Click(sender As Object, e As EventArgs) Handles Knop_OpslaanSluiten.Click
         Me.Close()
 
@@ -15,8 +19,6 @@
         Try
             ' Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, CType(IDProductToolStripTextBox.Text, Integer))
             Me.LoadProduct()
-
-
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -50,16 +52,38 @@
 
         End Try
 
-
-
-
-
     End Sub
 
     Public Sub LoadProduct()
         'LET OP volgorde van laden is hier belangrijk
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk)
         Me.GroepTableAdapter.Fill(Me.DS_Product.Groep)
-        Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, CType(IDProductToolStripTextBox.Text, Integer))
+        ' Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, CType(IDProductToolStripTextBox.Text, Integer))
+        Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, ProductID)
+    End Sub
+
+
+
+    Private Sub TXT_Productnummer_Leave(sender As Object, e As EventArgs) Handles TXT_Productnummer.Leave
+
+        If IsNumeric(Me.TXT_Productnummer.Text) = True Then
+            ' Me.TXT_Productnummer.Text = 0
+            ProductID = CType(Me.TXT_Productnummer.Text, Integer)
+            LoadProduct()
+        Else
+            MsgBox("Voer een geldig productnummer in", vbExclamation, "Productnummer invoeren")
+
+        End If
+
+
+
+    End Sub
+
+    Private Sub Knop_ZoekProduct_Click(sender As Object, e As EventArgs) Handles Knop_ZoekProduct.Click
+        F_ProductZoek.ShowDialog()
+        ProductID = IDPRODUCT
+        Me.TXT_Productnummer.Text = ProductID
+        LoadProduct()
+
     End Sub
 End Class

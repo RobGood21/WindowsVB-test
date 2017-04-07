@@ -289,7 +289,7 @@ Partial Class F_Groep
         '
         'Knop_Opslaan
         '
-        Me.Knop_Opslaan.Location = New System.Drawing.Point(370, 321)
+        Me.Knop_Opslaan.Location = New System.Drawing.Point(370, 322)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(120, 23)
         Me.Knop_Opslaan.TabIndex = 11
