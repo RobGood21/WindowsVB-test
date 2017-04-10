@@ -25,19 +25,19 @@
 
 
 
-    Private Sub Knop_OpslaanSluiten_Click(sender As Object, e As EventArgs) Handles Knop_OpslaanSluiten.Click
+    Private Sub Knop_OpslaanSluiten_Click(sender As Object, e As EventArgs)
         Me.Close()
 
     End Sub
 
-    Private Sub DT_productBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles DT_productBindingNavigatorSaveItem.Click
+    Private Sub DT_productBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.DT_productBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DS_Product)
 
     End Sub
 
-    Private Sub FillToolStripButton_Click(sender As Object, e As EventArgs) Handles FillToolStripButton.Click
+    Private Sub FillToolStripButton_Click(sender As Object, e As EventArgs)
         Try
             ' Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, CType(IDProductToolStripTextBox.Text, Integer))
             Me.LoadProduct()
@@ -56,6 +56,8 @@
     End Sub
 
     Private Sub F_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         Me.ToolTipsInstellen()
         Me.GroepTableAdapter.Fill(Me.DS_Product.Groep) 'laad groepen in groep combobox
 
@@ -69,22 +71,9 @@
 
     End Sub
 
-    Private Sub Knop_DetailsGroep_Click(sender As Object, e As EventArgs) Handles Knop_DetailsGroep.Click
-        Try
-            IDGROEP = Me.CB_Groep.SelectedValue
-            F_Groep.Show()
-
-        Catch ex As Exception
-            MsgBox(ErrorToString)
-
-
-        End Try
-
-    End Sub
-
     Public Sub LoadProduct()
         'LET OP volgorde van laden is hier belangrijk
-        Me.MerkTableAdapter.Fill(Me.DS_Product.Merk)
+        Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%")
         Me.GroepTableAdapter.Fill(Me.DS_Product.Groep)
         ' Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, CType(IDProductToolStripTextBox.Text, Integer))
         Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, ProductID)
@@ -128,19 +117,41 @@
 
     End Sub
 
+    Private Sub txt_Beschrijving1_TextChanged(sender As Object, e As EventArgs) Handles txt_Beschrijving1.TextChanged
+
+    End Sub
+    Private Sub OPSLAAN()
+        Me.Validate()
+        Me.DT_productBindingSource.EndEdit()
+        Me.DT_productTableAdapter.Update(DS_Product)
+
+    End Sub
+
+    Private Sub Knop_Delete_Click(sender As Object, e As EventArgs) Handles Knop_Delete.Click
+        Dim JaNee As Integer
+        JaNee = MsgBox("Weet je zeker dat je dit product wilt verwijderen?", vbYesNo, " Product verwijderen.")
+        If JaNee = 6 Then
+            Me.DT_productBindingSource.RemoveCurrent()
+            OPSLAAN()
+            Me.Knop_ZoekProduct.Select()
+        End If
+    End Sub
+
+    Private Sub Knop_Save_Click(sender As Object, e As EventArgs) Handles Knop_Save.Click
+        OPSLAAN()
+    End Sub
 
     Private Sub Knop_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Annuleren.Click
         LoadProduct()
     End Sub
 
     Private Sub Knop_Opslaan_Click(sender As Object, e As EventArgs) Handles Knop_Opslaan.Click
-        Me.Validate()
-        Me.DT_productBindingSource.EndEdit()
-        Me.DT_productTableAdapter.Update(DS_Product)
+        OPSLAAN()
+        Me.Close()
+
     End Sub
 
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         Me.DT_productBindingSource.AddNew()
-
     End Sub
 End Class

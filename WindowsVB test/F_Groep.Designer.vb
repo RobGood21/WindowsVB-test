@@ -26,24 +26,10 @@ Partial Class F_Groep
         Dim GP_NaamLabel As System.Windows.Forms.Label
         Dim GP_BeschrijvingLabel As System.Windows.Forms.Label
         Dim GP_KenmerkLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Groep))
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.GroepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroepTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
-        Me.GroepBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.GroepBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.ID_GroepTextBox = New System.Windows.Forms.TextBox()
         Me.LB_Groep = New System.Windows.Forms.ListBox()
         Me.GP_NaamTextBox = New System.Windows.Forms.TextBox()
@@ -52,13 +38,13 @@ Partial Class F_Groep
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
+        Me.Knop_nieuw = New System.Windows.Forms.Button()
+        Me.Knop_Save = New System.Windows.Forms.Button()
         GP_NaamLabel = New System.Windows.Forms.Label()
         GP_BeschrijvingLabel = New System.Windows.Forms.Label()
         GP_KenmerkLabel = New System.Windows.Forms.Label()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroepBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroepBindingNavigator.SuspendLayout()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -74,7 +60,7 @@ Partial Class F_Groep
         'GP_BeschrijvingLabel
         '
         GP_BeschrijvingLabel.AutoSize = True
-        GP_BeschrijvingLabel.Location = New System.Drawing.Point(3, 130)
+        GP_BeschrijvingLabel.Location = New System.Drawing.Point(3, 166)
         GP_BeschrijvingLabel.Name = "GP_BeschrijvingLabel"
         GP_BeschrijvingLabel.Size = New System.Drawing.Size(67, 13)
         GP_BeschrijvingLabel.TabIndex = 6
@@ -112,117 +98,6 @@ Partial Class F_Groep
         Me.TableAdapterManager.ProductTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
-        'GroepBindingNavigator
-        '
-        Me.GroepBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.GroepBindingNavigator.BindingSource = Me.GroepBindingSource
-        Me.GroepBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.GroepBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.GroepBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.GroepBindingNavigatorSaveItem})
-        Me.GroepBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.GroepBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.GroepBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.GroepBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.GroepBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.GroepBindingNavigator.Name = "GroepBindingNavigator"
-        Me.GroepBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.GroepBindingNavigator.Size = New System.Drawing.Size(502, 25)
-        Me.GroepBindingNavigator.TabIndex = 0
-        Me.GroepBindingNavigator.Text = "BindingNavigator1"
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
-        '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
-        '
-        'BindingNavigatorMoveFirstItem
-        '
-        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveFirstItem.Text = "Move first"
-        '
-        'BindingNavigatorMovePreviousItem
-        '
-        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
-        '
-        'BindingNavigatorSeparator
-        '
-        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorPositionItem
-        '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
-        Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
-        Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
-        '
-        'BindingNavigatorSeparator1
-        '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorMoveNextItem
-        '
-        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveNextItem.Text = "Move next"
-        '
-        'BindingNavigatorMoveLastItem
-        '
-        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveLastItem.Text = "Move last"
-        '
-        'BindingNavigatorSeparator2
-        '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'GroepBindingNavigatorSaveItem
-        '
-        Me.GroepBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.GroepBindingNavigatorSaveItem.Image = CType(resources.GetObject("GroepBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.GroepBindingNavigatorSaveItem.Name = "GroepBindingNavigatorSaveItem"
-        Me.GroepBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.GroepBindingNavigatorSaveItem.Text = "Save Data"
-        '
         'ID_GroepTextBox
         '
         Me.ID_GroepTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GroepBindingSource, "ID_Groep", True))
@@ -240,10 +115,11 @@ Partial Class F_Groep
         Me.LB_Groep.DataSource = Me.GroepBindingSource
         Me.LB_Groep.DisplayMember = "GP_Naam"
         Me.LB_Groep.FormattingEnabled = True
-        Me.LB_Groep.Location = New System.Drawing.Point(32, 68)
+        Me.LB_Groep.Location = New System.Drawing.Point(15, 18)
         Me.LB_Groep.Name = "LB_Groep"
         Me.LB_Groep.Size = New System.Drawing.Size(153, 277)
-        Me.LB_Groep.TabIndex = 0
+        Me.LB_Groep.TabIndex = 3
+        Me.LB_Groep.TabStop = False
         '
         'GP_NaamTextBox
         '
@@ -251,16 +127,16 @@ Partial Class F_Groep
         Me.GP_NaamTextBox.Location = New System.Drawing.Point(76, 45)
         Me.GP_NaamTextBox.Name = "GP_NaamTextBox"
         Me.GP_NaamTextBox.Size = New System.Drawing.Size(192, 20)
-        Me.GP_NaamTextBox.TabIndex = 5
+        Me.GP_NaamTextBox.TabIndex = 0
         '
         'GP_BeschrijvingTextBox
         '
         Me.GP_BeschrijvingTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GroepBindingSource, "GP_Beschrijving", True))
-        Me.GP_BeschrijvingTextBox.Location = New System.Drawing.Point(76, 127)
+        Me.GP_BeschrijvingTextBox.Location = New System.Drawing.Point(76, 163)
         Me.GP_BeschrijvingTextBox.Multiline = True
         Me.GP_BeschrijvingTextBox.Name = "GP_BeschrijvingTextBox"
-        Me.GP_BeschrijvingTextBox.Size = New System.Drawing.Size(192, 83)
-        Me.GP_BeschrijvingTextBox.TabIndex = 7
+        Me.GP_BeschrijvingTextBox.Size = New System.Drawing.Size(192, 62)
+        Me.GP_BeschrijvingTextBox.TabIndex = 2
         '
         'GP_KenmerkTextBox
         '
@@ -268,11 +144,12 @@ Partial Class F_Groep
         Me.GP_KenmerkTextBox.Location = New System.Drawing.Point(76, 72)
         Me.GP_KenmerkTextBox.Multiline = True
         Me.GP_KenmerkTextBox.Name = "GP_KenmerkTextBox"
-        Me.GP_KenmerkTextBox.Size = New System.Drawing.Size(192, 49)
-        Me.GP_KenmerkTextBox.TabIndex = 9
+        Me.GP_KenmerkTextBox.Size = New System.Drawing.Size(192, 85)
+        Me.GP_KenmerkTextBox.TabIndex = 1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Knop_Save)
         Me.GroupBox1.Controls.Add(Me.ID_GroepTextBox)
         Me.GroupBox1.Controls.Add(GP_KenmerkLabel)
         Me.GroupBox1.Controls.Add(Me.GP_KenmerkTextBox)
@@ -280,53 +157,70 @@ Partial Class F_Groep
         Me.GroupBox1.Controls.Add(GP_BeschrijvingLabel)
         Me.GroupBox1.Controls.Add(GP_NaamLabel)
         Me.GroupBox1.Controls.Add(Me.GP_BeschrijvingTextBox)
-        Me.GroupBox1.Location = New System.Drawing.Point(207, 68)
+        Me.GroupBox1.Location = New System.Drawing.Point(190, 18)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(283, 235)
-        Me.GroupBox1.TabIndex = 10
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Details"
         '
         'Knop_Opslaan
         '
-        Me.Knop_Opslaan.Location = New System.Drawing.Point(370, 322)
+        Me.Knop_Opslaan.Location = New System.Drawing.Point(353, 272)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(120, 23)
-        Me.Knop_Opslaan.TabIndex = 11
-        Me.Knop_Opslaan.Text = "Opslaan en sluiten"
+        Me.Knop_Opslaan.TabIndex = 2
+        Me.Knop_Opslaan.Text = "&Opslaan en sluiten"
         Me.Knop_Opslaan.UseCompatibleTextRendering = True
         Me.Knop_Opslaan.UseVisualStyleBackColor = True
         '
         'Knop_Annuleren
         '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(289, 321)
+        Me.Knop_Annuleren.Location = New System.Drawing.Point(272, 271)
         Me.Knop_Annuleren.Name = "Knop_Annuleren"
         Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Annuleren.TabIndex = 12
-        Me.Knop_Annuleren.Text = "Annuleren"
+        Me.Knop_Annuleren.TabStop = False
+        Me.Knop_Annuleren.Text = "&Annuleren"
         Me.Knop_Annuleren.UseVisualStyleBackColor = True
+        '
+        'Knop_nieuw
+        '
+        Me.Knop_nieuw.Location = New System.Drawing.Point(190, 271)
+        Me.Knop_nieuw.Name = "Knop_nieuw"
+        Me.Knop_nieuw.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_nieuw.TabIndex = 13
+        Me.Knop_nieuw.TabStop = False
+        Me.Knop_nieuw.Text = "&Nieuw"
+        Me.Knop_nieuw.UseVisualStyleBackColor = True
+        '
+        'Knop_Save
+        '
+        Me.Knop_Save.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
+        Me.Knop_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Knop_Save.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.Knop_Save.Location = New System.Drawing.Point(6, 12)
+        Me.Knop_Save.Name = "Knop_Save"
+        Me.Knop_Save.Size = New System.Drawing.Size(31, 30)
+        Me.Knop_Save.TabIndex = 18
+        Me.Knop_Save.UseVisualStyleBackColor = True
         '
         'F_Groep
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(502, 374)
+        Me.ClientSize = New System.Drawing.Size(494, 321)
+        Me.Controls.Add(Me.Knop_nieuw)
         Me.Controls.Add(Me.Knop_Annuleren)
         Me.Controls.Add(Me.Knop_Opslaan)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.LB_Groep)
-        Me.Controls.Add(Me.GroepBindingNavigator)
         Me.Name = "F_Groep"
         Me.Text = "Product groepen"
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroepBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroepBindingNavigator.ResumeLayout(False)
-        Me.GroepBindingNavigator.PerformLayout()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
-        Me.PerformLayout()
 
     End Sub
 
@@ -334,19 +228,6 @@ Partial Class F_Groep
     Friend WithEvents GroepBindingSource As BindingSource
     Friend WithEvents GroepTableAdapter As DS_ProductTableAdapters.GroepTableAdapter
     Friend WithEvents TableAdapterManager As DS_ProductTableAdapters.TableAdapterManager
-    Friend WithEvents GroepBindingNavigator As BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
-    Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveFirstItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMovePreviousItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator As ToolStripSeparator
-    Friend WithEvents BindingNavigatorPositionItem As ToolStripTextBox
-    Friend WithEvents BindingNavigatorSeparator1 As ToolStripSeparator
-    Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents GroepBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents ID_GroepTextBox As TextBox
     Friend WithEvents LB_Groep As ListBox
     Friend WithEvents GP_NaamTextBox As TextBox
@@ -355,4 +236,6 @@ Partial Class F_Groep
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Knop_Opslaan As Button
     Friend WithEvents Knop_Annuleren As Button
+    Friend WithEvents Knop_nieuw As Button
+    Friend WithEvents Knop_Save As Button
 End Class

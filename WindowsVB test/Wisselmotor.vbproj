@@ -103,6 +103,12 @@
     <Compile Include="F_Groep.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_Merk.Designer.vb">
+      <DependentUpon>F_Merk.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Merk.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Opening.Designer.vb">
       <DependentUpon>F_Opening.vb</DependentUpon>
     </Compile>
@@ -153,6 +159,9 @@
   <ItemGroup>
     <EmbeddedResource Include="F_Groep.resx">
       <DependentUpon>F_Groep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Merk.resx">
+      <DependentUpon>F_Merk.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Opening.resx">
       <DependentUpon>F_Opening.vb</DependentUpon>
@@ -224,6 +233,12 @@
       <ProductName>.NET Framework 3.5 SP1</ProductName>
       <Install>false</Install>
     </BootstrapperPackage>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Save-as-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Windows-Close-Program-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

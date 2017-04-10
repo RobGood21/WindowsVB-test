@@ -3130,28 +3130,28 @@ Namespace DS_ProductTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Groep] WHERE (([ID_Groep] = @Original_ID_Groep) AND ((@IsNull_"& _ 
-                "GP_Naam = 1 AND [GP_Naam] IS NULL) OR ([GP_Naam] = @Original_GP_Naam)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Groep] WHERE (([ID_Groep] = @Original_ID_Groep) AND ((@IsNull_GP_Naa"& _ 
+                "m = 1 AND [GP_Naam] IS NULL) OR ([GP_Naam] = @Original_GP_Naam)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Groep", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Groep", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GP_Naam", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GP_Naam", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GP_Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GP_Naam", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Groep] ([GP_Naam], [GP_Beschrijving], [GP_Kenmerk]) VALUES (@G"& _ 
-                "P_Naam, @GP_Beschrijving, @GP_Kenmerk);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_Groep, GP_Naam, GP_Beschrijvi"& _ 
-                "ng, GP_Kenmerk FROM Groep WHERE (ID_Groep = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Groep] ([GP_Naam], [GP_Beschrijving], [GP_Kenmerk]) VALUES (@GP_Naam"& _ 
+                ", @GP_Beschrijving, @GP_Kenmerk);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_Groep, GP_Naam, GP_Beschrijving, GP"& _ 
+                "_Kenmerk FROM Groep WHERE (ID_Groep = SCOPE_IDENTITY()) ORDER BY GP_Naam"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GP_Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GP_Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GP_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GP_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GP_Kenmerk", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GP_Kenmerk", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Groep] SET [GP_Naam] = @GP_Naam, [GP_Beschrijving] = @GP_Beschrijvi"& _ 
-                "ng, [GP_Kenmerk] = @GP_Kenmerk WHERE (([ID_Groep] = @Original_ID_Groep) AND ((@I"& _ 
-                "sNull_GP_Naam = 1 AND [GP_Naam] IS NULL) OR ([GP_Naam] = @Original_GP_Naam)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)& _ 
-                "SELECT ID_Groep, GP_Naam, GP_Beschrijving, GP_Kenmerk FROM Groep WHERE (ID_Groep"& _ 
-                " = @ID_Groep)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Groep] SET [GP_Naam] = @GP_Naam, [GP_Beschrijving] = @GP_Beschrijving, [G"& _ 
+                "P_Kenmerk] = @GP_Kenmerk WHERE (([ID_Groep] = @Original_ID_Groep) AND ((@IsNull_"& _ 
+                "GP_Naam = 1 AND [GP_Naam] IS NULL) OR ([GP_Naam] = @Original_GP_Naam)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT"& _ 
+                " ID_Groep, GP_Naam, GP_Beschrijving, GP_Kenmerk FROM Groep WHERE (ID_Groep = @ID"& _ 
+                "_Groep) ORDER BY GP_Naam"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GP_Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GP_Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GP_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GP_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -3175,12 +3175,13 @@ Namespace DS_ProductTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID_Groep, GP_Naam, GP_Beschrijving, GP_Kenmerk FROM dbo.Groep"
+            Me._commandCollection(0).CommandText = "SELECT        ID_Groep, GP_Naam, GP_Beschrijving, GP_Kenmerk"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Gro"& _ 
+                "ep"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY GP_Naam"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(1).Connection = Me.Connection
-            Me._commandCollection(1).CommandText = "SELECT        ID_Groep, GP_Naam, GP_Beschrijving, GP_Kenmerk"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Gro"& _ 
-                "ep"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_Groep = @IDG)"
+            Me._commandCollection(1).CommandText = "SELECT GP_Beschrijving, GP_Kenmerk, GP_Naam, ID_Groep FROM Groep WHERE (ID_Groep "& _ 
+                "= @IDG)"
             Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDG", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Groep", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -3512,27 +3513,27 @@ Namespace DS_ProductTableAdapters
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[Merk] WHERE (([ID_Merk] = @Original_ID_Merk) AND ((@IsNull_MK_"& _ 
-                "MerkNaam = 1 AND [MK_MerkNaam] IS NULL) OR ([MK_MerkNaam] = @Original_MK_MerkNaa"& _ 
-                "m)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [Merk] WHERE (([ID_Merk] = @Original_ID_Merk) AND ((@IsNull_MK_MerkNa"& _ 
+                "am = 1 AND [MK_MerkNaam] IS NULL) OR ([MK_MerkNaam] = @Original_MK_MerkNaam)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Merk", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Merk", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_MK_MerkNaam", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MK_MerkNaam", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_MK_MerkNaam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MK_MerkNaam", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[Merk] ([MK_MerkNaam], [MK_Beschrijving]) VALUES (@MK_MerkNaam,"& _ 
-                " @MK_Beschrijving);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_Merk, MK_MerkNaam, MK_Beschrijving FROM Merk WHER"& _ 
-                "E (ID_Merk = SCOPE_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [Merk] ([MK_MerkNaam], [MK_Beschrijving]) VALUES (@MK_MerkNaam, @MK_B"& _ 
+                "eschrijving);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_Merk, MK_MerkNaam, MK_Beschrijving FROM Merk WHERE (ID_"& _ 
+                "Merk = SCOPE_IDENTITY()) ORDER BY MK_MerkNaam"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MK_MerkNaam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MK_MerkNaam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MK_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MK_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[Merk] SET [MK_MerkNaam] = @MK_MerkNaam, [MK_Beschrijving] = @MK_Bes"& _ 
-                "chrijving WHERE (([ID_Merk] = @Original_ID_Merk) AND ((@IsNull_MK_MerkNaam = 1 A"& _ 
-                "ND [MK_MerkNaam] IS NULL) OR ([MK_MerkNaam] = @Original_MK_MerkNaam)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT "& _ 
-                "ID_Merk, MK_MerkNaam, MK_Beschrijving FROM Merk WHERE (ID_Merk = @ID_Merk)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [Merk] SET [MK_MerkNaam] = @MK_MerkNaam, [MK_Beschrijving] = @MK_Beschrijv"& _ 
+                "ing WHERE (([ID_Merk] = @Original_ID_Merk) AND ((@IsNull_MK_MerkNaam = 1 AND [MK"& _ 
+                "_MerkNaam] IS NULL) OR ([MK_MerkNaam] = @Original_MK_MerkNaam)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_Mer"& _ 
+                "k, MK_MerkNaam, MK_Beschrijving FROM Merk WHERE (ID_Merk = @ID_Merk) ORDER BY MK"& _ 
+                "_MerkNaam"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MK_MerkNaam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MK_MerkNaam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@MK_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "MK_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -3555,16 +3556,23 @@ Namespace DS_ProductTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID_Merk, MK_MerkNaam, MK_Beschrijving FROM dbo.Merk"
+            Me._commandCollection(0).CommandText = "SELECT        ID_Merk, MK_MerkNaam, MK_Beschrijving"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Merk"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE "& _ 
+                "       (MK_MerkNaam LIKE @Merktxt)"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY MK_MerkNaam"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Merktxt", Global.System.Data.SqlDbType.NVarChar, 50, Global.System.Data.ParameterDirection.Input, 0, 0, "MK_MerkNaam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
-        Public Overloads Overridable Function Fill(ByVal dataTable As DS_Product.MerkDataTable) As Integer
+        Public Overloads Overridable Function Fill(ByVal dataTable As DS_Product.MerkDataTable, ByVal Merktxt As String) As Integer
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Merktxt Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Merktxt,String)
+            End If
             If (Me.ClearBeforeFill = true) Then
                 dataTable.Clear
             End If
@@ -3576,8 +3584,13 @@ Namespace DS_ProductTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
-        Public Overloads Overridable Function GetData() As DS_Product.MerkDataTable
+        Public Overloads Overridable Function GetData(ByVal Merktxt As String) As DS_Product.MerkDataTable
             Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (Merktxt Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(Merktxt,String)
+            End If
             Dim dataTable As DS_Product.MerkDataTable = New DS_Product.MerkDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
