@@ -97,10 +97,21 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_ProjectProducts.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_Supplier.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Supplier.xsd</DependentUpon>
+    </Compile>
     <Compile Include="F_Groep.Designer.vb">
       <DependentUpon>F_Groep.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Groep.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Land.Designer.vb">
+      <DependentUpon>F_Land.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Land.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Merk.Designer.vb">
@@ -127,6 +138,18 @@
     <Compile Include="F_ProductZoek.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_Supplier.Designer.vb">
+      <DependentUpon>F_Supplier.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Supplier.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Valuta.Designer.vb">
+      <DependentUpon>F_Valuta.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Valuta.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Wisselmotor.Designer.vb">
       <DependentUpon>F_Wisselmotor.vb</DependentUpon>
     </Compile>
@@ -149,6 +172,12 @@
       <DependentUpon>Settings.settings</DependentUpon>
       <DesignTimeSharedInput>True</DesignTimeSharedInput>
     </Compile>
+    <Compile Include="F_ProductErbij.Designer.vb">
+      <DependentUpon>F_ProductErbij.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_ProductErbij.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="TestGrid.Designer.vb">
       <DependentUpon>TestGrid.vb</DependentUpon>
     </Compile>
@@ -159,6 +188,9 @@
   <ItemGroup>
     <EmbeddedResource Include="F_Groep.resx">
       <DependentUpon>F_Groep.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Land.resx">
+      <DependentUpon>F_Land.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Merk.resx">
       <DependentUpon>F_Merk.vb</DependentUpon>
@@ -172,6 +204,12 @@
     <EmbeddedResource Include="F_ProductZoek.resx">
       <DependentUpon>F_ProductZoek.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_Supplier.resx">
+      <DependentUpon>F_Supplier.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Valuta.resx">
+      <DependentUpon>F_Valuta.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Wisselmotor.resx">
       <DependentUpon>F_Wisselmotor.vb</DependentUpon>
     </EmbeddedResource>
@@ -180,6 +218,9 @@
       <LastGenOutput>Resources.Designer.vb</LastGenOutput>
       <CustomToolNamespace>My.Resources</CustomToolNamespace>
       <SubType>Designer</SubType>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_ProductErbij.resx">
+      <DependentUpon>F_ProductErbij.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="TestGrid.resx">
       <DependentUpon>TestGrid.vb</DependentUpon>
@@ -207,6 +248,17 @@
     </None>
     <None Include="DS_ProjectProducts.xss">
       <DependentUpon>DS_ProjectProducts.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Supplier.xsc">
+      <DependentUpon>DS_Supplier.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Supplier.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Supplier.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_Supplier.xss">
+      <DependentUpon>DS_Supplier.xsd</DependentUpon>
     </None>
     <None Include="My Project\Application.myapp">
       <Generator>MyApplicationCodeGenerator</Generator>

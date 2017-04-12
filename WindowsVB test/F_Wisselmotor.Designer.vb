@@ -29,12 +29,14 @@ Partial Class F_Wisselmotor
         Me.OnderhoudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductgroepenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MerkenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FinancieelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ValutaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.OnderhoudToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.FinancieelToolStripMenuItem, Me.OnderhoudToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
@@ -79,6 +81,19 @@ Partial Class F_Wisselmotor
         Me.MerkenToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.MerkenToolStripMenuItem.Text = "Merken"
         '
+        'FinancieelToolStripMenuItem
+        '
+        Me.FinancieelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ValutaToolStripMenuItem})
+        Me.FinancieelToolStripMenuItem.Name = "FinancieelToolStripMenuItem"
+        Me.FinancieelToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
+        Me.FinancieelToolStripMenuItem.Text = "Financieel"
+        '
+        'ValutaToolStripMenuItem
+        '
+        Me.ValutaToolStripMenuItem.Name = "ValutaToolStripMenuItem"
+        Me.ValutaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ValutaToolStripMenuItem.Text = "Valuta"
+        '
         'F_Wisselmotor
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -104,4 +119,6 @@ Partial Class F_Wisselmotor
     Friend WithEvents OnderhoudToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductgroepenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MerkenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FinancieelToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ValutaToolStripMenuItem As ToolStripMenuItem
 End Class

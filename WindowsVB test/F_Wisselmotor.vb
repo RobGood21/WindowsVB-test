@@ -29,4 +29,9 @@
         F_Merk.ShowDialog()
 
     End Sub
+
+    Private Sub ValutaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValutaToolStripMenuItem.Click
+        F_Valuta.ShowDialog()
+
+    End Sub
 End Class
