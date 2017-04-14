@@ -102,6 +102,15 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_Supplier.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_Supplier.vb">
+      <DependentUpon>DS_Supplier.xsd</DependentUpon>
+    </Compile>
+    <Compile Include="F_Betaalwijzen.Designer.vb">
+      <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Betaalwijzen.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Groep.Designer.vb">
       <DependentUpon>F_Groep.vb</DependentUpon>
     </Compile>
@@ -186,6 +195,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="F_Betaalwijzen.resx">
+      <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Groep.resx">
       <DependentUpon>F_Groep.vb</DependentUpon>
     </EmbeddedResource>

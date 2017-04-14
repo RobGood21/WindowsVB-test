@@ -26,11 +26,13 @@ Partial Class F_Wisselmotor
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpeningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FinancieelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ValutaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LandenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OnderhoudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductgroepenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MerkenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.FinancieelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ValutaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BetaalWijzenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
@@ -62,6 +64,25 @@ Partial Class F_Wisselmotor
         Me.ProductenToolStripMenuItem.Size = New System.Drawing.Size(129, 22)
         Me.ProductenToolStripMenuItem.Text = "Producten"
         '
+        'FinancieelToolStripMenuItem
+        '
+        Me.FinancieelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ValutaToolStripMenuItem, Me.LandenToolStripMenuItem, Me.BetaalWijzenToolStripMenuItem})
+        Me.FinancieelToolStripMenuItem.Name = "FinancieelToolStripMenuItem"
+        Me.FinancieelToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
+        Me.FinancieelToolStripMenuItem.Text = "Financieel"
+        '
+        'ValutaToolStripMenuItem
+        '
+        Me.ValutaToolStripMenuItem.Name = "ValutaToolStripMenuItem"
+        Me.ValutaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ValutaToolStripMenuItem.Text = "Valuta"
+        '
+        'LandenToolStripMenuItem
+        '
+        Me.LandenToolStripMenuItem.Name = "LandenToolStripMenuItem"
+        Me.LandenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.LandenToolStripMenuItem.Text = "Landen"
+        '
         'OnderhoudToolStripMenuItem
         '
         Me.OnderhoudToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductgroepenToolStripMenuItem, Me.MerkenToolStripMenuItem})
@@ -81,18 +102,11 @@ Partial Class F_Wisselmotor
         Me.MerkenToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
         Me.MerkenToolStripMenuItem.Text = "Merken"
         '
-        'FinancieelToolStripMenuItem
+        'BetaalWijzenToolStripMenuItem
         '
-        Me.FinancieelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ValutaToolStripMenuItem})
-        Me.FinancieelToolStripMenuItem.Name = "FinancieelToolStripMenuItem"
-        Me.FinancieelToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
-        Me.FinancieelToolStripMenuItem.Text = "Financieel"
-        '
-        'ValutaToolStripMenuItem
-        '
-        Me.ValutaToolStripMenuItem.Name = "ValutaToolStripMenuItem"
-        Me.ValutaToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.ValutaToolStripMenuItem.Text = "Valuta"
+        Me.BetaalWijzenToolStripMenuItem.Name = "BetaalWijzenToolStripMenuItem"
+        Me.BetaalWijzenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.BetaalWijzenToolStripMenuItem.Text = "BetaalWijzen"
         '
         'F_Wisselmotor
         '
@@ -121,4 +135,6 @@ Partial Class F_Wisselmotor
     Friend WithEvents MerkenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents FinancieelToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ValutaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LandenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BetaalWijzenToolStripMenuItem As ToolStripMenuItem
 End Class

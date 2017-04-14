@@ -58,6 +58,7 @@ Partial Class F_Valuta
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.BetaalWijzenTableAdapter = Nothing
         Me.TableAdapterManager.GrootboekTableAdapter = Nothing
         Me.TableAdapterManager.LandTableAdapter = Nothing
         Me.TableAdapterManager.SupplierTableAdapter = Nothing
@@ -158,6 +159,7 @@ Partial Class F_Valuta
         Me.Controls.Add(Me.Knop_Sluiten)
         Me.Controls.Add(Me.DG_Valuta)
         Me.Name = "F_Valuta"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Valuta's "
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

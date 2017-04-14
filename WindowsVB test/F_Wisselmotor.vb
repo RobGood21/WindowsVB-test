@@ -34,4 +34,13 @@
         F_Valuta.ShowDialog()
 
     End Sub
+
+    Private Sub LandenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LandenToolStripMenuItem.Click
+        F_Land.ShowDialog()
+
+    End Sub
+
+    Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BetaalWijzenToolStripMenuItem.Click
+        F_Betaalwijzen.ShowDialog()
+    End Sub
 End Class
