@@ -1,5 +1,5 @@
 ﻿Public Class F_Wisselmotor
-    Private Sub ProductenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductenToolStripMenuItem.Click
+    Private Sub ProductenToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Product.MdiParent = Me
 
         F_Product.Show()
@@ -42,5 +42,15 @@
 
     Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BetaalWijzenToolStripMenuItem.Click
         F_Betaalwijzen.ShowDialog()
+    End Sub
+
+    Private Sub SuppliersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuppliersToolStripMenuItem.Click
+        F_Supplier.MdiParent = Me
+        F_Supplier.Show()
+
+    End Sub
+
+    Private Sub AfsluitenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AfsluitenToolStripMenuItem.Click
+        Me.Close()
     End Sub
 End Class

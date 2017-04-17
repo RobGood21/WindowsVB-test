@@ -92,6 +92,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_Product.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_Product.vb">
+      <DependentUpon>DS_Product.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS_ProjectProducts.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -109,6 +112,18 @@
       <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Betaalwijzen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_GetOrder.Designer.vb">
+      <DependentUpon>F_GetOrder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_GetOrder.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_GetProduct.Designer.vb">
+      <DependentUpon>F_GetProduct.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_GetProduct.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Groep.Designer.vb">
@@ -145,6 +160,12 @@
       <DependentUpon>F_ProductZoek.vb</DependentUpon>
     </Compile>
     <Compile Include="F_ProductZoek.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Shop.Designer.vb">
+      <DependentUpon>F_Shop.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Shop.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Supplier.Designer.vb">
@@ -198,6 +219,12 @@
     <EmbeddedResource Include="F_Betaalwijzen.resx">
       <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_GetOrder.resx">
+      <DependentUpon>F_GetOrder.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_GetProduct.resx">
+      <DependentUpon>F_GetProduct.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Groep.resx">
       <DependentUpon>F_Groep.vb</DependentUpon>
     </EmbeddedResource>
@@ -215,6 +242,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_ProductZoek.resx">
       <DependentUpon>F_ProductZoek.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Shop.resx">
+      <DependentUpon>F_Shop.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Supplier.resx">
       <DependentUpon>F_Supplier.vb</DependentUpon>
@@ -303,6 +333,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Windows-Close-Program-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Insert-hyperlink-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

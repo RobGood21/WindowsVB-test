@@ -44,33 +44,16 @@ Partial Class F_Supplier
         Dim SP_NaamLabel As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Supplier))
         Me.DS_Supplier = New WindowsVB_test.DS_Supplier()
         Me.SupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SupplierTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.SupplierTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager()
         Me.LandTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.LandTableAdapter()
-        Me.SupplierBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.SupplierBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.ID_SupplierTextBox = New System.Windows.Forms.TextBox()
         Me.GB_Supplier = New System.Windows.Forms.GroupBox()
+        Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.CB_Grootboek = New System.Windows.Forms.ComboBox()
-        Me.GrootboekBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DSSupplier1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DS_Supplier1 = New WindowsVB_test.DS_Supplier()
         Me.CB_Valuta = New System.Windows.Forms.ComboBox()
-        Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_BetaalWijzen = New System.Windows.Forms.ComboBox()
         Me.BetaalWijzenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TXT_Kenmerk = New System.Windows.Forms.TextBox()
@@ -78,20 +61,19 @@ Partial Class F_Supplier
         Me.Ch_Webwinkel = New System.Windows.Forms.CheckBox()
         Me.CB_Land = New System.Windows.Forms.ComboBox()
         Me.LandBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.CB_NaamSupplier = New System.Windows.Forms.ComboBox()
         Me.SP_IBANTextBox = New System.Windows.Forms.TextBox()
         Me.SP_ShiftTextBox = New System.Windows.Forms.TextBox()
         Me.SP_BankTextBox = New System.Windows.Forms.TextBox()
         Me.SP_TermijnTextBox = New System.Windows.Forms.TextBox()
         Me.SP_VATnumberTextBox = New System.Windows.Forms.TextBox()
-        Me.SP_WebsiteTextBox = New System.Windows.Forms.TextBox()
+        Me.TXT_Website = New System.Windows.Forms.TextBox()
         Me.SP_EmailTextBox = New System.Windows.Forms.TextBox()
         Me.SP_PhoneTextBox = New System.Windows.Forms.TextBox()
         Me.SP_DebiteurKenmerkTextBox = New System.Windows.Forms.TextBox()
         Me.SP_PlaatsTextBox = New System.Windows.Forms.TextBox()
         Me.SP_PostcodeTextBox = New System.Windows.Forms.TextBox()
         Me.SP_AdresXtraTextBox = New System.Windows.Forms.TextBox()
-        Me.SP_AdresTextBox = New System.Windows.Forms.TextBox()
+        Me.TXT_adres = New System.Windows.Forms.TextBox()
         Me.Knop_opslaan = New System.Windows.Forms.Button()
         Me.BetaalWijzenTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.BetaalWijzenTableAdapter()
         Me.ValutaTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ValutaTableAdapter()
@@ -100,6 +82,11 @@ Partial Class F_Supplier
         Me.Knop_Delete = New System.Windows.Forms.Button()
         Me.Knop_Save = New System.Windows.Forms.Button()
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
+        Me.Knop_Link = New System.Windows.Forms.Button()
+        Me.CB_NaamSupplier = New System.Windows.Forms.ComboBox()
+        Me.DSSupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.GrootboekBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         SP_AdresXtraLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
@@ -123,15 +110,12 @@ Partial Class F_Supplier
         Label4 = New System.Windows.Forms.Label()
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.SupplierBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.SupplierBindingNavigator.SuspendLayout()
         Me.GB_Supplier.SuspendLayout()
-        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DSSupplier1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DS_Supplier1, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SP_AdresXtraLabel
@@ -340,132 +324,22 @@ Partial Class F_Supplier
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BetaalWijzenTableAdapter = Nothing
-        Me.TableAdapterManager.GrootboekTableAdapter = Nothing
+        Me.TableAdapterManager.GrootboekTableAdapter = Me.GrootboekTableAdapter
         Me.TableAdapterManager.LandTableAdapter = Me.LandTableAdapter
+        Me.TableAdapterManager.ShopTableAdapter = Nothing
         Me.TableAdapterManager.SupplierTableAdapter = Me.SupplierTableAdapter
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        Me.TableAdapterManager.ValutaTableAdapter = Nothing
+        Me.TableAdapterManager.ValutaTableAdapter = Me.ValutaTableAdapter
         '
         'LandTableAdapter
         '
         Me.LandTableAdapter.ClearBeforeFill = True
         '
-        'SupplierBindingNavigator
-        '
-        Me.SupplierBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.SupplierBindingNavigator.BindingSource = Me.SupplierBindingSource
-        Me.SupplierBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.SupplierBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.SupplierBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.SupplierBindingNavigatorSaveItem})
-        Me.SupplierBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.SupplierBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.SupplierBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.SupplierBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.SupplierBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.SupplierBindingNavigator.Name = "SupplierBindingNavigator"
-        Me.SupplierBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.SupplierBindingNavigator.Size = New System.Drawing.Size(719, 25)
-        Me.SupplierBindingNavigator.TabIndex = 0
-        Me.SupplierBindingNavigator.Text = "BindingNavigator1"
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
-        '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
-        '
-        'BindingNavigatorMoveFirstItem
-        '
-        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveFirstItem.Text = "Move first"
-        '
-        'BindingNavigatorMovePreviousItem
-        '
-        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
-        '
-        'BindingNavigatorSeparator
-        '
-        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorPositionItem
-        '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
-        Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
-        Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
-        '
-        'BindingNavigatorSeparator1
-        '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorMoveNextItem
-        '
-        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveNextItem.Text = "Move next"
-        '
-        'BindingNavigatorMoveLastItem
-        '
-        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveLastItem.Text = "Move last"
-        '
-        'BindingNavigatorSeparator2
-        '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'SupplierBindingNavigatorSaveItem
-        '
-        Me.SupplierBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.SupplierBindingNavigatorSaveItem.Image = CType(resources.GetObject("SupplierBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.SupplierBindingNavigatorSaveItem.Name = "SupplierBindingNavigatorSaveItem"
-        Me.SupplierBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.SupplierBindingNavigatorSaveItem.Text = "Save Data"
-        '
         'ID_SupplierTextBox
         '
         Me.ID_SupplierTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Supplier", True))
         Me.ID_SupplierTextBox.Enabled = False
-        Me.ID_SupplierTextBox.Location = New System.Drawing.Point(496, 12)
+        Me.ID_SupplierTextBox.Location = New System.Drawing.Point(466, 12)
         Me.ID_SupplierTextBox.Name = "ID_SupplierTextBox"
         Me.ID_SupplierTextBox.ReadOnly = True
         Me.ID_SupplierTextBox.Size = New System.Drawing.Size(37, 20)
@@ -475,6 +349,7 @@ Partial Class F_Supplier
         '
         'GB_Supplier
         '
+        Me.GB_Supplier.Controls.Add(Me.TextBox1)
         Me.GB_Supplier.Controls.Add(Me.CB_Grootboek)
         Me.GB_Supplier.Controls.Add(Me.CB_Valuta)
         Me.GB_Supplier.Controls.Add(Label4)
@@ -483,8 +358,8 @@ Partial Class F_Supplier
         Me.GB_Supplier.Controls.Add(Me.TXT_Kenmerk)
         Me.GB_Supplier.Controls.Add(Me.Ch_Winkel)
         Me.GB_Supplier.Controls.Add(Me.Ch_Webwinkel)
-        Me.GB_Supplier.Controls.Add(Me.CB_Land)
         Me.GB_Supplier.Controls.Add(Me.CB_NaamSupplier)
+        Me.GB_Supplier.Controls.Add(Me.CB_Land)
         Me.GB_Supplier.Controls.Add(Label2)
         Me.GB_Supplier.Controls.Add(Label1)
         Me.GB_Supplier.Controls.Add(ID_GrootboekLabel)
@@ -501,7 +376,7 @@ Partial Class F_Supplier
         Me.GB_Supplier.Controls.Add(SP_VATnumberLabel)
         Me.GB_Supplier.Controls.Add(Me.SP_VATnumberTextBox)
         Me.GB_Supplier.Controls.Add(SP_WebsiteLabel)
-        Me.GB_Supplier.Controls.Add(Me.SP_WebsiteTextBox)
+        Me.GB_Supplier.Controls.Add(Me.TXT_Website)
         Me.GB_Supplier.Controls.Add(SP_EmailLabel)
         Me.GB_Supplier.Controls.Add(Me.SP_EmailTextBox)
         Me.GB_Supplier.Controls.Add(SP_PhoneLabel)
@@ -514,13 +389,21 @@ Partial Class F_Supplier
         Me.GB_Supplier.Controls.Add(Me.SP_PostcodeTextBox)
         Me.GB_Supplier.Controls.Add(Me.SP_AdresXtraTextBox)
         Me.GB_Supplier.Controls.Add(SP_AdresLabel)
-        Me.GB_Supplier.Controls.Add(Me.SP_AdresTextBox)
+        Me.GB_Supplier.Controls.Add(Me.TXT_adres)
         Me.GB_Supplier.Controls.Add(SP_NaamLabel)
         Me.GB_Supplier.Location = New System.Drawing.Point(22, 38)
         Me.GB_Supplier.Name = "GB_Supplier"
         Me.GB_Supplier.Size = New System.Drawing.Size(586, 327)
         Me.GB_Supplier.TabIndex = 42
         Me.GB_Supplier.TabStop = False
+        '
+        'TextBox1
+        '
+        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "SP_Naam", True))
+        Me.TextBox1.Location = New System.Drawing.Point(83, 18)
+        Me.TextBox1.Name = "TextBox1"
+        Me.TextBox1.Size = New System.Drawing.Size(187, 20)
+        Me.TextBox1.TabIndex = 87
         '
         'CB_Grootboek
         '
@@ -534,21 +417,6 @@ Partial Class F_Supplier
         Me.CB_Grootboek.TabIndex = 86
         Me.CB_Grootboek.ValueMember = "ID_GrootBoek"
         '
-        'GrootboekBindingSource
-        '
-        Me.GrootboekBindingSource.DataMember = "Grootboek"
-        Me.GrootboekBindingSource.DataSource = Me.DSSupplier1BindingSource
-        '
-        'DSSupplier1BindingSource
-        '
-        Me.DSSupplier1BindingSource.DataSource = Me.DS_Supplier1
-        Me.DSSupplier1BindingSource.Position = 0
-        '
-        'DS_Supplier1
-        '
-        Me.DS_Supplier1.DataSetName = "DS_Supplier"
-        Me.DS_Supplier1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
         'CB_Valuta
         '
         Me.CB_Valuta.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SupplierBindingSource, "ID_Valuta", True))
@@ -560,11 +428,6 @@ Partial Class F_Supplier
         Me.CB_Valuta.Size = New System.Drawing.Size(141, 21)
         Me.CB_Valuta.TabIndex = 47
         Me.CB_Valuta.ValueMember = "ID_valuta"
-        '
-        'ValutaBindingSource
-        '
-        Me.ValutaBindingSource.DataMember = "Valuta"
-        Me.ValutaBindingSource.DataSource = Me.DS_Supplier1
         '
         'CB_BetaalWijzen
         '
@@ -631,16 +494,6 @@ Partial Class F_Supplier
         Me.LandBindingSource.DataMember = "Land"
         Me.LandBindingSource.DataSource = Me.DS_Supplier
         '
-        'CB_NaamSupplier
-        '
-        Me.CB_NaamSupplier.DataSource = Me.SupplierBindingSource
-        Me.CB_NaamSupplier.DisplayMember = "SP_Naam"
-        Me.CB_NaamSupplier.FormattingEnabled = True
-        Me.CB_NaamSupplier.Location = New System.Drawing.Point(83, 17)
-        Me.CB_NaamSupplier.Name = "CB_NaamSupplier"
-        Me.CB_NaamSupplier.Size = New System.Drawing.Size(187, 21)
-        Me.CB_NaamSupplier.TabIndex = 1
-        '
         'SP_IBANTextBox
         '
         Me.SP_IBANTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "SP_IBAN", True))
@@ -681,13 +534,13 @@ Partial Class F_Supplier
         Me.SP_VATnumberTextBox.Size = New System.Drawing.Size(141, 20)
         Me.SP_VATnumberTextBox.TabIndex = 61
         '
-        'SP_WebsiteTextBox
+        'TXT_Website
         '
-        Me.SP_WebsiteTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "SP_Website", True))
-        Me.SP_WebsiteTextBox.Location = New System.Drawing.Point(83, 195)
-        Me.SP_WebsiteTextBox.Name = "SP_WebsiteTextBox"
-        Me.SP_WebsiteTextBox.Size = New System.Drawing.Size(187, 20)
-        Me.SP_WebsiteTextBox.TabIndex = 9
+        Me.TXT_Website.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "SP_Website", True))
+        Me.TXT_Website.Location = New System.Drawing.Point(83, 195)
+        Me.TXT_Website.Name = "TXT_Website"
+        Me.TXT_Website.Size = New System.Drawing.Size(187, 20)
+        Me.TXT_Website.TabIndex = 9
         '
         'SP_EmailTextBox
         '
@@ -737,13 +590,13 @@ Partial Class F_Supplier
         Me.SP_AdresXtraTextBox.Size = New System.Drawing.Size(187, 20)
         Me.SP_AdresXtraTextBox.TabIndex = 3
         '
-        'SP_AdresTextBox
+        'TXT_adres
         '
-        Me.SP_AdresTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "SP_Adres", True))
-        Me.SP_AdresTextBox.Location = New System.Drawing.Point(83, 40)
-        Me.SP_AdresTextBox.Name = "SP_AdresTextBox"
-        Me.SP_AdresTextBox.Size = New System.Drawing.Size(187, 20)
-        Me.SP_AdresTextBox.TabIndex = 2
+        Me.TXT_adres.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "SP_Adres", True))
+        Me.TXT_adres.Location = New System.Drawing.Point(83, 40)
+        Me.TXT_adres.Name = "TXT_adres"
+        Me.TXT_adres.Size = New System.Drawing.Size(187, 20)
+        Me.TXT_adres.TabIndex = 2
         '
         'Knop_opslaan
         '
@@ -780,9 +633,9 @@ Partial Class F_Supplier
         Me.Knop_Delete.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Windows_Close_Program_icon
         Me.Knop_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Knop_Delete.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Delete.Location = New System.Drawing.Point(539, 6)
+        Me.Knop_Delete.Location = New System.Drawing.Point(543, 6)
         Me.Knop_Delete.Name = "Knop_Delete"
-        Me.Knop_Delete.Size = New System.Drawing.Size(31, 30)
+        Me.Knop_Delete.Size = New System.Drawing.Size(30, 30)
         Me.Knop_Delete.TabIndex = 49
         Me.Knop_Delete.UseVisualStyleBackColor = True
         '
@@ -793,7 +646,7 @@ Partial Class F_Supplier
         Me.Knop_Save.ImageAlign = System.Drawing.ContentAlignment.TopLeft
         Me.Knop_Save.Location = New System.Drawing.Point(576, 6)
         Me.Knop_Save.Name = "Knop_Save"
-        Me.Knop_Save.Size = New System.Drawing.Size(31, 30)
+        Me.Knop_Save.Size = New System.Drawing.Size(30, 30)
         Me.Knop_Save.TabIndex = 48
         Me.Knop_Save.UseVisualStyleBackColor = True
         '
@@ -806,11 +659,49 @@ Partial Class F_Supplier
         Me.Knop_Nieuw.Text = "&Nieuw"
         Me.Knop_Nieuw.UseVisualStyleBackColor = True
         '
+        'Knop_Link
+        '
+        Me.Knop_Link.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Insert_hyperlink_icon
+        Me.Knop_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Knop_Link.Location = New System.Drawing.Point(509, 6)
+        Me.Knop_Link.Name = "Knop_Link"
+        Me.Knop_Link.Size = New System.Drawing.Size(30, 30)
+        Me.Knop_Link.TabIndex = 52
+        Me.Knop_Link.UseVisualStyleBackColor = True
+        '
+        'CB_NaamSupplier
+        '
+        Me.CB_NaamSupplier.DataSource = Me.SupplierBindingSource
+        Me.CB_NaamSupplier.DisplayMember = "SP_Naam"
+        Me.CB_NaamSupplier.DropDownWidth = 200
+        Me.CB_NaamSupplier.FormattingEnabled = True
+        Me.CB_NaamSupplier.Location = New System.Drawing.Point(54, 18)
+        Me.CB_NaamSupplier.Name = "CB_NaamSupplier"
+        Me.CB_NaamSupplier.Size = New System.Drawing.Size(20, 21)
+        Me.CB_NaamSupplier.TabIndex = 1
+        Me.CB_NaamSupplier.TabStop = False
+        '
+        'DSSupplierBindingSource
+        '
+        Me.DSSupplierBindingSource.DataSource = Me.DS_Supplier
+        Me.DSSupplierBindingSource.Position = 0
+        '
+        'ValutaBindingSource
+        '
+        Me.ValutaBindingSource.DataMember = "Valuta"
+        Me.ValutaBindingSource.DataSource = Me.DSSupplierBindingSource
+        '
+        'GrootboekBindingSource
+        '
+        Me.GrootboekBindingSource.DataMember = "Grootboek"
+        Me.GrootboekBindingSource.DataSource = Me.DS_Supplier
+        '
         'F_Supplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(719, 527)
+        Me.ClientSize = New System.Drawing.Size(637, 421)
+        Me.Controls.Add(Me.Knop_Link)
         Me.Controls.Add(Me.Knop_Nieuw)
         Me.Controls.Add(Me.Knop_Delete)
         Me.Controls.Add(Me.Knop_Save)
@@ -819,22 +710,17 @@ Partial Class F_Supplier
         Me.Controls.Add(Me.GB_Supplier)
         Me.Controls.Add(SP_AdresXtraLabel)
         Me.Controls.Add(Me.ID_SupplierTextBox)
-        Me.Controls.Add(Me.SupplierBindingNavigator)
         Me.Name = "F_Supplier"
         Me.Text = "Leverancier, crediteur"
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.SupplierBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.SupplierBindingNavigator.ResumeLayout(False)
-        Me.SupplierBindingNavigator.PerformLayout()
         Me.GB_Supplier.ResumeLayout(False)
         Me.GB_Supplier.PerformLayout()
-        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DSSupplier1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DS_Supplier1, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -844,19 +730,6 @@ Partial Class F_Supplier
     Friend WithEvents SupplierBindingSource As BindingSource
     Friend WithEvents SupplierTableAdapter As DS_SupplierTableAdapters.SupplierTableAdapter
     Friend WithEvents TableAdapterManager As DS_SupplierTableAdapters.TableAdapterManager
-    Friend WithEvents SupplierBindingNavigator As BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
-    Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveFirstItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMovePreviousItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator As ToolStripSeparator
-    Friend WithEvents BindingNavigatorPositionItem As ToolStripTextBox
-    Friend WithEvents BindingNavigatorSeparator1 As ToolStripSeparator
-    Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents SupplierBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents ID_SupplierTextBox As TextBox
     Friend WithEvents GB_Supplier As GroupBox
     Friend WithEvents SP_IBANTextBox As TextBox
@@ -864,15 +737,14 @@ Partial Class F_Supplier
     Friend WithEvents SP_BankTextBox As TextBox
     Friend WithEvents SP_TermijnTextBox As TextBox
     Friend WithEvents SP_VATnumberTextBox As TextBox
-    Friend WithEvents SP_WebsiteTextBox As TextBox
+    Friend WithEvents TXT_Website As TextBox
     Friend WithEvents SP_EmailTextBox As TextBox
     Friend WithEvents SP_PhoneTextBox As TextBox
     Friend WithEvents SP_DebiteurKenmerkTextBox As TextBox
     Friend WithEvents SP_PlaatsTextBox As TextBox
     Friend WithEvents SP_PostcodeTextBox As TextBox
     Friend WithEvents SP_AdresXtraTextBox As TextBox
-    Friend WithEvents SP_AdresTextBox As TextBox
-    Friend WithEvents CB_NaamSupplier As ComboBox
+    Friend WithEvents TXT_adres As TextBox
     Friend WithEvents LandBindingSource As BindingSource
     Friend WithEvents LandTableAdapter As DS_SupplierTableAdapters.LandTableAdapter
     Friend WithEvents Knop_opslaan As Button
@@ -884,15 +756,17 @@ Partial Class F_Supplier
     Friend WithEvents BetaalWijzenBindingSource As BindingSource
     Friend WithEvents BetaalWijzenTableAdapter As DS_SupplierTableAdapters.BetaalWijzenTableAdapter
     Friend WithEvents CB_Valuta As ComboBox
-    Friend WithEvents DS_Supplier1 As DS_Supplier
-    Friend WithEvents ValutaBindingSource As BindingSource
     Friend WithEvents ValutaTableAdapter As DS_SupplierTableAdapters.ValutaTableAdapter
     Friend WithEvents CB_Grootboek As ComboBox
-    Friend WithEvents DSSupplier1BindingSource As BindingSource
-    Friend WithEvents GrootboekBindingSource As BindingSource
     Friend WithEvents GrootboekTableAdapter As DS_SupplierTableAdapters.GrootboekTableAdapter
     Friend WithEvents Knop_Annuleren As Button
     Friend WithEvents Knop_Delete As Button
     Friend WithEvents Knop_Save As Button
     Friend WithEvents Knop_Nieuw As Button
+    Friend WithEvents Knop_Link As Button
+    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents CB_NaamSupplier As ComboBox
+    Friend WithEvents ValutaBindingSource As BindingSource
+    Friend WithEvents DSSupplierBindingSource As BindingSource
+    Friend WithEvents GrootboekBindingSource As BindingSource
 End Class
