@@ -48,17 +48,23 @@ Partial Class F_Supplier
         Me.SupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SupplierTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.SupplierTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager()
+        Me.GrootboekTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.GrootboekTableAdapter()
         Me.LandTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.LandTableAdapter()
+        Me.ValutaTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ValutaTableAdapter()
         Me.ID_SupplierTextBox = New System.Windows.Forms.TextBox()
         Me.GB_Supplier = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
         Me.CB_Grootboek = New System.Windows.Forms.ComboBox()
+        Me.GrootboekBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_Valuta = New System.Windows.Forms.ComboBox()
+        Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DSSupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_BetaalWijzen = New System.Windows.Forms.ComboBox()
         Me.BetaalWijzenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TXT_Kenmerk = New System.Windows.Forms.TextBox()
         Me.Ch_Winkel = New System.Windows.Forms.CheckBox()
         Me.Ch_Webwinkel = New System.Windows.Forms.CheckBox()
+        Me.CB_NaamSupplier = New System.Windows.Forms.ComboBox()
         Me.CB_Land = New System.Windows.Forms.ComboBox()
         Me.LandBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SP_IBANTextBox = New System.Windows.Forms.TextBox()
@@ -76,17 +82,11 @@ Partial Class F_Supplier
         Me.TXT_adres = New System.Windows.Forms.TextBox()
         Me.Knop_opslaan = New System.Windows.Forms.Button()
         Me.BetaalWijzenTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.BetaalWijzenTableAdapter()
-        Me.ValutaTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ValutaTableAdapter()
-        Me.GrootboekTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.GrootboekTableAdapter()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.Knop_Delete = New System.Windows.Forms.Button()
         Me.Knop_Save = New System.Windows.Forms.Button()
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
         Me.Knop_Link = New System.Windows.Forms.Button()
-        Me.CB_NaamSupplier = New System.Windows.Forms.ComboBox()
-        Me.DSSupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.GrootboekBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         SP_AdresXtraLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
@@ -111,11 +111,11 @@ Partial Class F_Supplier
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GB_Supplier.SuspendLayout()
+        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SP_AdresXtraLabel
@@ -331,9 +331,17 @@ Partial Class F_Supplier
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.ValutaTableAdapter = Me.ValutaTableAdapter
         '
+        'GrootboekTableAdapter
+        '
+        Me.GrootboekTableAdapter.ClearBeforeFill = True
+        '
         'LandTableAdapter
         '
         Me.LandTableAdapter.ClearBeforeFill = True
+        '
+        'ValutaTableAdapter
+        '
+        Me.ValutaTableAdapter.ClearBeforeFill = True
         '
         'ID_SupplierTextBox
         '
@@ -417,6 +425,11 @@ Partial Class F_Supplier
         Me.CB_Grootboek.TabIndex = 86
         Me.CB_Grootboek.ValueMember = "ID_GrootBoek"
         '
+        'GrootboekBindingSource
+        '
+        Me.GrootboekBindingSource.DataMember = "Grootboek"
+        Me.GrootboekBindingSource.DataSource = Me.DS_Supplier
+        '
         'CB_Valuta
         '
         Me.CB_Valuta.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SupplierBindingSource, "ID_Valuta", True))
@@ -428,6 +441,16 @@ Partial Class F_Supplier
         Me.CB_Valuta.Size = New System.Drawing.Size(141, 21)
         Me.CB_Valuta.TabIndex = 47
         Me.CB_Valuta.ValueMember = "ID_valuta"
+        '
+        'ValutaBindingSource
+        '
+        Me.ValutaBindingSource.DataMember = "Valuta"
+        Me.ValutaBindingSource.DataSource = Me.DSSupplierBindingSource
+        '
+        'DSSupplierBindingSource
+        '
+        Me.DSSupplierBindingSource.DataSource = Me.DS_Supplier
+        Me.DSSupplierBindingSource.Position = 0
         '
         'CB_BetaalWijzen
         '
@@ -476,6 +499,18 @@ Partial Class F_Supplier
         Me.Ch_Webwinkel.TabIndex = 10
         Me.Ch_Webwinkel.Text = "Webwinkel"
         Me.Ch_Webwinkel.UseVisualStyleBackColor = True
+        '
+        'CB_NaamSupplier
+        '
+        Me.CB_NaamSupplier.DataSource = Me.SupplierBindingSource
+        Me.CB_NaamSupplier.DisplayMember = "SP_Naam"
+        Me.CB_NaamSupplier.DropDownWidth = 200
+        Me.CB_NaamSupplier.FormattingEnabled = True
+        Me.CB_NaamSupplier.Location = New System.Drawing.Point(54, 18)
+        Me.CB_NaamSupplier.Name = "CB_NaamSupplier"
+        Me.CB_NaamSupplier.Size = New System.Drawing.Size(20, 21)
+        Me.CB_NaamSupplier.TabIndex = 1
+        Me.CB_NaamSupplier.TabStop = False
         '
         'CB_Land
         '
@@ -611,14 +646,6 @@ Partial Class F_Supplier
         '
         Me.BetaalWijzenTableAdapter.ClearBeforeFill = True
         '
-        'ValutaTableAdapter
-        '
-        Me.ValutaTableAdapter.ClearBeforeFill = True
-        '
-        'GrootboekTableAdapter
-        '
-        Me.GrootboekTableAdapter.ClearBeforeFill = True
-        '
         'Knop_Annuleren
         '
         Me.Knop_Annuleren.Location = New System.Drawing.Point(377, 371)
@@ -669,33 +696,6 @@ Partial Class F_Supplier
         Me.Knop_Link.TabIndex = 52
         Me.Knop_Link.UseVisualStyleBackColor = True
         '
-        'CB_NaamSupplier
-        '
-        Me.CB_NaamSupplier.DataSource = Me.SupplierBindingSource
-        Me.CB_NaamSupplier.DisplayMember = "SP_Naam"
-        Me.CB_NaamSupplier.DropDownWidth = 200
-        Me.CB_NaamSupplier.FormattingEnabled = True
-        Me.CB_NaamSupplier.Location = New System.Drawing.Point(54, 18)
-        Me.CB_NaamSupplier.Name = "CB_NaamSupplier"
-        Me.CB_NaamSupplier.Size = New System.Drawing.Size(20, 21)
-        Me.CB_NaamSupplier.TabIndex = 1
-        Me.CB_NaamSupplier.TabStop = False
-        '
-        'DSSupplierBindingSource
-        '
-        Me.DSSupplierBindingSource.DataSource = Me.DS_Supplier
-        Me.DSSupplierBindingSource.Position = 0
-        '
-        'ValutaBindingSource
-        '
-        Me.ValutaBindingSource.DataMember = "Valuta"
-        Me.ValutaBindingSource.DataSource = Me.DSSupplierBindingSource
-        '
-        'GrootboekBindingSource
-        '
-        Me.GrootboekBindingSource.DataMember = "Grootboek"
-        Me.GrootboekBindingSource.DataSource = Me.DS_Supplier
-        '
         'F_Supplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -711,16 +711,17 @@ Partial Class F_Supplier
         Me.Controls.Add(SP_AdresXtraLabel)
         Me.Controls.Add(Me.ID_SupplierTextBox)
         Me.Name = "F_Supplier"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Leverancier, crediteur"
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GB_Supplier.ResumeLayout(False)
         Me.GB_Supplier.PerformLayout()
+        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 

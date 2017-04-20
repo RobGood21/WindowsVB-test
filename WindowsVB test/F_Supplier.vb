@@ -56,6 +56,7 @@
         Me.LandTableAdapter.Fill(Me.DS_Supplier.Land)
         'TODO: This line of code loads data into the 'DS_Supplier.Supplier' table. You can move, or remove it, as needed.
         'Me.SupplierTableAdapter.Fill(Me.DS_Supplier.Supplier)
+
         LaadData()
 
 
@@ -90,7 +91,16 @@
 
     Private Sub LaadData()
 
-        Me.SupplierTableAdapter.Fill(Me.DS_Supplier.Supplier)
+
+        Select Case OPSUPPLIER
+            Case 1
+                Me.SupplierTableAdapter.FillByIDSUPPLIER(Me.DS_Supplier.Supplier, CType(IDSUPPLIER, Integer))
+
+            Case Else
+                Me.SupplierTableAdapter.Fill(Me.DS_Supplier.Supplier)
+        End Select
+
+
 
     End Sub
 
@@ -116,4 +126,6 @@
     Private Sub CB_Grootboek_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Grootboek.SelectedIndexChanged
 
     End Sub
+
+
 End Class

@@ -95,7 +95,7 @@ Partial Class F_Groep
         Me.TableAdapterManager.DT_productTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Me.GroepTableAdapter
         Me.TableAdapterManager.MerkTableAdapter = Nothing
-        Me.TableAdapterManager.ProductTableAdapter = Nothing
+        Me.TableAdapterManager.DT_productTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'ID_GroepTextBox

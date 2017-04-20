@@ -277,7 +277,7 @@ Partial Class F_Product
         Me.TableAdapterManager.DT_productTableAdapter = Me.DT_productTableAdapter
         Me.TableAdapterManager.GroepTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
-        Me.TableAdapterManager.ProductTableAdapter = Nothing
+        Me.TableAdapterManager.DT_productTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'GroepTableAdapter

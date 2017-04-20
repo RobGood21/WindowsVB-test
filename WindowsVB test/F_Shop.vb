@@ -1,5 +1,5 @@
 ﻿Public Class F_Shop
-    Private Sub ShopBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles ShopBindingNavigatorSaveItem.Click
+    Private Sub ShopBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.ShopBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DS_Supplier)
@@ -20,7 +20,9 @@
     End Sub
 
     Private Sub Knop_opslaan_Click(sender As Object, e As EventArgs) Handles Knop_opslaan.Click
+
         OPslaanShop()
+        IDSHOP = Me.TXT_IDSHOP.Text
         Me.Close()
 
     End Sub
@@ -51,7 +53,6 @@
         'Maakt een nieuwe shop aan
         Me.ShopBindingSource.AddNew()
         Me.txt_IDSupplier_Shop.SelectedText = IDSUPPLIER
-
 
 
     End Sub

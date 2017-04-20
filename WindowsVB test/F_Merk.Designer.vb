@@ -31,7 +31,7 @@ Partial Class F_Merk
         Me.TXT_Zoektekst = New System.Windows.Forms.TextBox()
         Me.MerkTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.MerkTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
-        Me.ProductTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.ProductTableAdapter()
+        Me.ProductTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
         Me.FKProductMerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Knop_Save = New System.Windows.Forms.Button()
@@ -107,7 +107,7 @@ Partial Class F_Merk
         Me.TableAdapterManager.DT_productTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Me.MerkTableAdapter
-        Me.TableAdapterManager.ProductTableAdapter = Me.ProductTableAdapter
+        Me.TableAdapterManager.DT_productTableAdapter = Me.ProductTableAdapter
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'ProductTableAdapter
@@ -239,7 +239,7 @@ Partial Class F_Merk
     Friend WithEvents MerkBindingSource As BindingSource
     Friend WithEvents MerkTableAdapter As DS_ProductTableAdapters.MerkTableAdapter
     Friend WithEvents TableAdapterManager As DS_ProductTableAdapters.TableAdapterManager
-    Friend WithEvents ProductTableAdapter As DS_ProductTableAdapters.ProductTableAdapter
+    Friend WithEvents ProductTableAdapter As DS_ProductTableAdapters.DT_productTableAdapter
     Friend WithEvents FKProductMerkBindingSource As BindingSource
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents MK_BeschrijvingTextBox As TextBox

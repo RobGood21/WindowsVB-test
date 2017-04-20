@@ -146,7 +146,9 @@
     End Sub
 
     Private Sub Knop_Opslaan_Click(sender As Object, e As EventArgs) Handles Knop_Opslaan.Click
+        'save alle aanpassingen geef actief record door en sluit formulier af
         OPSLAAN()
+        IDPRODUCT = Me.TXT_Productnummer.Text
         Me.Close()
 
     End Sub

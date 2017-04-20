@@ -35,7 +35,6 @@ Partial Class F_Shop
         Dim SH_PhoneLabel As System.Windows.Forms.Label
         Dim SH_WebsiteLabel As System.Windows.Forms.Label
         Dim SH_RelationCodeLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_Shop))
         Me.GB_Shop = New System.Windows.Forms.GroupBox()
         Me.TXT_Website = New System.Windows.Forms.TextBox()
         Me.ShopBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -56,24 +55,11 @@ Partial Class F_Shop
         Me.Knop_Link = New System.Windows.Forms.Button()
         Me.Knop_Delete = New System.Windows.Forms.Button()
         Me.Knop_Save = New System.Windows.Forms.Button()
-        Me.ID_SupplierTextBox = New System.Windows.Forms.TextBox()
+        Me.TXT_IDSHOP = New System.Windows.Forms.TextBox()
         Me.TableAdapterManager = New WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager()
         Me.LandTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.LandTableAdapter()
         Me.ShopTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ShopTableAdapter()
         Me.SupplierTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.SupplierTableAdapter()
-        Me.ShopBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ShopBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
         Me.SupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SH_RelationCodeTextBox = New System.Windows.Forms.TextBox()
         Me.TXT_SupplierNaam = New System.Windows.Forms.TextBox()
@@ -95,8 +81,6 @@ Partial Class F_Shop
         CType(Me.ShopBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ShopBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.ShopBindingNavigator.SuspendLayout()
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
@@ -166,7 +150,7 @@ Partial Class F_Shop
         'Label2
         '
         Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(21, 85)
+        Label2.Location = New System.Drawing.Point(21, 53)
         Label2.Name = "Label2"
         Label2.Size = New System.Drawing.Size(81, 13)
         Label2.TabIndex = 60
@@ -202,7 +186,7 @@ Partial Class F_Shop
         'SH_RelationCodeLabel
         '
         SH_RelationCodeLabel.AutoSize = True
-        SH_RelationCodeLabel.Location = New System.Drawing.Point(21, 108)
+        SH_RelationCodeLabel.Location = New System.Drawing.Point(21, 75)
         SH_RelationCodeLabel.Name = "SH_RelationCodeLabel"
         SH_RelationCodeLabel.Size = New System.Drawing.Size(68, 13)
         SH_RelationCodeLabel.TabIndex = 60
@@ -230,7 +214,7 @@ Partial Class F_Shop
         Me.GB_Shop.Controls.Add(Me.SH_AdresTextBox)
         Me.GB_Shop.Controls.Add(SH_NaamLabel)
         Me.GB_Shop.Controls.Add(Me.SH_NaamTextBox)
-        Me.GB_Shop.Location = New System.Drawing.Point(29, 136)
+        Me.GB_Shop.Location = New System.Drawing.Point(29, 103)
         Me.GB_Shop.Name = "GB_Shop"
         Me.GB_Shop.Size = New System.Drawing.Size(361, 255)
         Me.GB_Shop.TabIndex = 0
@@ -337,7 +321,7 @@ Partial Class F_Shop
         '
         'Knop_Nieuw
         '
-        Me.Knop_Nieuw.Location = New System.Drawing.Point(65, 397)
+        Me.Knop_Nieuw.Location = New System.Drawing.Point(65, 364)
         Me.Knop_Nieuw.Name = "Knop_Nieuw"
         Me.Knop_Nieuw.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Nieuw.TabIndex = 53
@@ -346,7 +330,7 @@ Partial Class F_Shop
         '
         'Knop_Annuleren
         '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(146, 397)
+        Me.Knop_Annuleren.Location = New System.Drawing.Point(146, 364)
         Me.Knop_Annuleren.Name = "Knop_Annuleren"
         Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Annuleren.TabIndex = 52
@@ -355,7 +339,7 @@ Partial Class F_Shop
         '
         'Knop_opslaan
         '
-        Me.Knop_opslaan.Location = New System.Drawing.Point(227, 397)
+        Me.Knop_opslaan.Location = New System.Drawing.Point(227, 364)
         Me.Knop_opslaan.Name = "Knop_opslaan"
         Me.Knop_opslaan.Size = New System.Drawing.Size(150, 23)
         Me.Knop_opslaan.TabIndex = 51
@@ -366,7 +350,7 @@ Partial Class F_Shop
         '
         Me.Knop_Link.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Insert_hyperlink_icon
         Me.Knop_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Link.Location = New System.Drawing.Point(293, 46)
+        Me.Knop_Link.Location = New System.Drawing.Point(293, 13)
         Me.Knop_Link.Name = "Knop_Link"
         Me.Knop_Link.Size = New System.Drawing.Size(30, 30)
         Me.Knop_Link.TabIndex = 57
@@ -377,7 +361,7 @@ Partial Class F_Shop
         Me.Knop_Delete.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Windows_Close_Program_icon
         Me.Knop_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Knop_Delete.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Delete.Location = New System.Drawing.Point(327, 46)
+        Me.Knop_Delete.Location = New System.Drawing.Point(327, 13)
         Me.Knop_Delete.Name = "Knop_Delete"
         Me.Knop_Delete.Size = New System.Drawing.Size(30, 30)
         Me.Knop_Delete.TabIndex = 56
@@ -388,23 +372,23 @@ Partial Class F_Shop
         Me.Knop_Save.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
         Me.Knop_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Knop_Save.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Save.Location = New System.Drawing.Point(360, 46)
+        Me.Knop_Save.Location = New System.Drawing.Point(360, 13)
         Me.Knop_Save.Name = "Knop_Save"
         Me.Knop_Save.Size = New System.Drawing.Size(30, 30)
         Me.Knop_Save.TabIndex = 55
         Me.Knop_Save.UseVisualStyleBackColor = True
         '
-        'ID_SupplierTextBox
+        'TXT_IDSHOP
         '
-        Me.ID_SupplierTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ShopBindingSource, "ID_Shop", True))
-        Me.ID_SupplierTextBox.Enabled = False
-        Me.ID_SupplierTextBox.Location = New System.Drawing.Point(250, 52)
-        Me.ID_SupplierTextBox.Name = "ID_SupplierTextBox"
-        Me.ID_SupplierTextBox.ReadOnly = True
-        Me.ID_SupplierTextBox.Size = New System.Drawing.Size(37, 20)
-        Me.ID_SupplierTextBox.TabIndex = 54
-        Me.ID_SupplierTextBox.TabStop = False
-        Me.ID_SupplierTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        Me.TXT_IDSHOP.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ShopBindingSource, "ID_Shop", True))
+        Me.TXT_IDSHOP.Enabled = False
+        Me.TXT_IDSHOP.Location = New System.Drawing.Point(250, 19)
+        Me.TXT_IDSHOP.Name = "TXT_IDSHOP"
+        Me.TXT_IDSHOP.ReadOnly = True
+        Me.TXT_IDSHOP.Size = New System.Drawing.Size(37, 20)
+        Me.TXT_IDSHOP.TabIndex = 54
+        Me.TXT_IDSHOP.TabStop = False
+        Me.TXT_IDSHOP.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'TableAdapterManager
         '
@@ -429,117 +413,6 @@ Partial Class F_Shop
         '
         Me.SupplierTableAdapter.ClearBeforeFill = True
         '
-        'ShopBindingNavigator
-        '
-        Me.ShopBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.ShopBindingNavigator.BindingSource = Me.ShopBindingSource
-        Me.ShopBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.ShopBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.ShopBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.ShopBindingNavigatorSaveItem})
-        Me.ShopBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.ShopBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.ShopBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.ShopBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.ShopBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.ShopBindingNavigator.Name = "ShopBindingNavigator"
-        Me.ShopBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.ShopBindingNavigator.Size = New System.Drawing.Size(502, 25)
-        Me.ShopBindingNavigator.TabIndex = 58
-        Me.ShopBindingNavigator.Text = "BindingNavigator1"
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
-        '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
-        '
-        'BindingNavigatorMoveFirstItem
-        '
-        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveFirstItem.Text = "Move first"
-        '
-        'BindingNavigatorMovePreviousItem
-        '
-        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
-        '
-        'BindingNavigatorSeparator
-        '
-        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorPositionItem
-        '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
-        Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
-        Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
-        '
-        'BindingNavigatorSeparator1
-        '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorMoveNextItem
-        '
-        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveNextItem.Text = "Move next"
-        '
-        'BindingNavigatorMoveLastItem
-        '
-        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveLastItem.Text = "Move last"
-        '
-        'BindingNavigatorSeparator2
-        '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'ShopBindingNavigatorSaveItem
-        '
-        Me.ShopBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.ShopBindingNavigatorSaveItem.Image = CType(resources.GetObject("ShopBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.ShopBindingNavigatorSaveItem.Name = "ShopBindingNavigatorSaveItem"
-        Me.ShopBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.ShopBindingNavigatorSaveItem.Text = "Save Data"
-        '
         'SupplierBindingSource
         '
         Me.SupplierBindingSource.DataMember = "Supplier"
@@ -548,33 +421,37 @@ Partial Class F_Shop
         'SH_RelationCodeTextBox
         '
         Me.SH_RelationCodeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ShopBindingSource, "SH_RelationCode", True))
-        Me.SH_RelationCodeTextBox.Location = New System.Drawing.Point(102, 105)
+        Me.SH_RelationCodeTextBox.Location = New System.Drawing.Point(102, 72)
         Me.SH_RelationCodeTextBox.Name = "SH_RelationCodeTextBox"
         Me.SH_RelationCodeTextBox.Size = New System.Drawing.Size(274, 20)
         Me.SH_RelationCodeTextBox.TabIndex = 61
         '
         'TXT_SupplierNaam
         '
+        Me.TXT_SupplierNaam.BorderStyle = System.Windows.Forms.BorderStyle.None
         Me.TXT_SupplierNaam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "SP_Naam", True))
-        Me.TXT_SupplierNaam.Enabled = False
-        Me.TXT_SupplierNaam.Location = New System.Drawing.Point(102, 82)
+        Me.TXT_SupplierNaam.Location = New System.Drawing.Point(102, 54)
         Me.TXT_SupplierNaam.Name = "TXT_SupplierNaam"
-        Me.TXT_SupplierNaam.Size = New System.Drawing.Size(239, 20)
+        Me.TXT_SupplierNaam.ReadOnly = True
+        Me.TXT_SupplierNaam.Size = New System.Drawing.Size(239, 13)
         Me.TXT_SupplierNaam.TabIndex = 62
         Me.TXT_SupplierNaam.TabStop = False
         '
         'TXT_IDSupplier
         '
-        Me.TXT_IDSupplier.Location = New System.Drawing.Point(347, 82)
+        Me.TXT_IDSupplier.BorderStyle = System.Windows.Forms.BorderStyle.None
+        Me.TXT_IDSupplier.Enabled = False
+        Me.TXT_IDSupplier.Location = New System.Drawing.Point(347, 54)
         Me.TXT_IDSupplier.Name = "TXT_IDSupplier"
-        Me.TXT_IDSupplier.Size = New System.Drawing.Size(30, 20)
+        Me.TXT_IDSupplier.Size = New System.Drawing.Size(30, 13)
         Me.TXT_IDSupplier.TabIndex = 63
+        Me.TXT_IDSupplier.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'txt_IDSupplier_Shop
         '
         Me.txt_IDSupplier_Shop.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ShopBindingSource, "ID_Supplier", True))
         Me.txt_IDSupplier_Shop.Enabled = False
-        Me.txt_IDSupplier_Shop.Location = New System.Drawing.Point(12, 52)
+        Me.txt_IDSupplier_Shop.Location = New System.Drawing.Point(12, 19)
         Me.txt_IDSupplier_Shop.Name = "txt_IDSupplier_Shop"
         Me.txt_IDSupplier_Shop.ReadOnly = True
         Me.txt_IDSupplier_Shop.Size = New System.Drawing.Size(37, 20)
@@ -586,32 +463,29 @@ Partial Class F_Shop
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(502, 494)
+        Me.ClientSize = New System.Drawing.Size(433, 448)
         Me.Controls.Add(Me.txt_IDSupplier_Shop)
         Me.Controls.Add(Me.TXT_IDSupplier)
         Me.Controls.Add(Me.TXT_SupplierNaam)
         Me.Controls.Add(SH_RelationCodeLabel)
         Me.Controls.Add(Me.SH_RelationCodeTextBox)
         Me.Controls.Add(Label2)
-        Me.Controls.Add(Me.ShopBindingNavigator)
         Me.Controls.Add(Me.Knop_Link)
         Me.Controls.Add(Me.Knop_Delete)
         Me.Controls.Add(Me.Knop_Save)
-        Me.Controls.Add(Me.ID_SupplierTextBox)
+        Me.Controls.Add(Me.TXT_IDSHOP)
         Me.Controls.Add(Me.Knop_Nieuw)
         Me.Controls.Add(Me.Knop_Annuleren)
         Me.Controls.Add(Me.Knop_opslaan)
         Me.Controls.Add(Me.GB_Shop)
         Me.Name = "F_Shop"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Shop of filiaal"
         Me.GB_Shop.ResumeLayout(False)
         Me.GB_Shop.PerformLayout()
         CType(Me.ShopBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ShopBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.ShopBindingNavigator.ResumeLayout(False)
-        Me.ShopBindingNavigator.PerformLayout()
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
@@ -625,23 +499,10 @@ Partial Class F_Shop
     Friend WithEvents Knop_Link As Button
     Friend WithEvents Knop_Delete As Button
     Friend WithEvents Knop_Save As Button
-    Friend WithEvents ID_SupplierTextBox As TextBox
+    Friend WithEvents TXT_IDSHOP As TextBox
     Friend WithEvents DS_Supplier As DS_Supplier
     Friend WithEvents ShopBindingSource As BindingSource
     Friend WithEvents TableAdapterManager As DS_SupplierTableAdapters.TableAdapterManager
-    Friend WithEvents ShopBindingNavigator As BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
-    Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveFirstItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMovePreviousItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator As ToolStripSeparator
-    Friend WithEvents BindingNavigatorPositionItem As ToolStripTextBox
-    Friend WithEvents BindingNavigatorSeparator1 As ToolStripSeparator
-    Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents ShopBindingNavigatorSaveItem As ToolStripButton
     Friend WithEvents SH_NaamTextBox As TextBox
     Friend WithEvents SH_ContactTextBox As TextBox
     Friend WithEvents SH_PLaatsTextBox As TextBox
