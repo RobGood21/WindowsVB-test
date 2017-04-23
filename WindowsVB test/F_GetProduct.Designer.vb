@@ -26,6 +26,7 @@ Partial Class F_GetProduct
         Dim GV_DatumLabel As System.Windows.Forms.Label
         Dim GV_BeschrijvingLabel As System.Windows.Forms.Label
         Me.GB_Supplier = New System.Windows.Forms.GroupBox()
+        Me.Knop_Supplier = New System.Windows.Forms.Button()
         Me.Knop_DetailsShop = New System.Windows.Forms.Button()
         Me.Label2 = New System.Windows.Forms.Label()
         Me.CB_Shop = New System.Windows.Forms.ComboBox()
@@ -36,6 +37,7 @@ Partial Class F_GetProduct
         Me.CB_Supplier = New System.Windows.Forms.ComboBox()
         Me.SupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GB_Products = New System.Windows.Forms.GroupBox()
+        Me.Knop_Kosten = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.DG_List = New System.Windows.Forms.DataGridView()
         Me.IDGetOntvangstDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -51,7 +53,10 @@ Partial Class F_GetProduct
         Me.GPBuyPriceEURDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GetProductListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Knop_Actie = New System.Windows.Forms.Button()
+        Me.Knop_ProductPlus = New System.Windows.Forms.Button()
         Me.GB_Get = New System.Windows.Forms.GroupBox()
+        Me.TXT_Beschrijving = New System.Windows.Forms.TextBox()
+        Me.GV_DatumDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.TXT_NaamGet = New System.Windows.Forms.TextBox()
         Me.ID_GetOntvangstTextBox = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
@@ -64,7 +69,6 @@ Partial Class F_GetProduct
         Me.TXT_output = New System.Windows.Forms.TextBox()
         Me.ShopTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.ShopTableAdapter()
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
-        Me.Knop_ProductPlus = New System.Windows.Forms.Button()
         Me.GetProductListTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GetProductListTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
         Me.Knop_update = New System.Windows.Forms.Button()
@@ -77,10 +81,6 @@ Partial Class F_GetProduct
         Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GetProductAddTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GetProductAddTableAdapter()
         Me.GPA_AantalTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GPA_AantalTableAdapter()
-        Me.GV_DatumDateTimePicker = New System.Windows.Forms.DateTimePicker()
-        Me.TXT_Beschrijving = New System.Windows.Forms.TextBox()
-        Me.Knop_Supplier = New System.Windows.Forms.Button()
-        Me.Knop_Kosten = New System.Windows.Forms.Button()
         GV_DatumLabel = New System.Windows.Forms.Label()
         GV_BeschrijvingLabel = New System.Windows.Forms.Label()
         Me.GB_Supplier.SuspendLayout()
@@ -97,6 +97,24 @@ Partial Class F_GetProduct
         CType(Me.GetProductAddBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
+        'GV_DatumLabel
+        '
+        GV_DatumLabel.AutoSize = True
+        GV_DatumLabel.Location = New System.Drawing.Point(23, 47)
+        GV_DatumLabel.Name = "GV_DatumLabel"
+        GV_DatumLabel.Size = New System.Drawing.Size(41, 13)
+        GV_DatumLabel.TabIndex = 5
+        GV_DatumLabel.Text = "Datum:"
+        '
+        'GV_BeschrijvingLabel
+        '
+        GV_BeschrijvingLabel.AutoSize = True
+        GV_BeschrijvingLabel.Location = New System.Drawing.Point(23, 70)
+        GV_BeschrijvingLabel.Name = "GV_BeschrijvingLabel"
+        GV_BeschrijvingLabel.Size = New System.Drawing.Size(52, 13)
+        GV_BeschrijvingLabel.TabIndex = 6
+        GV_BeschrijvingLabel.Text = "Kenmerk:"
+        '
         'GB_Supplier
         '
         Me.GB_Supplier.Controls.Add(Me.Knop_Supplier)
@@ -111,6 +129,15 @@ Partial Class F_GetProduct
         Me.GB_Supplier.TabIndex = 0
         Me.GB_Supplier.TabStop = False
         Me.GB_Supplier.Text = "Herkomst:"
+        '
+        'Knop_Supplier
+        '
+        Me.Knop_Supplier.Location = New System.Drawing.Point(354, 17)
+        Me.Knop_Supplier.Name = "Knop_Supplier"
+        Me.Knop_Supplier.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Supplier.TabIndex = 6
+        Me.Knop_Supplier.Text = "&Leverancier"
+        Me.Knop_Supplier.UseVisualStyleBackColor = True
         '
         'Knop_DetailsShop
         '
@@ -196,6 +223,15 @@ Partial Class F_GetProduct
         Me.GB_Products.TabIndex = 1
         Me.GB_Products.TabStop = False
         Me.GB_Products.Text = "wat ontvangen?"
+        '
+        'Knop_Kosten
+        '
+        Me.Knop_Kosten.Location = New System.Drawing.Point(17, 175)
+        Me.Knop_Kosten.Name = "Knop_Kosten"
+        Me.Knop_Kosten.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Kosten.TabIndex = 7
+        Me.Knop_Kosten.Text = "&Kosten"
+        Me.Knop_Kosten.UseVisualStyleBackColor = True
         '
         'Button2
         '
@@ -312,6 +348,15 @@ Partial Class F_GetProduct
         Me.Knop_Actie.Text = "Boek lijst als ontvangst"
         Me.Knop_Actie.UseVisualStyleBackColor = True
         '
+        'Knop_ProductPlus
+        '
+        Me.Knop_ProductPlus.Location = New System.Drawing.Point(707, 175)
+        Me.Knop_ProductPlus.Name = "Knop_ProductPlus"
+        Me.Knop_ProductPlus.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_ProductPlus.TabIndex = 9
+        Me.Knop_ProductPlus.Text = "Product +"
+        Me.Knop_ProductPlus.UseVisualStyleBackColor = True
+        '
         'GB_Get
         '
         Me.GB_Get.Controls.Add(GV_BeschrijvingLabel)
@@ -328,6 +373,23 @@ Partial Class F_GetProduct
         Me.GB_Get.TabIndex = 2
         Me.GB_Get.TabStop = False
         Me.GB_Get.Text = "Producten verwerken"
+        '
+        'TXT_Beschrijving
+        '
+        Me.TXT_Beschrijving.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetOntvangstBindingSource, "GV_Beschrijving", True))
+        Me.TXT_Beschrijving.Location = New System.Drawing.Point(86, 67)
+        Me.TXT_Beschrijving.Multiline = True
+        Me.TXT_Beschrijving.Name = "TXT_Beschrijving"
+        Me.TXT_Beschrijving.Size = New System.Drawing.Size(262, 37)
+        Me.TXT_Beschrijving.TabIndex = 7
+        '
+        'GV_DatumDateTimePicker
+        '
+        Me.GV_DatumDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.GetOntvangstBindingSource, "GV_Datum", True))
+        Me.GV_DatumDateTimePicker.Location = New System.Drawing.Point(86, 41)
+        Me.GV_DatumDateTimePicker.Name = "GV_DatumDateTimePicker"
+        Me.GV_DatumDateTimePicker.Size = New System.Drawing.Size(262, 20)
+        Me.GV_DatumDateTimePicker.TabIndex = 6
         '
         'TXT_NaamGet
         '
@@ -426,15 +488,6 @@ Partial Class F_GetProduct
         Me.Knop_Nieuw.Text = "Nieuwe levering, order"
         Me.Knop_Nieuw.UseVisualStyleBackColor = True
         '
-        'Knop_ProductPlus
-        '
-        Me.Knop_ProductPlus.Location = New System.Drawing.Point(707, 175)
-        Me.Knop_ProductPlus.Name = "Knop_ProductPlus"
-        Me.Knop_ProductPlus.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_ProductPlus.TabIndex = 9
-        Me.Knop_ProductPlus.Text = "Product +"
-        Me.Knop_ProductPlus.UseVisualStyleBackColor = True
-        '
         'GetProductListTableAdapter
         '
         Me.GetProductListTableAdapter.ClearBeforeFill = True
@@ -509,59 +562,6 @@ Partial Class F_GetProduct
         'GPA_AantalTableAdapter
         '
         Me.GPA_AantalTableAdapter.ClearBeforeFill = True
-        '
-        'GV_DatumLabel
-        '
-        GV_DatumLabel.AutoSize = True
-        GV_DatumLabel.Location = New System.Drawing.Point(23, 47)
-        GV_DatumLabel.Name = "GV_DatumLabel"
-        GV_DatumLabel.Size = New System.Drawing.Size(41, 13)
-        GV_DatumLabel.TabIndex = 5
-        GV_DatumLabel.Text = "Datum:"
-        '
-        'GV_DatumDateTimePicker
-        '
-        Me.GV_DatumDateTimePicker.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.GetOntvangstBindingSource, "GV_Datum", True))
-        Me.GV_DatumDateTimePicker.Location = New System.Drawing.Point(86, 41)
-        Me.GV_DatumDateTimePicker.Name = "GV_DatumDateTimePicker"
-        Me.GV_DatumDateTimePicker.Size = New System.Drawing.Size(262, 20)
-        Me.GV_DatumDateTimePicker.TabIndex = 6
-        '
-        'GV_BeschrijvingLabel
-        '
-        GV_BeschrijvingLabel.AutoSize = True
-        GV_BeschrijvingLabel.Location = New System.Drawing.Point(23, 70)
-        GV_BeschrijvingLabel.Name = "GV_BeschrijvingLabel"
-        GV_BeschrijvingLabel.Size = New System.Drawing.Size(52, 13)
-        GV_BeschrijvingLabel.TabIndex = 6
-        GV_BeschrijvingLabel.Text = "Kenmerk:"
-        '
-        'TXT_Beschrijving
-        '
-        Me.TXT_Beschrijving.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetOntvangstBindingSource, "GV_Beschrijving", True))
-        Me.TXT_Beschrijving.Location = New System.Drawing.Point(86, 67)
-        Me.TXT_Beschrijving.Multiline = True
-        Me.TXT_Beschrijving.Name = "TXT_Beschrijving"
-        Me.TXT_Beschrijving.Size = New System.Drawing.Size(262, 37)
-        Me.TXT_Beschrijving.TabIndex = 7
-        '
-        'Knop_Supplier
-        '
-        Me.Knop_Supplier.Location = New System.Drawing.Point(354, 17)
-        Me.Knop_Supplier.Name = "Knop_Supplier"
-        Me.Knop_Supplier.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Supplier.TabIndex = 6
-        Me.Knop_Supplier.Text = "&Leverancier"
-        Me.Knop_Supplier.UseVisualStyleBackColor = True
-        '
-        'Knop_Kosten
-        '
-        Me.Knop_Kosten.Location = New System.Drawing.Point(17, 175)
-        Me.Knop_Kosten.Name = "Knop_Kosten"
-        Me.Knop_Kosten.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Kosten.TabIndex = 7
-        Me.Knop_Kosten.Text = "&Kosten"
-        Me.Knop_Kosten.UseVisualStyleBackColor = True
         '
         'F_GetProduct
         '

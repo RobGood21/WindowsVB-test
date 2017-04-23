@@ -394,7 +394,6 @@ Partial Class F_Shop
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BetaalWijzenTableAdapter = Nothing
-        Me.TableAdapterManager.GrootboekTableAdapter = Nothing
         Me.TableAdapterManager.LandTableAdapter = Me.LandTableAdapter
         Me.TableAdapterManager.ShopTableAdapter = Me.ShopTableAdapter
         Me.TableAdapterManager.SupplierTableAdapter = Me.SupplierTableAdapter

@@ -61,7 +61,6 @@ Partial Class F_Land
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BetaalWijzenTableAdapter = Nothing
-        Me.TableAdapterManager.GrootboekTableAdapter = Nothing
         Me.TableAdapterManager.LandTableAdapter = Me.LandTableAdapter
         Me.TableAdapterManager.SupplierTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete

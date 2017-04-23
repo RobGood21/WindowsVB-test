@@ -26,10 +26,7 @@ Partial Class F_Wisselmotor
         Me.ToolStripMenuItem1 = New System.Windows.Forms.ToolStripMenuItem()
         Me.OpeningToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.FinancieelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.ValutaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.LandenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.BetaalWijzenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AfsluitenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OnderhoudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductgroepenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MerkenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -38,13 +35,17 @@ Partial Class F_Wisselmotor
         Me.SuppliersToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ShopsToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.KlantenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.AfsluitenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.FinancieelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ValutaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.LandenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.BetaalWijzenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GrootboekrekeningenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'MenuStrip1
         '
-        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.FinancieelToolStripMenuItem, Me.OnderhoudToolStripMenuItem, Me.RelatiesToolStripMenuItem})
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem1, Me.OnderhoudToolStripMenuItem, Me.RelatiesToolStripMenuItem, Me.FinancieelToolStripMenuItem})
         Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
         Me.MenuStrip1.Name = "MenuStrip1"
         Me.MenuStrip1.Size = New System.Drawing.Size(784, 24)
@@ -61,38 +62,19 @@ Partial Class F_Wisselmotor
         'OpeningToolStripMenuItem
         '
         Me.OpeningToolStripMenuItem.Name = "OpeningToolStripMenuItem"
-        Me.OpeningToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.OpeningToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
         Me.OpeningToolStripMenuItem.Text = "Opening"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(149, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(118, 6)
         '
-        'FinancieelToolStripMenuItem
+        'AfsluitenToolStripMenuItem
         '
-        Me.FinancieelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ValutaToolStripMenuItem, Me.LandenToolStripMenuItem, Me.BetaalWijzenToolStripMenuItem})
-        Me.FinancieelToolStripMenuItem.Name = "FinancieelToolStripMenuItem"
-        Me.FinancieelToolStripMenuItem.Size = New System.Drawing.Size(72, 20)
-        Me.FinancieelToolStripMenuItem.Text = "Financieel"
-        '
-        'ValutaToolStripMenuItem
-        '
-        Me.ValutaToolStripMenuItem.Name = "ValutaToolStripMenuItem"
-        Me.ValutaToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
-        Me.ValutaToolStripMenuItem.Text = "Valuta"
-        '
-        'LandenToolStripMenuItem
-        '
-        Me.LandenToolStripMenuItem.Name = "LandenToolStripMenuItem"
-        Me.LandenToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
-        Me.LandenToolStripMenuItem.Text = "Landen"
-        '
-        'BetaalWijzenToolStripMenuItem
-        '
-        Me.BetaalWijzenToolStripMenuItem.Name = "BetaalWijzenToolStripMenuItem"
-        Me.BetaalWijzenToolStripMenuItem.Size = New System.Drawing.Size(141, 22)
-        Me.BetaalWijzenToolStripMenuItem.Text = "BetaalWijzen"
+        Me.AfsluitenToolStripMenuItem.Name = "AfsluitenToolStripMenuItem"
+        Me.AfsluitenToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.AfsluitenToolStripMenuItem.Text = "Afsluiten"
         '
         'OnderhoudToolStripMenuItem
         '
@@ -129,26 +111,51 @@ Partial Class F_Wisselmotor
         'SuppliersToolStripMenuItem
         '
         Me.SuppliersToolStripMenuItem.Name = "SuppliersToolStripMenuItem"
-        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.SuppliersToolStripMenuItem.Text = "Suppliers"
         '
         'ShopsToolStripMenuItem
         '
         Me.ShopsToolStripMenuItem.Name = "ShopsToolStripMenuItem"
-        Me.ShopsToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.ShopsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.ShopsToolStripMenuItem.Text = "Shops"
         '
         'KlantenToolStripMenuItem
         '
         Me.KlantenToolStripMenuItem.Name = "KlantenToolStripMenuItem"
-        Me.KlantenToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.KlantenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
         Me.KlantenToolStripMenuItem.Text = "Klanten"
         '
-        'AfsluitenToolStripMenuItem
+        'FinancieelToolStripMenuItem
         '
-        Me.AfsluitenToolStripMenuItem.Name = "AfsluitenToolStripMenuItem"
-        Me.AfsluitenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
-        Me.AfsluitenToolStripMenuItem.Text = "Afsluiten"
+        Me.FinancieelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ValutaToolStripMenuItem, Me.LandenToolStripMenuItem, Me.BetaalWijzenToolStripMenuItem, Me.GrootboekrekeningenToolStripMenuItem})
+        Me.FinancieelToolStripMenuItem.Name = "FinancieelToolStripMenuItem"
+        Me.FinancieelToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
+        Me.FinancieelToolStripMenuItem.Text = "Administratie"
+        '
+        'ValutaToolStripMenuItem
+        '
+        Me.ValutaToolStripMenuItem.Name = "ValutaToolStripMenuItem"
+        Me.ValutaToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.ValutaToolStripMenuItem.Text = "Valuta"
+        '
+        'LandenToolStripMenuItem
+        '
+        Me.LandenToolStripMenuItem.Name = "LandenToolStripMenuItem"
+        Me.LandenToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.LandenToolStripMenuItem.Text = "Landen"
+        '
+        'BetaalWijzenToolStripMenuItem
+        '
+        Me.BetaalWijzenToolStripMenuItem.Name = "BetaalWijzenToolStripMenuItem"
+        Me.BetaalWijzenToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.BetaalWijzenToolStripMenuItem.Text = "BetaalWijzen"
+        '
+        'GrootboekrekeningenToolStripMenuItem
+        '
+        Me.GrootboekrekeningenToolStripMenuItem.Name = "GrootboekrekeningenToolStripMenuItem"
+        Me.GrootboekrekeningenToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
+        Me.GrootboekrekeningenToolStripMenuItem.Text = "Grootboekrekeningen"
         '
         'F_Wisselmotor
         '
@@ -174,10 +181,6 @@ Partial Class F_Wisselmotor
     Friend WithEvents OnderhoudToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductgroepenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents MerkenToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents FinancieelToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents ValutaToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents LandenToolStripMenuItem As ToolStripMenuItem
-    Friend WithEvents BetaalWijzenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents RelatiesToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents SuppliersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ShopsToolStripMenuItem As ToolStripMenuItem
@@ -185,4 +188,9 @@ Partial Class F_Wisselmotor
     Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
     Friend WithEvents ProductenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents AfsluitenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents FinancieelToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ValutaToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LandenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents BetaalWijzenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents GrootboekrekeningenToolStripMenuItem As ToolStripMenuItem
 End Class

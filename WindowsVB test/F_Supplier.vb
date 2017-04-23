@@ -23,7 +23,6 @@
             .SetToolTip(Me.Knop_Nieuw, "Leverancier toevoegen.")
             .SetToolTip(Me.Knop_Annuleren, "alle invoer ongedaan maken")
             .SetToolTip(Me.Knop_opslaan, "Alle invoer en aanpassingen opslaan en formulier sluiten")
-            .SetToolTip(Me.Knop_Delete, "Getoonde leverancier wissen.")
             .SetToolTip(Me.Knop_Save, "Alle invoer (tussentijds) opslaan.")
 
             'Textboxes en comboos
@@ -48,14 +47,15 @@
     End Sub
 
     Private Sub F_Supplier_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+
+
         ToolTipsInstellen()
 
-        Me.GrootboekTableAdapter.Fill(Me.DS_Supplier.Grootboek)
+        'Me.GrootboekTableAdapter.Fill(Me.DS_Supplier.Grootboek)
         Me.ValutaTableAdapter.Fill(Me.DS_Supplier.Valuta)
         Me.BetaalWijzenTableAdapter.Fill(Me.DS_Supplier.BetaalWijzen)
         Me.LandTableAdapter.Fill(Me.DS_Supplier.Land)
-        'TODO: This line of code loads data into the 'DS_Supplier.Supplier' table. You can move, or remove it, as needed.
-        'Me.SupplierTableAdapter.Fill(Me.DS_Supplier.Supplier)
+        Me.AdmGBrekeningTableAdapter.Fill(Me.DS_Supplier.AdmGBrekening)
 
         LaadData()
 
@@ -110,6 +110,8 @@
 
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         Me.SupplierBindingSource.AddNew()
+        Me.Ch_Webwinkel.Checked = False
+        Me.Ch_Winkel.Checked = False
     End Sub
 
 
@@ -127,5 +129,12 @@
 
     End Sub
 
+    Private Sub Knop_Save_Click(sender As Object, e As EventArgs) Handles Knop_Save.Click
+        Opslaan()
+    End Sub
 
+    Private Sub Knop_Delete_Click(sender As Object, e As EventArgs)
+        Dim janee As Integer
+        janee = MsgBox("Weet je zeker dat je deze leverancier uit de lijst leveranciers wilt verwijderen?", vbYesNo, "Verwijderen leverancier bevestigen.")
+    End Sub
 End Class

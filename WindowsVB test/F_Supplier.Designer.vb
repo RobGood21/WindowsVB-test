@@ -26,7 +26,6 @@ Partial Class F_Supplier
         Dim SP_AdresXtraLabel As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
-        Dim ID_GrootboekLabel As System.Windows.Forms.Label
         Dim SP_IBANLabel As System.Windows.Forms.Label
         Dim SP_ShiftLabel As System.Windows.Forms.Label
         Dim SP_BankLabel As System.Windows.Forms.Label
@@ -44,21 +43,16 @@ Partial Class F_Supplier
         Dim SP_NaamLabel As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
+        Dim ID_GrootboekLabel As System.Windows.Forms.Label
         Me.DS_Supplier = New WindowsVB_test.DS_Supplier()
         Me.SupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SupplierTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.SupplierTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager()
-        Me.GrootboekTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.GrootboekTableAdapter()
         Me.LandTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.LandTableAdapter()
-        Me.ValutaTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ValutaTableAdapter()
         Me.ID_SupplierTextBox = New System.Windows.Forms.TextBox()
         Me.GB_Supplier = New System.Windows.Forms.GroupBox()
         Me.TextBox1 = New System.Windows.Forms.TextBox()
-        Me.CB_Grootboek = New System.Windows.Forms.ComboBox()
-        Me.GrootboekBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_Valuta = New System.Windows.Forms.ComboBox()
-        Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DSSupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_BetaalWijzen = New System.Windows.Forms.ComboBox()
         Me.BetaalWijzenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TXT_Kenmerk = New System.Windows.Forms.TextBox()
@@ -83,14 +77,17 @@ Partial Class F_Supplier
         Me.Knop_opslaan = New System.Windows.Forms.Button()
         Me.BetaalWijzenTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.BetaalWijzenTableAdapter()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
-        Me.Knop_Delete = New System.Windows.Forms.Button()
         Me.Knop_Save = New System.Windows.Forms.Button()
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
         Me.Knop_Link = New System.Windows.Forms.Button()
+        Me.AdmGBrekeningTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.AdmGBrekeningTableAdapter()
+        Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ValutaTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ValutaTableAdapter()
+        Me.AdmGBrekeningBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.CB_Grootboek = New System.Windows.Forms.ComboBox()
         SP_AdresXtraLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
-        ID_GrootboekLabel = New System.Windows.Forms.Label()
         SP_IBANLabel = New System.Windows.Forms.Label()
         SP_ShiftLabel = New System.Windows.Forms.Label()
         SP_BankLabel = New System.Windows.Forms.Label()
@@ -108,14 +105,14 @@ Partial Class F_Supplier
         SP_NaamLabel = New System.Windows.Forms.Label()
         Label3 = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
+        ID_GrootboekLabel = New System.Windows.Forms.Label()
         CType(Me.DS_Supplier, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GB_Supplier.SuspendLayout()
-        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AdmGBrekeningBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'SP_AdresXtraLabel
@@ -143,15 +140,6 @@ Partial Class F_Supplier
         Label1.Size = New System.Drawing.Size(34, 13)
         Label1.TabIndex = 76
         Label1.Text = "Land:"
-        '
-        'ID_GrootboekLabel
-        '
-        ID_GrootboekLabel.AutoSize = True
-        ID_GrootboekLabel.Location = New System.Drawing.Point(298, 198)
-        ID_GrootboekLabel.Name = "ID_GrootboekLabel"
-        ID_GrootboekLabel.Size = New System.Drawing.Size(60, 13)
-        ID_GrootboekLabel.TabIndex = 74
-        ID_GrootboekLabel.Text = "Grootboek:"
         '
         'SP_IBANLabel
         '
@@ -324,30 +312,20 @@ Partial Class F_Supplier
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BetaalWijzenTableAdapter = Nothing
-        Me.TableAdapterManager.GrootboekTableAdapter = Me.GrootboekTableAdapter
         Me.TableAdapterManager.LandTableAdapter = Me.LandTableAdapter
         Me.TableAdapterManager.ShopTableAdapter = Nothing
         Me.TableAdapterManager.SupplierTableAdapter = Me.SupplierTableAdapter
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        Me.TableAdapterManager.ValutaTableAdapter = Me.ValutaTableAdapter
-        '
-        'GrootboekTableAdapter
-        '
-        Me.GrootboekTableAdapter.ClearBeforeFill = True
         '
         'LandTableAdapter
         '
         Me.LandTableAdapter.ClearBeforeFill = True
         '
-        'ValutaTableAdapter
-        '
-        Me.ValutaTableAdapter.ClearBeforeFill = True
-        '
         'ID_SupplierTextBox
         '
         Me.ID_SupplierTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Supplier", True))
         Me.ID_SupplierTextBox.Enabled = False
-        Me.ID_SupplierTextBox.Location = New System.Drawing.Point(466, 12)
+        Me.ID_SupplierTextBox.Location = New System.Drawing.Point(495, 12)
         Me.ID_SupplierTextBox.Name = "ID_SupplierTextBox"
         Me.ID_SupplierTextBox.ReadOnly = True
         Me.ID_SupplierTextBox.Size = New System.Drawing.Size(37, 20)
@@ -411,24 +389,8 @@ Partial Class F_Supplier
         Me.TextBox1.Location = New System.Drawing.Point(83, 18)
         Me.TextBox1.Name = "TextBox1"
         Me.TextBox1.Size = New System.Drawing.Size(187, 20)
-        Me.TextBox1.TabIndex = 87
-        '
-        'CB_Grootboek
-        '
-        Me.CB_Grootboek.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SupplierBindingSource, "ID_Grootboek", True))
-        Me.CB_Grootboek.DataSource = Me.GrootboekBindingSource
-        Me.CB_Grootboek.DisplayMember = "GB_naam"
-        Me.CB_Grootboek.FormattingEnabled = True
-        Me.CB_Grootboek.Location = New System.Drawing.Point(374, 195)
-        Me.CB_Grootboek.Name = "CB_Grootboek"
-        Me.CB_Grootboek.Size = New System.Drawing.Size(141, 21)
-        Me.CB_Grootboek.TabIndex = 86
-        Me.CB_Grootboek.ValueMember = "ID_GrootBoek"
-        '
-        'GrootboekBindingSource
-        '
-        Me.GrootboekBindingSource.DataMember = "Grootboek"
-        Me.GrootboekBindingSource.DataSource = Me.DS_Supplier
+        Me.TextBox1.TabIndex = 0
+        Me.TextBox1.TabStop = False
         '
         'CB_Valuta
         '
@@ -439,18 +401,8 @@ Partial Class F_Supplier
         Me.CB_Valuta.Location = New System.Drawing.Point(374, 84)
         Me.CB_Valuta.Name = "CB_Valuta"
         Me.CB_Valuta.Size = New System.Drawing.Size(141, 21)
-        Me.CB_Valuta.TabIndex = 47
+        Me.CB_Valuta.TabIndex = 15
         Me.CB_Valuta.ValueMember = "ID_valuta"
-        '
-        'ValutaBindingSource
-        '
-        Me.ValutaBindingSource.DataMember = "Valuta"
-        Me.ValutaBindingSource.DataSource = Me.DSSupplierBindingSource
-        '
-        'DSSupplierBindingSource
-        '
-        Me.DSSupplierBindingSource.DataSource = Me.DS_Supplier
-        Me.DSSupplierBindingSource.Position = 0
         '
         'CB_BetaalWijzen
         '
@@ -461,7 +413,7 @@ Partial Class F_Supplier
         Me.CB_BetaalWijzen.Location = New System.Drawing.Point(374, 39)
         Me.CB_BetaalWijzen.Name = "CB_BetaalWijzen"
         Me.CB_BetaalWijzen.Size = New System.Drawing.Size(141, 21)
-        Me.CB_BetaalWijzen.TabIndex = 84
+        Me.CB_BetaalWijzen.TabIndex = 13
         Me.CB_BetaalWijzen.ValueMember = "ID_BetaalWijzen"
         '
         'BetaalWijzenBindingSource
@@ -476,7 +428,7 @@ Partial Class F_Supplier
         Me.TXT_Kenmerk.Multiline = True
         Me.TXT_Kenmerk.Name = "TXT_Kenmerk"
         Me.TXT_Kenmerk.Size = New System.Drawing.Size(253, 68)
-        Me.TXT_Kenmerk.TabIndex = 12
+        Me.TXT_Kenmerk.TabIndex = 11
         '
         'Ch_Winkel
         '
@@ -485,7 +437,7 @@ Partial Class F_Supplier
         Me.Ch_Winkel.Location = New System.Drawing.Point(189, 222)
         Me.Ch_Winkel.Name = "Ch_Winkel"
         Me.Ch_Winkel.Size = New System.Drawing.Size(59, 17)
-        Me.Ch_Winkel.TabIndex = 11
+        Me.Ch_Winkel.TabIndex = 10
         Me.Ch_Winkel.Text = "Winkel"
         Me.Ch_Winkel.UseVisualStyleBackColor = True
         '
@@ -496,7 +448,7 @@ Partial Class F_Supplier
         Me.Ch_Webwinkel.Location = New System.Drawing.Point(83, 222)
         Me.Ch_Webwinkel.Name = "Ch_Webwinkel"
         Me.Ch_Webwinkel.Size = New System.Drawing.Size(79, 17)
-        Me.Ch_Webwinkel.TabIndex = 10
+        Me.Ch_Webwinkel.TabIndex = 9
         Me.Ch_Webwinkel.Text = "Webwinkel"
         Me.Ch_Webwinkel.UseVisualStyleBackColor = True
         '
@@ -521,7 +473,7 @@ Partial Class F_Supplier
         Me.CB_Land.Location = New System.Drawing.Point(83, 128)
         Me.CB_Land.Name = "CB_Land"
         Me.CB_Land.Size = New System.Drawing.Size(187, 21)
-        Me.CB_Land.TabIndex = 6
+        Me.CB_Land.TabIndex = 5
         Me.CB_Land.ValueMember = "ID_Land"
         '
         'LandBindingSource
@@ -535,7 +487,7 @@ Partial Class F_Supplier
         Me.SP_IBANTextBox.Location = New System.Drawing.Point(374, 151)
         Me.SP_IBANTextBox.Name = "SP_IBANTextBox"
         Me.SP_IBANTextBox.Size = New System.Drawing.Size(141, 20)
-        Me.SP_IBANTextBox.TabIndex = 73
+        Me.SP_IBANTextBox.TabIndex = 18
         '
         'SP_ShiftTextBox
         '
@@ -543,7 +495,7 @@ Partial Class F_Supplier
         Me.SP_ShiftTextBox.Location = New System.Drawing.Point(374, 129)
         Me.SP_ShiftTextBox.Name = "SP_ShiftTextBox"
         Me.SP_ShiftTextBox.Size = New System.Drawing.Size(141, 20)
-        Me.SP_ShiftTextBox.TabIndex = 71
+        Me.SP_ShiftTextBox.TabIndex = 17
         '
         'SP_BankTextBox
         '
@@ -551,7 +503,7 @@ Partial Class F_Supplier
         Me.SP_BankTextBox.Location = New System.Drawing.Point(374, 107)
         Me.SP_BankTextBox.Name = "SP_BankTextBox"
         Me.SP_BankTextBox.Size = New System.Drawing.Size(141, 20)
-        Me.SP_BankTextBox.TabIndex = 69
+        Me.SP_BankTextBox.TabIndex = 16
         '
         'SP_TermijnTextBox
         '
@@ -559,7 +511,7 @@ Partial Class F_Supplier
         Me.SP_TermijnTextBox.Location = New System.Drawing.Point(374, 62)
         Me.SP_TermijnTextBox.Name = "SP_TermijnTextBox"
         Me.SP_TermijnTextBox.Size = New System.Drawing.Size(34, 20)
-        Me.SP_TermijnTextBox.TabIndex = 65
+        Me.SP_TermijnTextBox.TabIndex = 14
         '
         'SP_VATnumberTextBox
         '
@@ -567,7 +519,7 @@ Partial Class F_Supplier
         Me.SP_VATnumberTextBox.Location = New System.Drawing.Point(374, 173)
         Me.SP_VATnumberTextBox.Name = "SP_VATnumberTextBox"
         Me.SP_VATnumberTextBox.Size = New System.Drawing.Size(141, 20)
-        Me.SP_VATnumberTextBox.TabIndex = 61
+        Me.SP_VATnumberTextBox.TabIndex = 19
         '
         'TXT_Website
         '
@@ -575,7 +527,7 @@ Partial Class F_Supplier
         Me.TXT_Website.Location = New System.Drawing.Point(83, 195)
         Me.TXT_Website.Name = "TXT_Website"
         Me.TXT_Website.Size = New System.Drawing.Size(187, 20)
-        Me.TXT_Website.TabIndex = 9
+        Me.TXT_Website.TabIndex = 8
         '
         'SP_EmailTextBox
         '
@@ -583,7 +535,7 @@ Partial Class F_Supplier
         Me.SP_EmailTextBox.Location = New System.Drawing.Point(83, 173)
         Me.SP_EmailTextBox.Name = "SP_EmailTextBox"
         Me.SP_EmailTextBox.Size = New System.Drawing.Size(187, 20)
-        Me.SP_EmailTextBox.TabIndex = 8
+        Me.SP_EmailTextBox.TabIndex = 7
         '
         'SP_PhoneTextBox
         '
@@ -591,7 +543,7 @@ Partial Class F_Supplier
         Me.SP_PhoneTextBox.Location = New System.Drawing.Point(83, 151)
         Me.SP_PhoneTextBox.Name = "SP_PhoneTextBox"
         Me.SP_PhoneTextBox.Size = New System.Drawing.Size(187, 20)
-        Me.SP_PhoneTextBox.TabIndex = 7
+        Me.SP_PhoneTextBox.TabIndex = 6
         '
         'SP_DebiteurKenmerkTextBox
         '
@@ -599,7 +551,7 @@ Partial Class F_Supplier
         Me.SP_DebiteurKenmerkTextBox.Location = New System.Drawing.Point(374, 17)
         Me.SP_DebiteurKenmerkTextBox.Name = "SP_DebiteurKenmerkTextBox"
         Me.SP_DebiteurKenmerkTextBox.Size = New System.Drawing.Size(141, 20)
-        Me.SP_DebiteurKenmerkTextBox.TabIndex = 13
+        Me.SP_DebiteurKenmerkTextBox.TabIndex = 12
         '
         'SP_PlaatsTextBox
         '
@@ -607,7 +559,7 @@ Partial Class F_Supplier
         Me.SP_PlaatsTextBox.Location = New System.Drawing.Point(83, 106)
         Me.SP_PlaatsTextBox.Name = "SP_PlaatsTextBox"
         Me.SP_PlaatsTextBox.Size = New System.Drawing.Size(187, 20)
-        Me.SP_PlaatsTextBox.TabIndex = 5
+        Me.SP_PlaatsTextBox.TabIndex = 4
         '
         'SP_PostcodeTextBox
         '
@@ -615,7 +567,7 @@ Partial Class F_Supplier
         Me.SP_PostcodeTextBox.Location = New System.Drawing.Point(83, 84)
         Me.SP_PostcodeTextBox.Name = "SP_PostcodeTextBox"
         Me.SP_PostcodeTextBox.Size = New System.Drawing.Size(187, 20)
-        Me.SP_PostcodeTextBox.TabIndex = 4
+        Me.SP_PostcodeTextBox.TabIndex = 3
         '
         'SP_AdresXtraTextBox
         '
@@ -623,7 +575,7 @@ Partial Class F_Supplier
         Me.SP_AdresXtraTextBox.Location = New System.Drawing.Point(83, 62)
         Me.SP_AdresXtraTextBox.Name = "SP_AdresXtraTextBox"
         Me.SP_AdresXtraTextBox.Size = New System.Drawing.Size(187, 20)
-        Me.SP_AdresXtraTextBox.TabIndex = 3
+        Me.SP_AdresXtraTextBox.TabIndex = 2
         '
         'TXT_adres
         '
@@ -631,7 +583,7 @@ Partial Class F_Supplier
         Me.TXT_adres.Location = New System.Drawing.Point(83, 40)
         Me.TXT_adres.Name = "TXT_adres"
         Me.TXT_adres.Size = New System.Drawing.Size(187, 20)
-        Me.TXT_adres.TabIndex = 2
+        Me.TXT_adres.TabIndex = 1
         '
         'Knop_opslaan
         '
@@ -652,19 +604,9 @@ Partial Class F_Supplier
         Me.Knop_Annuleren.Name = "Knop_Annuleren"
         Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Annuleren.TabIndex = 47
+        Me.Knop_Annuleren.TabStop = False
         Me.Knop_Annuleren.Text = "&Annuleren"
         Me.Knop_Annuleren.UseVisualStyleBackColor = True
-        '
-        'Knop_Delete
-        '
-        Me.Knop_Delete.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Windows_Close_Program_icon
-        Me.Knop_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Delete.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Delete.Location = New System.Drawing.Point(543, 6)
-        Me.Knop_Delete.Name = "Knop_Delete"
-        Me.Knop_Delete.Size = New System.Drawing.Size(30, 30)
-        Me.Knop_Delete.TabIndex = 49
-        Me.Knop_Delete.UseVisualStyleBackColor = True
         '
         'Knop_Save
         '
@@ -683,6 +625,7 @@ Partial Class F_Supplier
         Me.Knop_Nieuw.Name = "Knop_Nieuw"
         Me.Knop_Nieuw.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Nieuw.TabIndex = 50
+        Me.Knop_Nieuw.TabStop = False
         Me.Knop_Nieuw.Text = "&Nieuw"
         Me.Knop_Nieuw.UseVisualStyleBackColor = True
         '
@@ -690,11 +633,51 @@ Partial Class F_Supplier
         '
         Me.Knop_Link.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Insert_hyperlink_icon
         Me.Knop_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Link.Location = New System.Drawing.Point(509, 6)
+        Me.Knop_Link.Location = New System.Drawing.Point(538, 6)
         Me.Knop_Link.Name = "Knop_Link"
         Me.Knop_Link.Size = New System.Drawing.Size(30, 30)
         Me.Knop_Link.TabIndex = 52
         Me.Knop_Link.UseVisualStyleBackColor = True
+        '
+        'AdmGBrekeningTableAdapter
+        '
+        Me.AdmGBrekeningTableAdapter.ClearBeforeFill = True
+        '
+        'ValutaBindingSource
+        '
+        Me.ValutaBindingSource.DataMember = "Valuta"
+        Me.ValutaBindingSource.DataSource = Me.DS_Supplier
+        '
+        'ValutaTableAdapter
+        '
+        Me.ValutaTableAdapter.ClearBeforeFill = True
+        '
+        'AdmGBrekeningBindingSource
+        '
+        Me.AdmGBrekeningBindingSource.DataMember = "AdmGBrekening"
+        Me.AdmGBrekeningBindingSource.DataSource = Me.DS_Supplier
+        '
+        'ID_GrootboekLabel
+        '
+        ID_GrootboekLabel.AutoSize = True
+        ID_GrootboekLabel.Location = New System.Drawing.Point(298, 198)
+        ID_GrootboekLabel.Name = "ID_GrootboekLabel"
+        ID_GrootboekLabel.Size = New System.Drawing.Size(60, 13)
+        ID_GrootboekLabel.TabIndex = 74
+        ID_GrootboekLabel.Text = "Grootboek:"
+        '
+        'CB_Grootboek
+        '
+        Me.CB_Grootboek.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SupplierBindingSource, "ID_Grootboek", True))
+        Me.CB_Grootboek.DataSource = Me.AdmGBrekeningBindingSource
+        Me.CB_Grootboek.DisplayMember = "GB_naam"
+        Me.CB_Grootboek.FormattingEnabled = True
+        Me.CB_Grootboek.Location = New System.Drawing.Point(374, 195)
+        Me.CB_Grootboek.Name = "CB_Grootboek"
+        Me.CB_Grootboek.Size = New System.Drawing.Size(141, 21)
+        Me.CB_Grootboek.TabIndex = 19
+        Me.CB_Grootboek.TabStop = False
+        Me.CB_Grootboek.ValueMember = "ID_Grootboek"
         '
         'F_Supplier
         '
@@ -703,7 +686,6 @@ Partial Class F_Supplier
         Me.ClientSize = New System.Drawing.Size(637, 421)
         Me.Controls.Add(Me.Knop_Link)
         Me.Controls.Add(Me.Knop_Nieuw)
-        Me.Controls.Add(Me.Knop_Delete)
         Me.Controls.Add(Me.Knop_Save)
         Me.Controls.Add(Me.Knop_Annuleren)
         Me.Controls.Add(Me.Knop_opslaan)
@@ -717,11 +699,10 @@ Partial Class F_Supplier
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GB_Supplier.ResumeLayout(False)
         Me.GB_Supplier.PerformLayout()
-        CType(Me.GrootboekBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DSSupplierBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AdmGBrekeningBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -757,17 +738,15 @@ Partial Class F_Supplier
     Friend WithEvents BetaalWijzenBindingSource As BindingSource
     Friend WithEvents BetaalWijzenTableAdapter As DS_SupplierTableAdapters.BetaalWijzenTableAdapter
     Friend WithEvents CB_Valuta As ComboBox
-    Friend WithEvents ValutaTableAdapter As DS_SupplierTableAdapters.ValutaTableAdapter
-    Friend WithEvents CB_Grootboek As ComboBox
-    Friend WithEvents GrootboekTableAdapter As DS_SupplierTableAdapters.GrootboekTableAdapter
     Friend WithEvents Knop_Annuleren As Button
-    Friend WithEvents Knop_Delete As Button
     Friend WithEvents Knop_Save As Button
     Friend WithEvents Knop_Nieuw As Button
     Friend WithEvents Knop_Link As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents CB_NaamSupplier As ComboBox
+    Friend WithEvents AdmGBrekeningTableAdapter As DS_SupplierTableAdapters.AdmGBrekeningTableAdapter
     Friend WithEvents ValutaBindingSource As BindingSource
-    Friend WithEvents DSSupplierBindingSource As BindingSource
-    Friend WithEvents GrootboekBindingSource As BindingSource
+    Friend WithEvents ValutaTableAdapter As DS_SupplierTableAdapters.ValutaTableAdapter
+    Friend WithEvents AdmGBrekeningBindingSource As BindingSource
+    Friend WithEvents CB_Grootboek As ComboBox
 End Class

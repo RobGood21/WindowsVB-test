@@ -87,6 +87,11 @@
     <Import Include="System.Threading.Tasks" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DS_Administratie.Designer.vb">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>DS_Administratie.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS_Product.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -108,10 +113,22 @@
     <Compile Include="DS_Supplier.vb">
       <DependentUpon>DS_Supplier.xsd</DependentUpon>
     </Compile>
+    <Compile Include="F_AdmGBrekening.Designer.vb">
+      <DependentUpon>F_AdmGBrekening.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_AdmGBrekening.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Betaalwijzen.Designer.vb">
       <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Betaalwijzen.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_AdmInkoopboek.Designer.vb">
+      <DependentUpon>F_AdmInkoopboek.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_AdmInkoopboek.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_GetOrder.Designer.vb">
@@ -222,8 +239,14 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <EmbeddedResource Include="F_AdmGBrekening.resx">
+      <DependentUpon>F_AdmGBrekening.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Betaalwijzen.resx">
       <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_AdmInkoopboek.resx">
+      <DependentUpon>F_AdmInkoopboek.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_GetOrder.resx">
       <DependentUpon>F_GetOrder.vb</DependentUpon>
@@ -278,6 +301,17 @@
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
+    <None Include="DS_Administratie.xsc">
+      <DependentUpon>DS_Administratie.xsd</DependentUpon>
+    </None>
+    <None Include="DS_Administratie.xsd">
+      <Generator>MSDataSetGenerator</Generator>
+      <LastGenOutput>DS_Administratie.Designer.vb</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="DS_Administratie.xss">
+      <DependentUpon>DS_Administratie.xsd</DependentUpon>
+    </None>
     <None Include="DS_Product.xsc">
       <DependentUpon>DS_Product.xsd</DependentUpon>
     </None>

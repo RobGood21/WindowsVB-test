@@ -272,4 +272,8 @@
 
 
     End Sub
+
+    Private Sub Knop_Kosten_Click(sender As Object, e As EventArgs) Handles Knop_Kosten.Click
+
+    End Sub
 End Class

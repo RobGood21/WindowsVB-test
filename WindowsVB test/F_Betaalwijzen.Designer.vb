@@ -57,7 +57,6 @@ Partial Class F_Betaalwijzen
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.BetaalWijzenTableAdapter = Me.BetaalWijzenTableAdapter
-        Me.TableAdapterManager.GrootboekTableAdapter = Nothing
         Me.TableAdapterManager.LandTableAdapter = Nothing
         Me.TableAdapterManager.SupplierTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete

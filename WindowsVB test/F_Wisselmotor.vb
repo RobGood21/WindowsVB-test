@@ -30,17 +30,17 @@
 
     End Sub
 
-    Private Sub ValutaToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ValutaToolStripMenuItem.Click
+    Private Sub ValutaToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Valuta.ShowDialog()
 
     End Sub
 
-    Private Sub LandenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles LandenToolStripMenuItem.Click
+    Private Sub LandenToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Land.ShowDialog()
 
     End Sub
 
-    Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BetaalWijzenToolStripMenuItem.Click
+    Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Betaalwijzen.ShowDialog()
     End Sub
 
@@ -52,5 +52,11 @@
 
     Private Sub AfsluitenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AfsluitenToolStripMenuItem.Click
         Me.Close()
+    End Sub
+
+    Private Sub GrootboekrekeningenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles GrootboekrekeningenToolStripMenuItem.Click
+        F_AdmGBrekening.MdiParent = Me
+        F_AdmGBrekening.Show()
+
     End Sub
 End Class

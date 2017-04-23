@@ -2235,13 +2235,13 @@ Partial Public Class DS_Product
         
         Private columnID_Shop As Global.System.Data.DataColumn
         
-        Private columnID_Invoice As Global.System.Data.DataColumn
-        
         Private columnGV_Naam As Global.System.Data.DataColumn
         
         Private columnGV_Datum As Global.System.Data.DataColumn
         
         Private columnGV_Beschrijving As Global.System.Data.DataColumn
+        
+        Private columnID_GetKosten As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -2312,14 +2312,6 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property ID_InvoiceColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnID_Invoice
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property GV_NaamColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnGV_Naam
@@ -2339,6 +2331,14 @@ Partial Public Class DS_Product
         Public ReadOnly Property GV_BeschrijvingColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnGV_Beschrijving
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ID_GetKostenColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_GetKosten
             End Get
         End Property
         
@@ -2379,9 +2379,9 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddGetOntvangstRow(ByVal ID_GetOrder As Integer, ByVal ID_Supplier As Integer, ByVal ID_Shop As Integer, ByVal ID_Invoice As Integer, ByVal GV_Naam As String, ByVal GV_Datum As Date, ByVal GV_Beschrijving As String) As GetOntvangstRow
+        Public Overloads Function AddGetOntvangstRow(ByVal ID_GetOrder As Integer, ByVal ID_Supplier As Integer, ByVal ID_Shop As Integer, ByVal GV_Naam As String, ByVal GV_Datum As Date, ByVal GV_Beschrijving As String, ByVal ID_GetKosten As Integer) As GetOntvangstRow
             Dim rowGetOntvangstRow As GetOntvangstRow = CType(Me.NewRow,GetOntvangstRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ID_GetOrder, ID_Supplier, ID_Shop, ID_Invoice, GV_Naam, GV_Datum, GV_Beschrijving}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ID_GetOrder, ID_Supplier, ID_Shop, GV_Naam, GV_Datum, GV_Beschrijving, ID_GetKosten}
             rowGetOntvangstRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowGetOntvangstRow)
             Return rowGetOntvangstRow
@@ -2414,10 +2414,10 @@ Partial Public Class DS_Product
             Me.columnID_GetOrder = MyBase.Columns("ID_GetOrder")
             Me.columnID_Supplier = MyBase.Columns("ID_Supplier")
             Me.columnID_Shop = MyBase.Columns("ID_Shop")
-            Me.columnID_Invoice = MyBase.Columns("ID_Invoice")
             Me.columnGV_Naam = MyBase.Columns("GV_Naam")
             Me.columnGV_Datum = MyBase.Columns("GV_Datum")
             Me.columnGV_Beschrijving = MyBase.Columns("GV_Beschrijving")
+            Me.columnID_GetKosten = MyBase.Columns("ID_GetKosten")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -2431,14 +2431,14 @@ Partial Public Class DS_Product
             MyBase.Columns.Add(Me.columnID_Supplier)
             Me.columnID_Shop = New Global.System.Data.DataColumn("ID_Shop", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID_Shop)
-            Me.columnID_Invoice = New Global.System.Data.DataColumn("ID_Invoice", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnID_Invoice)
             Me.columnGV_Naam = New Global.System.Data.DataColumn("GV_Naam", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGV_Naam)
             Me.columnGV_Datum = New Global.System.Data.DataColumn("GV_Datum", GetType(Date), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGV_Datum)
             Me.columnGV_Beschrijving = New Global.System.Data.DataColumn("GV_Beschrijving", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGV_Beschrijving)
+            Me.columnID_GetKosten = New Global.System.Data.DataColumn("ID_GetKosten", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_GetKosten)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_GetOntvangst}, true))
             Me.columnID_GetOntvangst.AutoIncrement = true
             Me.columnID_GetOntvangst.AutoIncrementSeed = -1
@@ -4733,21 +4733,6 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property ID_Invoice() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableGetOntvangst.ID_InvoiceColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'ID_Invoice' in table 'GetOntvangst' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableGetOntvangst.ID_InvoiceColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property GV_Naam() As String
             Get
                 Try 
@@ -4793,6 +4778,21 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID_GetKosten() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableGetOntvangst.ID_GetKostenColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ID_GetKosten' in table 'GetOntvangst' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGetOntvangst.ID_GetKostenColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsID_GetOrderNull() As Boolean
             Return Me.IsNull(Me.tableGetOntvangst.ID_GetOrderColumn)
         End Function
@@ -4829,18 +4829,6 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsID_InvoiceNull() As Boolean
-            Return Me.IsNull(Me.tableGetOntvangst.ID_InvoiceColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetID_InvoiceNull()
-            Me(Me.tableGetOntvangst.ID_InvoiceColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsGV_NaamNull() As Boolean
             Return Me.IsNull(Me.tableGetOntvangst.GV_NaamColumn)
         End Function
@@ -4873,6 +4861,18 @@ Partial Public Class DS_Product
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetGV_BeschrijvingNull()
             Me(Me.tableGetOntvangst.GV_BeschrijvingColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsID_GetKostenNull() As Boolean
+            Return Me.IsNull(Me.tableGetOntvangst.ID_GetKostenColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetID_GetKostenNull()
+            Me(Me.tableGetOntvangst.ID_GetKostenColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -7890,10 +7890,10 @@ Namespace DS_ProductTableAdapters
             tableMapping.ColumnMappings.Add("ID_GetOrder", "ID_GetOrder")
             tableMapping.ColumnMappings.Add("ID_Supplier", "ID_Supplier")
             tableMapping.ColumnMappings.Add("ID_Shop", "ID_Shop")
-            tableMapping.ColumnMappings.Add("ID_Invoice", "ID_Invoice")
             tableMapping.ColumnMappings.Add("GV_Naam", "GV_Naam")
             tableMapping.ColumnMappings.Add("GV_Datum", "GV_Datum")
             tableMapping.ColumnMappings.Add("GV_Beschrijving", "GV_Beschrijving")
+            tableMapping.ColumnMappings.Add("ID_GetKosten", "ID_GetKosten")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -7901,10 +7901,11 @@ Namespace DS_ProductTableAdapters
                 " AND ((@IsNull_ID_GetOrder = 1 AND [ID_GetOrder] IS NULL) OR ([ID_GetOrder] = @O"& _ 
                 "riginal_ID_GetOrder)) AND ((@IsNull_ID_Supplier = 1 AND [ID_Supplier] IS NULL) O"& _ 
                 "R ([ID_Supplier] = @Original_ID_Supplier)) AND ((@IsNull_ID_Shop = 1 AND [ID_Sho"& _ 
-                "p] IS NULL) OR ([ID_Shop] = @Original_ID_Shop)) AND ((@IsNull_ID_Invoice = 1 AND"& _ 
-                " [ID_Invoice] IS NULL) OR ([ID_Invoice] = @Original_ID_Invoice)) AND ((@IsNull_G"& _ 
-                "V_Naam = 1 AND [GV_Naam] IS NULL) OR ([GV_Naam] = @Original_GV_Naam)) AND ((@IsN"& _ 
-                "ull_GV_Datum = 1 AND [GV_Datum] IS NULL) OR ([GV_Datum] = @Original_GV_Datum)))"
+                "p] IS NULL) OR ([ID_Shop] = @Original_ID_Shop)) AND ((@IsNull_GV_Naam = 1 AND [G"& _ 
+                "V_Naam] IS NULL) OR ([GV_Naam] = @Original_GV_Naam)) AND ((@IsNull_GV_Datum = 1 "& _ 
+                "AND [GV_Datum] IS NULL) OR ([GV_Datum] = @Original_GV_Datum)) AND ((@IsNull_ID_G"& _ 
+                "etKosten = 1 AND [ID_GetKosten] IS NULL) OR ([ID_GetKosten] = @Original_ID_GetKo"& _ 
+                "sten)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_GetOntvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOntvangst", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_GetOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOrder", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -7913,51 +7914,52 @@ Namespace DS_ProductTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Shop", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Shop", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Shop", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Shop", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Invoice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Invoice", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Invoice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Invoice", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GV_Naam", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Naam", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GV_Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Naam", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GV_Datum", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Datum", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GV_Datum", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Datum", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_GetKosten", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetKosten", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_GetKosten", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetKosten", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [GetOntvangst] ([ID_GetOrder], [ID_Supplier], [ID_Shop], [ID_Invoice]"& _ 
-                ", [GV_Naam], [GV_Datum], [GV_Beschrijving]) VALUES (@ID_GetOrder, @ID_Supplier, "& _ 
-                "@ID_Shop, @ID_Invoice, @GV_Naam, @GV_Datum, @GV_Beschrijving);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_GetOnt"& _ 
-                "vangst, ID_GetOrder, ID_Supplier, ID_Shop, ID_Invoice, GV_Naam, GV_Datum, GV_Bes"& _ 
-                "chrijving FROM GetOntvangst WHERE (ID_GetOntvangst = SCOPE_IDENTITY()) ORDER BY "& _ 
-                "ID_GetOntvangst DESC"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [GetOntvangst] ([ID_GetOrder], [ID_Supplier], [ID_Shop], [GV_Naam], ["& _ 
+                "GV_Datum], [GV_Beschrijving], [ID_GetKosten]) VALUES (@ID_GetOrder, @ID_Supplier"& _ 
+                ", @ID_Shop, @GV_Naam, @GV_Datum, @GV_Beschrijving, @ID_GetKosten);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_Ge"& _ 
+                "tOntvangst, ID_GetOrder, ID_Supplier, ID_Shop, GV_Naam, GV_Datum, GV_Beschrijvin"& _ 
+                "g, ID_GetKosten FROM GetOntvangst WHERE (ID_GetOntvangst = SCOPE_IDENTITY()) ORD"& _ 
+                "ER BY ID_GetOntvangst DESC"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_GetOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOrder", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Shop", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Shop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Invoice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Invoice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GV_Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GV_Datum", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Datum", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GV_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_GetKosten", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetKosten", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [GetOntvangst] SET [ID_GetOrder] = @ID_GetOrder, [ID_Supplier] = @ID_Suppl"& _ 
-                "ier, [ID_Shop] = @ID_Shop, [ID_Invoice] = @ID_Invoice, [GV_Naam] = @GV_Naam, [GV"& _ 
-                "_Datum] = @GV_Datum, [GV_Beschrijving] = @GV_Beschrijving WHERE (([ID_GetOntvang"& _ 
-                "st] = @Original_ID_GetOntvangst) AND ((@IsNull_ID_GetOrder = 1 AND [ID_GetOrder]"& _ 
-                " IS NULL) OR ([ID_GetOrder] = @Original_ID_GetOrder)) AND ((@IsNull_ID_Supplier "& _ 
-                "= 1 AND [ID_Supplier] IS NULL) OR ([ID_Supplier] = @Original_ID_Supplier)) AND ("& _ 
-                "(@IsNull_ID_Shop = 1 AND [ID_Shop] IS NULL) OR ([ID_Shop] = @Original_ID_Shop)) "& _ 
-                "AND ((@IsNull_ID_Invoice = 1 AND [ID_Invoice] IS NULL) OR ([ID_Invoice] = @Origi"& _ 
-                "nal_ID_Invoice)) AND ((@IsNull_GV_Naam = 1 AND [GV_Naam] IS NULL) OR ([GV_Naam] "& _ 
-                "= @Original_GV_Naam)) AND ((@IsNull_GV_Datum = 1 AND [GV_Datum] IS NULL) OR ([GV"& _ 
-                "_Datum] = @Original_GV_Datum)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_GetOntvangst, ID_GetOrder, ID_Suppli"& _ 
-                "er, ID_Shop, ID_Invoice, GV_Naam, GV_Datum, GV_Beschrijving FROM GetOntvangst WH"& _ 
-                "ERE (ID_GetOntvangst = @ID_GetOntvangst) ORDER BY ID_GetOntvangst DESC"
+                "ier, [ID_Shop] = @ID_Shop, [GV_Naam] = @GV_Naam, [GV_Datum] = @GV_Datum, [GV_Bes"& _ 
+                "chrijving] = @GV_Beschrijving, [ID_GetKosten] = @ID_GetKosten WHERE (([ID_GetOnt"& _ 
+                "vangst] = @Original_ID_GetOntvangst) AND ((@IsNull_ID_GetOrder = 1 AND [ID_GetOr"& _ 
+                "der] IS NULL) OR ([ID_GetOrder] = @Original_ID_GetOrder)) AND ((@IsNull_ID_Suppl"& _ 
+                "ier = 1 AND [ID_Supplier] IS NULL) OR ([ID_Supplier] = @Original_ID_Supplier)) A"& _ 
+                "ND ((@IsNull_ID_Shop = 1 AND [ID_Shop] IS NULL) OR ([ID_Shop] = @Original_ID_Sho"& _ 
+                "p)) AND ((@IsNull_GV_Naam = 1 AND [GV_Naam] IS NULL) OR ([GV_Naam] = @Original_G"& _ 
+                "V_Naam)) AND ((@IsNull_GV_Datum = 1 AND [GV_Datum] IS NULL) OR ([GV_Datum] = @Or"& _ 
+                "iginal_GV_Datum)) AND ((@IsNull_ID_GetKosten = 1 AND [ID_GetKosten] IS NULL) OR "& _ 
+                "([ID_GetKosten] = @Original_ID_GetKosten)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_GetOntvangst, ID_GetOrde"& _ 
+                "r, ID_Supplier, ID_Shop, GV_Naam, GV_Datum, GV_Beschrijving, ID_GetKosten FROM G"& _ 
+                "etOntvangst WHERE (ID_GetOntvangst = @ID_GetOntvangst) ORDER BY ID_GetOntvangst "& _ 
+                "DESC"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_GetOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOrder", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Shop", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Shop", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Invoice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Invoice", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GV_Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Naam", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GV_Datum", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Datum", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@GV_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_GetKosten", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetKosten", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_GetOntvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOntvangst", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_GetOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOrder", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_GetOrder", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOrder", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -7965,12 +7967,12 @@ Namespace DS_ProductTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Shop", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Shop", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Shop", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Shop", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Invoice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Invoice", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
-            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Invoice", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Invoice", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GV_Naam", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Naam", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GV_Naam", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Naam", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_GV_Datum", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Datum", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_GV_Datum", Global.System.Data.SqlDbType.[Date], 0, Global.System.Data.ParameterDirection.Input, 0, 0, "GV_Datum", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_GetKosten", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetKosten", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_GetKosten", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetKosten", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_GetOntvangst", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOntvangst", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -7987,9 +7989,9 @@ Namespace DS_ProductTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        ID_GetOntvangst, ID_GetOrder, ID_Supplier, ID_Shop, ID_Invoice, GV_"& _ 
-                "Naam, GV_Datum, GV_Beschrijving"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GetOntvangst"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ID_GetOn"& _ 
-                "tvangst DESC"
+            Me._commandCollection(0).CommandText = "SELECT        ID_GetOntvangst, ID_GetOrder, ID_Supplier, ID_Shop, GV_Naam, GV_Dat"& _ 
+                "um, GV_Beschrijving, ID_GetKosten"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GetOntvangst"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"ORDER BY ID_Get"& _ 
+                "Ontvangst DESC"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -8049,7 +8051,7 @@ Namespace DS_ProductTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID_GetOntvangst As Integer, ByVal Original_ID_GetOrder As Global.System.Nullable(Of Integer), ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer), ByVal Original_ID_Shop As Global.System.Nullable(Of Integer), ByVal Original_ID_Invoice As Global.System.Nullable(Of Integer), ByVal Original_GV_Naam As String, ByVal Original_GV_Datum As Global.System.Nullable(Of Date)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID_GetOntvangst As Integer, ByVal Original_ID_GetOrder As Global.System.Nullable(Of Integer), ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer), ByVal Original_ID_Shop As Global.System.Nullable(Of Integer), ByVal Original_GV_Naam As String, ByVal Original_GV_Datum As Global.System.Nullable(Of Date), ByVal Original_ID_GetKosten As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID_GetOntvangst,Integer)
             If (Original_ID_GetOrder.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(0,Object)
@@ -8072,23 +8074,23 @@ Namespace DS_ProductTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            If (Original_ID_Invoice.HasValue = true) Then
-                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_ID_Invoice.Value,Integer)
-            Else
+            If (Original_GV_Naam Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
-            End If
-            If (Original_GV_Naam Is Nothing) Then
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_GV_Naam,String)
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_GV_Naam,String)
             End If
             If (Original_GV_Datum.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(Original_GV_Datum.Value,Date)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ID_GetKosten.HasValue = true) Then
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(0,Object)
-                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_GV_Datum.Value,Date)
+                Me.Adapter.DeleteCommand.Parameters(12).Value = CType(Original_ID_GetKosten.Value,Integer)
             Else
                 Me.Adapter.DeleteCommand.Parameters(11).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(12).Value = Global.System.DBNull.Value
@@ -8112,7 +8114,7 @@ Namespace DS_ProductTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ID_GetOrder As Global.System.Nullable(Of Integer), ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal ID_Shop As Global.System.Nullable(Of Integer), ByVal ID_Invoice As Global.System.Nullable(Of Integer), ByVal GV_Naam As String, ByVal GV_Datum As Global.System.Nullable(Of Date), ByVal GV_Beschrijving As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal ID_GetOrder As Global.System.Nullable(Of Integer), ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal ID_Shop As Global.System.Nullable(Of Integer), ByVal GV_Naam As String, ByVal GV_Datum As Global.System.Nullable(Of Date), ByVal GV_Beschrijving As String, ByVal ID_GetKosten As Global.System.Nullable(Of Integer)) As Integer
             If (ID_GetOrder.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(ID_GetOrder.Value,Integer)
             Else
@@ -8128,25 +8130,25 @@ Namespace DS_ProductTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (ID_Invoice.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(3).Value = CType(ID_Invoice.Value,Integer)
-            Else
-                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
             If (GV_Naam Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(4).Value = CType(GV_Naam,String)
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(GV_Naam,String)
             End If
             If (GV_Datum.HasValue = true) Then
-                Me.Adapter.InsertCommand.Parameters(5).Value = CType(GV_Datum.Value,Date)
+                Me.Adapter.InsertCommand.Parameters(4).Value = CType(GV_Datum.Value,Date)
             Else
-                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (GV_Beschrijving Is Nothing) Then
-                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.InsertCommand.Parameters(6).Value = CType(GV_Beschrijving,String)
+                Me.Adapter.InsertCommand.Parameters(5).Value = CType(GV_Beschrijving,String)
+            End If
+            If (ID_GetKosten.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(ID_GetKosten.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -8167,7 +8169,7 @@ Namespace DS_ProductTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ID_GetOrder As Global.System.Nullable(Of Integer), ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal ID_Shop As Global.System.Nullable(Of Integer), ByVal ID_Invoice As Global.System.Nullable(Of Integer), ByVal GV_Naam As String, ByVal GV_Datum As Global.System.Nullable(Of Date), ByVal GV_Beschrijving As String, ByVal Original_ID_GetOntvangst As Integer, ByVal Original_ID_GetOrder As Global.System.Nullable(Of Integer), ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer), ByVal Original_ID_Shop As Global.System.Nullable(Of Integer), ByVal Original_ID_Invoice As Global.System.Nullable(Of Integer), ByVal Original_GV_Naam As String, ByVal Original_GV_Datum As Global.System.Nullable(Of Date), ByVal ID_GetOntvangst As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal ID_GetOrder As Global.System.Nullable(Of Integer), ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal ID_Shop As Global.System.Nullable(Of Integer), ByVal GV_Naam As String, ByVal GV_Datum As Global.System.Nullable(Of Date), ByVal GV_Beschrijving As String, ByVal ID_GetKosten As Global.System.Nullable(Of Integer), ByVal Original_ID_GetOntvangst As Integer, ByVal Original_ID_GetOrder As Global.System.Nullable(Of Integer), ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer), ByVal Original_ID_Shop As Global.System.Nullable(Of Integer), ByVal Original_GV_Naam As String, ByVal Original_GV_Datum As Global.System.Nullable(Of Date), ByVal Original_ID_GetKosten As Global.System.Nullable(Of Integer), ByVal ID_GetOntvangst As Integer) As Integer
             If (ID_GetOrder.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = CType(ID_GetOrder.Value,Integer)
             Else
@@ -8183,25 +8185,25 @@ Namespace DS_ProductTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = Global.System.DBNull.Value
             End If
-            If (ID_Invoice.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(ID_Invoice.Value,Integer)
-            Else
-                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
-            End If
             If (GV_Naam Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(GV_Naam,String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(GV_Naam,String)
             End If
             If (GV_Datum.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(GV_Datum.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(GV_Datum.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(4).Value = Global.System.DBNull.Value
             End If
             If (GV_Beschrijving Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(GV_Beschrijving,String)
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(GV_Beschrijving,String)
+            End If
+            If (ID_GetKosten.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(ID_GetKosten.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
             Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_ID_GetOntvangst,Integer)
             If (Original_ID_GetOrder.HasValue = true) Then
@@ -8225,23 +8227,23 @@ Namespace DS_ProductTableAdapters
                 Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
             End If
-            If (Original_ID_Invoice.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_ID_Invoice.Value,Integer)
-            Else
+            If (Original_GV_Naam Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
-            End If
-            If (Original_GV_Naam Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_GV_Naam,String)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_GV_Naam,String)
             End If
             If (Original_GV_Datum.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_GV_Datum.Value,Date)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
+            End If
+            If (Original_ID_GetKosten.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_GV_Datum.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_ID_GetKosten.Value,Integer)
             Else
                 Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
                 Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
@@ -8266,8 +8268,8 @@ Namespace DS_ProductTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ID_GetOrder As Global.System.Nullable(Of Integer), ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal ID_Shop As Global.System.Nullable(Of Integer), ByVal ID_Invoice As Global.System.Nullable(Of Integer), ByVal GV_Naam As String, ByVal GV_Datum As Global.System.Nullable(Of Date), ByVal GV_Beschrijving As String, ByVal Original_ID_GetOntvangst As Integer, ByVal Original_ID_GetOrder As Global.System.Nullable(Of Integer), ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer), ByVal Original_ID_Shop As Global.System.Nullable(Of Integer), ByVal Original_ID_Invoice As Global.System.Nullable(Of Integer), ByVal Original_GV_Naam As String, ByVal Original_GV_Datum As Global.System.Nullable(Of Date)) As Integer
-            Return Me.Update(ID_GetOrder, ID_Supplier, ID_Shop, ID_Invoice, GV_Naam, GV_Datum, GV_Beschrijving, Original_ID_GetOntvangst, Original_ID_GetOrder, Original_ID_Supplier, Original_ID_Shop, Original_ID_Invoice, Original_GV_Naam, Original_GV_Datum, Original_ID_GetOntvangst)
+        Public Overloads Overridable Function Update(ByVal ID_GetOrder As Global.System.Nullable(Of Integer), ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal ID_Shop As Global.System.Nullable(Of Integer), ByVal GV_Naam As String, ByVal GV_Datum As Global.System.Nullable(Of Date), ByVal GV_Beschrijving As String, ByVal ID_GetKosten As Global.System.Nullable(Of Integer), ByVal Original_ID_GetOntvangst As Integer, ByVal Original_ID_GetOrder As Global.System.Nullable(Of Integer), ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer), ByVal Original_ID_Shop As Global.System.Nullable(Of Integer), ByVal Original_GV_Naam As String, ByVal Original_GV_Datum As Global.System.Nullable(Of Date), ByVal Original_ID_GetKosten As Global.System.Nullable(Of Integer)) As Integer
+            Return Me.Update(ID_GetOrder, ID_Supplier, ID_Shop, GV_Naam, GV_Datum, GV_Beschrijving, ID_GetKosten, Original_ID_GetOntvangst, Original_ID_GetOrder, Original_ID_Supplier, Original_ID_Shop, Original_GV_Naam, Original_GV_Datum, Original_ID_GetKosten, Original_ID_GetOntvangst)
         End Function
     End Class
     
