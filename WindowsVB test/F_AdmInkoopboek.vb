@@ -1,10 +1,11 @@
 ﻿Public Class F_AdmInkoopboek
+    'Variabelen definieren
+    Private DEBETT As Decimal = 0
+    Private CREDITT As Decimal = 0
+
     Public Sub ToolTipsInstellen()
         ' Create the ToolTip and associate with the Form container.
         Dim TT_Kosten As New ToolTip()
-
-
-
         ' Set up the delays for the ToolTip.
         TT_Kosten.AutoPopDelay = 5000
         TT_Kosten.InitialDelay = 100
@@ -18,118 +19,391 @@
 
             'Txt boxen
             .SetToolTip(Me.TXT_Kenmerk, "Factuurnummer, of ander kenmerk van de crediteur")
-
+            .SetToolTip(Me.TXT_GrootboekCR, "Grootboekrekening van betaalwijze")
 
         End With
 
 
     End Sub
 
-
-
-
-    Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs) Handles Knop_Sluiten.Click
-        Me.Close()
-    End Sub
-
-    Private Sub AdmInkoopBoekBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs) Handles AdmInkoopBoekBindingNavigatorSaveItem.Click
+    Private Sub AdmInkoopBoekBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.AdmInkoopBoekBindingSource.EndEdit()
         Me.TableAdapterManager.UpdateAll(Me.DS_Administratie)
 
     End Sub
-
-
-
-    Public Sub LoadForm()
-
-        ToolTipsInstellen()
-
-
-        Me.ValutaTableAdapter.Fill(Me.DS_Administratie.Valuta)
-        Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier)
-        Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek)
-
-
-    End Sub
-
-    Private Sub F_AdmInkoopboek_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'DS_Administratie.AdmGBrekening' table. You can move, or remove it, as needed.
+    Public Sub LoadTables()
         Me.AdmGBrekeningTableAdapter.Fill(Me.DS_Administratie.AdmGBrekening)
-        'TODO: This line of code loads data into the 'DS_Administratie.AdmJournaal' table. You can move, or remove it, as needed.
-        Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal)
-        'TODO: This line of code loads data into the 'DS_Administratie.BetaalWijzen' table. You can move, or remove it, as needed.
         Me.BetaalWijzenTableAdapter.Fill(Me.DS_Administratie.BetaalWijzen)
-        'TODO: This line of code loads data into the 'DS_Administratie.Valuta' table. You can move, or remove it, as needed.
         Me.ValutaTableAdapter.Fill(Me.DS_Administratie.Valuta)
-        LoadForm()
+    End Sub
+    Public Sub LoadForm()
+        Try
+            ToolTipsInstellen()
+            'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, -1)
+            LoadTables()
+
+            Select Case OPADMINKOOP
+                Case 1 'van form getontvangst NIeuw, dsnog geen inkoopboek record aan deze ontvangst
+                    'MERK OP DE TABLE ADAPTOR NIET VULLEN
+                    'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, -1)
+                    Me.AdmInkoopBoekBindingSource.AddNew()
+                    Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
+                    'LoadTables()
+                    'MsgBox(Me.AdmInkoopBoekBindingSource.Count)
+                    Me.CB_Supplier.SelectedValue = IDSUPPLIER
+                    ClearControls()
+                    'nieuwe record direct vastleggen
+                    Me.Validate()
+                    Me.AdmInkoopBoekBindingSource.EndEdit()
+                    Me.AdmInkoopBoekTableAdapter.Update(DS_Administratie.AdmInkoopBoek)
+                    'parent form direct aanpassen
+                    F_GetProduct.TXT_AdmInkoop.Text = Me.TXT_Boeknummer.Text
+                    'MsgBox(Me.TXT_Boeknummer.Text)
+                    F_GetProduct.Validate()
+                    F_GetProduct.GetOntvangstBindingSource.EndEdit()
+                    F_GetProduct.GetOntvangstTableAdapter.Update(F_GetProduct.DS_Product.GetOntvangst)
+                Case 2 'van form getontvangst, idadminkoop = nu bepaald
+                    Me.SupplierTableAdapter.FillBySupplier(Me.DS_Administratie.Supplier, IDSUPPLIER) 'alleen aangewezen supplier in combo
+                    Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, IDADMINKOOP)
+                    Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, IDADMINKOOP)
+                    ' LoadTables()
+                    CheckBoxLoad()
+
+
+                Case 3 'openen met een vooraf bepaald adminkoopnummer, dus na een zoekactie
+
+                Case Else 'openen als nieuwe invoer, niet afhankelijk van getproduct(ontvangst)
+                    Me.AdmInkoopBoekBindingSource.AddNew()
+                    Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
+                    LoadTables()
+                    Me.CB_Supplier.SelectedValue = -1
+
+                    'Me.CB_BetaalWijze.SelectedValue = -1
+                    'Me.CB_Valuta.SelectedValue = -1
+
+                    ClearControls()
+                    Me.CB_Supplier.Select()
+
+
+            End Select
+
+            ' Me.ValutaTableAdapter.Fill(Me.DS_Administratie.Valuta)
+
+            'deze moet nog where inkoopboek nummer  enz...
+            'Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, -2)
+
+        Catch ex As Exception
+            MsgBox(ErrorToString)
+        End Try
 
     End Sub
+    Private Sub F_AdmInkoopboek_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
-    Private Sub FormatControls()
-        'ff wachten hiermee
-        'FormatNumber(Me.TXT_Waarde.Text, , , , TriState.False)
-        TXT_Waarde.Text = FormatCurrency(TXT_Waarde.Text)
-
+        LoadForm()
 
     End Sub
     Private Sub BerekenWaardeEuro()
+        Try
+            If IsNumeric(Me.TXT_Waarde.Text) = True Then
+                Me.TXT_WaardeEuro.Text = ((Me.TXT_Waarde.Text * Me.TXT_Koers.Text).ToString("c"))
+                If Me.TXT_Koers.Text = 1 Then
+                    Me.TXT_BTW.Text = ((Me.TXT_Waarde.Text / 121 * 21).ToString("c"))
+                Else
+                    Me.TXT_BTW.Text = 0
+                End If
+            End If
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "berekenwaardeEuro")
+        End Try
 
-        Me.TXT_WaardeEuro.Text = Me.TXT_Waarde.Text * Me.TXT_Koers.Text
 
-        If Me.TXT_Koers.Text = 1 Then
-            Me.TXT_BTW.Text = Me.TXT_Waarde.Text / 121 * 21
-        Else
-            Me.TXT_BTW.Text = 0
 
-        End If
     End Sub
-
-    Private Sub TXT_Waarde_Validated(sender As Object, e As EventArgs) Handles TXT_Waarde.Validated
-        BerekenWaardeEuro()
-    End Sub
-
-
-
     Private Sub Knop_herlaadForm_Click(sender As Object, e As EventArgs) Handles Knop_herlaadForm.Click
         LoadForm()
     End Sub
-
     Private Sub Knop_Actie_Click(sender As Object, e As EventArgs) Handles Knop_Actie.Click
         'FormatControls()
     End Sub
-
-    Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs)
-
-        Me.AdmInkoopBoekBindingSource.AddNew()
-        ClearControls()
-
-    End Sub
     Private Sub ClearControls()
-        'gebruik om teksten in controls en dergelijke een beginwaarde te geven
+        'gebruik om teksten in controls en dergelijke een beginwaarde te geven bij aanmaak NIEUW record
+
+        Me.TXT_Waarde.Text = 0
         Me.TXT_WaardeEuro.Text = 0
+        Me.TXT_BTW.Text = 0
+
+        Me.CH_Betaald.Checked = False
     End Sub
+    Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs) Handles Knop_Sluiten.Click
+        'dit slaat alles op, en sluit het formulier
 
-    Private Sub berekeningen()
+        If Valideer() = True Then 'alles opslaan en form sluiten
+
+            Me.Validate()
+            Me.AdmInkoopBoekBindingSource.EndEdit()
+            Me.AdmJournaalBindingSource.EndEdit()
+            Me.TableAdapterManager.UpdateAll(Me.DS_Administratie)
+            Me.Close()
+        End If
 
     End Sub
+    Private Function OpslaanInkoop() As Integer
+        'Slaat de factuur, kenmerk op (dus niet het journaal)
+        Try
+            OpslaanInkoop = False
 
-    Private Sub Knop_annuleren_Click(sender As Object, e As EventArgs)
-        ClearControls()
-        Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek)
-    End Sub
+            If Me.CB_Supplier.SelectedValue > 0 Then
+                If Len(Me.TXT_Kenmerk.Text) > 0 Then
+                    If Len(txt_grootboekSupplier.Text) > 0 And Len(TXT_SUPValuta.Text) > 0 Then
+                        If Me.TXT_WaardeEuro.Text <> 0 Then
+                            Me.Validate()
+                            Me.AdmInkoopBoekBindingSource.EndEdit()
+                            Me.AdmInkoopBoekTableAdapter.Update(DS_Administratie.AdmInkoopBoek)
+                            OpslaanInkoop = True
+                        Else
+                            MsgBox("De bedragen zijn niet juist ingevuld.", vbExclamation, "Opslaan in inkoopboek niet mogelijk ")
+                        End If
+                    Else
+                        MsgBox("Er ontbreken noodzakelijke gegevens van deze leverancier, crediteur" & Chr(13) & Chr(13) & "Vul op het formulier leverancier, supplier de gegevens verder in", vbExclamation, "Opslaan in inkoopboek niet mogelijk")
+                    End If
+                Else
+                    MsgBox("Kenmerk van de factuur moet worden ingevuld", vbExclamation, "Opslaan in inkoopboek niet mogelijk")
+                End If
+            Else
+                MsgBox("Er is geen leverancier, crediteur gekozen", vbExclamation, "Opslaan in inkoopboek niet mogelijk")
+                Me.CB_Supplier.Select()
+            End If
 
-    Private Sub Knop_Opslaan_Click(sender As Object, e As EventArgs)
-        Opslaan()
 
-    End Sub
-    Private Sub Opslaan()
-        Me.Validate()
-        Me.AdmInkoopBoekBindingSource.EndEdit()
-        Me.AdmInkoopBoekTableAdapter.Update(DS_Administratie.AdmInkoopBoek)
-    End Sub
+        Catch ex As Exception
+            MsgBox(ErrorToString)
+        End Try
+        Return OpslaanInkoop
 
+    End Function
     Private Sub Knop_Toon_Click(sender As Object, e As EventArgs) Handles Knop_Toon.Click
         MsgBox("met deze knop een document openen, bewijs stuk, scan of pdf van de facuur")
+    End Sub
+    Private Sub Knop_Nieuweregel_Click(sender As Object, e As EventArgs) Handles Knop_Nieuweregel.Click
+
+        If Me.DG_Journaal.Rows.Count > 1 Then
+
+            JN_Regel(0, 0, 0)
+
+        Else
+            MsgBox("Je kan geen regels toevoegen.",, " Lijst Is leeg")
+
+        End If
+
+
+
+    End Sub
+    Private Sub JN_Regel(GB As Integer, DB As Decimal, CR As Decimal) '1=automatisch, 2=handmatig
+        Dim Rij As Integer
+        'maakt regel in journaal posten
+        'Cells 0=id 1=soort boek (1=inkoop (crediteuren) boek 2=Boekstuknummer (deze factuur dus) 3=datum 4= grootboekrekening 5 =debet bedrag 6 = credit bedrag
+        'Merk op dat inkoopboek NIET uit DB komt dus zorg dat deze waarde niet veranderd in de dbtabel admboek
+
+        'hoeveel rows zijn er al?
+        Rij = Me.DG_Journaal.Rows.Count
+
+        Try
+            Me.AdmJournaalBindingSource.AddNew()
+            DG_Journaal.Rows(Rij).Cells(1).Value = 1 'journaalpost hoort bij administratief boek 'Inkoopboek'
+            DG_Journaal.Rows(Rij).Cells(2).Value = Me.TXT_Boeknummer.Text
+            DG_Journaal.Rows(Rij).Cells(3).Value = Now()
+            DG_Journaal.Rows(Rij).Cells(4).Value = GB
+            DG_Journaal.Rows(Rij).Cells(5).Value = DB
+            DG_Journaal.Rows(Rij).Cells(6).Value = CR
+
+
+
+            DEBETT = DEBETT + DB
+            CREDITT = CREDITT + CR
+
+
+
+
+            Me.TXT_DebetTotaal.Text = DEBETT
+            Me.TXT_CreditTotaal.Text = CREDITT
+
+        Catch ex As Exception
+            MsgBox(ErrorToString)
+        End Try
+    End Sub
+    Private Sub JN_Boeken() 'maakt alle standaard journaalboekingen aan 
+        If DG_Journaal.Rows.Count = 0 Then
+            DEBETT = 0
+            CREDITT = 0
+            Dim GB As Integer
+            Dim DB As Decimal
+            Dim CR As Decimal
+            '1e regel totaal ex.btw aan grootboek van crediteur
+            GB = Me.txt_grootboekSupplier.Text
+            DB = ((Me.TXT_Waarde.Text * TXT_Koers.Text - TXT_BTW.Text).ToString("C2"))
+            CR = 0
+            JN_Regel(GB, DB, CR)
+            '2e regel BTW alleen als er BTW is.
+            If TXT_BTW.Text <> 0 Then
+                GB = 1520
+                DB = Me.TXT_BTW.Text
+                CR = 0
+                JN_Regel(GB, DB, CR)
+            End If
+            '3e regel
+            If Me.CH_Betaald.Checked = False Then 'journaa post crediteuren maken (te betalen) = grootboek 1610
+
+                JN_Regel(1610, 0, Me.TXT_WaardeEuro.Text)
+            Else 'is betaald, grootboekrekenng die is meegegeven met betaalwijze
+                JN_Regel(Me.TXT_GrootboekCR.Text, 0, TXT_WaardeEuro.Text)
+            End If
+
+        Else
+            MsgBox("je kunt niet automatisch de posten aanmaken.",, "Lijst is niet leeg")
+        End If
+
+    End Sub
+    Private Sub CH_Betaald_CheckedChanged(sender As Object, e As EventArgs) Handles CH_Betaald.CheckedChanged
+        CheckBoxLoad()
+    End Sub
+    Private Sub Knop_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Annuleren.Click
+        'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, IDADMINKOOP)
+        Me.AdmInkoopBoekBindingSource.AddNew()
+        Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, 0)
+        Me.CH_Betaald.Checked = False
+        CheckBoxLoad()
+
+    End Sub
+    Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs)
+        Me.AdmInkoopBoekBindingSource.AddNew()
+        Me.CB_Supplier.Select()
+        'LoadTables() 'niet nodig is al gebeurd bij form load...
+
+        Me.CH_Betaald.Checked = False
+        Me.CheckBoxLoad()
+
+
+    End Sub
+    Private Sub Knop_Journaal_Click(sender As Object, e As EventArgs) Handles Knop_Journaal.Click
+        Try
+            If OpslaanInkoop() = True Then 'inkooprecord, dus crediteur en waardes vastleggen in db
+                JN_Boeken()
+            End If
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "knop_journaal click")
+        End Try
+
+
+    End Sub
+    Private Sub Knop_Bereken_Click(sender As Object, e As EventArgs) Handles Knop_Bereken.Click
+        Bereken()
+
+    End Sub
+    Private Sub DG_Journaal_CellValidated(sender As Object, e As DataGridViewCellEventArgs) Handles DG_Journaal.CellValidated
+        Bereken()
+    End Sub
+    Private Sub Bereken()
+        DEBETT = 0
+        CREDITT = 0
+        'herberekenen van de ingevoerde journaalposten. 
+        'Teveel aan Debet wordt afgehaald van eerste post, meestal voorraad.
+        Dim i As Integer
+        For i = 0 To Me.DG_Journaal.Rows.Count - 1
+            DEBETT = DEBETT + Me.DG_Journaal.Rows(i).Cells(5).Value
+            CREDITT = CREDITT + Me.DG_Journaal.Rows(i).Cells(6).Value
+        Next
+
+        Me.DG_Journaal.Rows(0).Cells(5).Value = DG_Journaal.Rows(0).Cells(5).Value - (DEBETT - CREDITT)
+
+        Me.TXT_DebetTotaal.Text = DEBETT
+        Me.TXT_CreditTotaal.Text = CREDITT
+
+    End Sub
+    Private Function Valideer() As Integer
+        Valideer = True
+
+        'BELANGRIJK zet de current cell in de eerste rij
+        'Me.DG_Journaal.CurrentCell = Me.DG_Journaal(0, 7)
+
+        Me.DG_Journaal.EndEdit()
+
+        Dim i As Integer
+        DEBETT = 0
+        CREDITT = 0
+        For i = 0 To Me.DG_Journaal.Rows.Count - 1
+            Me.DG_Journaal.Rows(i).Selected = False
+            DEBETT = DEBETT + Me.DG_Journaal.Rows(i).Cells(5).Value
+            CREDITT = CREDITT + Me.DG_Journaal.Rows(i).Cells(6).Value
+        Next
+
+
+        If (DEBETT <> CREDITT) Or Me.DG_Journaal.Rows.Count < 1 Then
+            MsgBox("Journaalposten zijn niet correct ingevoerd", vbCritical, "Fout in journaalposten")
+            Valideer = False
+            Exit Function
+        End If
+
+    End Function
+    Private Sub Knop_Close_Click(sender As Object, e As EventArgs) Handles Knop_Close.Click
+
+        Me.Close()
+    End Sub
+    Private Sub F_AdmInkoopboek_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
+        'Zorgen dat de open status wordt gereset.
+        OPADMINKOOP = 0
+    End Sub
+    Public Sub CheckBoxLoad()
+        If CH_Betaald.Checked = True Then
+            Me.CB_BetaalWijze.Enabled = True
+            Me.DATE_betaaldatum.Enabled = True
+        Else
+            Me.CB_BetaalWijze.Enabled = False
+            Me.DATE_betaaldatum.Enabled = False
+
+        End If
+
+    End Sub
+    Private Sub TXT_Waarde_Validated(sender As Object, e As EventArgs) Handles TXT_Waarde.Validated
+        BerekenWaardeEuro()
+    End Sub
+    Private Sub CB_Valuta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Valuta.SelectedIndexChanged
+        ' BerekenWaardeEuro()
+    End Sub
+    Private Sub TXT_Koers_TextChanged(sender As Object, e As EventArgs) Handles TXT_KoersOUD.TextChanged
+        BerekenWaardeEuro()
+    End Sub
+
+    Private Sub CB_Supplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Supplier.SelectedIndexChanged
+
+    End Sub
+
+    Private Sub TXT_SUPValuta_TextChanged(sender As Object, e As EventArgs) Handles TXT_SUPValuta.TextChanged
+        Select Case IDADMINKOOP
+            Case 2
+                CB_Valuta.SelectedValue = Me.TXT_SUPValuta.Text
+        End Select
+
+    End Sub
+
+    Private Sub TXT_SupBetaalWijze_TextChanged(sender As Object, e As EventArgs) Handles TXT_SupBetaalWijze.TextChanged
+        Try
+            Select Case IDADMINKOOP
+                Case 1
+                Case 2
+                    CB_BetaalWijze.SelectedValue = Me.TXT_SupBetaalWijze.Text
+                Case 3
+                Case Else
+
+            End Select
+
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "TXT_subbetaalwijze_text enz")
+        End Try
+
+    End Sub
+
+    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+        MsgBox(Valideer())
     End Sub
 End Class

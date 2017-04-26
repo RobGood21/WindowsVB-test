@@ -111,19 +111,19 @@ Partial Class F_Wisselmotor
         'SuppliersToolStripMenuItem
         '
         Me.SuppliersToolStripMenuItem.Name = "SuppliersToolStripMenuItem"
-        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
         Me.SuppliersToolStripMenuItem.Text = "Suppliers"
         '
         'ShopsToolStripMenuItem
         '
         Me.ShopsToolStripMenuItem.Name = "ShopsToolStripMenuItem"
-        Me.ShopsToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.ShopsToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
         Me.ShopsToolStripMenuItem.Text = "Shops"
         '
         'KlantenToolStripMenuItem
         '
         Me.KlantenToolStripMenuItem.Name = "KlantenToolStripMenuItem"
-        Me.KlantenToolStripMenuItem.Size = New System.Drawing.Size(152, 22)
+        Me.KlantenToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
         Me.KlantenToolStripMenuItem.Text = "Klanten"
         '
         'FinancieelToolStripMenuItem

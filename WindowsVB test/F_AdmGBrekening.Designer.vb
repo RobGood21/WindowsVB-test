@@ -27,24 +27,24 @@ Partial Class F_AdmGBrekening
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.Knop_opslaan = New System.Windows.Forms.Button()
         Me.GB_GBRekening = New System.Windows.Forms.GroupBox()
-        Me.DS_Administratie = New WindowsVB_test.DS_Administratie()
-        Me.AdmGBrekeningBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.AdmGBrekeningTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmGBrekeningTableAdapter()
-        Me.TableAdapterManager = New WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager()
         Me.AdmGBrekeningDataGridView = New System.Windows.Forms.DataGridView()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.AdmGBrekeningBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_Administratie = New WindowsVB_test.DS_Administratie()
+        Me.AdmGBrekeningTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmGBrekeningTableAdapter()
+        Me.TableAdapterManager = New WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager()
         Me.GB_GBRekening.SuspendLayout()
-        CType(Me.DS_Administratie, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.AdmGBrekeningBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdmGBrekeningDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AdmGBrekeningBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_Administratie, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'Knop_Nieuw
         '
-        Me.Knop_Nieuw.Location = New System.Drawing.Point(323, 280)
+        Me.Knop_Nieuw.Location = New System.Drawing.Point(303, 259)
         Me.Knop_Nieuw.Name = "Knop_Nieuw"
         Me.Knop_Nieuw.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Nieuw.TabIndex = 56
@@ -53,7 +53,7 @@ Partial Class F_AdmGBrekening
         '
         'Knop_Annuleren
         '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(404, 280)
+        Me.Knop_Annuleren.Location = New System.Drawing.Point(384, 259)
         Me.Knop_Annuleren.Name = "Knop_Annuleren"
         Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Annuleren.TabIndex = 55
@@ -62,7 +62,7 @@ Partial Class F_AdmGBrekening
         '
         'Knop_opslaan
         '
-        Me.Knop_opslaan.Location = New System.Drawing.Point(485, 280)
+        Me.Knop_opslaan.Location = New System.Drawing.Point(465, 259)
         Me.Knop_opslaan.Name = "Knop_opslaan"
         Me.Knop_opslaan.Size = New System.Drawing.Size(150, 23)
         Me.Knop_opslaan.TabIndex = 54
@@ -74,31 +74,9 @@ Partial Class F_AdmGBrekening
         Me.GB_GBRekening.Controls.Add(Me.AdmGBrekeningDataGridView)
         Me.GB_GBRekening.Location = New System.Drawing.Point(12, 12)
         Me.GB_GBRekening.Name = "GB_GBRekening"
-        Me.GB_GBRekening.Size = New System.Drawing.Size(623, 262)
+        Me.GB_GBRekening.Size = New System.Drawing.Size(603, 241)
         Me.GB_GBRekening.TabIndex = 57
         Me.GB_GBRekening.TabStop = False
-        '
-        'DS_Administratie
-        '
-        Me.DS_Administratie.DataSetName = "DS_Administratie"
-        Me.DS_Administratie.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'AdmGBrekeningBindingSource
-        '
-        Me.AdmGBrekeningBindingSource.DataMember = "AdmGBrekening"
-        Me.AdmGBrekeningBindingSource.DataSource = Me.DS_Administratie
-        '
-        'AdmGBrekeningTableAdapter
-        '
-        Me.AdmGBrekeningTableAdapter.ClearBeforeFill = True
-        '
-        'TableAdapterManager
-        '
-        Me.TableAdapterManager.AdmBoekTableAdapter = Nothing
-        Me.TableAdapterManager.AdmGBrekeningTableAdapter = Me.AdmGBrekeningTableAdapter
-        Me.TableAdapterManager.AdmJournaalTableAdapter = Nothing
-        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'AdmGBrekeningDataGridView
         '
@@ -109,7 +87,7 @@ Partial Class F_AdmGBrekening
         Me.AdmGBrekeningDataGridView.DataSource = Me.AdmGBrekeningBindingSource
         Me.AdmGBrekeningDataGridView.Location = New System.Drawing.Point(6, 19)
         Me.AdmGBrekeningDataGridView.Name = "AdmGBrekeningDataGridView"
-        Me.AdmGBrekeningDataGridView.Size = New System.Drawing.Size(602, 220)
+        Me.AdmGBrekeningDataGridView.Size = New System.Drawing.Size(590, 214)
         Me.AdmGBrekeningDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
@@ -141,11 +119,34 @@ Partial Class F_AdmGBrekening
         Me.DataGridViewCheckBoxColumn1.ToolTipText = "Checked is Activa, bezit. Unchecked=Passiva, schuld."
         Me.DataGridViewCheckBoxColumn1.Width = 30
         '
+        'AdmGBrekeningBindingSource
+        '
+        Me.AdmGBrekeningBindingSource.DataMember = "AdmGBrekening"
+        Me.AdmGBrekeningBindingSource.DataSource = Me.DS_Administratie
+        '
+        'DS_Administratie
+        '
+        Me.DS_Administratie.DataSetName = "DS_Administratie"
+        Me.DS_Administratie.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'AdmGBrekeningTableAdapter
+        '
+        Me.AdmGBrekeningTableAdapter.ClearBeforeFill = True
+        '
+        'TableAdapterManager
+        '
+        Me.TableAdapterManager.AdmBoekTableAdapter = Nothing
+        Me.TableAdapterManager.AdmGBrekeningTableAdapter = Me.AdmGBrekeningTableAdapter
+        Me.TableAdapterManager.AdmInkoopBoekTableAdapter = Nothing
+        Me.TableAdapterManager.AdmJournaalTableAdapter = Nothing
+        Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        '
         'F_AdmGBrekening
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(649, 325)
+        Me.ClientSize = New System.Drawing.Size(624, 300)
         Me.Controls.Add(Me.GB_GBRekening)
         Me.Controls.Add(Me.Knop_Nieuw)
         Me.Controls.Add(Me.Knop_Annuleren)
@@ -154,9 +155,9 @@ Partial Class F_AdmGBrekening
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Grootboekrekeningen"
         Me.GB_GBRekening.ResumeLayout(False)
-        CType(Me.DS_Administratie, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.AdmGBrekeningBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.AdmGBrekeningDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AdmGBrekeningBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_Administratie, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

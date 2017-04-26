@@ -28,7 +28,9 @@
             'Textboxes en comboos
             .SetToolTip(Me.CB_Grootboek, "Geef het standaard grootboek catagorie van deze leverancier")
 
-            'TT_Supplier.SetToolTip(Me.TXT_adres, "Adres van de leverancier")
+            'óverige
+
+            TT_Supplier.SetToolTip(CH_Actief, "Deze leverancier zichtbaar in lijsten en comboboxen")
 
 
 
@@ -64,8 +66,16 @@
     End Sub
 
     Private Sub Knop_opslaan_Click(sender As Object, e As EventArgs) Handles Knop_opslaan.Click
-        Opslaan()
-        Me.Close()
+        Dim janee As Integer = 6
+        If CH_Actief.Checked = False Then
+            janee = MsgBox("Zichtbaar is uit." & Chr(13) & "Leverancier is straks niet meer terug te vinden. Weet je zeker dat je deze leverancier wilt verwijderen?", vbYesNo, "Leverancier verwijderen?")
+        End If
+
+        If janee = 6 Then
+            Opslaan()
+            Me.Close()
+        End If
+
     End Sub
 
     Private Sub Opslaan()
@@ -78,8 +88,6 @@
         Catch ex As Exception
 
             MsgBox(ErrorToString)
-
-
         End Try
 
     End Sub
@@ -90,9 +98,10 @@
     End Sub
 
     Private Sub LaadData()
-
-
+        '  MsgBox(OPSUPPLIER)
         Select Case OPSUPPLIER
+
+
             Case 1
                 Me.SupplierTableAdapter.FillByIDSUPPLIER(Me.DS_Supplier.Supplier, CType(IDSUPPLIER, Integer))
 
@@ -111,7 +120,13 @@
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         Me.SupplierBindingSource.AddNew()
         Me.Ch_Webwinkel.Checked = False
+
         Me.Ch_Winkel.Checked = False
+        Me.CH_Actief.Checked = False
+        Me.CH_Actief.Checked = True
+
+
+
     End Sub
 
 
@@ -136,5 +151,9 @@
     Private Sub Knop_Delete_Click(sender As Object, e As EventArgs)
         Dim janee As Integer
         janee = MsgBox("Weet je zeker dat je deze leverancier uit de lijst leveranciers wilt verwijderen?", vbYesNo, "Verwijderen leverancier bevestigen.")
+    End Sub
+
+    Private Sub Knop_alleSuppliers_Click(sender As Object, e As EventArgs)
+        Me.SupplierTableAdapter.Fill(Me.DS_Supplier.Supplier)
     End Sub
 End Class

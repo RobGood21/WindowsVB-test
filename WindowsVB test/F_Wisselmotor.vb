@@ -40,9 +40,7 @@
 
     End Sub
 
-    Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        F_Betaalwijzen.ShowDialog()
-    End Sub
+
 
     Private Sub SuppliersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuppliersToolStripMenuItem.Click
         F_Supplier.MdiParent = Me
@@ -58,5 +56,9 @@
         F_AdmGBrekening.MdiParent = Me
         F_AdmGBrekening.Show()
 
+    End Sub
+
+    Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BetaalWijzenToolStripMenuItem.Click
+        F_Betaalwijzen.ShowDialog()
     End Sub
 End Class

@@ -37,7 +37,6 @@ Partial Class F_GetProduct
         Me.CB_Supplier = New System.Windows.Forms.ComboBox()
         Me.SupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GB_Products = New System.Windows.Forms.GroupBox()
-        Me.Knop_Kosten = New System.Windows.Forms.Button()
         Me.Button2 = New System.Windows.Forms.Button()
         Me.DG_List = New System.Windows.Forms.DataGridView()
         Me.IDGetOntvangstDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -54,11 +53,12 @@ Partial Class F_GetProduct
         Me.GetProductListBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Knop_Actie = New System.Windows.Forms.Button()
         Me.Knop_ProductPlus = New System.Windows.Forms.Button()
+        Me.Knop_Kosten = New System.Windows.Forms.Button()
         Me.GB_Get = New System.Windows.Forms.GroupBox()
         Me.TXT_Beschrijving = New System.Windows.Forms.TextBox()
         Me.GV_DatumDateTimePicker = New System.Windows.Forms.DateTimePicker()
         Me.TXT_NaamGet = New System.Windows.Forms.TextBox()
-        Me.ID_GetOntvangstTextBox = New System.Windows.Forms.TextBox()
+        Me.TXT_getontvangstid = New System.Windows.Forms.TextBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.CB_Ontvangen = New System.Windows.Forms.ComboBox()
         Me.GetOntvangstTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GetOntvangstTableAdapter()
@@ -81,6 +81,7 @@ Partial Class F_GetProduct
         Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GetProductAddTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GetProductAddTableAdapter()
         Me.GPA_AantalTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GPA_AantalTableAdapter()
+        Me.TXT_AdmInkoop = New System.Windows.Forms.TextBox()
         GV_DatumLabel = New System.Windows.Forms.Label()
         GV_BeschrijvingLabel = New System.Windows.Forms.Label()
         Me.GB_Supplier.SuspendLayout()
@@ -212,7 +213,6 @@ Partial Class F_GetProduct
         '
         'GB_Products
         '
-        Me.GB_Products.Controls.Add(Me.Knop_Kosten)
         Me.GB_Products.Controls.Add(Me.Button2)
         Me.GB_Products.Controls.Add(Me.DG_List)
         Me.GB_Products.Controls.Add(Me.Knop_Actie)
@@ -223,15 +223,6 @@ Partial Class F_GetProduct
         Me.GB_Products.TabIndex = 1
         Me.GB_Products.TabStop = False
         Me.GB_Products.Text = "wat ontvangen?"
-        '
-        'Knop_Kosten
-        '
-        Me.Knop_Kosten.Location = New System.Drawing.Point(17, 175)
-        Me.Knop_Kosten.Name = "Knop_Kosten"
-        Me.Knop_Kosten.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Kosten.TabIndex = 7
-        Me.Knop_Kosten.Text = "&Kosten"
-        Me.Knop_Kosten.UseVisualStyleBackColor = True
         '
         'Button2
         '
@@ -357,6 +348,15 @@ Partial Class F_GetProduct
         Me.Knop_ProductPlus.Text = "Product +"
         Me.Knop_ProductPlus.UseVisualStyleBackColor = True
         '
+        'Knop_Kosten
+        '
+        Me.Knop_Kosten.Location = New System.Drawing.Point(12, 441)
+        Me.Knop_Kosten.Name = "Knop_Kosten"
+        Me.Knop_Kosten.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Kosten.TabIndex = 7
+        Me.Knop_Kosten.Text = "&Kosten"
+        Me.Knop_Kosten.UseVisualStyleBackColor = True
+        '
         'GB_Get
         '
         Me.GB_Get.Controls.Add(GV_BeschrijvingLabel)
@@ -364,7 +364,7 @@ Partial Class F_GetProduct
         Me.GB_Get.Controls.Add(GV_DatumLabel)
         Me.GB_Get.Controls.Add(Me.GV_DatumDateTimePicker)
         Me.GB_Get.Controls.Add(Me.TXT_NaamGet)
-        Me.GB_Get.Controls.Add(Me.ID_GetOntvangstTextBox)
+        Me.GB_Get.Controls.Add(Me.TXT_getontvangstid)
         Me.GB_Get.Controls.Add(Me.Label3)
         Me.GB_Get.Controls.Add(Me.CB_Ontvangen)
         Me.GB_Get.Location = New System.Drawing.Point(12, 12)
@@ -399,15 +399,15 @@ Partial Class F_GetProduct
         Me.TXT_NaamGet.Size = New System.Drawing.Size(235, 20)
         Me.TXT_NaamGet.TabIndex = 5
         '
-        'ID_GetOntvangstTextBox
+        'TXT_getontvangstid
         '
-        Me.ID_GetOntvangstTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetOntvangstBindingSource, "ID_GetOntvangst", True))
-        Me.ID_GetOntvangstTextBox.Enabled = False
-        Me.ID_GetOntvangstTextBox.Location = New System.Drawing.Point(487, 15)
-        Me.ID_GetOntvangstTextBox.Name = "ID_GetOntvangstTextBox"
-        Me.ID_GetOntvangstTextBox.Size = New System.Drawing.Size(40, 20)
-        Me.ID_GetOntvangstTextBox.TabIndex = 4
-        Me.ID_GetOntvangstTextBox.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        Me.TXT_getontvangstid.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetOntvangstBindingSource, "ID_GetOntvangst", True))
+        Me.TXT_getontvangstid.Enabled = False
+        Me.TXT_getontvangstid.Location = New System.Drawing.Point(487, 15)
+        Me.TXT_getontvangstid.Name = "TXT_getontvangstid"
+        Me.TXT_getontvangstid.Size = New System.Drawing.Size(40, 20)
+        Me.TXT_getontvangstid.TabIndex = 4
+        Me.TXT_getontvangstid.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'Label3
         '
@@ -563,11 +563,22 @@ Partial Class F_GetProduct
         '
         Me.GPA_AantalTableAdapter.ClearBeforeFill = True
         '
+        'TXT_AdmInkoop
+        '
+        Me.TXT_AdmInkoop.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetOntvangstBindingSource, "ID_AdmInkoopboek", True))
+        Me.TXT_AdmInkoop.Enabled = False
+        Me.TXT_AdmInkoop.Location = New System.Drawing.Point(93, 444)
+        Me.TXT_AdmInkoop.Name = "TXT_AdmInkoop"
+        Me.TXT_AdmInkoop.Size = New System.Drawing.Size(102, 20)
+        Me.TXT_AdmInkoop.TabIndex = 18
+        '
         'F_GetProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(812, 601)
+        Me.Controls.Add(Me.TXT_AdmInkoop)
+        Me.Controls.Add(Me.Knop_Kosten)
         Me.Controls.Add(Me.TXT_LijstAantal)
         Me.Controls.Add(Me.TXT_Voorraad)
         Me.Controls.Add(Me.Knop_OpslaanDB)
@@ -613,7 +624,7 @@ Partial Class F_GetProduct
     Friend WithEvents GetOntvangstBindingSource As BindingSource
     Friend WithEvents GetOntvangstTableAdapter As DS_ProductTableAdapters.GetOntvangstTableAdapter
     Friend WithEvents TableAdapterManager As DS_ProductTableAdapters.TableAdapterManager
-    Friend WithEvents ID_GetOntvangstTextBox As TextBox
+    Friend WithEvents TXT_getontvangstid As TextBox
     Friend WithEvents Knop_Sluiten As Button
     Friend WithEvents SupplierBindingSource As BindingSource
     Friend WithEvents SupplierTableAdapter As DS_ProductTableAdapters.SupplierTableAdapter
@@ -657,4 +668,5 @@ Partial Class F_GetProduct
     Friend WithEvents TXT_Beschrijving As TextBox
     Friend WithEvents Knop_Supplier As Button
     Friend WithEvents Knop_Kosten As Button
+    Friend WithEvents TXT_AdmInkoop As TextBox
 End Class

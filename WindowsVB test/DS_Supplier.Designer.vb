@@ -1706,6 +1706,8 @@ Partial Public Class DS_Supplier
         
         Private columnBW_Rekening As Global.System.Data.DataColumn
         
+        Private columnID_Grootboek As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1774,6 +1776,14 @@ Partial Public Class DS_Supplier
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ID_GrootboekColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_Grootboek
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1810,9 +1820,9 @@ Partial Public Class DS_Supplier
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddBetaalWijzenRow(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String) As BetaalWijzenRow
+        Public Overloads Function AddBetaalWijzenRow(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String, ByVal ID_Grootboek As Integer) As BetaalWijzenRow
             Dim rowBetaalWijzenRow As BetaalWijzenRow = CType(Me.NewRow,BetaalWijzenRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, BW_Kort, BW_Beschrijving, BW_Rekening}
+            Dim columnValuesArray() As Object = New Object() {Nothing, BW_Kort, BW_Beschrijving, BW_Rekening, ID_Grootboek}
             rowBetaalWijzenRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowBetaalWijzenRow)
             Return rowBetaalWijzenRow
@@ -1845,6 +1855,7 @@ Partial Public Class DS_Supplier
             Me.columnBW_Kort = MyBase.Columns("BW_Kort")
             Me.columnBW_Beschrijving = MyBase.Columns("BW_Beschrijving")
             Me.columnBW_Rekening = MyBase.Columns("BW_Rekening")
+            Me.columnID_Grootboek = MyBase.Columns("ID_Grootboek")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1858,6 +1869,8 @@ Partial Public Class DS_Supplier
             MyBase.Columns.Add(Me.columnBW_Beschrijving)
             Me.columnBW_Rekening = New Global.System.Data.DataColumn("BW_Rekening", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnBW_Rekening)
+            Me.columnID_Grootboek = New Global.System.Data.DataColumn("ID_Grootboek", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_Grootboek)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_BetaalWijzen}, true))
             Me.columnID_BetaalWijzen.AutoIncrement = true
             Me.columnID_BetaalWijzen.AutoIncrementSeed = -1
@@ -3679,6 +3692,21 @@ Partial Public Class DS_Supplier
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID_Grootboek() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableBetaalWijzen.ID_GrootboekColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ID_Grootboek' in table 'BetaalWijzen' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableBetaalWijzen.ID_GrootboekColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsBW_KortNull() As Boolean
             Return Me.IsNull(Me.tableBetaalWijzen.BW_KortColumn)
         End Function
@@ -3711,6 +3739,18 @@ Partial Public Class DS_Supplier
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetBW_RekeningNull()
             Me(Me.tableBetaalWijzen.BW_RekeningColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsID_GrootboekNull() As Boolean
+            Return Me.IsNull(Me.tableBetaalWijzen.ID_GrootboekColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetID_GrootboekNull()
+            Me(Me.tableBetaalWijzen.ID_GrootboekColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5827,14 +5867,17 @@ Namespace DS_SupplierTableAdapters
             tableMapping.ColumnMappings.Add("BW_Kort", "BW_Kort")
             tableMapping.ColumnMappings.Add("BW_Beschrijving", "BW_Beschrijving")
             tableMapping.ColumnMappings.Add("BW_Rekening", "BW_Rekening")
+            tableMapping.ColumnMappings.Add("ID_Grootboek", "ID_Grootboek")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
-            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [dbo].[BetaalWijzen] WHERE (([ID_BetaalWijzen] = @Original_ID_BetaalW"& _ 
-                "ijzen) AND ((@IsNull_BW_Kort = 1 AND [BW_Kort] IS NULL) OR ([BW_Kort] = @Origina"& _ 
-                "l_BW_Kort)) AND ((@IsNull_BW_Beschrijving = 1 AND [BW_Beschrijving] IS NULL) OR "& _ 
-                "([BW_Beschrijving] = @Original_BW_Beschrijving)) AND ((@IsNull_BW_Rekening = 1 A"& _ 
-                "ND [BW_Rekening] IS NULL) OR ([BW_Rekening] = @Original_BW_Rekening)))"
+            Me._adapter.DeleteCommand.CommandText = "DELETE FROM [BetaalWijzen] WHERE (([ID_BetaalWijzen] = @Original_ID_BetaalWijzen)"& _ 
+                " AND ((@IsNull_BW_Kort = 1 AND [BW_Kort] IS NULL) OR ([BW_Kort] = @Original_BW_K"& _ 
+                "ort)) AND ((@IsNull_BW_Beschrijving = 1 AND [BW_Beschrijving] IS NULL) OR ([BW_B"& _ 
+                "eschrijving] = @Original_BW_Beschrijving)) AND ((@IsNull_BW_Rekening = 1 AND [BW"& _ 
+                "_Rekening] IS NULL) OR ([BW_Rekening] = @Original_BW_Rekening)) AND ((@IsNull_ID"& _ 
+                "_Grootboek = 1 AND [ID_Grootboek] IS NULL) OR ([ID_Grootboek] = @Original_ID_Gro"& _ 
+                "otboek)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_BetaalWijzen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_BetaalWijzen", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BW_Kort", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Kort", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -5843,29 +5886,36 @@ Namespace DS_SupplierTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BW_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Beschrijving", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BW_Rekening", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Rekening", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BW_Rekening", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Rekening", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
-            Me._adapter.InsertCommand.CommandText = "INSERT INTO [dbo].[BetaalWijzen] ([BW_Kort], [BW_Beschrijving], [BW_Rekening]) VA"& _ 
-                "LUES (@BW_Kort, @BW_Beschrijving, @BW_Rekening);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_BetaalWijzen, BW_Kor"& _ 
-                "t, BW_Beschrijving, BW_Rekening FROM BetaalWijzen WHERE (ID_BetaalWijzen = SCOPE"& _ 
-                "_IDENTITY())"
+            Me._adapter.InsertCommand.CommandText = "INSERT INTO [BetaalWijzen] ([BW_Kort], [BW_Beschrijving], [BW_Rekening], [ID_Groo"& _ 
+                "tboek]) VALUES (@BW_Kort, @BW_Beschrijving, @BW_Rekening, @ID_Grootboek);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELEC"& _ 
+                "T ID_BetaalWijzen, BW_Kort, BW_Beschrijving, BW_Rekening, ID_Grootboek FROM Beta"& _ 
+                "alWijzen WHERE (ID_BetaalWijzen = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BW_Kort", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Kort", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BW_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BW_Rekening", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Rekening", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
-            Me._adapter.UpdateCommand.CommandText = "UPDATE [dbo].[BetaalWijzen] SET [BW_Kort] = @BW_Kort, [BW_Beschrijving] = @BW_Bes"& _ 
-                "chrijving, [BW_Rekening] = @BW_Rekening WHERE (([ID_BetaalWijzen] = @Original_ID"& _ 
-                "_BetaalWijzen) AND ((@IsNull_BW_Kort = 1 AND [BW_Kort] IS NULL) OR ([BW_Kort] = "& _ 
-                "@Original_BW_Kort)) AND ((@IsNull_BW_Beschrijving = 1 AND [BW_Beschrijving] IS N"& _ 
-                "ULL) OR ([BW_Beschrijving] = @Original_BW_Beschrijving)) AND ((@IsNull_BW_Rekeni"& _ 
-                "ng = 1 AND [BW_Rekening] IS NULL) OR ([BW_Rekening] = @Original_BW_Rekening)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_BetaalWijzen, BW_Kort, BW_Beschrijving, BW_Rekening FROM BetaalWijzen"& _ 
-                " WHERE (ID_BetaalWijzen = @ID_BetaalWijzen)"
+            Me._adapter.UpdateCommand.CommandText = "UPDATE [BetaalWijzen] SET [BW_Kort] = @BW_Kort, [BW_Beschrijving] = @BW_Beschrijv"& _ 
+                "ing, [BW_Rekening] = @BW_Rekening, [ID_Grootboek] = @ID_Grootboek WHERE (([ID_Be"& _ 
+                "taalWijzen] = @Original_ID_BetaalWijzen) AND ((@IsNull_BW_Kort = 1 AND [BW_Kort]"& _ 
+                " IS NULL) OR ([BW_Kort] = @Original_BW_Kort)) AND ((@IsNull_BW_Beschrijving = 1 "& _ 
+                "AND [BW_Beschrijving] IS NULL) OR ([BW_Beschrijving] = @Original_BW_Beschrijving"& _ 
+                ")) AND ((@IsNull_BW_Rekening = 1 AND [BW_Rekening] IS NULL) OR ([BW_Rekening] = "& _ 
+                "@Original_BW_Rekening)) AND ((@IsNull_ID_Grootboek = 1 AND [ID_Grootboek] IS NUL"& _ 
+                "L) OR ([ID_Grootboek] = @Original_ID_Grootboek)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_BetaalWijzen, BW_K"& _ 
+                "ort, BW_Beschrijving, BW_Rekening, ID_Grootboek FROM BetaalWijzen WHERE (ID_Beta"& _ 
+                "alWijzen = @ID_BetaalWijzen)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BW_Kort", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Kort", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BW_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Beschrijving", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@BW_Rekening", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Rekening", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_BetaalWijzen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_BetaalWijzen", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BW_Kort", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Kort", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BW_Kort", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Kort", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -5873,6 +5923,8 @@ Namespace DS_SupplierTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BW_Beschrijving", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Beschrijving", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_BW_Rekening", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Rekening", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_BW_Rekening", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "BW_Rekening", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_BetaalWijzen", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_BetaalWijzen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -5889,8 +5941,8 @@ Namespace DS_SupplierTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT ID_BetaalWijzen, BW_Kort, BW_Beschrijving, BW_Rekening FROM dbo.BetaalWijz"& _ 
-                "en"
+            Me._commandCollection(0).CommandText = "SELECT        ID_BetaalWijzen, BW_Kort, BW_Beschrijving, BW_Rekening, ID_Grootboe"& _ 
+                "k"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            BetaalWijzen"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
         End Sub
         
@@ -5950,7 +6002,7 @@ Namespace DS_SupplierTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID_BetaalWijzen As Integer, ByVal Original_BW_Kort As String, ByVal Original_BW_Beschrijving As String, ByVal Original_BW_Rekening As String) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID_BetaalWijzen As Integer, ByVal Original_BW_Kort As String, ByVal Original_BW_Beschrijving As String, ByVal Original_BW_Rekening As String, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID_BetaalWijzen,Integer)
             If (Original_BW_Kort Is Nothing) Then
                 Me.Adapter.DeleteCommand.Parameters(1).Value = CType(1,Object)
@@ -5973,6 +6025,13 @@ Namespace DS_SupplierTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(5).Value = CType(0,Object)
                 Me.Adapter.DeleteCommand.Parameters(6).Value = CType(Original_BW_Rekening,String)
             End If
+            If (Original_ID_Grootboek.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = CType(Original_ID_Grootboek.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(8).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -5992,7 +6051,7 @@ Namespace DS_SupplierTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String) As Integer
+        Public Overloads Overridable Function Insert(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String, ByVal ID_Grootboek As Global.System.Nullable(Of Integer)) As Integer
             If (BW_Kort Is Nothing) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -6007,6 +6066,11 @@ Namespace DS_SupplierTableAdapters
                 Me.Adapter.InsertCommand.Parameters(2).Value = Global.System.DBNull.Value
             Else
                 Me.Adapter.InsertCommand.Parameters(2).Value = CType(BW_Rekening,String)
+            End If
+            If (ID_Grootboek.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(3).Value = CType(ID_Grootboek.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(3).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -6027,7 +6091,7 @@ Namespace DS_SupplierTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String, ByVal Original_ID_BetaalWijzen As Integer, ByVal Original_BW_Kort As String, ByVal Original_BW_Beschrijving As String, ByVal Original_BW_Rekening As String, ByVal ID_BetaalWijzen As Integer) As Integer
+        Public Overloads Overridable Function Update(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String, ByVal ID_Grootboek As Global.System.Nullable(Of Integer), ByVal Original_ID_BetaalWijzen As Integer, ByVal Original_BW_Kort As String, ByVal Original_BW_Beschrijving As String, ByVal Original_BW_Rekening As String, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer), ByVal ID_BetaalWijzen As Integer) As Integer
             If (BW_Kort Is Nothing) Then
                 Me.Adapter.UpdateCommand.Parameters(0).Value = Global.System.DBNull.Value
             Else
@@ -6043,29 +6107,41 @@ Namespace DS_SupplierTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(2).Value = CType(BW_Rekening,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(3).Value = CType(Original_ID_BetaalWijzen,Integer)
-            If (Original_BW_Kort Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
+            If (ID_Grootboek.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(3).Value = CType(ID_Grootboek.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(4).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(Original_BW_Kort,String)
+                Me.Adapter.UpdateCommand.Parameters(3).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(4).Value = CType(Original_ID_BetaalWijzen,Integer)
+            If (Original_BW_Kort Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.UpdateCommand.Parameters(5).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_BW_Kort,String)
             End If
             If (Original_BW_Beschrijving Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_BW_Beschrijving,String)
+                Me.Adapter.UpdateCommand.Parameters(7).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_BW_Beschrijving,String)
             End If
             If (Original_BW_Rekening Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_BW_Rekening,String)
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_BW_Rekening,String)
             End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(ID_BetaalWijzen,Integer)
+            If (Original_ID_Grootboek.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ID_Grootboek.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(11).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(ID_BetaalWijzen,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -6085,8 +6161,8 @@ Namespace DS_SupplierTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String, ByVal Original_ID_BetaalWijzen As Integer, ByVal Original_BW_Kort As String, ByVal Original_BW_Beschrijving As String, ByVal Original_BW_Rekening As String) As Integer
-            Return Me.Update(BW_Kort, BW_Beschrijving, BW_Rekening, Original_ID_BetaalWijzen, Original_BW_Kort, Original_BW_Beschrijving, Original_BW_Rekening, Original_ID_BetaalWijzen)
+        Public Overloads Overridable Function Update(ByVal BW_Kort As String, ByVal BW_Beschrijving As String, ByVal BW_Rekening As String, ByVal ID_Grootboek As Global.System.Nullable(Of Integer), ByVal Original_ID_BetaalWijzen As Integer, ByVal Original_BW_Kort As String, ByVal Original_BW_Beschrijving As String, ByVal Original_BW_Rekening As String, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer)) As Integer
+            Return Me.Update(BW_Kort, BW_Beschrijving, BW_Rekening, ID_Grootboek, Original_ID_BetaalWijzen, Original_BW_Kort, Original_BW_Beschrijving, Original_BW_Rekening, Original_ID_Grootboek, Original_ID_BetaalWijzen)
         End Function
     End Class
     

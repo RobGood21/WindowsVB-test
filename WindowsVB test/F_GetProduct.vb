@@ -274,6 +274,31 @@
     End Sub
 
     Private Sub Knop_Kosten_Click(sender As Object, e As EventArgs) Handles Knop_Kosten.Click
+        Try
+
+            If Me.TXT_getontvangstid.Text > 0 Then 'alleen als getontvangst al in de db is gezet
+
+                ' IDADMINKOOP = Me.TXT_AdmInkoop.Text
+                If Me.TXT_AdmInkoop.Text > 0 Then
+
+                    IDADMINKOOP = Me.TXT_AdmInkoop.Text
+                    OPADMINKOOP = 2
+                Else
+                    OPADMINKOOP = 1
+                    IDADMINKOOP = -1
+                End If
+
+                IDSUPPLIER = Me.CB_Supplier.SelectedValue
+
+                F_AdmInkoopboek.ShowDialog()
+
+            End If
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "Getproduct")
+        End Try
+
+
+
 
     End Sub
 End Class

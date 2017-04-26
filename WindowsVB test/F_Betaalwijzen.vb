@@ -7,6 +7,8 @@
     End Sub
 
     Private Sub F_Betaalwijzen_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DS_Supplier.AdmGBrekening' table. You can move, or remove it, as needed.
+        Me.AdmGBrekeningTableAdapter.Fill(Me.DS_Supplier.AdmGBrekening)
         'TODO: This line of code loads data into the 'DS_Supplier.BetaalWijzen' table. You can move, or remove it, as needed.
         Me.BetaalWijzenTableAdapter.Fill(Me.DS_Supplier.BetaalWijzen)
 
