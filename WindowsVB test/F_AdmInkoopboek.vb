@@ -2,7 +2,6 @@
     'Variabelen definieren
     Private DEBETT As Decimal = 0
     Private CREDITT As Decimal = 0
-
     Public Sub ToolTipsInstellen()
         ' Create the ToolTip and associate with the Form container.
         Dim TT_Kosten As New ToolTip()
@@ -16,6 +15,13 @@
         With TT_Kosten
             'Knoppen
             .SetToolTip(Me.Knop_Toon, "Toon bewijsstuk van boeking, factuur")
+            .SetToolTip(Me.Knop_Journaal, "Maak journaalposten automatisch")
+            .SetToolTip(Me.Knop_Nieuweregel, "Voeg een nieuwe journaalpost in")
+            .SetToolTip(Me.Knop_Bereken, "Bereken en pas automatisch de waardes in de journaalposten aan")
+            .SetToolTip(Me.Knop_Close, "Sluit het formulier, er wordt niets opgeslagen")
+            .SetToolTip(Me.Knop_Sluiten, "Veranderingen opslaan en formulier sluiten")
+            .SetToolTip(Me.Knop_Annuleren, "Veranderinge en invoer wissen")
+            .SetToolTip(Me.Knop_Nieuw, "Veranderingen opslaan, nieuwe invoer ")
 
             'Txt boxen
             .SetToolTip(Me.TXT_Kenmerk, "Factuurnummer, of ander kenmerk van de crediteur")
@@ -25,7 +31,6 @@
 
 
     End Sub
-
     Private Sub AdmInkoopBoekBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         Me.Validate()
         Me.AdmInkoopBoekBindingSource.EndEdit()
@@ -40,6 +45,7 @@
     Public Sub LoadForm()
         Try
             ToolTipsInstellen()
+            JourNaalInstellen() 'opmaak van het datagridview
             'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, -1)
             LoadTables()
 
@@ -64,28 +70,23 @@
                     F_GetProduct.GetOntvangstBindingSource.EndEdit()
                     F_GetProduct.GetOntvangstTableAdapter.Update(F_GetProduct.DS_Product.GetOntvangst)
                 Case 2 'van form getontvangst, idadminkoop = nu bepaald
-                    Me.SupplierTableAdapter.FillBySupplier(Me.DS_Administratie.Supplier, IDSUPPLIER) 'alleen aangewezen supplier in combo
+                    Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers laden
                     Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, IDADMINKOOP)
+                    'Me.CB_Supplier.Enabled = False
+                    Me.CB_Supplier.DropDownStyle = ComboBoxStyle.Simple
+
                     Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, IDADMINKOOP)
+                    JournaalTotaal()
+                    Me.TXT_DebetTotaal.Text = DEBETT
+                    Me.TXT_CreditTotaal.Text = CREDITT
                     ' LoadTables()
-                    CheckBoxLoad()
-
-
+                    CheckBoxLoad() 'velden instellen afhankelijk van betaald
+                    Me.Knop_Nieuw.Enabled = False 'nieuw record aanmaken onmogelijk maken
+                    Me.Knop_Annuleren.Enabled = False
                 Case 3 'openen met een vooraf bepaald adminkoopnummer, dus na een zoekactie
 
                 Case Else 'openen als nieuwe invoer, niet afhankelijk van getproduct(ontvangst)
-                    Me.AdmInkoopBoekBindingSource.AddNew()
-                    Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
-                    LoadTables()
-                    Me.CB_Supplier.SelectedValue = -1
-
-                    'Me.CB_BetaalWijze.SelectedValue = -1
-                    'Me.CB_Valuta.SelectedValue = -1
-
-                    ClearControls()
-                    Me.CB_Supplier.Select()
-
-
+                    NieuweInkoop()
             End Select
 
             ' Me.ValutaTableAdapter.Fill(Me.DS_Administratie.Valuta)
@@ -96,7 +97,36 @@
         Catch ex As Exception
             MsgBox(ErrorToString)
         End Try
-
+    End Sub
+    Public Sub NieuweInkoop()
+        Me.AdmInkoopBoekBindingSource.AddNew()
+        Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
+        LoadTables()
+        Me.CB_Supplier.SelectedValue = -1
+        'Me.CB_BetaalWijze.SelectedValue = -1
+        'Me.CB_Valuta.SelectedValue = -1
+        ClearControls()
+        Me.CB_Supplier.Select()
+        Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, 0)
+    End Sub
+    Public Sub JourNaalInstellen()
+        Me.DG_Journaal.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.DG_Journaal.Columns(6).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
+        Me.DG_Journaal.Columns(0).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.DG_Journaal.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.DG_Journaal.Columns(4).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.DG_Journaal.Columns(3).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+    End Sub
+    Public Sub JournaalTotaal()
+        'berekend de totalen ingevoerd in journaalposten
+        Dim i As Integer
+        DEBETT = 0
+        CREDITT = 0
+        For i = 0 To Me.DG_Journaal.Rows.Count - 1
+            Me.DG_Journaal.Rows(i).Selected = False
+            DEBETT = DEBETT + Me.DG_Journaal.Rows(i).Cells(5).Value
+            CREDITT = CREDITT + Me.DG_Journaal.Rows(i).Cells(6).Value
+        Next
     End Sub
     Private Sub F_AdmInkoopboek_Load(sender As Object, e As EventArgs) Handles MyBase.Load
 
@@ -120,14 +150,14 @@
 
 
     End Sub
-    Private Sub Knop_herlaadForm_Click(sender As Object, e As EventArgs) Handles Knop_herlaadForm.Click
-        LoadForm()
-    End Sub
-    Private Sub Knop_Actie_Click(sender As Object, e As EventArgs) Handles Knop_Actie.Click
+    Private Sub Knop_Actie_Click(sender As Object, e As EventArgs)
         'FormatControls()
     End Sub
     Private Sub ClearControls()
         'gebruik om teksten in controls en dergelijke een beginwaarde te geven bij aanmaak NIEUW record
+        Me.IB_Datum.Value = Now
+        Me.IB_DueDatum.Value = Now
+        Me.IB_betaaldatum.Value = Me.IB_betaaldatum.MinDate
 
         Me.TXT_Waarde.Text = 0
         Me.TXT_WaardeEuro.Text = 0
@@ -136,6 +166,10 @@
         Me.CH_Betaald.Checked = False
     End Sub
     Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs) Handles Knop_Sluiten.Click
+        OpslaanAlles(True)
+    End Sub
+    Public Sub OpslaanAlles(Sluiten As Boolean)
+
         'dit slaat alles op, en sluit het formulier
 
         If Valideer() = True Then 'alles opslaan en form sluiten
@@ -144,7 +178,12 @@
             Me.AdmInkoopBoekBindingSource.EndEdit()
             Me.AdmJournaalBindingSource.EndEdit()
             Me.TableAdapterManager.UpdateAll(Me.DS_Administratie)
-            Me.Close()
+
+            If Sluiten = True Then
+                Me.Close()
+            Else 'nieuw invoer aanmaken
+                NieuweInkoop()
+            End If
         End If
 
     End Sub
@@ -217,13 +256,8 @@
             DG_Journaal.Rows(Rij).Cells(5).Value = DB
             DG_Journaal.Rows(Rij).Cells(6).Value = CR
 
-
-
             DEBETT = DEBETT + DB
             CREDITT = CREDITT + CR
-
-
-
 
             Me.TXT_DebetTotaal.Text = DEBETT
             Me.TXT_CreditTotaal.Text = CREDITT
@@ -268,22 +302,7 @@
         CheckBoxLoad()
     End Sub
     Private Sub Knop_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Annuleren.Click
-        'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, IDADMINKOOP)
-        Me.AdmInkoopBoekBindingSource.AddNew()
-        Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, 0)
-        Me.CH_Betaald.Checked = False
-        CheckBoxLoad()
-
-    End Sub
-    Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs)
-        Me.AdmInkoopBoekBindingSource.AddNew()
-        Me.CB_Supplier.Select()
-        'LoadTables() 'niet nodig is al gebeurd bij form load...
-
-        Me.CH_Betaald.Checked = False
-        Me.CheckBoxLoad()
-
-
+        NieuweInkoop()
     End Sub
     Private Sub Knop_Journaal_Click(sender As Object, e As EventArgs) Handles Knop_Journaal.Click
         Try
@@ -327,17 +346,7 @@
         'Me.DG_Journaal.CurrentCell = Me.DG_Journaal(0, 7)
 
         Me.DG_Journaal.EndEdit()
-
-        Dim i As Integer
-        DEBETT = 0
-        CREDITT = 0
-        For i = 0 To Me.DG_Journaal.Rows.Count - 1
-            Me.DG_Journaal.Rows(i).Selected = False
-            DEBETT = DEBETT + Me.DG_Journaal.Rows(i).Cells(5).Value
-            CREDITT = CREDITT + Me.DG_Journaal.Rows(i).Cells(6).Value
-        Next
-
-
+        JournaalTotaal()
         If (DEBETT <> CREDITT) Or Me.DG_Journaal.Rows.Count < 1 Then
             MsgBox("Journaalposten zijn niet correct ingevoerd", vbCritical, "Fout in journaalposten")
             Valideer = False
@@ -346,8 +355,9 @@
 
     End Function
     Private Sub Knop_Close_Click(sender As Object, e As EventArgs) Handles Knop_Close.Click
-
-        Me.Close()
+        Dim janee As Integer
+        janee = MsgBox("Formulier wordt afgesloten, zonder de veranderingen op te slaan" & Chr(13) & Chr(13) & "Weet je zeker dat je het formulier wilt sluiten?", vbYesNo, "Formulier sluiten...")
+        If janee = 6 Then Me.Close()
     End Sub
     Private Sub F_AdmInkoopboek_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         'Zorgen dat de open status wordt gereset.
@@ -356,10 +366,10 @@
     Public Sub CheckBoxLoad()
         If CH_Betaald.Checked = True Then
             Me.CB_BetaalWijze.Enabled = True
-            Me.DATE_betaaldatum.Enabled = True
+            Me.IB_betaaldatum.Enabled = True
         Else
             Me.CB_BetaalWijze.Enabled = False
-            Me.DATE_betaaldatum.Enabled = False
+            Me.IB_betaaldatum.Enabled = False
 
         End If
 
@@ -370,14 +380,12 @@
     Private Sub CB_Valuta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Valuta.SelectedIndexChanged
         ' BerekenWaardeEuro()
     End Sub
-    Private Sub TXT_Koers_TextChanged(sender As Object, e As EventArgs) Handles TXT_KoersOUD.TextChanged
+    Private Sub TXT_Koers_TextChanged(sender As Object, e As EventArgs)
         BerekenWaardeEuro()
     End Sub
-
     Private Sub CB_Supplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Supplier.SelectedIndexChanged
 
     End Sub
-
     Private Sub TXT_SUPValuta_TextChanged(sender As Object, e As EventArgs) Handles TXT_SUPValuta.TextChanged
         Select Case IDADMINKOOP
             Case 2
@@ -385,7 +393,6 @@
         End Select
 
     End Sub
-
     Private Sub TXT_SupBetaalWijze_TextChanged(sender As Object, e As EventArgs) Handles TXT_SupBetaalWijze.TextChanged
         Try
             Select Case IDADMINKOOP
@@ -402,8 +409,7 @@
         End Try
 
     End Sub
-
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MsgBox(Valideer())
+    Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
+        OpslaanAlles(False)
     End Sub
 End Class

@@ -29,7 +29,7 @@ Partial Class F_GetProductAdd
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TXT_Lijstaantal = New System.Windows.Forms.TextBox()
         Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.Knop_Details = New System.Windows.Forms.Button()
@@ -103,7 +103,7 @@ Partial Class F_GetProductAdd
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.TextBox1)
+        Me.GroupBox1.Controls.Add(Me.TXT_Lijstaantal)
         Me.GroupBox1.Controls.Add(Me.Knop_Details)
         Me.GroupBox1.Controls.Add(Me.Label3)
         Me.GroupBox1.Controls.Add(Me.TXT_ProductBeschrijving)
@@ -125,13 +125,13 @@ Partial Class F_GetProductAdd
         Me.Label4.TabIndex = 8
         Me.Label4.Text = "Aantal:"
         '
-        'TextBox1
+        'TXT_Lijstaantal
         '
-        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_Aantal", True))
-        Me.TextBox1.Location = New System.Drawing.Point(100, 92)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(238, 20)
-        Me.TextBox1.TabIndex = 1
+        Me.TXT_Lijstaantal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_Lijst", True))
+        Me.TXT_Lijstaantal.Location = New System.Drawing.Point(100, 92)
+        Me.TXT_Lijstaantal.Name = "TXT_Lijstaantal"
+        Me.TXT_Lijstaantal.Size = New System.Drawing.Size(238, 20)
+        Me.TXT_Lijstaantal.TabIndex = 1
         '
         'GetProductAddBindingSource
         '
@@ -426,6 +426,7 @@ Partial Class F_GetProductAdd
         Me.TableAdapterManager.DT_productTableAdapter = Nothing
         Me.TableAdapterManager.GetOntvangstTableAdapter = Nothing
         Me.TableAdapterManager.GetProductAddTableAdapter = Nothing
+        Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
@@ -475,7 +476,7 @@ Partial Class F_GetProductAdd
     Friend WithEvents TXT_ProductID As TextBox
     Friend WithEvents Knop_Details As Button
     Friend WithEvents Label4 As Label
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TXT_Lijstaantal As TextBox
     Friend WithEvents GroupBox2 As GroupBox
     Friend WithEvents Label7 As Label
     Friend WithEvents TextBox4 As TextBox

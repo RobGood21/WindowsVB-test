@@ -9,6 +9,7 @@
     Public IDSHOP As Integer
     Public IDGETONTVANGST As Integer
     Public IDADMINKOOP As Integer
+    Public IDLOCATIE As Integer 'Locatie id van de plek waar een product standaard ligt
 
     'Openstatus van formulieren
     Public OPGETPRODUCTADD As Integer '1=Maak nieuw record 2=bekijk en open bestaand record

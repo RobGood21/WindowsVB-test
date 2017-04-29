@@ -119,6 +119,12 @@
     <Compile Include="F_AdmGBrekening.vb">
       <SubType>Form</SubType>
     </Compile>
+    <Compile Include="F_AdmInkoopboekLijst.Designer.vb">
+      <DependentUpon>F_AdmInkoopboekLijst.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_AdmInkoopboekLijst.vb">
+      <SubType>Form</SubType>
+    </Compile>
     <Compile Include="F_Betaalwijzen.Designer.vb">
       <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
     </Compile>
@@ -159,6 +165,18 @@
       <DependentUpon>F_Land.vb</DependentUpon>
     </Compile>
     <Compile Include="F_Land.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_Locatie.Designer.vb">
+      <DependentUpon>F_Locatie.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_Locatie.vb">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="F_LocatieHolder.Designer.vb">
+      <DependentUpon>F_LocatieHolder.vb</DependentUpon>
+    </Compile>
+    <Compile Include="F_LocatieHolder.vb">
       <SubType>Form</SubType>
     </Compile>
     <Compile Include="F_Merk.Designer.vb">
@@ -242,6 +260,9 @@
     <EmbeddedResource Include="F_AdmGBrekening.resx">
       <DependentUpon>F_AdmGBrekening.vb</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="F_AdmInkoopboekLijst.resx">
+      <DependentUpon>F_AdmInkoopboekLijst.vb</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="F_Betaalwijzen.resx">
       <DependentUpon>F_Betaalwijzen.vb</DependentUpon>
     </EmbeddedResource>
@@ -262,6 +283,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="F_Land.resx">
       <DependentUpon>F_Land.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_Locatie.resx">
+      <DependentUpon>F_Locatie.vb</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="F_LocatieHolder.resx">
+      <DependentUpon>F_LocatieHolder.vb</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="F_Merk.resx">
       <DependentUpon>F_Merk.vb</DependentUpon>
@@ -379,6 +406,9 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Insert-hyperlink-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\location-icon.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

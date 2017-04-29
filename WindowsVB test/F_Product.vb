@@ -12,11 +12,16 @@
         TT_Product.ReshowDelay = 50
         ' Force the ToolTip text to be displayed whether or not the form is active.
         TT_Product.ShowAlways = True
+
         ' Set up the ToolTip text for the Button and Checkbox.
+        'Teksten
         TT_Product.SetToolTip(Me.TXT_Verkoopprijs, "Verkoopprijs incl. BTW")
         TT_Product.SetToolTip(Me.TXT_Inkoopwaarde, "Gestelde inkoop- of voorraadwaarde excl.BTW")
         TT_Product.SetToolTip(Me.TXT_Laatste_inkoop_Datum, "Datum, laatste ontvangst van dit product")
         TT_Product.SetToolTip(Me.TXT_LaatsteInkoop_Waarde, "Betaalde bedrag in € ex.BTW")
+        'TT_Product.SetToolTip(Me.TXT_LaatsteInkoop_Waarde, "Betaalde bedrag in € ex.BTW")
+        'Knoppen
+        TT_Product.SetToolTip(Me.Knop_Locatie, "Bepaal de standaard locatie voor dit product")
 
         ' toolTip1.SetToolTip(Me.Button1, "My button1")
         'toolTip1.SetToolTip(Me.checkBox1, "My checkBox1")
@@ -56,6 +61,8 @@
     End Sub
 
     Private Sub F_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DS_Product.Locatie' table. You can move, or remove it, as needed.
+        Me.LocatieTableAdapter.FillByALL(Me.DS_Product.Locatie)
 
 
         Me.ToolTipsInstellen()
@@ -155,5 +162,19 @@
 
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         Me.DT_productBindingSource.AddNew()
+    End Sub
+
+    Private Sub Knop_Locatie_Click(sender As Object, e As EventArgs) Handles Knop_Locatie.Click
+        Try
+            IDLOCATIE = Me.CB_Locatie.SelectedValue
+            F_Locatie.ShowDialog()
+            Me.LocatieTableAdapter.FillByALL(Me.DS_Product.Locatie) 'combobox opnieuw laden, requery zeg maar ...
+            Me.CB_Locatie.SelectedValue = IDLOCATIE
+
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "Knop_locatie")
+        End Try
+
+
     End Sub
 End Class

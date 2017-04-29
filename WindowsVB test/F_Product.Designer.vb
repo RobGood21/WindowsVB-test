@@ -55,7 +55,9 @@ Partial Class F_Product
         Me.PD_BehuizingTextBox = New System.Windows.Forms.TextBox()
         Me.PD_WaardeTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.Knop_Locatie = New System.Windows.Forms.Button()
+        Me.CB_Locatie = New System.Windows.Forms.ComboBox()
+        Me.LocatieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TXT_LaatsteInkoop_Waarde = New System.Windows.Forms.TextBox()
         Me.TXT_Laatste_inkoop_Datum = New System.Windows.Forms.TextBox()
@@ -78,6 +80,7 @@ Partial Class F_Product
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
+        Me.LocatieTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.LocatieTableAdapter()
         PD_NaamLabel = New System.Windows.Forms.Label()
         PD_BehuizingLabel = New System.Windows.Forms.Label()
         PD_FunctieLabel = New System.Windows.Forms.Label()
@@ -97,6 +100,7 @@ Partial Class F_Product
         CType(Me.DSProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GBOX_Velden.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
+        CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TAB_Product.SuspendLayout()
         Me.TabPage3.SuspendLayout()
         Me.TabPage4.SuspendLayout()
@@ -188,7 +192,7 @@ Partial Class F_Product
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(51, 146)
+        Label1.Location = New System.Drawing.Point(51, 151)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(45, 13)
         Label1.TabIndex = 38
@@ -274,10 +278,14 @@ Partial Class F_Product
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.DT_productTableAdapter = Me.DT_productTableAdapter
-        Me.TableAdapterManager.GroepTableAdapter = Nothing
-        Me.TableAdapterManager.MerkTableAdapter = Nothing
+        Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.DT_productTableAdapter = Nothing
+        Me.TableAdapterManager.GetOntvangstTableAdapter = Nothing
+        Me.TableAdapterManager.GetProductAddTableAdapter = Nothing
+        Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
+        Me.TableAdapterManager.GroepTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
+        Me.TableAdapterManager.MerkTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         '
         'GroepTableAdapter
@@ -367,8 +375,9 @@ Partial Class F_Product
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.Knop_Locatie)
+        Me.GroupBox3.Controls.Add(Me.CB_Locatie)
         Me.GroupBox3.Controls.Add(Label1)
-        Me.GroupBox3.Controls.Add(Me.TextBox1)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.TXT_LaatsteInkoop_Waarde)
         Me.GroupBox3.Controls.Add(Me.TXT_Laatste_inkoop_Datum)
@@ -388,13 +397,33 @@ Partial Class F_Product
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Prijzen"
         '
-        'TextBox1
+        'Knop_Locatie
         '
-        Me.TextBox1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_MinimumVoorraad", True))
-        Me.TextBox1.Location = New System.Drawing.Point(102, 143)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(131, 20)
-        Me.TextBox1.TabIndex = 39
+        Me.Knop_Locatie.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.location_icon
+        Me.Knop_Locatie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Knop_Locatie.ImageAlign = System.Drawing.ContentAlignment.TopLeft
+        Me.Knop_Locatie.Location = New System.Drawing.Point(235, 146)
+        Me.Knop_Locatie.Name = "Knop_Locatie"
+        Me.Knop_Locatie.Size = New System.Drawing.Size(31, 30)
+        Me.Knop_Locatie.TabIndex = 40
+        Me.Knop_Locatie.UseVisualStyleBackColor = True
+        '
+        'CB_Locatie
+        '
+        Me.CB_Locatie.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Locatie", True))
+        Me.CB_Locatie.DataSource = Me.LocatieBindingSource
+        Me.CB_Locatie.DisplayMember = "LK_Code"
+        Me.CB_Locatie.FormattingEnabled = True
+        Me.CB_Locatie.Location = New System.Drawing.Point(103, 152)
+        Me.CB_Locatie.Name = "CB_Locatie"
+        Me.CB_Locatie.Size = New System.Drawing.Size(121, 21)
+        Me.CB_Locatie.TabIndex = 39
+        Me.CB_Locatie.ValueMember = "ID_Locatie"
+        '
+        'LocatieBindingSource
+        '
+        Me.LocatieBindingSource.DataMember = "Locatie"
+        Me.LocatieBindingSource.DataSource = Me.DS_Product
         '
         'Label5
         '
@@ -608,6 +637,10 @@ Partial Class F_Product
         Me.Knop_Opslaan.Text = "&Opslaan en Sluiten"
         Me.Knop_Opslaan.UseVisualStyleBackColor = True
         '
+        'LocatieTableAdapter
+        '
+        Me.LocatieTableAdapter.ClearBeforeFill = True
+        '
         'F_Product
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -636,6 +669,7 @@ Partial Class F_Product
         Me.GBOX_Velden.PerformLayout()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
+        CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.TAB_Product.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
@@ -673,7 +707,6 @@ Partial Class F_Product
     Friend WithEvents PD_VoorraadTextBox As TextBox
     Friend WithEvents TXT_LaatsteInkoop_Waarde As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox1 As TextBox
     Friend WithEvents TAB_Product As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
@@ -689,4 +722,8 @@ Partial Class F_Product
     Friend WithEvents Knop_Nieuw As Button
     Friend WithEvents Knop_Annuleren As Button
     Friend WithEvents Knop_Opslaan As Button
+    Friend WithEvents CB_Locatie As ComboBox
+    Friend WithEvents LocatieBindingSource As BindingSource
+    Friend WithEvents LocatieTableAdapter As DS_ProductTableAdapters.LocatieTableAdapter
+    Friend WithEvents Knop_Locatie As Button
 End Class

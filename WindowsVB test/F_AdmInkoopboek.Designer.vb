@@ -24,23 +24,32 @@ Partial Class F_AdmInkoopboek
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim IB_DatumLabel As System.Windows.Forms.Label
-        Dim ID_SupplierLabel As System.Windows.Forms.Label
-        Dim Label3 As System.Windows.Forms.Label
         Dim IB_PaidDatumLabel As System.Windows.Forms.Label
         Me.Knop_Sluiten = New System.Windows.Forms.Button()
         Me.GB_JournaalPosten = New System.Windows.Forms.GroupBox()
         Me.TXT_DebetTotaal = New System.Windows.Forms.TextBox()
         Me.TXT_CreditTotaal = New System.Windows.Forms.TextBox()
+        Me.Knop_Bereken = New System.Windows.Forms.Button()
         Me.DG_Journaal = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.AdmGBrekeningBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Administratie = New WindowsVB_test.DS_Administratie()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AdmJournaalBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Knop_Journaal = New System.Windows.Forms.Button()
+        Me.Knop_Nieuweregel = New System.Windows.Forms.Button()
         Me.GB_Crediteur = New System.Windows.Forms.GroupBox()
         Me.CB_Valuta = New System.Windows.Forms.ComboBox()
         Me.AdmInkoopBoekBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.CB_Supplier = New System.Windows.Forms.ComboBox()
         Me.SupplierBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.IB_Datum = New System.Windows.Forms.DateTimePicker()
         Me.Label7 = New System.Windows.Forms.Label()
         Me.TXT_BTW = New System.Windows.Forms.TextBox()
@@ -54,6 +63,7 @@ Partial Class F_AdmInkoopboek
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.GB_Betaling = New System.Windows.Forms.GroupBox()
+        Me.TXT_supplierID = New System.Windows.Forms.TextBox()
         Me.TXT_SupBetaalWijze = New System.Windows.Forms.TextBox()
         Me.TXT_SUPValuta = New System.Windows.Forms.TextBox()
         Me.TXT_GrootboekCR = New System.Windows.Forms.TextBox()
@@ -61,41 +71,23 @@ Partial Class F_AdmInkoopboek
         Me.TXT_Koers = New System.Windows.Forms.TextBox()
         Me.txt_grootboekSupplier = New System.Windows.Forms.TextBox()
         Me.CB_BetaalWijze = New System.Windows.Forms.ComboBox()
-        Me.DATE_betaaldatum = New System.Windows.Forms.DateTimePicker()
+        Me.IB_betaaldatum = New System.Windows.Forms.DateTimePicker()
         Me.Knop_Toon = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
         Me.TXT_Boeknummer = New System.Windows.Forms.TextBox()
         Me.IB_DueDatum = New System.Windows.Forms.DateTimePicker()
         Me.CH_Betaald = New System.Windows.Forms.CheckBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TXT_IDSupplier = New System.Windows.Forms.TextBox()
         Me.AdmInkoopBoekTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmInkoopBoekTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager()
         Me.AdmJournaalTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmJournaalTableAdapter()
         Me.SupplierTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.SupplierTableAdapter()
-        Me.GroupBox3 = New System.Windows.Forms.GroupBox()
-        Me.Knop_Actie = New System.Windows.Forms.Button()
-        Me.Knop_herlaadForm = New System.Windows.Forms.Button()
-        Me.TXT_KoersOUD = New System.Windows.Forms.TextBox()
         Me.ValutaTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.ValutaTableAdapter()
         Me.BetaalWijzenTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.BetaalWijzenTableAdapter()
         Me.AdmGBrekeningTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmGBrekeningTableAdapter()
-        Me.Knop_Nieuweregel = New System.Windows.Forms.Button()
-        Me.Knop_Annuleren = New System.Windows.Forms.Button()
-        Me.Knop_Journaal = New System.Windows.Forms.Button()
-        Me.Knop_Bereken = New System.Windows.Forms.Button()
         Me.Knop_Close = New System.Windows.Forms.Button()
-        Me.Button1 = New System.Windows.Forms.Button()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.Knop_Nieuw = New System.Windows.Forms.Button()
         IB_DatumLabel = New System.Windows.Forms.Label()
-        ID_SupplierLabel = New System.Windows.Forms.Label()
-        Label3 = New System.Windows.Forms.Label()
         IB_PaidDatumLabel = New System.Windows.Forms.Label()
         Me.GB_JournaalPosten.SuspendLayout()
         CType(Me.DG_Journaal, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -108,7 +100,6 @@ Partial Class F_AdmInkoopboek
         CType(Me.SupplierBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GB_Betaling.SuspendLayout()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox3.SuspendLayout()
         Me.SuspendLayout()
         '
         'IB_DatumLabel
@@ -119,24 +110,6 @@ Partial Class F_AdmInkoopboek
         IB_DatumLabel.Size = New System.Drawing.Size(41, 13)
         IB_DatumLabel.TabIndex = 22
         IB_DatumLabel.Text = "Datum:"
-        '
-        'ID_SupplierLabel
-        '
-        ID_SupplierLabel.AutoSize = True
-        ID_SupplierLabel.Location = New System.Drawing.Point(6, 78)
-        ID_SupplierLabel.Name = "ID_SupplierLabel"
-        ID_SupplierLabel.Size = New System.Drawing.Size(62, 13)
-        ID_SupplierLabel.TabIndex = 35
-        ID_SupplierLabel.Text = "ID Supplier:"
-        '
-        'Label3
-        '
-        Label3.AutoSize = True
-        Label3.Location = New System.Drawing.Point(6, 99)
-        Label3.Name = "Label3"
-        Label3.Size = New System.Drawing.Size(37, 13)
-        Label3.TabIndex = 38
-        Label3.Text = "Koers:"
         '
         'IB_PaidDatumLabel
         '
@@ -152,7 +125,7 @@ Partial Class F_AdmInkoopboek
         Me.Knop_Sluiten.Location = New System.Drawing.Point(497, 404)
         Me.Knop_Sluiten.Name = "Knop_Sluiten"
         Me.Knop_Sluiten.Size = New System.Drawing.Size(134, 23)
-        Me.Knop_Sluiten.TabIndex = 4
+        Me.Knop_Sluiten.TabIndex = 10
         Me.Knop_Sluiten.Text = "&Opslaan en Sluiten"
         Me.Knop_Sluiten.UseVisualStyleBackColor = True
         '
@@ -164,30 +137,42 @@ Partial Class F_AdmInkoopboek
         Me.GB_JournaalPosten.Controls.Add(Me.DG_Journaal)
         Me.GB_JournaalPosten.Controls.Add(Me.Knop_Journaal)
         Me.GB_JournaalPosten.Controls.Add(Me.Knop_Nieuweregel)
-        Me.GB_JournaalPosten.Location = New System.Drawing.Point(15, 189)
+        Me.GB_JournaalPosten.Location = New System.Drawing.Point(12, 188)
         Me.GB_JournaalPosten.Name = "GB_JournaalPosten"
         Me.GB_JournaalPosten.Size = New System.Drawing.Size(616, 209)
-        Me.GB_JournaalPosten.TabIndex = 5
+        Me.GB_JournaalPosten.TabIndex = 2
         Me.GB_JournaalPosten.TabStop = False
         Me.GB_JournaalPosten.Text = "Journaalposten"
         '
         'TXT_DebetTotaal
         '
         Me.TXT_DebetTotaal.Enabled = False
-        Me.TXT_DebetTotaal.Location = New System.Drawing.Point(233, 176)
+        Me.TXT_DebetTotaal.Location = New System.Drawing.Point(299, 176)
         Me.TXT_DebetTotaal.Name = "TXT_DebetTotaal"
-        Me.TXT_DebetTotaal.Size = New System.Drawing.Size(88, 20)
+        Me.TXT_DebetTotaal.Size = New System.Drawing.Size(65, 20)
         Me.TXT_DebetTotaal.TabIndex = 48
         Me.TXT_DebetTotaal.TabStop = False
+        Me.TXT_DebetTotaal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'TXT_CreditTotaal
         '
         Me.TXT_CreditTotaal.Enabled = False
-        Me.TXT_CreditTotaal.Location = New System.Drawing.Point(338, 176)
+        Me.TXT_CreditTotaal.Location = New System.Drawing.Point(382, 176)
         Me.TXT_CreditTotaal.Name = "TXT_CreditTotaal"
-        Me.TXT_CreditTotaal.Size = New System.Drawing.Size(88, 20)
+        Me.TXT_CreditTotaal.Size = New System.Drawing.Size(65, 20)
         Me.TXT_CreditTotaal.TabIndex = 47
         Me.TXT_CreditTotaal.TabStop = False
+        Me.TXT_CreditTotaal.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
+        '
+        'Knop_Bereken
+        '
+        Me.Knop_Bereken.Location = New System.Drawing.Point(486, 77)
+        Me.Knop_Bereken.Name = "Knop_Bereken"
+        Me.Knop_Bereken.Size = New System.Drawing.Size(82, 23)
+        Me.Knop_Bereken.TabIndex = 45
+        Me.Knop_Bereken.TabStop = False
+        Me.Knop_Bereken.Text = "&Bereken"
+        Me.Knop_Bereken.UseVisualStyleBackColor = True
         '
         'DG_Journaal
         '
@@ -199,9 +184,51 @@ Partial Class F_AdmInkoopboek
         Me.DG_Journaal.Location = New System.Drawing.Point(6, 19)
         Me.DG_Journaal.MultiSelect = False
         Me.DG_Journaal.Name = "DG_Journaal"
-        Me.DG_Journaal.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect
-        Me.DG_Journaal.Size = New System.Drawing.Size(425, 151)
+        Me.DG_Journaal.Size = New System.Drawing.Size(451, 151)
         Me.DG_Journaal.TabIndex = 0
+        Me.DG_Journaal.TabStop = False
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_JournaalPost"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 40
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_AdmBoek"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "ID_AdmBoek"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "ID_Boekstuk"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "ID_Boekstuk"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Visible = False
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "JP_Datum"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Datum"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 80
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ID_Grootboek"
+        Me.DataGridViewTextBoxColumn3.DataSource = Me.AdmGBrekeningBindingSource
+        Me.DataGridViewTextBoxColumn3.DisplayMember = "GB_naam"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Grootboek"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn3.ToolTipText = "Het grootboek rekeningnummer"
+        Me.DataGridViewTextBoxColumn3.ValueMember = "ID_Grootboek"
+        Me.DataGridViewTextBoxColumn3.Width = 120
         '
         'AdmGBrekeningBindingSource
         '
@@ -213,10 +240,43 @@ Partial Class F_AdmInkoopboek
         Me.DS_Administratie.DataSetName = "DS_Administratie"
         Me.DS_Administratie.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "JP_Debet"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Debet"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 80
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "JP_Credit"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Credit"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 80
+        '
         'AdmJournaalBindingSource
         '
         Me.AdmJournaalBindingSource.DataMember = "AdmJournaal"
         Me.AdmJournaalBindingSource.DataSource = Me.DS_Administratie
+        '
+        'Knop_Journaal
+        '
+        Me.Knop_Journaal.Location = New System.Drawing.Point(486, 19)
+        Me.Knop_Journaal.Name = "Knop_Journaal"
+        Me.Knop_Journaal.Size = New System.Drawing.Size(82, 23)
+        Me.Knop_Journaal.TabIndex = 8
+        Me.Knop_Journaal.Text = "&Journaal"
+        Me.Knop_Journaal.UseVisualStyleBackColor = True
+        '
+        'Knop_Nieuweregel
+        '
+        Me.Knop_Nieuweregel.Location = New System.Drawing.Point(486, 48)
+        Me.Knop_Nieuweregel.Name = "Knop_Nieuweregel"
+        Me.Knop_Nieuweregel.Size = New System.Drawing.Size(82, 23)
+        Me.Knop_Nieuweregel.TabIndex = 41
+        Me.Knop_Nieuweregel.TabStop = False
+        Me.Knop_Nieuweregel.Text = "&Xtra Regel"
+        Me.Knop_Nieuweregel.UseVisualStyleBackColor = True
         '
         'GB_Crediteur
         '
@@ -238,7 +298,7 @@ Partial Class F_AdmInkoopboek
         Me.GB_Crediteur.Location = New System.Drawing.Point(12, 14)
         Me.GB_Crediteur.Name = "GB_Crediteur"
         Me.GB_Crediteur.Size = New System.Drawing.Size(306, 168)
-        Me.GB_Crediteur.TabIndex = 17
+        Me.GB_Crediteur.TabIndex = 0
         Me.GB_Crediteur.TabStop = False
         Me.GB_Crediteur.Text = "Boekstuk"
         '
@@ -252,6 +312,7 @@ Partial Class F_AdmInkoopboek
         Me.CB_Valuta.Name = "CB_Valuta"
         Me.CB_Valuta.Size = New System.Drawing.Size(74, 21)
         Me.CB_Valuta.TabIndex = 30
+        Me.CB_Valuta.TabStop = False
         Me.CB_Valuta.ValueMember = "ID_valuta"
         '
         'AdmInkoopBoekBindingSource
@@ -266,6 +327,7 @@ Partial Class F_AdmInkoopboek
         '
         'CB_Supplier
         '
+        Me.CB_Supplier.BackColor = System.Drawing.SystemColors.Window
         Me.CB_Supplier.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.AdmInkoopBoekBindingSource, "ID_Supplier", True))
         Me.CB_Supplier.DataSource = Me.SupplierBindingSource
         Me.CB_Supplier.DisplayMember = "SP_Naam"
@@ -282,6 +344,16 @@ Partial Class F_AdmInkoopboek
         '
         Me.SupplierBindingSource.DataMember = "Supplier"
         Me.SupplierBindingSource.DataSource = Me.DS_Administratie
+        '
+        'Knop_Annuleren
+        '
+        Me.Knop_Annuleren.Location = New System.Drawing.Point(225, 136)
+        Me.Knop_Annuleren.Name = "Knop_Annuleren"
+        Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Annuleren.TabIndex = 42
+        Me.Knop_Annuleren.TabStop = False
+        Me.Knop_Annuleren.Text = "&Annuleren"
+        Me.Knop_Annuleren.UseVisualStyleBackColor = True
         '
         'IB_Datum
         '
@@ -307,6 +379,7 @@ Partial Class F_AdmInkoopboek
         Me.TXT_BTW.Name = "TXT_BTW"
         Me.TXT_BTW.Size = New System.Drawing.Size(73, 20)
         Me.TXT_BTW.TabIndex = 4
+        Me.TXT_BTW.TabStop = False
         '
         'Label6
         '
@@ -389,6 +462,7 @@ Partial Class F_AdmInkoopboek
         '
         'GB_Betaling
         '
+        Me.GB_Betaling.Controls.Add(Me.TXT_supplierID)
         Me.GB_Betaling.Controls.Add(Me.TXT_SupBetaalWijze)
         Me.GB_Betaling.Controls.Add(Me.TXT_SUPValuta)
         Me.GB_Betaling.Controls.Add(Me.TXT_GrootboekCR)
@@ -396,7 +470,7 @@ Partial Class F_AdmInkoopboek
         Me.GB_Betaling.Controls.Add(Me.txt_grootboekSupplier)
         Me.GB_Betaling.Controls.Add(Me.CB_BetaalWijze)
         Me.GB_Betaling.Controls.Add(IB_PaidDatumLabel)
-        Me.GB_Betaling.Controls.Add(Me.DATE_betaaldatum)
+        Me.GB_Betaling.Controls.Add(Me.IB_betaaldatum)
         Me.GB_Betaling.Controls.Add(Me.Knop_Toon)
         Me.GB_Betaling.Controls.Add(Me.Label11)
         Me.GB_Betaling.Controls.Add(Me.TXT_Boeknummer)
@@ -407,8 +481,18 @@ Partial Class F_AdmInkoopboek
         Me.GB_Betaling.Location = New System.Drawing.Point(324, 12)
         Me.GB_Betaling.Name = "GB_Betaling"
         Me.GB_Betaling.Size = New System.Drawing.Size(307, 170)
-        Me.GB_Betaling.TabIndex = 5
+        Me.GB_Betaling.TabIndex = 1
         Me.GB_Betaling.TabStop = False
+        '
+        'TXT_supplierID
+        '
+        Me.TXT_supplierID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Valuta", True))
+        Me.TXT_supplierID.Enabled = False
+        Me.TXT_supplierID.Location = New System.Drawing.Point(15, 140)
+        Me.TXT_supplierID.Name = "TXT_supplierID"
+        Me.TXT_supplierID.Size = New System.Drawing.Size(40, 20)
+        Me.TXT_supplierID.TabIndex = 50
+        Me.TXT_supplierID.TabStop = False
         '
         'TXT_SupBetaalWijze
         '
@@ -474,16 +558,17 @@ Partial Class F_AdmInkoopboek
         Me.CB_BetaalWijze.Location = New System.Drawing.Point(209, 77)
         Me.CB_BetaalWijze.Name = "CB_BetaalWijze"
         Me.CB_BetaalWijze.Size = New System.Drawing.Size(74, 21)
-        Me.CB_BetaalWijze.TabIndex = 41
+        Me.CB_BetaalWijze.TabIndex = 6
         Me.CB_BetaalWijze.ValueMember = "ID_BetaalWijzen"
         '
-        'DATE_betaaldatum
+        'IB_betaaldatum
         '
-        Me.DATE_betaaldatum.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AdmInkoopBoekBindingSource, "IB_PaidDatum", True))
-        Me.DATE_betaaldatum.Location = New System.Drawing.Point(83, 99)
-        Me.DATE_betaaldatum.Name = "DATE_betaaldatum"
-        Me.DATE_betaaldatum.Size = New System.Drawing.Size(200, 20)
-        Me.DATE_betaaldatum.TabIndex = 40
+        Me.IB_betaaldatum.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AdmInkoopBoekBindingSource, "IB_PaidDatum", True))
+        Me.IB_betaaldatum.Location = New System.Drawing.Point(83, 99)
+        Me.IB_betaaldatum.MinDate = New Date(2016, 11, 17, 0, 0, 0, 0)
+        Me.IB_betaaldatum.Name = "IB_betaaldatum"
+        Me.IB_betaaldatum.Size = New System.Drawing.Size(200, 20)
+        Me.IB_betaaldatum.TabIndex = 7
         '
         'Knop_Toon
         '
@@ -507,18 +592,22 @@ Partial Class F_AdmInkoopboek
         'TXT_Boeknummer
         '
         Me.TXT_Boeknummer.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdmInkoopBoekBindingSource, "ID_AdmInkoopboek", True))
+        Me.TXT_Boeknummer.Enabled = False
         Me.TXT_Boeknummer.Location = New System.Drawing.Point(83, 19)
         Me.TXT_Boeknummer.Name = "TXT_Boeknummer"
-        Me.TXT_Boeknummer.Size = New System.Drawing.Size(94, 20)
+        Me.TXT_Boeknummer.Size = New System.Drawing.Size(62, 20)
         Me.TXT_Boeknummer.TabIndex = 37
+        Me.TXT_Boeknummer.TabStop = False
+        Me.TXT_Boeknummer.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'IB_DueDatum
         '
         Me.IB_DueDatum.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AdmInkoopBoekBindingSource, "IB_DueDatum", True))
         Me.IB_DueDatum.Location = New System.Drawing.Point(83, 43)
+        Me.IB_DueDatum.MinDate = New Date(2016, 11, 17, 0, 0, 0, 0)
         Me.IB_DueDatum.Name = "IB_DueDatum"
         Me.IB_DueDatum.Size = New System.Drawing.Size(200, 20)
-        Me.IB_DueDatum.TabIndex = 36
+        Me.IB_DueDatum.TabIndex = 4
         '
         'CH_Betaald
         '
@@ -527,7 +616,7 @@ Partial Class F_AdmInkoopboek
         Me.CH_Betaald.Location = New System.Drawing.Point(83, 79)
         Me.CH_Betaald.Name = "CH_Betaald"
         Me.CH_Betaald.Size = New System.Drawing.Size(62, 17)
-        Me.CH_Betaald.TabIndex = 35
+        Me.CH_Betaald.TabIndex = 5
         Me.CH_Betaald.Text = "Betaald"
         Me.CH_Betaald.UseVisualStyleBackColor = True
         '
@@ -539,15 +628,6 @@ Partial Class F_AdmInkoopboek
         Me.Label9.Size = New System.Drawing.Size(63, 13)
         Me.Label9.TabIndex = 31
         Me.Label9.Text = "Betaalwijze:"
-        '
-        'TXT_IDSupplier
-        '
-        Me.TXT_IDSupplier.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdmInkoopBoekBindingSource, "ID_Supplier", True))
-        Me.TXT_IDSupplier.Location = New System.Drawing.Point(74, 75)
-        Me.TXT_IDSupplier.Name = "TXT_IDSupplier"
-        Me.TXT_IDSupplier.Size = New System.Drawing.Size(100, 20)
-        Me.TXT_IDSupplier.TabIndex = 36
-        Me.TXT_IDSupplier.TabStop = False
         '
         'AdmInkoopBoekTableAdapter
         '
@@ -570,49 +650,6 @@ Partial Class F_AdmInkoopboek
         '
         Me.SupplierTableAdapter.ClearBeforeFill = True
         '
-        'GroupBox3
-        '
-        Me.GroupBox3.Controls.Add(Me.Knop_Actie)
-        Me.GroupBox3.Controls.Add(Me.Knop_herlaadForm)
-        Me.GroupBox3.Controls.Add(Label3)
-        Me.GroupBox3.Controls.Add(Me.TXT_KoersOUD)
-        Me.GroupBox3.Controls.Add(ID_SupplierLabel)
-        Me.GroupBox3.Controls.Add(Me.TXT_IDSupplier)
-        Me.GroupBox3.Location = New System.Drawing.Point(814, 14)
-        Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(190, 409)
-        Me.GroupBox3.TabIndex = 37
-        Me.GroupBox3.TabStop = False
-        Me.GroupBox3.Text = "Hulp Controls, onzichtbaar"
-        '
-        'Knop_Actie
-        '
-        Me.Knop_Actie.Location = New System.Drawing.Point(56, 47)
-        Me.Knop_Actie.Name = "Knop_Actie"
-        Me.Knop_Actie.Size = New System.Drawing.Size(118, 23)
-        Me.Knop_Actie.TabIndex = 40
-        Me.Knop_Actie.Text = "Actie"
-        Me.Knop_Actie.UseVisualStyleBackColor = True
-        '
-        'Knop_herlaadForm
-        '
-        Me.Knop_herlaadForm.Location = New System.Drawing.Point(56, 18)
-        Me.Knop_herlaadForm.Name = "Knop_herlaadForm"
-        Me.Knop_herlaadForm.Size = New System.Drawing.Size(118, 23)
-        Me.Knop_herlaadForm.TabIndex = 39
-        Me.Knop_herlaadForm.TabStop = False
-        Me.Knop_herlaadForm.Text = "Herlaad form"
-        Me.Knop_herlaadForm.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText
-        Me.Knop_herlaadForm.UseVisualStyleBackColor = True
-        '
-        'TXT_KoersOUD
-        '
-        Me.TXT_KoersOUD.Location = New System.Drawing.Point(74, 96)
-        Me.TXT_KoersOUD.Name = "TXT_KoersOUD"
-        Me.TXT_KoersOUD.Size = New System.Drawing.Size(100, 20)
-        Me.TXT_KoersOUD.TabIndex = 37
-        Me.TXT_KoersOUD.TabStop = False
-        '
         'ValutaTableAdapter
         '
         Me.ValutaTableAdapter.ClearBeforeFill = True
@@ -625,128 +662,38 @@ Partial Class F_AdmInkoopboek
         '
         Me.AdmGBrekeningTableAdapter.ClearBeforeFill = True
         '
-        'Knop_Nieuweregel
-        '
-        Me.Knop_Nieuweregel.Location = New System.Drawing.Point(440, 48)
-        Me.Knop_Nieuweregel.Name = "Knop_Nieuweregel"
-        Me.Knop_Nieuweregel.Size = New System.Drawing.Size(82, 23)
-        Me.Knop_Nieuweregel.TabIndex = 41
-        Me.Knop_Nieuweregel.Text = "&Xtra Regel"
-        Me.Knop_Nieuweregel.UseVisualStyleBackColor = True
-        '
-        'Knop_Annuleren
-        '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(225, 136)
-        Me.Knop_Annuleren.Name = "Knop_Annuleren"
-        Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Annuleren.TabIndex = 42
-        Me.Knop_Annuleren.Text = "&Annuleren"
-        Me.Knop_Annuleren.UseVisualStyleBackColor = True
-        '
-        'Knop_Journaal
-        '
-        Me.Knop_Journaal.Location = New System.Drawing.Point(440, 19)
-        Me.Knop_Journaal.Name = "Knop_Journaal"
-        Me.Knop_Journaal.Size = New System.Drawing.Size(82, 23)
-        Me.Knop_Journaal.TabIndex = 44
-        Me.Knop_Journaal.Text = "&Journaal"
-        Me.Knop_Journaal.UseVisualStyleBackColor = True
-        '
-        'Knop_Bereken
-        '
-        Me.Knop_Bereken.Location = New System.Drawing.Point(440, 77)
-        Me.Knop_Bereken.Name = "Knop_Bereken"
-        Me.Knop_Bereken.Size = New System.Drawing.Size(82, 23)
-        Me.Knop_Bereken.TabIndex = 45
-        Me.Knop_Bereken.Text = "&Bereken"
-        Me.Knop_Bereken.UseVisualStyleBackColor = True
-        '
         'Knop_Close
         '
-        Me.Knop_Close.Location = New System.Drawing.Point(658, 158)
+        Me.Knop_Close.Location = New System.Drawing.Point(12, 403)
         Me.Knop_Close.Name = "Knop_Close"
         Me.Knop_Close.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Close.TabIndex = 46
-        Me.Knop_Close.Text = "Close"
+        Me.Knop_Close.TabStop = False
+        Me.Knop_Close.Text = "Sluiten"
         Me.Knop_Close.UseVisualStyleBackColor = True
         '
-        'Button1
+        'Knop_Nieuw
         '
-        Me.Button1.Location = New System.Drawing.Point(29, 449)
-        Me.Button1.Name = "Button1"
-        Me.Button1.Size = New System.Drawing.Size(135, 23)
-        Me.Button1.TabIndex = 47
-        Me.Button1.Text = "&Opslaan, nieuwe invoer"
-        Me.Button1.UseVisualStyleBackColor = True
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_JournaalPost"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_JournaalPost"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_AdmBoek"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "ID_AdmBoek"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "ID_Boekstuk"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "ID_Boekstuk"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Visible = False
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "JP_Datum"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Datum"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ID_Grootboek"
-        Me.DataGridViewTextBoxColumn3.DataSource = Me.AdmGBrekeningBindingSource
-        Me.DataGridViewTextBoxColumn3.DisplayMember = "GB_naam"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Grootboek"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn3.ToolTipText = "Het grootboek rekeningnummer"
-        Me.DataGridViewTextBoxColumn3.ValueMember = "ID_Grootboek"
-        Me.DataGridViewTextBoxColumn3.Width = 120
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "JP_Debet"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Debet"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 80
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "JP_Credit"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Credit"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 80
+        Me.Knop_Nieuw.Location = New System.Drawing.Point(356, 404)
+        Me.Knop_Nieuw.Name = "Knop_Nieuw"
+        Me.Knop_Nieuw.Size = New System.Drawing.Size(135, 23)
+        Me.Knop_Nieuw.TabIndex = 9
+        Me.Knop_Nieuw.Text = "&Opslaan, nieuwe invoer"
+        Me.Knop_Nieuw.UseVisualStyleBackColor = True
         '
         'F_AdmInkoopboek
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(1032, 605)
-        Me.Controls.Add(Me.Button1)
+        Me.ClientSize = New System.Drawing.Size(647, 454)
+        Me.Controls.Add(Me.Knop_Nieuw)
         Me.Controls.Add(Me.Knop_Close)
-        Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GB_Betaling)
         Me.Controls.Add(Me.GB_Crediteur)
         Me.Controls.Add(Me.GB_JournaalPosten)
         Me.Controls.Add(Me.Knop_Sluiten)
         Me.Name = "F_AdmInkoopboek"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Inkoopboek, kosten boeken"
         Me.GB_JournaalPosten.ResumeLayout(False)
         Me.GB_JournaalPosten.PerformLayout()
@@ -762,8 +709,6 @@ Partial Class F_AdmInkoopboek
         Me.GB_Betaling.ResumeLayout(False)
         Me.GB_Betaling.PerformLayout()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox3.ResumeLayout(False)
-        Me.GroupBox3.PerformLayout()
         Me.ResumeLayout(False)
 
     End Sub
@@ -789,13 +734,8 @@ Partial Class F_AdmInkoopboek
     Friend WithEvents TableAdapterManager As DS_AdministratieTableAdapters.TableAdapterManager
     Friend WithEvents IB_Datum As DateTimePicker
     Friend WithEvents CB_Supplier As ComboBox
-    Friend WithEvents TXT_IDSupplier As TextBox
     Friend WithEvents SupplierBindingSource As BindingSource
     Friend WithEvents SupplierTableAdapter As DS_AdministratieTableAdapters.SupplierTableAdapter
-    Friend WithEvents GroupBox3 As GroupBox
-    Friend WithEvents TXT_KoersOUD As TextBox
-    Friend WithEvents Knop_herlaadForm As Button
-    Friend WithEvents Knop_Actie As Button
     Friend WithEvents CB_Valuta As ComboBox
     Friend WithEvents ValutaBindingSource As BindingSource
     Friend WithEvents ValutaTableAdapter As DS_AdministratieTableAdapters.ValutaTableAdapter
@@ -804,7 +744,7 @@ Partial Class F_AdmInkoopboek
     Friend WithEvents Knop_Toon As Button
     Friend WithEvents Label11 As Label
     Friend WithEvents TXT_Boeknummer As TextBox
-    Friend WithEvents DATE_betaaldatum As DateTimePicker
+    Friend WithEvents IB_betaaldatum As DateTimePicker
     Friend WithEvents CB_BetaalWijze As ComboBox
     Friend WithEvents BetaalWijzenBindingSource As BindingSource
     Friend WithEvents BetaalWijzenTableAdapter As DS_AdministratieTableAdapters.BetaalWijzenTableAdapter
@@ -825,7 +765,7 @@ Partial Class F_AdmInkoopboek
     Friend WithEvents txt_grootboekSupplier As TextBox
     Friend WithEvents TXT_SupBetaalWijze As TextBox
     Friend WithEvents TXT_SUPValuta As TextBox
-    Friend WithEvents Button1 As Button
+    Friend WithEvents Knop_Nieuw As Button
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
@@ -833,4 +773,5 @@ Partial Class F_AdmInkoopboek
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
+    Friend WithEvents TXT_supplierID As TextBox
 End Class
