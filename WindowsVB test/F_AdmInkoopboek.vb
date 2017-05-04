@@ -51,11 +51,8 @@
 
             Select Case OPADMINKOOP
                 Case 1 'van form getontvangst NIeuw, dsnog geen inkoopboek record aan deze ontvangst
-                    'MERK OP DE TABLE ADAPTOR NIET VULLEN
-                    'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, -1)
                     Me.AdmInkoopBoekBindingSource.AddNew()
                     Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
-                    'LoadTables()
                     'MsgBox(Me.AdmInkoopBoekBindingSource.Count)
                     Me.CB_Supplier.SelectedValue = IDSUPPLIER
                     ClearControls()
@@ -65,16 +62,18 @@
                     Me.AdmInkoopBoekTableAdapter.Update(DS_Administratie.AdmInkoopBoek)
                     'parent form direct aanpassen
                     F_GetProduct.TXT_AdmInkoop.Text = Me.TXT_Boeknummer.Text
-                    'MsgBox(Me.TXT_Boeknummer.Text)
                     F_GetProduct.Validate()
                     F_GetProduct.GetOntvangstBindingSource.EndEdit()
                     F_GetProduct.GetOntvangstTableAdapter.Update(F_GetProduct.DS_Product.GetOntvangst)
+                    'F_GetProduct.TXT_Boekwaarde.Text = Me.TXT_WaardeEuro.Text
+                    IDADMINKOOP = Me.TXT_Boeknummer.Text 'publieke variable aanpassen
+                    Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, IDADMINKOOP) 'journaalposten laden
+
                 Case 2 'van form getontvangst, idadminkoop = nu bepaald
                     Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers laden
                     Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, IDADMINKOOP)
                     'Me.CB_Supplier.Enabled = False
                     Me.CB_Supplier.DropDownStyle = ComboBoxStyle.Simple
-
                     Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, IDADMINKOOP)
                     JournaalTotaal()
                     Me.TXT_DebetTotaal.Text = DEBETT
@@ -83,16 +82,14 @@
                     CheckBoxLoad() 'velden instellen afhankelijk van betaald
                     Me.Knop_Nieuw.Enabled = False 'nieuw record aanmaken onmogelijk maken
                     Me.Knop_Annuleren.Enabled = False
+                    'Gegevens op Parentform aanpassen
+                    'F_GetProduct.TXT_Boekwaarde.Text = Me.TXT_WaardeEuro.Text
+
                 Case 3 'openen met een vooraf bepaald adminkoopnummer, dus na een zoekactie
 
                 Case Else 'openen als nieuwe invoer, niet afhankelijk van getproduct(ontvangst)
                     NieuweInkoop()
             End Select
-
-            ' Me.ValutaTableAdapter.Fill(Me.DS_Administratie.Valuta)
-
-            'deze moet nog where inkoopboek nummer  enz...
-            'Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, -2)
 
         Catch ex As Exception
             MsgBox(ErrorToString)
@@ -129,9 +126,7 @@
         Next
     End Sub
     Private Sub F_AdmInkoopboek_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-
         LoadForm()
-
     End Sub
     Private Sub BerekenWaardeEuro()
         Try
@@ -181,6 +176,7 @@
 
             If Sluiten = True Then
                 Me.Close()
+                F_GetProduct.TXT_Boekwaarde.Text = Me.TXT_WaardeEuro.Text
             Else 'nieuw invoer aanmaken
                 NieuweInkoop()
             End If

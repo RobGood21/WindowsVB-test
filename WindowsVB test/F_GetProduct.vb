@@ -4,6 +4,13 @@
     '    heeft items uit tabel getproductadd, deze productlijst Is om te zetten naar een bestelling Of ontvangst
     '    tabel Is te vullen met handmatig toevoegen, of kiezen uit bestelde producten, door klanten bestelde producten of adviesen door minimale voorraad.
     '    Het veld In de productlijst, getontvangst, status dan zetten. 1=inbehandelng 2=Bestelling (bij leverancer) 3=Ontvangen in voorraad.
+    'Volgorde van colums in de datagrids is essentieel. 
+    'DG_lijst (0) = IDGetproductadd (1)= IDproduct(2)=IDgetontvangst (3)= Ontvangen aantal (4)= besteld aantal 
+    '(5)=Lijstaantal (6) =Product (beschrijving) (7)= locatie  (8) = inkoop (9)= voorraad 
+
+    ' verwijderen uit datagridview  DG_Lijst.Rows.Remove(DG_Lijst.Rows(DG_Lijst.SelectedCells.Item(0).RowIndex))
+
+    Dim BeVat As Boolean = False
 
     Public Sub ToolTipsInstellen()
         Dim TT_GetProduct As New ToolTip()
@@ -18,7 +25,7 @@
         With TT_GetProduct
             'Knoppen
             .SetToolTip(Me.Knop_Nieuw, "Maak een nieuwe productlijst")
-            '.SetToolTip(Me.Knop_Nieuw, "Leverancier toevoegen.")
+            .SetToolTip(Me.Knop_Opslaan, "Productlijst tussendoor opslaan")
             '.SetToolTip(Me.Knop_Annuleren, "alle invoer ongedaan maken")
             '.SetToolTip(Me.Knop_Opslaan, "Alle invoer en aanpassingen opslaan en formulier sluiten")
             '.SetToolTip(Me.Knop_Save, "Alle invoer (tussentijds) opslaan.")
@@ -30,6 +37,18 @@
             .SetToolTip(Me.CB_Ontvangen, "Kies een productlijst in behandeling")
         End With
     End Sub
+    Private Sub INITvelden()
+        Me.TB_Products.SelectTab(0)
+        Me.DA_Datum.Value = Now() 'aanmaakdatum instellen
+        Me.txt_Status.Text = 1 'statusveld naar 1 (in behandeling)
+        Me.Knop_BoekOntvangst.Enabled = False
+        INITkosten()
+    End Sub
+    Private Sub INITkosten()
+        Me.TXT_Boekwaarde.Text = FormatNumber(0, -1)
+        Me.TXT_Lijstwaarde.Text = FormatNumber(0, -1)
+        Me.BeVat = False
+    End Sub
     Private Sub GetOntvangstBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
 
     End Sub
@@ -37,9 +56,7 @@
         ToolTipsInstellen()
         'TODO: This line of code loads data into the 'DS_Product.GetProductAdd' table. You can move, or remove it, as needed.
         ' Me.GetProductAddTableAdapter.Fill(Me.DS_Product.GetProductAdd)
-
         LaadForm()
-
     End Sub
     Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs) Handles Knop_Sluiten.Click
         Me.Close()
@@ -57,6 +74,7 @@
     End Sub
     Private Sub Knop_Opslaan_Click(sender As Object, e As EventArgs) Handles Knop_Opslaan.Click
         Opslaan()
+        'Me.GetOntvangstTableAdapter.Fill(Me.DS_Product.GetOntvangst) 'opnieuw combo productlijsten laden, is niet een goed idee...
     End Sub
     Private Sub Knop_Herlaad_Click(sender As Object, e As EventArgs)
         LaadForm()
@@ -115,30 +133,25 @@
         TXT()
     End Sub
     Public Sub LaadProductList()
-
-
-
         Try
             'Me.GetProductListTableAdapter.Fill(Me.DS_Product.GetProductList, New System.Nullable(Of Integer)(CType(Me.CB_Ontvangen.SelectedValue, Integer)))
-
             Me.GetProductListTableAdapter.Fill(Me.DS_Product.GetProductList, Me.CB_Ontvangen.SelectedValue)
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
-
     End Sub
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         GetOntvangstBindingSource.AddNew() 'nieuwe order, ontvangst aanmaken
-        Me.DA_Datum.Value = Now() 'aanmaakdatum instellen
-        Me.txt_Status.Text = 1 'statusveld naar 1 (in behandeling)
-        Me.Knop_BoekOntvangst.Enabled = False
+        INITvelden()
     End Sub
     Private Sub CB_Supplier_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Supplier.SelectionChangeCommitted
 
     End Sub
     Private Sub CB_Ontvangen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectedIndexChanged
         'MsgBox("nu??")
+        INITvelden()
         LaadProductList()
+
     End Sub
     Private Sub CB_Shop_Enter(sender As Object, e As EventArgs) Handles CB_Shop.Enter
         LaadShop(2)
@@ -153,13 +166,12 @@
         Try
             IDGETONTVANGST = Me.CB_Ontvangen.SelectedValue
             OPGETPRODUCTADD = 1
-            'MsgBox(IDGETONTVANGST)
+            IDPRODUCT = -1
+            ' MsgBox(IDGETONTVANGST)
             F_GetProductAdd.ShowDialog()
             LaadProductList()
-
-            'MsgBox(IDGETONTVANGST)
         Catch ex As Exception
-            MsgBox(ErrorToString)
+            MsgBox(ErrorToString,, "Knop productplus")
 
         End Try
 
@@ -191,7 +203,7 @@
 
                 Me.Validate()
                 Me.DT_productBindingSource.EndEdit()
-                Me.GPAAantalBindingSource.EndEdit()
+                Me.GPA_AantalBindingSource.EndEdit()
                 Me.DT_productTableAdapter.Update(DS_Product.DT_product)
                 Me.GPA_AantalTableAdapter.Update(DS_Product.GPA_Aantal)
 
@@ -275,32 +287,167 @@
     End Sub
     Private Sub Knop_Kosten_Click(sender As Object, e As EventArgs) Handles Knop_Kosten.Click
         Try
-
             If Me.TXT_getontvangstid.Text > 0 Then 'alleen als getontvangst al in de db is gezet
-
                 ' IDADMINKOOP = Me.TXT_AdmInkoop.Text
-                If Me.TXT_AdmInkoop.Text > 0 Then
-
+                ' MsgBox("hier")
+                If Len(Me.TXT_AdmInkoop.Text) > 0 Then
                     IDADMINKOOP = Me.TXT_AdmInkoop.Text
                     OPADMINKOOP = 2
                 Else
                     OPADMINKOOP = 1
                     IDADMINKOOP = -1
                 End If
-
                 IDSUPPLIER = Me.CB_Supplier.SelectedValue
-
                 F_AdmInkoopboek.ShowDialog()
+                'verkregen gegevens inschrijven
+                BerekenLijstWaarde()
+                If Len(Me.TXT_Boekwaarde.Text) > 0 And BeVat = True Then 'bevat is of er een item in de lijst staat met lijstaantal <> 0
+                    Me.Knop_BoekOntvangst.Enabled = True
+                End If
+
 
             End If
         Catch ex As Exception
-            MsgBox(ErrorToString,, "Getproduct")
+            MsgBox(ErrorToString,, "knop_kosten enz ")
+        End Try
+    End Sub
+    Private Sub BerekenLijstWaarde()
+        'berekend waardes om te controleren of boeken als ontvangst toegestaan is
+        Dim i As Integer, W As Decimal
+        BeVat = False
+        Try
+            For i = 0 To Me.DG_Lijst.Rows.Count - 1
+                If IsNumeric(Me.DG_Lijst.Rows(i).Cells(5).Value) = True And IsNumeric(Me.DG_Lijst.Rows(i).Cells(8).Value) = True Then
+                    W = W + ((Me.DG_Lijst.Rows(i).Cells(5).Value) * (Me.DG_Lijst.Rows(i).Cells(8).Value))
+                End If
+
+                If IsNumeric(Me.DG_Lijst.Rows(i).Cells(5).Value) = True Then
+                    If (Me.DG_Lijst.Rows(i).Cells(5).Value) <> 0 Then BeVat = True
+                End If
+            Next
+            Me.TXT_Lijstwaarde.Text = FormatNumber(W, -1)
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "berekenlijstwaarde (F_getproduct)")
+        End Try
+
+    End Sub
+    Private Sub DG_Lijst_DoubleClick(sender As Object, e As EventArgs) Handles DG_Lijst.DoubleClick
+        ProductTonen()
+    End Sub
+    Private Sub Knop_BoekOntvangst_Click(sender As Object, e As EventArgs) Handles Knop_BoekOntvangst.Click
+        'Dit werkt alleen als de volgorde van cellen in de datgrid juist is 0=idgetproductadd 1=Idproduct 8=getbuyingprice
+        Dim i As Integer
+        Dim IDGPA As Integer, IDP As Integer 'GPA=getproductadd IDP=ID product
+        Dim BP As Decimal
+        Try
+            For i = 0 To Me.DG_Lijst.Rows.Count - 1
+                'Verkrijg IDgetproductadd en idProduct
+                IDGPA = Me.DG_Lijst.Rows(i).Cells(0).Value 'id van Getproductadd van deze regel
+                IDP = Me.DG_Lijst.Rows(i).Cells(1).Value 'id van product van deze regel
+                'vul de beide datatables 
+                Me.GPA_AantalTableAdapter.Fill(Me.DS_Product.GPA_Aantal, IDGPA)
+                Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDP)
+
+                If IsNumeric(Me.DG_Lijst.Rows(i).Cells(8).Value) = True Then
+                    BP = Me.DG_Lijst.Rows(i).Cells(8).Value
+                Else
+                    BP = 0
+                End If
+
+                'zet de waardes over
+                WaardesMove(BP)
+                'update de beide datatables... 
+                OPslaanTables()
+            Next
+            'Datagridview herladen
+            LaadProductList()
+            Me.GB_Get.Select()
+            BerekenLijstWaarde()
+
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "Knop Boekontvangst")
+        End Try
+    End Sub
+    Private Sub WaardesMove(Prijs As Decimal)
+        Dim L As Integer, V As Integer 'Zorgen dat de text velden WAARDES gaan bevatten en geen teksten
+
+        Try
+            L = Me.TXT_LijstAantal.Text
+            V = Me.TXT_Voorraad.Text
+
+            Me.TXT_ontvangen.Text = L
+            Me.TXT_Voorraad.Text = L + V
+            Me.TXT_Prijs.Text = Prijs
+            Me.TXT_LijstAantal.Text = 0
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "Waardesmove")
+        End Try
+    End Sub
+    Private Sub OPslaanTables()
+        'gebruikr voor ussendoor opalssn van de datatables
+        Try
+            Me.Validate()
+            Me.GPA_AantalBindingSource.EndEdit()
+            Me.DT_productBindingSource.EndEdit()
+            Me.GPA_AantalTableAdapter.Update(DS_Product.GPA_Aantal)
+            Me.DT_productTableAdapter.Update(DS_Product.DT_product)
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "OPslaan tables")
+        End Try
+    End Sub
+    Private Sub knop_OpslaanLijst_Click(sender As Object, e As EventArgs)
+
+        Me.Validate()
+        'Me.GetProductListBindingSource.EndEdit()
+        'Me.GetProductListTableAdapter.Update(DS_Product.GetProductAdd)
+
+    End Sub
+    Private Sub FillToolStripButton_Click(sender As Object, e As EventArgs)
+        Try
+
+        Catch ex As System.Exception
+            System.Windows.Forms.MessageBox.Show(ex.Message)
+        End Try
+
+    End Sub
+    Private Sub Tpage_Leveren_Enter(sender As Object, e As EventArgs) Handles Tpage_Leveren.Enter
+        Try
+            'MsgBox("enter")
+            Me.GPA_OntvangenLijstTableAdaptor_.Fill(DS_Product.GPA_OntvangenLijst_, Me.CB_Supplier.SelectedValue)
+        Catch ex As Exception
+            MsgBox(ErrorToString,, " Tpage_advies leveren enter")
+
         End Try
 
 
+    End Sub
+    Private Sub ProductTonen()
+        If Me.DG_Lijst.Rows.Count > 0 Then 'alleen als er al een item in de lijst staat.
 
+            Dim ID As Integer
+            Dim i As Integer
+            For i = 0 To Me.DG_Lijst.Rows.Count - 1
+                If Me.DG_Lijst.Rows(i).Selected = True Then 'geselcteerde lijst zoeken
+                    ID = Me.DG_Lijst.Rows(i).Cells(0).Value
+                    GoTo Eindeloop
+                End If
+            Next
+Eindeloop:
+            'MsgBox(ID)
+            IDGETPRODUCTADD = ID
+            OPGETPRODUCTADD = 2
+            IDGETONTVANGST = Me.TXT_getontvangstid.Text
+            F_GetProductAdd.ShowDialog()
+            'Productlijst herladen
+            LaadProductList()
+
+        End If
 
     End Sub
+    Private Sub Knop_Toon_Click(sender As Object, e As EventArgs) Handles Knop_Toon.Click
 
+        ProductTonen()
+
+    End Sub
 
 End Class

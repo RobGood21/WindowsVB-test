@@ -23,19 +23,7 @@ Partial Class F_ProductZoek
     <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
-        Me.DS_ProjectProducts = New WindowsVB_test.DS_ProjectProducts()
-        Me.DataTable1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataTable1TableAdapter = New WindowsVB_test.DS_ProjectProductsTableAdapters.DataTable1TableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProjectProductsTableAdapters.TableAdapterManager()
-        Me.DG_Products = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PD_Functie = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PD_Behuizing = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Knop_Sluit = New System.Windows.Forms.Button()
         Me.LBL_Zoektekst = New System.Windows.Forms.Label()
@@ -45,27 +33,26 @@ Partial Class F_ProductZoek
         Me.GroepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.GroepTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepTableAdapter()
-        CType(Me.DS_ProjectProducts, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.DG_Products, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.DS_ProjectProducts = New WindowsVB_test.DS_ProjectProducts()
+        Me.ZoekLijstBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.ZoeklijstTableAdapter = New WindowsVB_test.DS_ProjectProductsTableAdapters.ZoeklijstTableAdapter()
+        Me.DG_products = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1.SuspendLayout()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_ProjectProducts, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.ZoekLijstBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DG_products, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
-        '
-        'DS_ProjectProducts
-        '
-        Me.DS_ProjectProducts.DataSetName = "DS_ProjectProducts"
-        Me.DS_ProjectProducts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DataTable1BindingSource
-        '
-        Me.DataTable1BindingSource.DataMember = "DataTable1"
-        Me.DataTable1BindingSource.DataSource = Me.DS_ProjectProducts
-        '
-        'DataTable1TableAdapter
-        '
-        Me.DataTable1TableAdapter.ClearBeforeFill = True
         '
         'TableAdapterManager
         '
@@ -75,87 +62,6 @@ Partial Class F_ProductZoek
         Me.TableAdapterManager.MerkTableAdapter = Nothing
         Me.TableAdapterManager.ProductTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProjectProductsTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'DG_Products
-        '
-        Me.DG_Products.AllowUserToAddRows = False
-        Me.DG_Products.AllowUserToDeleteRows = False
-        Me.DG_Products.AllowUserToOrderColumns = True
-        Me.DG_Products.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
-        Me.DG_Products.AutoGenerateColumns = False
-        Me.DG_Products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_Products.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn4, Me.PD_Functie, Me.DataGridViewTextBoxColumn5, Me.PD_Behuizing, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn6})
-        Me.DG_Products.DataSource = Me.DataTable1BindingSource
-        Me.DG_Products.Location = New System.Drawing.Point(12, 59)
-        Me.DG_Products.MultiSelect = False
-        Me.DG_Products.Name = "DG_Products"
-        Me.DG_Products.ReadOnly = True
-        Me.DG_Products.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DG_Products.Size = New System.Drawing.Size(811, 428)
-        Me.DG_Products.TabIndex = 1
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_Product"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Resizable = System.Windows.Forms.DataGridViewTriState.[False]
-        Me.DataGridViewTextBoxColumn1.Width = 40
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "GP_Naam"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Groep"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 80
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "PD_Naam"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Naam"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        '
-        'PD_Functie
-        '
-        Me.PD_Functie.DataPropertyName = "PD_Functie"
-        Me.PD_Functie.HeaderText = "Functie"
-        Me.PD_Functie.Name = "PD_Functie"
-        Me.PD_Functie.ReadOnly = True
-        Me.PD_Functie.Width = 120
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PD_Waarde"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Waarde"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        '
-        'PD_Behuizing
-        '
-        Me.PD_Behuizing.DataPropertyName = "PD_Behuizing"
-        Me.PD_Behuizing.HeaderText = "Behuizing"
-        Me.PD_Behuizing.Name = "PD_Behuizing"
-        Me.PD_Behuizing.ReadOnly = True
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "MK_MerkNaam"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Merk"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 70
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "PD_Voorraad"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Voorraad"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
         '
         'GroupBox1
         '
@@ -230,31 +136,120 @@ Partial Class F_ProductZoek
         '
         Me.GroepTableAdapter.ClearBeforeFill = True
         '
+        'DS_ProjectProducts
+        '
+        Me.DS_ProjectProducts.DataSetName = "DS_ProjectProducts"
+        Me.DS_ProjectProducts.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'ZoekLijstBindingSource
+        '
+        Me.ZoekLijstBindingSource.DataMember = "ZoekLijst"
+        Me.ZoekLijstBindingSource.DataSource = Me.DS_ProjectProducts
+        '
+        'ZoeklijstTableAdapter
+        '
+        Me.ZoeklijstTableAdapter.ClearBeforeFill = True
+        '
+        'DG_products
+        '
+        Me.DG_products.AllowUserToAddRows = False
+        Me.DG_products.AllowUserToDeleteRows = False
+        Me.DG_products.AutoGenerateColumns = False
+        Me.DG_products.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DG_products.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
+        Me.DG_products.DataSource = Me.ZoekLijstBindingSource
+        Me.DG_products.Location = New System.Drawing.Point(12, 59)
+        Me.DG_products.MultiSelect = False
+        Me.DG_products.Name = "DG_products"
+        Me.DG_products.ReadOnly = True
+        Me.DG_products.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DG_products.Size = New System.Drawing.Size(954, 413)
+        Me.DG_products.TabIndex = 4
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_Product"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_Product"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "GP_Naam"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "GP_Naam"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "MK_MerkNaam"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "MK_MerkNaam"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "PD_Naam"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "PD_Naam"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "PD_Waarde"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "PD_Waarde"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "PD_Voorraad"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "PD_Voorraad"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "PD_Functie"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "PD_Functie"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "PD_Behuizing"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "PD_Behuizing"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "ID_Groep"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "ID_Groep"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        '
         'F_ProductZoek
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(835, 499)
+        Me.ClientSize = New System.Drawing.Size(1000, 499)
+        Me.Controls.Add(Me.DG_products)
         Me.Controls.Add(Me.GroupBox1)
-        Me.Controls.Add(Me.DG_Products)
         Me.Name = "F_ProductZoek"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Product opzoeken"
-        CType(Me.DS_ProjectProducts, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DataTable1BindingSource, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.DG_Products, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_ProjectProducts, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.ZoekLijstBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DG_products, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
-
-    Friend WithEvents DS_ProjectProducts As DS_ProjectProducts
-    Friend WithEvents DataTable1BindingSource As BindingSource
-    Friend WithEvents DataTable1TableAdapter As DS_ProjectProductsTableAdapters.DataTable1TableAdapter
     Friend WithEvents TableAdapterManager As DS_ProjectProductsTableAdapters.TableAdapterManager
-    Friend WithEvents DG_Products As DataGridView
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents LBL_ProductGroep As Label
     Friend WithEvents CB_Groep As ComboBox
@@ -264,12 +259,17 @@ Partial Class F_ProductZoek
     Friend WithEvents LBL_Zoektekst As Label
     Friend WithEvents TXT_Zoektekst As TextBox
     Friend WithEvents Knop_Sluit As Button
+    Friend WithEvents DS_ProjectProducts As DS_ProjectProducts
+    Friend WithEvents ZoekLijstBindingSource As BindingSource
+    Friend WithEvents ZoeklijstTableAdapter As DS_ProjectProductsTableAdapters.ZoeklijstTableAdapter
+    Friend WithEvents DG_products As DataGridView
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
-    Friend WithEvents PD_Functie As DataGridViewTextBoxColumn
-    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents PD_Behuizing As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn8 As DataGridViewTextBoxColumn
+    Friend WithEvents DataGridViewTextBoxColumn9 As DataGridViewTextBoxColumn
 End Class

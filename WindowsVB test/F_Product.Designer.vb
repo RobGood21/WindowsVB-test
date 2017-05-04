@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F_Product
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class F_Product
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim PD_NaamLabel As System.Windows.Forms.Label
@@ -34,6 +34,7 @@ Partial Class F_Product
         Dim PD_VoorraadLabel As System.Windows.Forms.Label
         Dim Label1 As System.Windows.Forms.Label
         Dim ID_GroepLabel As System.Windows.Forms.Label
+        Dim Label2 As System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.LBL_PN = New System.Windows.Forms.Label()
         Me.TXT_Productnummer = New System.Windows.Forms.TextBox()
@@ -50,20 +51,22 @@ Partial Class F_Product
         Me.GBOX_Velden = New System.Windows.Forms.GroupBox()
         Me.CB_Groep = New System.Windows.Forms.ComboBox()
         Me.GB_Merk = New System.Windows.Forms.ComboBox()
-        Me.PD_NaamTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_FunctieTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_BehuizingTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_WaardeTextBox = New System.Windows.Forms.TextBox()
+        Me.TXT_Naam = New System.Windows.Forms.TextBox()
+        Me.TXT_functie = New System.Windows.Forms.TextBox()
+        Me.TXT_behuizing = New System.Windows.Forms.TextBox()
+        Me.TXT_waarde = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.TXT_Locatie = New System.Windows.Forms.TextBox()
+        Me.LocatieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TXT_Beschrijving2 = New System.Windows.Forms.TextBox()
         Me.Knop_Locatie = New System.Windows.Forms.Button()
         Me.CB_Locatie = New System.Windows.Forms.ComboBox()
-        Me.LocatieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TXT_LaatsteInkoop_Waarde = New System.Windows.Forms.TextBox()
         Me.TXT_Laatste_inkoop_Datum = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
-        Me.PD_MinimumVoorraadTextBox = New System.Windows.Forms.TextBox()
-        Me.PD_VoorraadTextBox = New System.Windows.Forms.TextBox()
+        Me.TXT_Minimal = New System.Windows.Forms.TextBox()
+        Me.TXT_Voorraad = New System.Windows.Forms.TextBox()
         Me.TXT_Verkoopprijs = New System.Windows.Forms.TextBox()
         Me.TXT_Inkoopwaarde = New System.Windows.Forms.TextBox()
         Me.TAB_Product = New System.Windows.Forms.TabControl()
@@ -73,14 +76,16 @@ Partial Class F_Product
         Me.TabPage6 = New System.Windows.Forms.TabPage()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.TabPage1 = New System.Windows.Forms.TabPage()
-        Me.TabPage4 = New System.Windows.Forms.TabPage()
-        Me.TXT_Beschrijving2 = New System.Windows.Forms.TextBox()
-        Me.Knop_Save = New System.Windows.Forms.Button()
-        Me.Knop_Delete = New System.Windows.Forms.Button()
-        Me.Knop_Nieuw = New System.Windows.Forms.Button()
-        Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.LocatieTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.LocatieTableAdapter()
+        Me.TXT_IDP = New System.Windows.Forms.TextBox()
+        Me.Button1 = New System.Windows.Forms.Button()
+        Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
+        Me.SluitenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.TSM_Opslaan = New System.Windows.Forms.ToolStripMenuItem()
+        Me.AnnulerenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NieuwProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductWissenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         PD_NaamLabel = New System.Windows.Forms.Label()
         PD_BehuizingLabel = New System.Windows.Forms.Label()
         PD_FunctieLabel = New System.Windows.Forms.Label()
@@ -92,6 +97,7 @@ Partial Class F_Product
         PD_VoorraadLabel = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
         ID_GroepLabel = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -103,7 +109,7 @@ Partial Class F_Product
         CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TAB_Product.SuspendLayout()
         Me.TabPage3.SuspendLayout()
-        Me.TabPage4.SuspendLayout()
+        Me.MenuStrip1.SuspendLayout()
         Me.SuspendLayout()
         '
         'PD_NaamLabel
@@ -159,12 +165,11 @@ Partial Class F_Product
         PD_Sale_PrijsLabel.Size = New System.Drawing.Size(68, 13)
         PD_Sale_PrijsLabel.TabIndex = 22
         PD_Sale_PrijsLabel.Text = "Verkoopprijs:"
-        AddHandler PD_Sale_PrijsLabel.MouseHover, AddressOf Me.PD_Sale_PrijsLabel_MouseHover
         '
         'PD_Buy_CostLabel
         '
         PD_Buy_CostLabel.AutoSize = True
-        PD_Buy_CostLabel.Location = New System.Drawing.Point(18, 45)
+        PD_Buy_CostLabel.Location = New System.Drawing.Point(170, 21)
         PD_Buy_CostLabel.Name = "PD_Buy_CostLabel"
         PD_Buy_CostLabel.Size = New System.Drawing.Size(78, 13)
         PD_Buy_CostLabel.TabIndex = 24
@@ -174,7 +179,7 @@ Partial Class F_Product
         'PD_MinimumVoorraadLabel
         '
         PD_MinimumVoorraadLabel.AutoSize = True
-        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(142, 123)
+        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(142, 89)
         PD_MinimumVoorraadLabel.Name = "PD_MinimumVoorraadLabel"
         PD_MinimumVoorraadLabel.Size = New System.Drawing.Size(51, 13)
         PD_MinimumVoorraadLabel.TabIndex = 30
@@ -183,7 +188,7 @@ Partial Class F_Product
         'PD_VoorraadLabel
         '
         PD_VoorraadLabel.AutoSize = True
-        PD_VoorraadLabel.Location = New System.Drawing.Point(43, 123)
+        PD_VoorraadLabel.Location = New System.Drawing.Point(43, 89)
         PD_VoorraadLabel.Name = "PD_VoorraadLabel"
         PD_VoorraadLabel.Size = New System.Drawing.Size(56, 13)
         PD_VoorraadLabel.TabIndex = 28
@@ -192,7 +197,7 @@ Partial Class F_Product
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(51, 151)
+        Label1.Location = New System.Drawing.Point(51, 113)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(45, 13)
         Label1.TabIndex = 38
@@ -207,14 +212,23 @@ Partial Class F_Product
         ID_GroepLabel.TabIndex = 29
         ID_GroepLabel.Text = "Productgroep:"
         '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(23, 139)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(70, 13)
+        Label2.TabIndex = 41
+        Label2.Text = "Omschrijving:"
+        '
         'GroupBox1
         '
         Me.GroupBox1.Controls.Add(Me.LBL_PN)
         Me.GroupBox1.Controls.Add(Me.TXT_Productnummer)
         Me.GroupBox1.Controls.Add(Me.Knop_ZoekProduct)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 44)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 32)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(341, 58)
+        Me.GroupBox1.Size = New System.Drawing.Size(315, 58)
         Me.GroupBox1.TabIndex = 4
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Product"
@@ -233,14 +247,13 @@ Partial Class F_Product
         Me.TXT_Productnummer.Location = New System.Drawing.Point(102, 24)
         Me.TXT_Productnummer.Name = "TXT_Productnummer"
         Me.TXT_Productnummer.Size = New System.Drawing.Size(100, 20)
-        Me.TXT_Productnummer.TabIndex = 1
-        Me.TXT_Productnummer.TabStop = False
+        Me.TXT_Productnummer.TabIndex = 0
         '
         'Knop_ZoekProduct
         '
-        Me.Knop_ZoekProduct.Location = New System.Drawing.Point(208, 22)
+        Me.Knop_ZoekProduct.Location = New System.Drawing.Point(211, 22)
         Me.Knop_ZoekProduct.Name = "Knop_ZoekProduct"
-        Me.Knop_ZoekProduct.Size = New System.Drawing.Size(79, 23)
+        Me.Knop_ZoekProduct.Size = New System.Drawing.Size(75, 23)
         Me.Knop_ZoekProduct.TabIndex = 18
         Me.Knop_ZoekProduct.TabStop = False
         Me.Knop_ZoekProduct.Text = "Zoek.."
@@ -285,8 +298,10 @@ Partial Class F_Product
         Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Nothing
         Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
         'GroepTableAdapter
         '
@@ -302,17 +317,17 @@ Partial Class F_Product
         Me.GBOX_Velden.Controls.Add(ID_GroepLabel)
         Me.GBOX_Velden.Controls.Add(Me.GB_Merk)
         Me.GBOX_Velden.Controls.Add(ID_MerkLabel)
-        Me.GBOX_Velden.Controls.Add(Me.PD_NaamTextBox)
+        Me.GBOX_Velden.Controls.Add(Me.TXT_Naam)
         Me.GBOX_Velden.Controls.Add(PD_NaamLabel)
         Me.GBOX_Velden.Controls.Add(PD_BehuizingLabel)
-        Me.GBOX_Velden.Controls.Add(Me.PD_FunctieTextBox)
-        Me.GBOX_Velden.Controls.Add(Me.PD_BehuizingTextBox)
+        Me.GBOX_Velden.Controls.Add(Me.TXT_functie)
+        Me.GBOX_Velden.Controls.Add(Me.TXT_behuizing)
         Me.GBOX_Velden.Controls.Add(PD_FunctieLabel)
         Me.GBOX_Velden.Controls.Add(PD_WaardeLabel)
-        Me.GBOX_Velden.Controls.Add(Me.PD_WaardeTextBox)
-        Me.GBOX_Velden.Location = New System.Drawing.Point(12, 108)
+        Me.GBOX_Velden.Controls.Add(Me.TXT_waarde)
+        Me.GBOX_Velden.Location = New System.Drawing.Point(12, 96)
         Me.GBOX_Velden.Name = "GBOX_Velden"
-        Me.GBOX_Velden.Size = New System.Drawing.Size(341, 164)
+        Me.GBOX_Velden.Size = New System.Drawing.Size(315, 164)
         Me.GBOX_Velden.TabIndex = 0
         Me.GBOX_Velden.TabStop = False
         '
@@ -326,7 +341,7 @@ Partial Class F_Product
         Me.CB_Groep.Location = New System.Drawing.Point(102, 9)
         Me.CB_Groep.Name = "CB_Groep"
         Me.CB_Groep.Size = New System.Drawing.Size(184, 21)
-        Me.CB_Groep.TabIndex = 30
+        Me.CB_Groep.TabIndex = 0
         Me.CB_Groep.ValueMember = "ID_Groep"
         '
         'GB_Merk
@@ -341,40 +356,43 @@ Partial Class F_Product
         Me.GB_Merk.TabIndex = 4
         Me.GB_Merk.ValueMember = "ID_Merk"
         '
-        'PD_NaamTextBox
+        'TXT_Naam
         '
-        Me.PD_NaamTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Naam", True))
-        Me.PD_NaamTextBox.Location = New System.Drawing.Point(102, 36)
-        Me.PD_NaamTextBox.Name = "PD_NaamTextBox"
-        Me.PD_NaamTextBox.Size = New System.Drawing.Size(184, 20)
-        Me.PD_NaamTextBox.TabIndex = 0
+        Me.TXT_Naam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Naam", True))
+        Me.TXT_Naam.Location = New System.Drawing.Point(102, 36)
+        Me.TXT_Naam.Name = "TXT_Naam"
+        Me.TXT_Naam.Size = New System.Drawing.Size(184, 20)
+        Me.TXT_Naam.TabIndex = 1
         '
-        'PD_FunctieTextBox
+        'TXT_functie
         '
-        Me.PD_FunctieTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Functie", True))
-        Me.PD_FunctieTextBox.Location = New System.Drawing.Point(102, 59)
-        Me.PD_FunctieTextBox.Name = "PD_FunctieTextBox"
-        Me.PD_FunctieTextBox.Size = New System.Drawing.Size(184, 20)
-        Me.PD_FunctieTextBox.TabIndex = 1
+        Me.TXT_functie.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Functie", True))
+        Me.TXT_functie.Location = New System.Drawing.Point(102, 59)
+        Me.TXT_functie.Name = "TXT_functie"
+        Me.TXT_functie.Size = New System.Drawing.Size(184, 20)
+        Me.TXT_functie.TabIndex = 1
         '
-        'PD_BehuizingTextBox
+        'TXT_behuizing
         '
-        Me.PD_BehuizingTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Behuizing", True))
-        Me.PD_BehuizingTextBox.Location = New System.Drawing.Point(102, 107)
-        Me.PD_BehuizingTextBox.Name = "PD_BehuizingTextBox"
-        Me.PD_BehuizingTextBox.Size = New System.Drawing.Size(185, 20)
-        Me.PD_BehuizingTextBox.TabIndex = 3
+        Me.TXT_behuizing.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Behuizing", True))
+        Me.TXT_behuizing.Location = New System.Drawing.Point(102, 107)
+        Me.TXT_behuizing.Name = "TXT_behuizing"
+        Me.TXT_behuizing.Size = New System.Drawing.Size(185, 20)
+        Me.TXT_behuizing.TabIndex = 3
         '
-        'PD_WaardeTextBox
+        'TXT_waarde
         '
-        Me.PD_WaardeTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Waarde", True))
-        Me.PD_WaardeTextBox.Location = New System.Drawing.Point(102, 83)
-        Me.PD_WaardeTextBox.Name = "PD_WaardeTextBox"
-        Me.PD_WaardeTextBox.Size = New System.Drawing.Size(184, 20)
-        Me.PD_WaardeTextBox.TabIndex = 2
+        Me.TXT_waarde.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Waarde", True))
+        Me.TXT_waarde.Location = New System.Drawing.Point(102, 83)
+        Me.TXT_waarde.Name = "TXT_waarde"
+        Me.TXT_waarde.Size = New System.Drawing.Size(184, 20)
+        Me.TXT_waarde.TabIndex = 2
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.TXT_Locatie)
+        Me.GroupBox3.Controls.Add(Label2)
+        Me.GroupBox3.Controls.Add(Me.TXT_Beschrijving2)
         Me.GroupBox3.Controls.Add(Me.Knop_Locatie)
         Me.GroupBox3.Controls.Add(Me.CB_Locatie)
         Me.GroupBox3.Controls.Add(Label1)
@@ -383,26 +401,49 @@ Partial Class F_Product
         Me.GroupBox3.Controls.Add(Me.TXT_Laatste_inkoop_Datum)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(PD_MinimumVoorraadLabel)
-        Me.GroupBox3.Controls.Add(Me.PD_MinimumVoorraadTextBox)
+        Me.GroupBox3.Controls.Add(Me.TXT_Minimal)
         Me.GroupBox3.Controls.Add(PD_VoorraadLabel)
-        Me.GroupBox3.Controls.Add(Me.PD_VoorraadTextBox)
+        Me.GroupBox3.Controls.Add(Me.TXT_Voorraad)
         Me.GroupBox3.Controls.Add(PD_Sale_PrijsLabel)
         Me.GroupBox3.Controls.Add(Me.TXT_Verkoopprijs)
         Me.GroupBox3.Controls.Add(Me.TXT_Inkoopwaarde)
         Me.GroupBox3.Controls.Add(PD_Buy_CostLabel)
-        Me.GroupBox3.Location = New System.Drawing.Point(359, 44)
+        Me.GroupBox3.Location = New System.Drawing.Point(333, 32)
         Me.GroupBox3.Name = "GroupBox3"
-        Me.GroupBox3.Size = New System.Drawing.Size(279, 195)
+        Me.GroupBox3.Size = New System.Drawing.Size(368, 211)
         Me.GroupBox3.TabIndex = 22
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Prijzen"
+        '
+        'TXT_Locatie
+        '
+        Me.TXT_Locatie.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LocatieBindingSource, "LK_Code", True))
+        Me.TXT_Locatie.Location = New System.Drawing.Point(102, 110)
+        Me.TXT_Locatie.Name = "TXT_Locatie"
+        Me.TXT_Locatie.Size = New System.Drawing.Size(131, 20)
+        Me.TXT_Locatie.TabIndex = 42
+        '
+        'LocatieBindingSource
+        '
+        Me.LocatieBindingSource.DataMember = "Locatie"
+        Me.LocatieBindingSource.DataSource = Me.DS_Product
+        '
+        'TXT_Beschrijving2
+        '
+        Me.TXT_Beschrijving2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Beschrijving(2)", True))
+        Me.TXT_Beschrijving2.Location = New System.Drawing.Point(102, 136)
+        Me.TXT_Beschrijving2.Multiline = True
+        Me.TXT_Beschrijving2.Name = "TXT_Beschrijving2"
+        Me.TXT_Beschrijving2.Size = New System.Drawing.Size(249, 51)
+        Me.TXT_Beschrijving2.TabIndex = 35
+        Me.TXT_Beschrijving2.TabStop = False
         '
         'Knop_Locatie
         '
         Me.Knop_Locatie.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.location_icon
         Me.Knop_Locatie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Knop_Locatie.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Locatie.Location = New System.Drawing.Point(235, 146)
+        Me.Knop_Locatie.Location = New System.Drawing.Point(235, 105)
         Me.Knop_Locatie.Name = "Knop_Locatie"
         Me.Knop_Locatie.Size = New System.Drawing.Size(31, 30)
         Me.Knop_Locatie.TabIndex = 40
@@ -413,22 +454,18 @@ Partial Class F_Product
         Me.CB_Locatie.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Locatie", True))
         Me.CB_Locatie.DataSource = Me.LocatieBindingSource
         Me.CB_Locatie.DisplayMember = "LK_Code"
-        Me.CB_Locatie.FormattingEnabled = True
-        Me.CB_Locatie.Location = New System.Drawing.Point(103, 152)
+        Me.CB_Locatie.Enabled = False
+        Me.CB_Locatie.Location = New System.Drawing.Point(239, 109)
+        Me.CB_Locatie.MaxDropDownItems = 2
         Me.CB_Locatie.Name = "CB_Locatie"
-        Me.CB_Locatie.Size = New System.Drawing.Size(121, 21)
+        Me.CB_Locatie.Size = New System.Drawing.Size(22, 21)
         Me.CB_Locatie.TabIndex = 39
         Me.CB_Locatie.ValueMember = "ID_Locatie"
-        '
-        'LocatieBindingSource
-        '
-        Me.LocatieBindingSource.DataMember = "Locatie"
-        Me.LocatieBindingSource.DataSource = Me.DS_Product
         '
         'Label5
         '
         Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(48, 94)
+        Me.Label5.Location = New System.Drawing.Point(48, 67)
         Me.Label5.Name = "Label5"
         Me.Label5.Size = New System.Drawing.Size(46, 13)
         Me.Label5.TabIndex = 37
@@ -436,75 +473,76 @@ Partial Class F_Product
         '
         'TXT_LaatsteInkoop_Waarde
         '
-        Me.TXT_LaatsteInkoop_Waarde.Location = New System.Drawing.Point(102, 91)
+        Me.TXT_LaatsteInkoop_Waarde.Location = New System.Drawing.Point(102, 64)
         Me.TXT_LaatsteInkoop_Waarde.Name = "TXT_LaatsteInkoop_Waarde"
-        Me.TXT_LaatsteInkoop_Waarde.Size = New System.Drawing.Size(103, 20)
+        Me.TXT_LaatsteInkoop_Waarde.ReadOnly = True
+        Me.TXT_LaatsteInkoop_Waarde.Size = New System.Drawing.Size(69, 20)
         Me.TXT_LaatsteInkoop_Waarde.TabIndex = 36
+        Me.TXT_LaatsteInkoop_Waarde.TabStop = False
         '
         'TXT_Laatste_inkoop_Datum
         '
-        Me.TXT_Laatste_inkoop_Datum.Location = New System.Drawing.Point(102, 68)
+        Me.TXT_Laatste_inkoop_Datum.Location = New System.Drawing.Point(102, 42)
         Me.TXT_Laatste_inkoop_Datum.Name = "TXT_Laatste_inkoop_Datum"
-        Me.TXT_Laatste_inkoop_Datum.Size = New System.Drawing.Size(103, 20)
+        Me.TXT_Laatste_inkoop_Datum.ReadOnly = True
+        Me.TXT_Laatste_inkoop_Datum.Size = New System.Drawing.Size(206, 20)
         Me.TXT_Laatste_inkoop_Datum.TabIndex = 35
+        Me.TXT_Laatste_inkoop_Datum.TabStop = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(19, 71)
+        Me.Label4.Location = New System.Drawing.Point(19, 45)
         Me.Label4.Name = "Label4"
         Me.Label4.Size = New System.Drawing.Size(80, 13)
         Me.Label4.TabIndex = 34
         Me.Label4.Text = "Laatste inkoop:"
         '
-        'PD_MinimumVoorraadTextBox
+        'TXT_Minimal
         '
-        Me.PD_MinimumVoorraadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_MinimumVoorraad", True))
-        Me.PD_MinimumVoorraadTextBox.Location = New System.Drawing.Point(199, 120)
-        Me.PD_MinimumVoorraadTextBox.Name = "PD_MinimumVoorraadTextBox"
-        Me.PD_MinimumVoorraadTextBox.Size = New System.Drawing.Size(34, 20)
-        Me.PD_MinimumVoorraadTextBox.TabIndex = 31
+        Me.TXT_Minimal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_MinimumVoorraad", True))
+        Me.TXT_Minimal.Location = New System.Drawing.Point(199, 86)
+        Me.TXT_Minimal.Name = "TXT_Minimal"
+        Me.TXT_Minimal.Size = New System.Drawing.Size(34, 20)
+        Me.TXT_Minimal.TabIndex = 31
         '
-        'PD_VoorraadTextBox
+        'TXT_Voorraad
         '
-        Me.PD_VoorraadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
-        Me.PD_VoorraadTextBox.Location = New System.Drawing.Point(102, 120)
-        Me.PD_VoorraadTextBox.Name = "PD_VoorraadTextBox"
-        Me.PD_VoorraadTextBox.Size = New System.Drawing.Size(34, 20)
-        Me.PD_VoorraadTextBox.TabIndex = 29
+        Me.TXT_Voorraad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
+        Me.TXT_Voorraad.Location = New System.Drawing.Point(102, 86)
+        Me.TXT_Voorraad.Name = "TXT_Voorraad"
+        Me.TXT_Voorraad.Size = New System.Drawing.Size(34, 20)
+        Me.TXT_Voorraad.TabIndex = 29
         '
         'TXT_Verkoopprijs
         '
         Me.TXT_Verkoopprijs.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Sale_Prijs", True))
         Me.TXT_Verkoopprijs.Location = New System.Drawing.Point(102, 18)
         Me.TXT_Verkoopprijs.Name = "TXT_Verkoopprijs"
-        Me.TXT_Verkoopprijs.Size = New System.Drawing.Size(69, 20)
+        Me.TXT_Verkoopprijs.Size = New System.Drawing.Size(54, 20)
         Me.TXT_Verkoopprijs.TabIndex = 23
         '
         'TXT_Inkoopwaarde
         '
         Me.TXT_Inkoopwaarde.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Buy_Cost", True))
-        Me.TXT_Inkoopwaarde.Location = New System.Drawing.Point(102, 42)
+        Me.TXT_Inkoopwaarde.Location = New System.Drawing.Point(254, 18)
         Me.TXT_Inkoopwaarde.Name = "TXT_Inkoopwaarde"
-        Me.TXT_Inkoopwaarde.Size = New System.Drawing.Size(69, 20)
+        Me.TXT_Inkoopwaarde.Size = New System.Drawing.Size(54, 20)
         Me.TXT_Inkoopwaarde.TabIndex = 25
         '
         'TAB_Product
         '
-        Me.TAB_Product.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.TAB_Product.Controls.Add(Me.TabPage3)
         Me.TAB_Product.Controls.Add(Me.TabPage5)
         Me.TAB_Product.Controls.Add(Me.TabPage6)
         Me.TAB_Product.Controls.Add(Me.TabPage2)
         Me.TAB_Product.Controls.Add(Me.TabPage1)
-        Me.TAB_Product.Controls.Add(Me.TabPage4)
-        Me.TAB_Product.Location = New System.Drawing.Point(12, 279)
+        Me.TAB_Product.Location = New System.Drawing.Point(12, 282)
         Me.TAB_Product.Name = "TAB_Product"
         Me.TAB_Product.SelectedIndex = 0
-        Me.TAB_Product.Size = New System.Drawing.Size(626, 238)
+        Me.TAB_Product.Size = New System.Drawing.Size(689, 309)
         Me.TAB_Product.TabIndex = 38
+        Me.TAB_Product.TabStop = False
         '
         'TabPage3
         '
@@ -512,7 +550,7 @@ Partial Class F_Product
         Me.TabPage3.Location = New System.Drawing.Point(4, 22)
         Me.TabPage3.Name = "TabPage3"
         Me.TabPage3.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage3.Size = New System.Drawing.Size(618, 212)
+        Me.TabPage3.Size = New System.Drawing.Size(681, 283)
         Me.TabPage3.TabIndex = 2
         Me.TabPage3.Text = "Beschrijving product"
         Me.TabPage3.UseVisualStyleBackColor = True
@@ -523,10 +561,10 @@ Partial Class F_Product
             Or System.Windows.Forms.AnchorStyles.Left) _
             Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.txt_Beschrijving1.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Beschrijving(1)", True))
-        Me.txt_Beschrijving1.Location = New System.Drawing.Point(3, 6)
+        Me.txt_Beschrijving1.Location = New System.Drawing.Point(-4, -27)
         Me.txt_Beschrijving1.Multiline = True
         Me.txt_Beschrijving1.Name = "txt_Beschrijving1"
-        Me.txt_Beschrijving1.Size = New System.Drawing.Size(645, 210)
+        Me.txt_Beschrijving1.Size = New System.Drawing.Size(689, 314)
         Me.txt_Beschrijving1.TabIndex = 37
         '
         'TabPage5
@@ -534,7 +572,7 @@ Partial Class F_Product
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(618, 212)
+        Me.TabPage5.Size = New System.Drawing.Size(707, 283)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Afbeeldingen"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -543,7 +581,7 @@ Partial Class F_Product
         '
         Me.TabPage6.Location = New System.Drawing.Point(4, 22)
         Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Size = New System.Drawing.Size(618, 212)
+        Me.TabPage6.Size = New System.Drawing.Size(707, 283)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "Hyperlinks "
         Me.TabPage6.UseVisualStyleBackColor = True
@@ -553,7 +591,7 @@ Partial Class F_Product
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(618, 212)
+        Me.TabPage2.Size = New System.Drawing.Size(707, 283)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Gebruikt voor"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -563,74 +601,15 @@ Partial Class F_Product
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(618, 212)
+        Me.TabPage1.Size = New System.Drawing.Size(707, 283)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Ontvangen "
         Me.TabPage1.UseVisualStyleBackColor = True
         '
-        'TabPage4
-        '
-        Me.TabPage4.Controls.Add(Me.TXT_Beschrijving2)
-        Me.TabPage4.Location = New System.Drawing.Point(4, 22)
-        Me.TabPage4.Name = "TabPage4"
-        Me.TabPage4.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage4.Size = New System.Drawing.Size(618, 212)
-        Me.TabPage4.TabIndex = 3
-        Me.TabPage4.Text = "Opmerkingen"
-        Me.TabPage4.UseVisualStyleBackColor = True
-        '
-        'TXT_Beschrijving2
-        '
-        Me.TXT_Beschrijving2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Beschrijving(2)", True))
-        Me.TXT_Beschrijving2.Location = New System.Drawing.Point(11, 6)
-        Me.TXT_Beschrijving2.Multiline = True
-        Me.TXT_Beschrijving2.Name = "TXT_Beschrijving2"
-        Me.TXT_Beschrijving2.Size = New System.Drawing.Size(582, 106)
-        Me.TXT_Beschrijving2.TabIndex = 35
-        '
-        'Knop_Save
-        '
-        Me.Knop_Save.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
-        Me.Knop_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Save.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Save.Location = New System.Drawing.Point(607, 8)
-        Me.Knop_Save.Name = "Knop_Save"
-        Me.Knop_Save.Size = New System.Drawing.Size(31, 30)
-        Me.Knop_Save.TabIndex = 39
-        Me.Knop_Save.UseVisualStyleBackColor = True
-        '
-        'Knop_Delete
-        '
-        Me.Knop_Delete.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Windows_Close_Program_icon
-        Me.Knop_Delete.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Delete.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Delete.Location = New System.Drawing.Point(570, 8)
-        Me.Knop_Delete.Name = "Knop_Delete"
-        Me.Knop_Delete.Size = New System.Drawing.Size(31, 30)
-        Me.Knop_Delete.TabIndex = 40
-        Me.Knop_Delete.UseVisualStyleBackColor = True
-        '
-        'Knop_Nieuw
-        '
-        Me.Knop_Nieuw.Location = New System.Drawing.Point(359, 245)
-        Me.Knop_Nieuw.Name = "Knop_Nieuw"
-        Me.Knop_Nieuw.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Nieuw.TabIndex = 43
-        Me.Knop_Nieuw.Text = "&Nieuw"
-        Me.Knop_Nieuw.UseVisualStyleBackColor = True
-        '
-        'Knop_Annuleren
-        '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(440, 245)
-        Me.Knop_Annuleren.Name = "Knop_Annuleren"
-        Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Annuleren.TabIndex = 42
-        Me.Knop_Annuleren.Text = "&Annuleren"
-        Me.Knop_Annuleren.UseVisualStyleBackColor = True
-        '
         'Knop_Opslaan
         '
-        Me.Knop_Opslaan.Location = New System.Drawing.Point(532, 245)
+        Me.Knop_Opslaan.Enabled = False
+        Me.Knop_Opslaan.Location = New System.Drawing.Point(595, 253)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(106, 23)
         Me.Knop_Opslaan.TabIndex = 41
@@ -641,20 +620,84 @@ Partial Class F_Product
         '
         Me.LocatieTableAdapter.ClearBeforeFill = True
         '
+        'TXT_IDP
+        '
+        Me.TXT_IDP.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Product", True))
+        Me.TXT_IDP.Enabled = False
+        Me.TXT_IDP.Location = New System.Drawing.Point(667, 15)
+        Me.TXT_IDP.Name = "TXT_IDP"
+        Me.TXT_IDP.ReadOnly = True
+        Me.TXT_IDP.Size = New System.Drawing.Size(34, 20)
+        Me.TXT_IDP.TabIndex = 41
+        Me.TXT_IDP.TabStop = False
+        '
+        'Button1
+        '
+        Me.Button1.Location = New System.Drawing.Point(435, 253)
+        Me.Button1.Name = "Button1"
+        Me.Button1.Size = New System.Drawing.Size(75, 23)
+        Me.Button1.TabIndex = 44
+        Me.Button1.Text = "Button1"
+        Me.Button1.UseVisualStyleBackColor = True
+        '
+        'MenuStrip1
+        '
+        Me.MenuStrip1.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.SluitenToolStripMenuItem, Me.NieuwProductToolStripMenuItem, Me.TSM_Opslaan, Me.AnnulerenToolStripMenuItem, Me.ProductWissenToolStripMenuItem})
+        Me.MenuStrip1.Location = New System.Drawing.Point(0, 0)
+        Me.MenuStrip1.Name = "MenuStrip1"
+        Me.MenuStrip1.Size = New System.Drawing.Size(714, 24)
+        Me.MenuStrip1.TabIndex = 46
+        Me.MenuStrip1.Text = "MenuStrip1"
+        '
+        'SluitenToolStripMenuItem
+        '
+        Me.SluitenToolStripMenuItem.Image = Global.WindowsVB_test.My.Resources.Resources.close_icon
+        Me.SluitenToolStripMenuItem.Name = "SluitenToolStripMenuItem"
+        Me.SluitenToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
+        Me.SluitenToolStripMenuItem.Text = "Sluiten"
+        '
+        'TSM_Opslaan
+        '
+        Me.TSM_Opslaan.Image = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
+        Me.TSM_Opslaan.Name = "TSM_Opslaan"
+        Me.TSM_Opslaan.Size = New System.Drawing.Size(78, 20)
+        Me.TSM_Opslaan.Text = "Opslaan"
+        '
+        'AnnulerenToolStripMenuItem
+        '
+        Me.AnnulerenToolStripMenuItem.Image = Global.WindowsVB_test.My.Resources.Resources.Actions_dialog_cancel_icon
+        Me.AnnulerenToolStripMenuItem.Name = "AnnulerenToolStripMenuItem"
+        Me.AnnulerenToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
+        Me.AnnulerenToolStripMenuItem.Text = "Annuleren"
+        '
+        'NieuwProductToolStripMenuItem
+        '
+        Me.NieuwProductToolStripMenuItem.Image = Global.WindowsVB_test.My.Resources.Resources.Button_Add_icon
+        Me.NieuwProductToolStripMenuItem.Name = "NieuwProductToolStripMenuItem"
+        Me.NieuwProductToolStripMenuItem.Size = New System.Drawing.Size(114, 20)
+        Me.NieuwProductToolStripMenuItem.Text = "Nieuw product"
+        '
+        'ProductWissenToolStripMenuItem
+        '
+        Me.ProductWissenToolStripMenuItem.Image = Global.WindowsVB_test.My.Resources.Resources.Windows_Close_Program_icon
+        Me.ProductWissenToolStripMenuItem.Name = "ProductWissenToolStripMenuItem"
+        Me.ProductWissenToolStripMenuItem.Size = New System.Drawing.Size(115, 20)
+        Me.ProductWissenToolStripMenuItem.Text = "Product wissen"
+        '
         'F_Product
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(650, 538)
-        Me.Controls.Add(Me.Knop_Nieuw)
-        Me.Controls.Add(Me.Knop_Annuleren)
+        Me.ClientSize = New System.Drawing.Size(714, 624)
+        Me.Controls.Add(Me.Button1)
+        Me.Controls.Add(Me.TXT_IDP)
         Me.Controls.Add(Me.Knop_Opslaan)
-        Me.Controls.Add(Me.Knop_Delete)
-        Me.Controls.Add(Me.Knop_Save)
         Me.Controls.Add(Me.TAB_Product)
         Me.Controls.Add(Me.GroupBox3)
         Me.Controls.Add(Me.GBOX_Velden)
         Me.Controls.Add(Me.GroupBox1)
+        Me.Controls.Add(Me.MenuStrip1)
+        Me.MainMenuStrip = Me.MenuStrip1
         Me.Name = "F_Product"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Product"
@@ -673,9 +716,10 @@ Partial Class F_Product
         Me.TAB_Product.ResumeLayout(False)
         Me.TabPage3.ResumeLayout(False)
         Me.TabPage3.PerformLayout()
-        Me.TabPage4.ResumeLayout(False)
-        Me.TabPage4.PerformLayout()
+        Me.MenuStrip1.ResumeLayout(False)
+        Me.MenuStrip1.PerformLayout()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
 
@@ -693,37 +737,41 @@ Partial Class F_Product
     Friend WithEvents LBL_PN As Label
     Friend WithEvents TXT_Productnummer As TextBox
     Friend WithEvents GBOX_Velden As GroupBox
-    Friend WithEvents PD_NaamTextBox As TextBox
-    Friend WithEvents PD_FunctieTextBox As TextBox
-    Friend WithEvents PD_BehuizingTextBox As TextBox
-    Friend WithEvents PD_WaardeTextBox As TextBox
+    Friend WithEvents TXT_Naam As TextBox
+    Friend WithEvents TXT_functie As TextBox
+    Friend WithEvents TXT_behuizing As TextBox
+    Friend WithEvents TXT_waarde As TextBox
     Friend WithEvents GB_Merk As ComboBox
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents TXT_Verkoopprijs As TextBox
     Friend WithEvents TXT_Inkoopwaarde As TextBox
     Friend WithEvents TXT_Laatste_inkoop_Datum As TextBox
     Friend WithEvents Label4 As Label
-    Friend WithEvents PD_MinimumVoorraadTextBox As TextBox
-    Friend WithEvents PD_VoorraadTextBox As TextBox
+    Friend WithEvents TXT_Minimal As TextBox
+    Friend WithEvents TXT_Voorraad As TextBox
     Friend WithEvents TXT_LaatsteInkoop_Waarde As TextBox
     Friend WithEvents Label5 As Label
     Friend WithEvents TAB_Product As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
     Friend WithEvents TabPage3 As TabPage
-    Friend WithEvents TabPage4 As TabPage
     Friend WithEvents txt_Beschrijving1 As TextBox
     Friend WithEvents TXT_Beschrijving2 As TextBox
     Friend WithEvents TabPage5 As TabPage
     Friend WithEvents TabPage6 As TabPage
     Friend WithEvents CB_Groep As ComboBox
-    Friend WithEvents Knop_Save As Button
-    Friend WithEvents Knop_Delete As Button
-    Friend WithEvents Knop_Nieuw As Button
-    Friend WithEvents Knop_Annuleren As Button
     Friend WithEvents Knop_Opslaan As Button
     Friend WithEvents CB_Locatie As ComboBox
     Friend WithEvents LocatieBindingSource As BindingSource
     Friend WithEvents LocatieTableAdapter As DS_ProductTableAdapters.LocatieTableAdapter
     Friend WithEvents Knop_Locatie As Button
+    Friend WithEvents TXT_IDP As TextBox
+    Friend WithEvents Button1 As Button
+    Friend WithEvents TXT_Locatie As TextBox
+    Friend WithEvents MenuStrip1 As MenuStrip
+    Friend WithEvents TSM_Opslaan As ToolStripMenuItem
+    Friend WithEvents AnnulerenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents SluitenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents NieuwProductToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductWissenToolStripMenuItem As ToolStripMenuItem
 End Class

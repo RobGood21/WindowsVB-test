@@ -26,7 +26,7 @@ Partial Class TestGrid
         Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(TestGrid))
         Me.DS_ProjectProducts = New WindowsVB_test.DS_ProjectProducts()
         Me.DataTable1BindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.DataTable1TableAdapter = New WindowsVB_test.DS_ProjectProductsTableAdapters.DataTable1TableAdapter()
+        Me.DataTable1TableAdapter = New WindowsVB_test.DS_ProjectProductsTableAdapters.ZoeklijstTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProjectProductsTableAdapters.TableAdapterManager()
         Me.DataTable1BindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
         Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
@@ -260,7 +260,7 @@ Partial Class TestGrid
 
     Friend WithEvents DS_ProjectProducts As DS_ProjectProducts
     Friend WithEvents DataTable1BindingSource As BindingSource
-    Friend WithEvents DataTable1TableAdapter As DS_ProjectProductsTableAdapters.DataTable1TableAdapter
+    Friend WithEvents DataTable1TableAdapter As DS_ProjectProductsTableAdapters.ZoeklijstTableAdapter
     Friend WithEvents TableAdapterManager As DS_ProjectProductsTableAdapters.TableAdapterManager
     Friend WithEvents DataTable1BindingNavigator As BindingNavigator
     Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton

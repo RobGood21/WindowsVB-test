@@ -24,128 +24,230 @@ Partial Class F_GetProductAdd
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ID_GetProductAddLabel As System.Windows.Forms.Label
-        Dim resources As System.ComponentModel.ComponentResourceManager = New System.ComponentModel.ComponentResourceManager(GetType(F_GetProductAdd))
-        Me.TXT_Container = New System.Windows.Forms.TextBox()
+        Dim Label8 As System.Windows.Forms.Label
+        Dim PD_VoorraadLabel As System.Windows.Forms.Label
+        Me.TXT_ProductLijst = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
-        Me.Label4 = New System.Windows.Forms.Label()
-        Me.TXT_Lijstaantal = New System.Windows.Forms.TextBox()
-        Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Knop_Zoek = New System.Windows.Forms.Button()
+        Me.PD_VoorraadTextBox = New System.Windows.Forms.TextBox()
+        Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
+        Me.TXT_PDbehuizing = New System.Windows.Forms.TextBox()
+        Me.TXT_PDwaarde = New System.Windows.Forms.TextBox()
+        Me.TXT_PDfunctie = New System.Windows.Forms.TextBox()
+        Me.TXT_PDnaam = New System.Windows.Forms.TextBox()
+        Me.Label4 = New System.Windows.Forms.Label()
+        Me.TXT_aantal = New System.Windows.Forms.TextBox()
+        Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TXT_GetProductAdd = New System.Windows.Forms.TextBox()
         Me.Knop_Details = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
-        Me.TXT_ProductBeschrijving = New System.Windows.Forms.TextBox()
-        Me.Label2 = New System.Windows.Forms.Label()
         Me.TXT_ProductID = New System.Windows.Forms.TextBox()
-        Me.GroupBox2 = New System.Windows.Forms.GroupBox()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Label7 = New System.Windows.Forms.Label()
-        Me.TextBox4 = New System.Windows.Forms.TextBox()
-        Me.Label6 = New System.Windows.Forms.Label()
-        Me.TextBox3 = New System.Windows.Forms.TextBox()
+        Me.GB_Prijs = New System.Windows.Forms.GroupBox()
+        Me.CB_valuta = New System.Windows.Forms.ComboBox()
+        Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.TXT_Koers = New System.Windows.Forms.TextBox()
+        Me.Label2 = New System.Windows.Forms.Label()
+        Me.TXT_TotaalBetaaldVAL = New System.Windows.Forms.TextBox()
+        Me.TXT_TotaalBetaaldEur = New System.Windows.Forms.TextBox()
         Me.Label5 = New System.Windows.Forms.Label()
-        Me.TextBox2 = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TXT_Prijs = New System.Windows.Forms.TextBox()
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.Knop_NieuwProduct = New System.Windows.Forms.Button()
-        Me.TXT_IDGetProduct = New System.Windows.Forms.TextBox()
-        Me.GetProductAddBindingNavigator = New System.Windows.Forms.BindingNavigator(Me.components)
-        Me.BindingNavigatorAddNewItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorCountItem = New System.Windows.Forms.ToolStripLabel()
-        Me.BindingNavigatorDeleteItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveFirstItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMovePreviousItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorPositionItem = New System.Windows.Forms.ToolStripTextBox()
-        Me.BindingNavigatorSeparator1 = New System.Windows.Forms.ToolStripSeparator()
-        Me.BindingNavigatorMoveNextItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorMoveLastItem = New System.Windows.Forms.ToolStripButton()
-        Me.BindingNavigatorSeparator2 = New System.Windows.Forms.ToolStripSeparator()
-        Me.GetProductAddBindingNavigatorSaveItem = New System.Windows.Forms.ToolStripButton()
-        Me.ID_GetProductAddTextBox = New System.Windows.Forms.TextBox()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
         Me.GetProductAddTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GetProductAddTableAdapter()
+        Me.DT_productTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
+        Me.ValutaTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.ValutaTableAdapter()
+        Me.TXT_IDONTV = New System.Windows.Forms.TextBox()
+        Me.Knop_Verwijder = New System.Windows.Forms.Button()
         ID_GetProductAddLabel = New System.Windows.Forms.Label()
+        Label8 = New System.Windows.Forms.Label()
+        PD_VoorraadLabel = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.GetProductAddBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GroupBox2.SuspendLayout()
-        CType(Me.GetProductAddBindingNavigator, System.ComponentModel.ISupportInitialize).BeginInit()
-        Me.GetProductAddBindingNavigator.SuspendLayout()
+        CType(Me.GetProductAddBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GB_Prijs.SuspendLayout()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'ID_GetProductAddLabel
         '
         ID_GetProductAddLabel.AutoSize = True
-        ID_GetProductAddLabel.Location = New System.Drawing.Point(20, 479)
+        ID_GetProductAddLabel.Location = New System.Drawing.Point(380, 26)
         ID_GetProductAddLabel.Name = "ID_GetProductAddLabel"
         ID_GetProductAddLabel.Size = New System.Drawing.Size(103, 13)
         ID_GetProductAddLabel.TabIndex = 10
         ID_GetProductAddLabel.Text = "ID Get Product Add:"
         '
-        'TXT_Container
+        'Label8
         '
-        Me.TXT_Container.Location = New System.Drawing.Point(99, 55)
-        Me.TXT_Container.Name = "TXT_Container"
-        Me.TXT_Container.Size = New System.Drawing.Size(238, 20)
-        Me.TXT_Container.TabIndex = 0
-        Me.TXT_Container.TabStop = False
+        Label8.AutoSize = True
+        Label8.Location = New System.Drawing.Point(386, 9)
+        Label8.Name = "Label8"
+        Label8.Size = New System.Drawing.Size(85, 13)
+        Label8.TabIndex = 13
+        Label8.Text = "ID Getontvangst"
+        '
+        'PD_VoorraadLabel
+        '
+        PD_VoorraadLabel.AutoSize = True
+        PD_VoorraadLabel.Location = New System.Drawing.Point(13, 102)
+        PD_VoorraadLabel.Name = "PD_VoorraadLabel"
+        PD_VoorraadLabel.Size = New System.Drawing.Size(53, 13)
+        PD_VoorraadLabel.TabIndex = 15
+        PD_VoorraadLabel.Text = "Voorraad:"
+        '
+        'TXT_ProductLijst
+        '
+        Me.TXT_ProductLijst.Location = New System.Drawing.Point(81, 32)
+        Me.TXT_ProductLijst.Name = "TXT_ProductLijst"
+        Me.TXT_ProductLijst.Size = New System.Drawing.Size(209, 20)
+        Me.TXT_ProductLijst.TabIndex = 0
+        Me.TXT_ProductLijst.TabStop = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(9, 58)
+        Me.Label1.Location = New System.Drawing.Point(16, 35)
         Me.Label1.Name = "Label1"
-        Me.Label1.Size = New System.Drawing.Size(84, 13)
+        Me.Label1.Size = New System.Drawing.Size(61, 13)
         Me.Label1.TabIndex = 1
-        Me.Label1.Text = "Container naam:"
+        Me.Label1.Text = "Productlijst:"
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Me.Knop_Zoek)
+        Me.GroupBox1.Controls.Add(PD_VoorraadLabel)
+        Me.GroupBox1.Controls.Add(Me.PD_VoorraadTextBox)
+        Me.GroupBox1.Controls.Add(Me.TXT_PDbehuizing)
+        Me.GroupBox1.Controls.Add(Me.TXT_PDwaarde)
+        Me.GroupBox1.Controls.Add(Me.TXT_PDfunctie)
+        Me.GroupBox1.Controls.Add(Me.TXT_PDnaam)
         Me.GroupBox1.Controls.Add(Me.Label4)
-        Me.GroupBox1.Controls.Add(Me.TXT_Lijstaantal)
+        Me.GroupBox1.Controls.Add(ID_GetProductAddLabel)
+        Me.GroupBox1.Controls.Add(Me.TXT_aantal)
+        Me.GroupBox1.Controls.Add(Me.TXT_GetProductAdd)
         Me.GroupBox1.Controls.Add(Me.Knop_Details)
         Me.GroupBox1.Controls.Add(Me.Label3)
-        Me.GroupBox1.Controls.Add(Me.TXT_ProductBeschrijving)
-        Me.GroupBox1.Controls.Add(Me.Label2)
         Me.GroupBox1.Controls.Add(Me.TXT_ProductID)
-        Me.GroupBox1.Location = New System.Drawing.Point(12, 134)
+        Me.GroupBox1.Location = New System.Drawing.Point(12, 68)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(438, 148)
+        Me.GroupBox1.Size = New System.Drawing.Size(587, 151)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
-        Me.GroupBox1.Text = "Toe te voegen producten"
+        Me.GroupBox1.Text = "Aan de productlijst toe te voegen producten"
         '
-        'Label4
+        'Knop_Zoek
         '
-        Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(10, 95)
-        Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(40, 13)
-        Me.Label4.TabIndex = 8
-        Me.Label4.Text = "Aantal:"
+        Me.Knop_Zoek.Location = New System.Drawing.Point(138, 25)
+        Me.Knop_Zoek.Name = "Knop_Zoek"
+        Me.Knop_Zoek.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Zoek.TabIndex = 22
+        Me.Knop_Zoek.Text = "Zoek"
+        Me.Knop_Zoek.UseVisualStyleBackColor = True
         '
-        'TXT_Lijstaantal
+        'PD_VoorraadTextBox
         '
-        Me.TXT_Lijstaantal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_Lijst", True))
-        Me.TXT_Lijstaantal.Location = New System.Drawing.Point(100, 92)
-        Me.TXT_Lijstaantal.Name = "TXT_Lijstaantal"
-        Me.TXT_Lijstaantal.Size = New System.Drawing.Size(238, 20)
-        Me.TXT_Lijstaantal.TabIndex = 1
+        Me.PD_VoorraadTextBox.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.PD_VoorraadTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
+        Me.PD_VoorraadTextBox.Location = New System.Drawing.Point(69, 98)
+        Me.PD_VoorraadTextBox.Name = "PD_VoorraadTextBox"
+        Me.PD_VoorraadTextBox.ReadOnly = True
+        Me.PD_VoorraadTextBox.Size = New System.Drawing.Size(63, 20)
+        Me.PD_VoorraadTextBox.TabIndex = 16
         '
-        'GetProductAddBindingSource
+        'DT_productBindingSource
         '
-        Me.GetProductAddBindingSource.DataMember = "GetProductAdd"
-        Me.GetProductAddBindingSource.DataSource = Me.DS_Product
+        Me.DT_productBindingSource.DataMember = "DT_product"
+        Me.DT_productBindingSource.DataSource = Me.DS_Product
         '
         'DS_Product
         '
         Me.DS_Product.DataSetName = "DS_Product"
         Me.DS_Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'TXT_PDbehuizing
+        '
+        Me.TXT_PDbehuizing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TXT_PDbehuizing.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Behuizing", True))
+        Me.TXT_PDbehuizing.Location = New System.Drawing.Point(172, 76)
+        Me.TXT_PDbehuizing.Name = "TXT_PDbehuizing"
+        Me.TXT_PDbehuizing.ReadOnly = True
+        Me.TXT_PDbehuizing.Size = New System.Drawing.Size(100, 20)
+        Me.TXT_PDbehuizing.TabIndex = 15
+        '
+        'TXT_PDwaarde
+        '
+        Me.TXT_PDwaarde.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TXT_PDwaarde.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Waarde", True))
+        Me.TXT_PDwaarde.Location = New System.Drawing.Point(69, 76)
+        Me.TXT_PDwaarde.Name = "TXT_PDwaarde"
+        Me.TXT_PDwaarde.ReadOnly = True
+        Me.TXT_PDwaarde.Size = New System.Drawing.Size(100, 20)
+        Me.TXT_PDwaarde.TabIndex = 14
+        '
+        'TXT_PDfunctie
+        '
+        Me.TXT_PDfunctie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TXT_PDfunctie.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Functie", True))
+        Me.TXT_PDfunctie.Location = New System.Drawing.Point(172, 55)
+        Me.TXT_PDfunctie.Name = "TXT_PDfunctie"
+        Me.TXT_PDfunctie.ReadOnly = True
+        Me.TXT_PDfunctie.Size = New System.Drawing.Size(100, 20)
+        Me.TXT_PDfunctie.TabIndex = 13
+        '
+        'TXT_PDnaam
+        '
+        Me.TXT_PDnaam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
+        Me.TXT_PDnaam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Naam", True))
+        Me.TXT_PDnaam.Location = New System.Drawing.Point(69, 55)
+        Me.TXT_PDnaam.Name = "TXT_PDnaam"
+        Me.TXT_PDnaam.ReadOnly = True
+        Me.TXT_PDnaam.Size = New System.Drawing.Size(100, 20)
+        Me.TXT_PDnaam.TabIndex = 12
+        '
+        'Label4
+        '
+        Me.Label4.AutoSize = True
+        Me.Label4.Location = New System.Drawing.Point(13, 124)
+        Me.Label4.Name = "Label4"
+        Me.Label4.Size = New System.Drawing.Size(40, 13)
+        Me.Label4.TabIndex = 8
+        Me.Label4.Text = "Aantal:"
+        '
+        'TXT_aantal
+        '
+        Me.TXT_aantal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_Lijst", True))
+        Me.TXT_aantal.Location = New System.Drawing.Point(69, 120)
+        Me.TXT_aantal.Name = "TXT_aantal"
+        Me.TXT_aantal.Size = New System.Drawing.Size(63, 20)
+        Me.TXT_aantal.TabIndex = 1
+        '
+        'GetProductAddBindingSource
+        '
+        Me.GetProductAddBindingSource.DataMember = "GetProductAdd"
+        Me.GetProductAddBindingSource.DataSource = Me.DS_Product
+        '
+        'TXT_GetProductAdd
+        '
+        Me.TXT_GetProductAdd.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetProductAdd", True))
+        Me.TXT_GetProductAdd.Enabled = False
+        Me.TXT_GetProductAdd.Location = New System.Drawing.Point(434, 48)
+        Me.TXT_GetProductAdd.Name = "TXT_GetProductAdd"
+        Me.TXT_GetProductAdd.Size = New System.Drawing.Size(49, 20)
+        Me.TXT_GetProductAdd.TabIndex = 11
+        Me.TXT_GetProductAdd.TabStop = False
+        '
         'Knop_Details
         '
-        Me.Knop_Details.Location = New System.Drawing.Point(344, 17)
+        Me.Knop_Details.Location = New System.Drawing.Point(213, 25)
         Me.Knop_Details.Name = "Knop_Details"
         Me.Knop_Details.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Details.TabIndex = 6
@@ -155,117 +257,149 @@ Partial Class F_GetProductAdd
         'Label3
         '
         Me.Label3.AutoSize = True
-        Me.Label3.Location = New System.Drawing.Point(10, 48)
+        Me.Label3.Location = New System.Drawing.Point(13, 30)
         Me.Label3.Name = "Label3"
         Me.Label3.Size = New System.Drawing.Size(47, 13)
         Me.Label3.TabIndex = 5
         Me.Label3.Text = "Product:"
         '
-        'TXT_ProductBeschrijving
-        '
-        Me.TXT_ProductBeschrijving.Location = New System.Drawing.Point(100, 45)
-        Me.TXT_ProductBeschrijving.Multiline = True
-        Me.TXT_ProductBeschrijving.Name = "TXT_ProductBeschrijving"
-        Me.TXT_ProductBeschrijving.Size = New System.Drawing.Size(238, 41)
-        Me.TXT_ProductBeschrijving.TabIndex = 4
-        Me.TXT_ProductBeschrijving.TabStop = False
-        '
-        'Label2
-        '
-        Me.Label2.AutoSize = True
-        Me.Label2.Location = New System.Drawing.Point(10, 22)
-        Me.Label2.Name = "Label2"
-        Me.Label2.Size = New System.Drawing.Size(87, 13)
-        Me.Label2.TabIndex = 3
-        Me.Label2.Text = "Product nummer:"
-        '
         'TXT_ProductID
         '
         Me.TXT_ProductID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_Product", True))
-        Me.TXT_ProductID.Location = New System.Drawing.Point(100, 19)
+        Me.TXT_ProductID.Location = New System.Drawing.Point(69, 26)
         Me.TXT_ProductID.Name = "TXT_ProductID"
-        Me.TXT_ProductID.Size = New System.Drawing.Size(238, 20)
+        Me.TXT_ProductID.ReadOnly = True
+        Me.TXT_ProductID.Size = New System.Drawing.Size(63, 20)
         Me.TXT_ProductID.TabIndex = 2
         Me.TXT_ProductID.TabStop = False
         '
-        'GroupBox2
-        '
-        Me.GroupBox2.Controls.Add(Me.Button1)
-        Me.GroupBox2.Controls.Add(Me.Label7)
-        Me.GroupBox2.Controls.Add(Me.TextBox4)
-        Me.GroupBox2.Controls.Add(Me.Label6)
-        Me.GroupBox2.Controls.Add(Me.TextBox3)
-        Me.GroupBox2.Controls.Add(Me.Label5)
-        Me.GroupBox2.Controls.Add(Me.TextBox2)
-        Me.GroupBox2.Location = New System.Drawing.Point(15, 309)
-        Me.GroupBox2.Name = "GroupBox2"
-        Me.GroupBox2.Size = New System.Drawing.Size(435, 150)
-        Me.GroupBox2.TabIndex = 3
-        Me.GroupBox2.TabStop = False
-        Me.GroupBox2.Text = "Optioneel in te vullen"
-        '
         'Button1
         '
-        Me.Button1.Location = New System.Drawing.Point(268, 104)
+        Me.Button1.Location = New System.Drawing.Point(31, 128)
         Me.Button1.Name = "Button1"
         Me.Button1.Size = New System.Drawing.Size(75, 23)
         Me.Button1.TabIndex = 21
         Me.Button1.Text = "Button1"
         Me.Button1.UseVisualStyleBackColor = True
         '
+        'GB_Prijs
+        '
+        Me.GB_Prijs.Controls.Add(Me.CB_valuta)
+        Me.GB_Prijs.Controls.Add(Me.Label9)
+        Me.GB_Prijs.Controls.Add(Me.Button1)
+        Me.GB_Prijs.Controls.Add(Me.TXT_Koers)
+        Me.GB_Prijs.Controls.Add(Me.Label2)
+        Me.GB_Prijs.Controls.Add(Me.TXT_TotaalBetaaldVAL)
+        Me.GB_Prijs.Controls.Add(Me.TXT_TotaalBetaaldEur)
+        Me.GB_Prijs.Controls.Add(Me.Label5)
+        Me.GB_Prijs.Controls.Add(Me.Label7)
+        Me.GB_Prijs.Controls.Add(Me.Label6)
+        Me.GB_Prijs.Controls.Add(Me.TXT_Prijs)
+        Me.GB_Prijs.Location = New System.Drawing.Point(19, 225)
+        Me.GB_Prijs.Name = "GB_Prijs"
+        Me.GB_Prijs.Size = New System.Drawing.Size(435, 207)
+        Me.GB_Prijs.TabIndex = 3
+        Me.GB_Prijs.TabStop = False
+        Me.GB_Prijs.Text = "Bereken stuks inkoopprijs"
+        '
+        'CB_valuta
+        '
+        Me.CB_valuta.DataSource = Me.ValutaBindingSource
+        Me.CB_valuta.DisplayMember = "VT_Short"
+        Me.CB_valuta.FormattingEnabled = True
+        Me.CB_valuta.Location = New System.Drawing.Point(112, 30)
+        Me.CB_valuta.Name = "CB_valuta"
+        Me.CB_valuta.Size = New System.Drawing.Size(66, 21)
+        Me.CB_valuta.TabIndex = 25
+        Me.CB_valuta.TabStop = False
+        Me.CB_valuta.ValueMember = "ID_valuta"
+        '
+        'ValutaBindingSource
+        '
+        Me.ValutaBindingSource.DataMember = "Valuta"
+        Me.ValutaBindingSource.DataSource = Me.DS_Product
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(186, 34)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(37, 13)
+        Me.Label9.TabIndex = 24
+        Me.Label9.Text = "Koers:"
+        '
+        'TXT_Koers
+        '
+        Me.TXT_Koers.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ValutaBindingSource, "VT_Koers", True))
+        Me.TXT_Koers.Location = New System.Drawing.Point(231, 30)
+        Me.TXT_Koers.Name = "TXT_Koers"
+        Me.TXT_Koers.Size = New System.Drawing.Size(65, 20)
+        Me.TXT_Koers.TabIndex = 23
+        Me.TXT_Koers.TabStop = False
+        '
+        'Label2
+        '
+        Me.Label2.AutoSize = True
+        Me.Label2.Location = New System.Drawing.Point(186, 57)
+        Me.Label2.Name = "Label2"
+        Me.Label2.Size = New System.Drawing.Size(44, 13)
+        Me.Label2.TabIndex = 22
+        Me.Label2.Text = "In Euro:"
+        '
+        'TXT_TotaalBetaaldVAL
+        '
+        Me.TXT_TotaalBetaaldVAL.Location = New System.Drawing.Point(112, 53)
+        Me.TXT_TotaalBetaaldVAL.Name = "TXT_TotaalBetaaldVAL"
+        Me.TXT_TotaalBetaaldVAL.Size = New System.Drawing.Size(66, 20)
+        Me.TXT_TotaalBetaaldVAL.TabIndex = 2
+        '
+        'TXT_TotaalBetaaldEur
+        '
+        Me.TXT_TotaalBetaaldEur.Location = New System.Drawing.Point(231, 53)
+        Me.TXT_TotaalBetaaldEur.Name = "TXT_TotaalBetaaldEur"
+        Me.TXT_TotaalBetaaldEur.Size = New System.Drawing.Size(65, 20)
+        Me.TXT_TotaalBetaaldEur.TabIndex = 21
+        Me.TXT_TotaalBetaaldEur.TabStop = False
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(27, 57)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(79, 13)
+        Me.Label5.TabIndex = 16
+        Me.Label5.Text = "Totaal Betaald:"
+        '
         'Label7
         '
         Me.Label7.AutoSize = True
-        Me.Label7.Location = New System.Drawing.Point(23, 64)
+        Me.Label7.Location = New System.Drawing.Point(28, 98)
         Me.Label7.Name = "Label7"
-        Me.Label7.Size = New System.Drawing.Size(68, 13)
+        Me.Label7.Size = New System.Drawing.Size(84, 13)
         Me.Label7.TabIndex = 20
-        Me.Label7.Text = "Inkoop Euro:"
-        '
-        'TextBox4
-        '
-        Me.TextBox4.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_BuyPriceEUR", True))
-        Me.TextBox4.Location = New System.Drawing.Point(113, 61)
-        Me.TextBox4.Name = "TextBox4"
-        Me.TextBox4.Size = New System.Drawing.Size(83, 20)
-        Me.TextBox4.TabIndex = 3
+        Me.Label7.Text = "Inkoop per stuk:"
         '
         'Label6
         '
         Me.Label6.AutoSize = True
-        Me.Label6.Location = New System.Drawing.Point(219, 38)
+        Me.Label6.Location = New System.Drawing.Point(27, 34)
         Me.Label6.Name = "Label6"
         Me.Label6.Size = New System.Drawing.Size(40, 13)
         Me.Label6.TabIndex = 18
         Me.Label6.Text = "Valuta:"
         '
-        'TextBox3
+        'TXT_Prijs
         '
-        Me.TextBox3.Location = New System.Drawing.Point(268, 35)
-        Me.TextBox3.Name = "TextBox3"
-        Me.TextBox3.Size = New System.Drawing.Size(83, 20)
-        Me.TextBox3.TabIndex = 17
-        '
-        'Label5
-        '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(23, 38)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(43, 13)
-        Me.Label5.TabIndex = 16
-        Me.Label5.Text = "Inkoop:"
-        '
-        'TextBox2
-        '
-        Me.TextBox2.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_BuyPriceVAL", True))
-        Me.TextBox2.Location = New System.Drawing.Point(113, 35)
-        Me.TextBox2.Name = "TextBox2"
-        Me.TextBox2.Size = New System.Drawing.Size(83, 20)
-        Me.TextBox2.TabIndex = 2
+        Me.TXT_Prijs.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_BuyPriceEUR", True))
+        Me.TXT_Prijs.Location = New System.Drawing.Point(113, 95)
+        Me.TXT_Prijs.Name = "TXT_Prijs"
+        Me.TXT_Prijs.Size = New System.Drawing.Size(65, 20)
+        Me.TXT_Prijs.TabIndex = 3
+        Me.TXT_Prijs.TabStop = False
         '
         'Knop_Opslaan
         '
-        Me.Knop_Opslaan.Location = New System.Drawing.Point(339, 465)
+        Me.Knop_Opslaan.Location = New System.Drawing.Point(336, 438)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(111, 23)
         Me.Knop_Opslaan.TabIndex = 7
@@ -274,145 +408,16 @@ Partial Class F_GetProductAdd
         '
         'Knop_NieuwProduct
         '
-        Me.Knop_NieuwProduct.Location = New System.Drawing.Point(12, 105)
+        Me.Knop_NieuwProduct.Location = New System.Drawing.Point(496, 263)
         Me.Knop_NieuwProduct.Name = "Knop_NieuwProduct"
         Me.Knop_NieuwProduct.Size = New System.Drawing.Size(103, 23)
         Me.Knop_NieuwProduct.TabIndex = 8
-        Me.Knop_NieuwProduct.Text = "&Nieuw product"
+        Me.Knop_NieuwProduct.Text = "sluiteeee"
         Me.Knop_NieuwProduct.UseVisualStyleBackColor = True
-        '
-        'TXT_IDGetProduct
-        '
-        Me.TXT_IDGetProduct.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetOntvangst", True))
-        Me.TXT_IDGetProduct.Location = New System.Drawing.Point(430, 51)
-        Me.TXT_IDGetProduct.Name = "TXT_IDGetProduct"
-        Me.TXT_IDGetProduct.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_IDGetProduct.TabIndex = 9
-        Me.TXT_IDGetProduct.TabStop = False
-        '
-        'GetProductAddBindingNavigator
-        '
-        Me.GetProductAddBindingNavigator.AddNewItem = Me.BindingNavigatorAddNewItem
-        Me.GetProductAddBindingNavigator.BindingSource = Me.GetProductAddBindingSource
-        Me.GetProductAddBindingNavigator.CountItem = Me.BindingNavigatorCountItem
-        Me.GetProductAddBindingNavigator.DeleteItem = Me.BindingNavigatorDeleteItem
-        Me.GetProductAddBindingNavigator.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.BindingNavigatorMoveFirstItem, Me.BindingNavigatorMovePreviousItem, Me.BindingNavigatorSeparator, Me.BindingNavigatorPositionItem, Me.BindingNavigatorCountItem, Me.BindingNavigatorSeparator1, Me.BindingNavigatorMoveNextItem, Me.BindingNavigatorMoveLastItem, Me.BindingNavigatorSeparator2, Me.BindingNavigatorAddNewItem, Me.BindingNavigatorDeleteItem, Me.GetProductAddBindingNavigatorSaveItem})
-        Me.GetProductAddBindingNavigator.Location = New System.Drawing.Point(0, 0)
-        Me.GetProductAddBindingNavigator.MoveFirstItem = Me.BindingNavigatorMoveFirstItem
-        Me.GetProductAddBindingNavigator.MoveLastItem = Me.BindingNavigatorMoveLastItem
-        Me.GetProductAddBindingNavigator.MoveNextItem = Me.BindingNavigatorMoveNextItem
-        Me.GetProductAddBindingNavigator.MovePreviousItem = Me.BindingNavigatorMovePreviousItem
-        Me.GetProductAddBindingNavigator.Name = "GetProductAddBindingNavigator"
-        Me.GetProductAddBindingNavigator.PositionItem = Me.BindingNavigatorPositionItem
-        Me.GetProductAddBindingNavigator.Size = New System.Drawing.Size(490, 25)
-        Me.GetProductAddBindingNavigator.TabIndex = 10
-        Me.GetProductAddBindingNavigator.Text = "BindingNavigator1"
-        '
-        'BindingNavigatorAddNewItem
-        '
-        Me.BindingNavigatorAddNewItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorAddNewItem.Image = CType(resources.GetObject("BindingNavigatorAddNewItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorAddNewItem.Name = "BindingNavigatorAddNewItem"
-        Me.BindingNavigatorAddNewItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorAddNewItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorAddNewItem.Text = "Add new"
-        '
-        'BindingNavigatorCountItem
-        '
-        Me.BindingNavigatorCountItem.Name = "BindingNavigatorCountItem"
-        Me.BindingNavigatorCountItem.Size = New System.Drawing.Size(35, 22)
-        Me.BindingNavigatorCountItem.Text = "of {0}"
-        Me.BindingNavigatorCountItem.ToolTipText = "Total number of items"
-        '
-        'BindingNavigatorDeleteItem
-        '
-        Me.BindingNavigatorDeleteItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorDeleteItem.Image = CType(resources.GetObject("BindingNavigatorDeleteItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorDeleteItem.Name = "BindingNavigatorDeleteItem"
-        Me.BindingNavigatorDeleteItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorDeleteItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorDeleteItem.Text = "Delete"
-        '
-        'BindingNavigatorMoveFirstItem
-        '
-        Me.BindingNavigatorMoveFirstItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveFirstItem.Image = CType(resources.GetObject("BindingNavigatorMoveFirstItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveFirstItem.Name = "BindingNavigatorMoveFirstItem"
-        Me.BindingNavigatorMoveFirstItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveFirstItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveFirstItem.Text = "Move first"
-        '
-        'BindingNavigatorMovePreviousItem
-        '
-        Me.BindingNavigatorMovePreviousItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMovePreviousItem.Image = CType(resources.GetObject("BindingNavigatorMovePreviousItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMovePreviousItem.Name = "BindingNavigatorMovePreviousItem"
-        Me.BindingNavigatorMovePreviousItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMovePreviousItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMovePreviousItem.Text = "Move previous"
-        '
-        'BindingNavigatorSeparator
-        '
-        Me.BindingNavigatorSeparator.Name = "BindingNavigatorSeparator"
-        Me.BindingNavigatorSeparator.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorPositionItem
-        '
-        Me.BindingNavigatorPositionItem.AccessibleName = "Position"
-        Me.BindingNavigatorPositionItem.AutoSize = False
-        Me.BindingNavigatorPositionItem.Name = "BindingNavigatorPositionItem"
-        Me.BindingNavigatorPositionItem.Size = New System.Drawing.Size(50, 23)
-        Me.BindingNavigatorPositionItem.Text = "0"
-        Me.BindingNavigatorPositionItem.ToolTipText = "Current position"
-        '
-        'BindingNavigatorSeparator1
-        '
-        Me.BindingNavigatorSeparator1.Name = "BindingNavigatorSeparator1"
-        Me.BindingNavigatorSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'BindingNavigatorMoveNextItem
-        '
-        Me.BindingNavigatorMoveNextItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveNextItem.Image = CType(resources.GetObject("BindingNavigatorMoveNextItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveNextItem.Name = "BindingNavigatorMoveNextItem"
-        Me.BindingNavigatorMoveNextItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveNextItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveNextItem.Text = "Move next"
-        '
-        'BindingNavigatorMoveLastItem
-        '
-        Me.BindingNavigatorMoveLastItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.BindingNavigatorMoveLastItem.Image = CType(resources.GetObject("BindingNavigatorMoveLastItem.Image"), System.Drawing.Image)
-        Me.BindingNavigatorMoveLastItem.Name = "BindingNavigatorMoveLastItem"
-        Me.BindingNavigatorMoveLastItem.RightToLeftAutoMirrorImage = True
-        Me.BindingNavigatorMoveLastItem.Size = New System.Drawing.Size(23, 22)
-        Me.BindingNavigatorMoveLastItem.Text = "Move last"
-        '
-        'BindingNavigatorSeparator2
-        '
-        Me.BindingNavigatorSeparator2.Name = "BindingNavigatorSeparator2"
-        Me.BindingNavigatorSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'GetProductAddBindingNavigatorSaveItem
-        '
-        Me.GetProductAddBindingNavigatorSaveItem.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
-        Me.GetProductAddBindingNavigatorSaveItem.Image = CType(resources.GetObject("GetProductAddBindingNavigatorSaveItem.Image"), System.Drawing.Image)
-        Me.GetProductAddBindingNavigatorSaveItem.Name = "GetProductAddBindingNavigatorSaveItem"
-        Me.GetProductAddBindingNavigatorSaveItem.Size = New System.Drawing.Size(23, 22)
-        Me.GetProductAddBindingNavigatorSaveItem.Text = "Save Data"
-        '
-        'ID_GetProductAddTextBox
-        '
-        Me.ID_GetProductAddTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetProductAdd", True))
-        Me.ID_GetProductAddTextBox.Location = New System.Drawing.Point(128, 476)
-        Me.ID_GetProductAddTextBox.Name = "ID_GetProductAddTextBox"
-        Me.ID_GetProductAddTextBox.Size = New System.Drawing.Size(83, 20)
-        Me.ID_GetProductAddTextBox.TabIndex = 11
-        Me.ID_GetProductAddTextBox.TabStop = False
         '
         'Knop_Annuleren
         '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(222, 465)
+        Me.Knop_Annuleren.Location = New System.Drawing.Point(256, 438)
         Me.Knop_Annuleren.Name = "Knop_Annuleren"
         Me.Knop_Annuleren.Size = New System.Drawing.Size(74, 23)
         Me.Knop_Annuleren.TabIndex = 12
@@ -428,83 +433,111 @@ Partial Class F_GetProductAdd
         Me.TableAdapterManager.GetProductAddTableAdapter = Nothing
         Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
         'GetProductAddTableAdapter
         '
         Me.GetProductAddTableAdapter.ClearBeforeFill = True
         '
+        'DT_productTableAdapter
+        '
+        Me.DT_productTableAdapter.ClearBeforeFill = True
+        '
+        'ValutaTableAdapter
+        '
+        Me.ValutaTableAdapter.ClearBeforeFill = True
+        '
+        'TXT_IDONTV
+        '
+        Me.TXT_IDONTV.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetOntvangst", True))
+        Me.TXT_IDONTV.Location = New System.Drawing.Point(431, 25)
+        Me.TXT_IDONTV.Name = "TXT_IDONTV"
+        Me.TXT_IDONTV.Size = New System.Drawing.Size(40, 20)
+        Me.TXT_IDONTV.TabIndex = 14
+        Me.TXT_IDONTV.TabStop = False
+        '
+        'Knop_Verwijder
+        '
+        Me.Knop_Verwijder.Location = New System.Drawing.Point(19, 438)
+        Me.Knop_Verwijder.Name = "Knop_Verwijder"
+        Me.Knop_Verwijder.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Verwijder.TabIndex = 15
+        Me.Knop_Verwijder.Text = "Verwijder"
+        Me.Knop_Verwijder.UseVisualStyleBackColor = True
+        '
         'F_GetProductAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(490, 512)
+        Me.ClientSize = New System.Drawing.Size(640, 534)
+        Me.Controls.Add(Me.Knop_Verwijder)
+        Me.Controls.Add(Me.TXT_IDONTV)
+        Me.Controls.Add(Label8)
         Me.Controls.Add(Me.Knop_Annuleren)
-        Me.Controls.Add(ID_GetProductAddLabel)
-        Me.Controls.Add(Me.ID_GetProductAddTextBox)
-        Me.Controls.Add(Me.GetProductAddBindingNavigator)
-        Me.Controls.Add(Me.TXT_IDGetProduct)
         Me.Controls.Add(Me.Knop_NieuwProduct)
         Me.Controls.Add(Me.Knop_Opslaan)
-        Me.Controls.Add(Me.GroupBox2)
+        Me.Controls.Add(Me.GB_Prijs)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.Label1)
-        Me.Controls.Add(Me.TXT_Container)
+        Me.Controls.Add(Me.TXT_ProductLijst)
         Me.Name = "F_GetProductAdd"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Producten toevoegen"
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.GetProductAddBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GroupBox2.ResumeLayout(False)
-        Me.GroupBox2.PerformLayout()
-        CType(Me.GetProductAddBindingNavigator, System.ComponentModel.ISupportInitialize).EndInit()
-        Me.GetProductAddBindingNavigator.ResumeLayout(False)
-        Me.GetProductAddBindingNavigator.PerformLayout()
+        CType(Me.GetProductAddBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GB_Prijs.ResumeLayout(False)
+        Me.GB_Prijs.PerformLayout()
+        CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
     End Sub
 
-    Friend WithEvents TXT_Container As TextBox
+    Friend WithEvents TXT_ProductLijst As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents Label3 As Label
-    Friend WithEvents TXT_ProductBeschrijving As TextBox
-    Friend WithEvents Label2 As Label
     Friend WithEvents TXT_ProductID As TextBox
     Friend WithEvents Knop_Details As Button
     Friend WithEvents Label4 As Label
-    Friend WithEvents TXT_Lijstaantal As TextBox
-    Friend WithEvents GroupBox2 As GroupBox
+    Friend WithEvents TXT_aantal As TextBox
+    Friend WithEvents GB_Prijs As GroupBox
     Friend WithEvents Label7 As Label
-    Friend WithEvents TextBox4 As TextBox
+    Friend WithEvents TXT_Prijs As TextBox
     Friend WithEvents Label6 As Label
-    Friend WithEvents TextBox3 As TextBox
     Friend WithEvents Label5 As Label
-    Friend WithEvents TextBox2 As TextBox
+    Friend WithEvents TXT_TotaalBetaaldVAL As TextBox
     Friend WithEvents Knop_Opslaan As Button
     Friend WithEvents Knop_NieuwProduct As Button
-    Friend WithEvents TXT_IDGetProduct As TextBox
     Friend WithEvents DS_Product As DS_Product
     Friend WithEvents GetProductAddBindingSource As BindingSource
     Friend WithEvents TableAdapterManager As DS_ProductTableAdapters.TableAdapterManager
-    Friend WithEvents GetProductAddBindingNavigator As BindingNavigator
-    Friend WithEvents BindingNavigatorAddNewItem As ToolStripButton
-    Friend WithEvents BindingNavigatorCountItem As ToolStripLabel
-    Friend WithEvents BindingNavigatorDeleteItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveFirstItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMovePreviousItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator As ToolStripSeparator
-    Friend WithEvents BindingNavigatorPositionItem As ToolStripTextBox
-    Friend WithEvents BindingNavigatorSeparator1 As ToolStripSeparator
-    Friend WithEvents BindingNavigatorMoveNextItem As ToolStripButton
-    Friend WithEvents BindingNavigatorMoveLastItem As ToolStripButton
-    Friend WithEvents BindingNavigatorSeparator2 As ToolStripSeparator
-    Friend WithEvents GetProductAddBindingNavigatorSaveItem As ToolStripButton
-    Friend WithEvents ID_GetProductAddTextBox As TextBox
+    Friend WithEvents TXT_GetProductAdd As TextBox
     Friend WithEvents Knop_Annuleren As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents GetProductAddTableAdapter As DS_ProductTableAdapters.GetProductAddTableAdapter
+    Friend WithEvents DT_productBindingSource As BindingSource
+    Friend WithEvents DT_productTableAdapter As DS_ProductTableAdapters.DT_productTableAdapter
+    Friend WithEvents TXT_PDbehuizing As TextBox
+    Friend WithEvents TXT_PDwaarde As TextBox
+    Friend WithEvents TXT_PDfunctie As TextBox
+    Friend WithEvents TXT_PDnaam As TextBox
+    Friend WithEvents PD_VoorraadTextBox As TextBox
+    Friend WithEvents Label2 As Label
+    Friend WithEvents TXT_TotaalBetaaldEur As TextBox
+    Friend WithEvents Knop_Zoek As Button
+    Friend WithEvents Label9 As Label
+    Friend WithEvents TXT_Koers As TextBox
+    Friend WithEvents CB_valuta As ComboBox
+    Friend WithEvents ValutaBindingSource As BindingSource
+    Friend WithEvents ValutaTableAdapter As DS_ProductTableAdapters.ValutaTableAdapter
+    Friend WithEvents TXT_IDONTV As TextBox
+    Friend WithEvents Knop_Verwijder As Button
 End Class
