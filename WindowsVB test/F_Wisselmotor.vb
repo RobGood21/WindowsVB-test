@@ -7,6 +7,11 @@
     End Sub
     Private Sub F_Wisselmotor_Load(sender As Object, e As EventArgs) Handles MyBase.Load
         F_Opening.Show()
+        'Publieke variabelen laden, bij starten project
+        ZOEKGROEP = 0
+        ZOEKTXT = ""
+        ZOEKGROEPCH = True
+        ZOEKTXTCH = False
     End Sub
     Private Sub OpeningToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OpeningToolStripMenuItem.Click
         F_Opening.Show()
@@ -53,5 +58,9 @@
     Private Sub ProductenToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ProductenToolStripMenuItem.Click
         F_Product.MdiParent = Me
         F_Product.Show()
+    End Sub
+
+    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
+
     End Sub
 End Class

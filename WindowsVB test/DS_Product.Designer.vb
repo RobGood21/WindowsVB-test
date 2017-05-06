@@ -53,6 +53,8 @@ Partial Public Class DS_Product
     
     Private tableGPA_OntvangenLijst_ As GPA_OntvangenLijst_DataTable
     
+    Private tableProductZoek As ProductZoekDataTable
+    
     Private relationFK_Product_Groep1 As Global.System.Data.DataRelation
     
     Private relationFK_Product_Merk1 As Global.System.Data.DataRelation
@@ -131,6 +133,9 @@ Partial Public Class DS_Product
             End If
             If (Not (ds.Tables("GPA_OntvangenLijst ")) Is Nothing) Then
                 MyBase.Tables.Add(New GPA_OntvangenLijst_DataTable(ds.Tables("GPA_OntvangenLijst ")))
+            End If
+            If (Not (ds.Tables("ProductZoek")) Is Nothing) Then
+                MyBase.Tables.Add(New ProductZoekDataTable(ds.Tables("ProductZoek")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -291,6 +296,16 @@ Partial Public Class DS_Product
     
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+     Global.System.ComponentModel.Browsable(false),  _
+     Global.System.ComponentModel.DesignerSerializationVisibility(Global.System.ComponentModel.DesignerSerializationVisibility.Content)>  _
+    Public ReadOnly Property ProductZoek() As ProductZoekDataTable
+        Get
+            Return Me.tableProductZoek
+        End Get
+    End Property
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
      Global.System.ComponentModel.BrowsableAttribute(true),  _
      Global.System.ComponentModel.DesignerSerializationVisibilityAttribute(Global.System.ComponentModel.DesignerSerializationVisibility.Visible)>  _
     Public Overrides Property SchemaSerializationMode() As Global.System.Data.SchemaSerializationMode
@@ -397,6 +412,9 @@ Partial Public Class DS_Product
             End If
             If (Not (ds.Tables("GPA_OntvangenLijst ")) Is Nothing) Then
                 MyBase.Tables.Add(New GPA_OntvangenLijst_DataTable(ds.Tables("GPA_OntvangenLijst ")))
+            End If
+            If (Not (ds.Tables("ProductZoek")) Is Nothing) Then
+                MyBase.Tables.Add(New ProductZoekDataTable(ds.Tables("ProductZoek")))
             End If
             Me.DataSetName = ds.DataSetName
             Me.Prefix = ds.Prefix
@@ -514,6 +532,12 @@ Partial Public Class DS_Product
                 Me.tableGPA_OntvangenLijst_.InitVars
             End If
         End If
+        Me.tableProductZoek = CType(MyBase.Tables("ProductZoek"),ProductZoekDataTable)
+        If (initTable = true) Then
+            If (Not (Me.tableProductZoek) Is Nothing) Then
+                Me.tableProductZoek.InitVars
+            End If
+        End If
         Me.relationFK_Product_Groep1 = Me.Relations("FK_Product_Groep1")
         Me.relationFK_Product_Merk1 = Me.Relations("FK_Product_Merk1")
         Me.relationFK_GetProductAdd_Product = Me.Relations("FK_GetProductAdd_Product")
@@ -556,6 +580,8 @@ Partial Public Class DS_Product
         MyBase.Tables.Add(Me.tableOntvangenLijst)
         Me.tableGPA_OntvangenLijst_ = New GPA_OntvangenLijst_DataTable()
         MyBase.Tables.Add(Me.tableGPA_OntvangenLijst_)
+        Me.tableProductZoek = New ProductZoekDataTable()
+        MyBase.Tables.Add(Me.tableProductZoek)
         Me.relationFK_Product_Groep1 = New Global.System.Data.DataRelation("FK_Product_Groep1", New Global.System.Data.DataColumn() {Me.tableGroep.ID_GroepColumn}, New Global.System.Data.DataColumn() {Me.tableDT_product.ID_GroepColumn}, false)
         Me.Relations.Add(Me.relationFK_Product_Groep1)
         Me.relationFK_Product_Merk1 = New Global.System.Data.DataRelation("FK_Product_Merk1", New Global.System.Data.DataColumn() {Me.tableMerk.ID_MerkColumn}, New Global.System.Data.DataColumn() {Me.tableDT_product.ID_MerkColumn}, false)
@@ -647,6 +673,12 @@ Partial Public Class DS_Product
     <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
      Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Private Function ShouldSerializeGPA_OntvangenLijst_() As Boolean
+        Return false
+    End Function
+    
+    <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+     Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Private Function ShouldSerializeProductZoek() As Boolean
         Return false
     End Function
     
@@ -749,6 +781,9 @@ Partial Public Class DS_Product
     
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
     Public Delegate Sub GPA_OntvangenLijst_RowChangeEventHandler(ByVal sender As Object, ByVal e As GPA_OntvangenLijst_RowChangeEvent)
+    
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Delegate Sub ProductZoekRowChangeEventHandler(ByVal sender As Object, ByVal e As ProductZoekRowChangeEvent)
     
     '''<summary>
     '''Represents the strongly named DataTable class.
@@ -2742,17 +2777,7 @@ Partial Public Class DS_Product
         
         Private columnGP_BuyPriceEUR As Global.System.Data.DataColumn
         
-        Private columnPD_Naam As Global.System.Data.DataColumn
-        
-        Private columnPD_Functie As Global.System.Data.DataColumn
-        
-        Private columnPD_Waarde As Global.System.Data.DataColumn
-        
-        Private columnPD_Behuizing As Global.System.Data.DataColumn
-        
         Private columnPD_Voorraad As Global.System.Data.DataColumn
-        
-        Private columnPD_Voorraadordered As Global.System.Data.DataColumn
         
         Private columnID_Product As Global.System.Data.DataColumn
         
@@ -2764,9 +2789,9 @@ Partial Public Class DS_Product
         
         Private columnGP__Ontvangen As Global.System.Data.DataColumn
         
-        Private columnproduct As Global.System.Data.DataColumn
-        
         Private columnLK_Code As Global.System.Data.DataColumn
+        
+        Private _columnPD_Beschrijving_2_ As Global.System.Data.DataColumn
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -2821,49 +2846,9 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PD_NaamColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPD_Naam
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PD_FunctieColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPD_Functie
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PD_WaardeColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPD_Waarde
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PD_BehuizingColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPD_Behuizing
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property PD_VoorraadColumn() As Global.System.Data.DataColumn
             Get
                 Return Me.columnPD_Voorraad
-            End Get
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property PD_VoorraadorderedColumn() As Global.System.Data.DataColumn
-            Get
-                Return Me.columnPD_Voorraadordered
             End Get
         End Property
         
@@ -2909,17 +2894,17 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property productColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property LK_CodeColumn() As Global.System.Data.DataColumn
             Get
-                Return Me.columnproduct
+                Return Me.columnLK_Code
             End Get
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public ReadOnly Property LK_CodeColumn() As Global.System.Data.DataColumn
+        Public ReadOnly Property _PD_Beschrijving_2_Column() As Global.System.Data.DataColumn
             Get
-                Return Me.columnLK_Code
+                Return Me._columnPD_Beschrijving_2_
             End Get
         End Property
         
@@ -2960,9 +2945,9 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddGetProductListRow(ByVal ID_GetOntvangst As Integer, ByVal GP_BuyPriceEUR As Decimal, ByVal PD_Naam As String, ByVal PD_Functie As String, ByVal PD_Waarde As String, ByVal PD_Behuizing As String, ByVal PD_Voorraad As Integer, ByVal PD_Voorraadordered As Integer, ByVal GP_Lijst As Integer, ByVal GP_Besteld As Integer, ByVal GP__Ontvangen As Integer, ByVal product As String, ByVal LK_Code As String) As GetProductListRow
+        Public Overloads Function AddGetProductListRow(ByVal ID_GetOntvangst As Integer, ByVal GP_BuyPriceEUR As Decimal, ByVal PD_Voorraad As Integer, ByVal GP_Lijst As Integer, ByVal GP_Besteld As Integer, ByVal GP__Ontvangen As Integer, ByVal LK_Code As String, ByVal _PD_Beschrijving_2_ As String) As GetProductListRow
             Dim rowGetProductListRow As GetProductListRow = CType(Me.NewRow,GetProductListRow)
-            Dim columnValuesArray() As Object = New Object() {ID_GetOntvangst, GP_BuyPriceEUR, PD_Naam, PD_Functie, PD_Waarde, PD_Behuizing, PD_Voorraad, PD_Voorraadordered, Nothing, Nothing, GP_Lijst, GP_Besteld, GP__Ontvangen, product, LK_Code}
+            Dim columnValuesArray() As Object = New Object() {ID_GetOntvangst, GP_BuyPriceEUR, PD_Voorraad, Nothing, Nothing, GP_Lijst, GP_Besteld, GP__Ontvangen, LK_Code, _PD_Beschrijving_2_}
             rowGetProductListRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowGetProductListRow)
             Return rowGetProductListRow
@@ -2993,19 +2978,14 @@ Partial Public Class DS_Product
         Friend Sub InitVars()
             Me.columnID_GetOntvangst = MyBase.Columns("ID_GetOntvangst")
             Me.columnGP_BuyPriceEUR = MyBase.Columns("GP_BuyPriceEUR")
-            Me.columnPD_Naam = MyBase.Columns("PD_Naam")
-            Me.columnPD_Functie = MyBase.Columns("PD_Functie")
-            Me.columnPD_Waarde = MyBase.Columns("PD_Waarde")
-            Me.columnPD_Behuizing = MyBase.Columns("PD_Behuizing")
             Me.columnPD_Voorraad = MyBase.Columns("PD_Voorraad")
-            Me.columnPD_Voorraadordered = MyBase.Columns("PD_Voorraadordered")
             Me.columnID_Product = MyBase.Columns("ID_Product")
             Me.columnID_GetProductAdd = MyBase.Columns("ID_GetProductAdd")
             Me.columnGP_Lijst = MyBase.Columns("GP_Lijst")
             Me.columnGP_Besteld = MyBase.Columns("GP_Besteld")
             Me.columnGP__Ontvangen = MyBase.Columns("GP__Ontvangen")
-            Me.columnproduct = MyBase.Columns("product")
             Me.columnLK_Code = MyBase.Columns("LK_Code")
+            Me._columnPD_Beschrijving_2_ = MyBase.Columns("PD_Beschrijving(2)")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -3015,18 +2995,8 @@ Partial Public Class DS_Product
             MyBase.Columns.Add(Me.columnID_GetOntvangst)
             Me.columnGP_BuyPriceEUR = New Global.System.Data.DataColumn("GP_BuyPriceEUR", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGP_BuyPriceEUR)
-            Me.columnPD_Naam = New Global.System.Data.DataColumn("PD_Naam", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPD_Naam)
-            Me.columnPD_Functie = New Global.System.Data.DataColumn("PD_Functie", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPD_Functie)
-            Me.columnPD_Waarde = New Global.System.Data.DataColumn("PD_Waarde", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPD_Waarde)
-            Me.columnPD_Behuizing = New Global.System.Data.DataColumn("PD_Behuizing", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPD_Behuizing)
             Me.columnPD_Voorraad = New Global.System.Data.DataColumn("PD_Voorraad", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnPD_Voorraad)
-            Me.columnPD_Voorraadordered = New Global.System.Data.DataColumn("PD_Voorraadordered", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnPD_Voorraadordered)
             Me.columnID_Product = New Global.System.Data.DataColumn("ID_Product", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID_Product)
             Me.columnID_GetProductAdd = New Global.System.Data.DataColumn("ID_GetProductAdd", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
@@ -3037,15 +3007,13 @@ Partial Public Class DS_Product
             MyBase.Columns.Add(Me.columnGP_Besteld)
             Me.columnGP__Ontvangen = New Global.System.Data.DataColumn("GP__Ontvangen", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnGP__Ontvangen)
-            Me.columnproduct = New Global.System.Data.DataColumn("product", GetType(String), Nothing, Global.System.Data.MappingType.Element)
-            MyBase.Columns.Add(Me.columnproduct)
             Me.columnLK_Code = New Global.System.Data.DataColumn("LK_Code", GetType(String), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnLK_Code)
+            Me._columnPD_Beschrijving_2_ = New Global.System.Data.DataColumn("PD_Beschrijving(2)", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me._columnPD_Beschrijving_2_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnPD_Beschrijving_2_")
+            Me._columnPD_Beschrijving_2_.ExtendedProperties.Add("Generator_UserColumnName", "PD_Beschrijving(2)")
+            MyBase.Columns.Add(Me._columnPD_Beschrijving_2_)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_GetProductAdd}, true))
-            Me.columnPD_Naam.MaxLength = 50
-            Me.columnPD_Functie.MaxLength = 100
-            Me.columnPD_Waarde.MaxLength = 50
-            Me.columnPD_Behuizing.MaxLength = 50
             Me.columnID_Product.AutoIncrement = true
             Me.columnID_Product.AutoIncrementSeed = -1
             Me.columnID_Product.AutoIncrementStep = -1
@@ -3057,9 +3025,8 @@ Partial Public Class DS_Product
             Me.columnID_GetProductAdd.AllowDBNull = false
             Me.columnID_GetProductAdd.ReadOnly = true
             Me.columnID_GetProductAdd.Unique = true
-            Me.columnproduct.ReadOnly = true
-            Me.columnproduct.MaxLength = 152
             Me.columnLK_Code.MaxLength = 50
+            Me._columnPD_Beschrijving_2_.MaxLength = 2147483647
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5521,6 +5488,313 @@ Partial Public Class DS_Product
     End Class
     
     '''<summary>
+    '''Represents the strongly named DataTable class.
+    '''</summary>
+    <Global.System.Serializable(),  _
+     Global.System.Xml.Serialization.XmlSchemaProviderAttribute("GetTypedTableSchema")>  _
+    Partial Public Class ProductZoekDataTable
+        Inherits Global.System.Data.TypedTableBase(Of ProductZoekRow)
+        
+        Private columnID_Product As Global.System.Data.DataColumn
+        
+        Private columnID_Groep As Global.System.Data.DataColumn
+        
+        Private _columnPD_Beschrijving_2_ As Global.System.Data.DataColumn
+        
+        Private columnPD_Voorraad As Global.System.Data.DataColumn
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.TableName = "ProductZoek"
+            Me.BeginInit
+            Me.InitClass
+            Me.EndInit
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal table As Global.System.Data.DataTable)
+            MyBase.New
+            Me.TableName = table.TableName
+            If (table.CaseSensitive <> table.DataSet.CaseSensitive) Then
+                Me.CaseSensitive = table.CaseSensitive
+            End If
+            If (table.Locale.ToString <> table.DataSet.Locale.ToString) Then
+                Me.Locale = table.Locale
+            End If
+            If (table.Namespace <> table.DataSet.Namespace) Then
+                Me.Namespace = table.Namespace
+            End If
+            Me.Prefix = table.Prefix
+            Me.MinimumCapacity = table.MinimumCapacity
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Sub New(ByVal info As Global.System.Runtime.Serialization.SerializationInfo, ByVal context As Global.System.Runtime.Serialization.StreamingContext)
+            MyBase.New(info, context)
+            Me.InitVars
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ID_ProductColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_Product
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ID_GroepColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_Groep
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property _PD_Beschrijving_2_Column() As Global.System.Data.DataColumn
+            Get
+                Return Me._columnPD_Beschrijving_2_
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property PD_VoorraadColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnPD_Voorraad
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Browsable(false)>  _
+        Public ReadOnly Property Count() As Integer
+            Get
+                Return Me.Rows.Count
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Default ReadOnly Property Item(ByVal index As Integer) As ProductZoekRow
+            Get
+                Return CType(Me.Rows(index),ProductZoekRow)
+            End Get
+        End Property
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event ProductZoekRowChanging As ProductZoekRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event ProductZoekRowChanged As ProductZoekRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event ProductZoekRowDeleting As ProductZoekRowChangeEventHandler
+        
+        <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Event ProductZoekRowDeleted As ProductZoekRowChangeEventHandler
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Sub AddProductZoekRow(ByVal row As ProductZoekRow)
+            Me.Rows.Add(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overloads Function AddProductZoekRow(ByVal ID_Groep As Integer, ByVal _PD_Beschrijving_2_ As String, ByVal PD_Voorraad As Integer) As ProductZoekRow
+            Dim rowProductZoekRow As ProductZoekRow = CType(Me.NewRow,ProductZoekRow)
+            Dim columnValuesArray() As Object = New Object() {Nothing, ID_Groep, _PD_Beschrijving_2_, PD_Voorraad}
+            rowProductZoekRow.ItemArray = columnValuesArray
+            Me.Rows.Add(rowProductZoekRow)
+            Return rowProductZoekRow
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function FindByID_Product(ByVal ID_Product As Integer) As ProductZoekRow
+            Return CType(Me.Rows.Find(New Object() {ID_Product}),ProductZoekRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Overrides Function Clone() As Global.System.Data.DataTable
+            Dim cln As ProductZoekDataTable = CType(MyBase.Clone,ProductZoekDataTable)
+            cln.InitVars
+            Return cln
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function CreateInstance() As Global.System.Data.DataTable
+            Return New ProductZoekDataTable()
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub InitVars()
+            Me.columnID_Product = MyBase.Columns("ID_Product")
+            Me.columnID_Groep = MyBase.Columns("ID_Groep")
+            Me._columnPD_Beschrijving_2_ = MyBase.Columns("PD_Beschrijving(2)")
+            Me.columnPD_Voorraad = MyBase.Columns("PD_Voorraad")
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitClass()
+            Me.columnID_Product = New Global.System.Data.DataColumn("ID_Product", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_Product)
+            Me.columnID_Groep = New Global.System.Data.DataColumn("ID_Groep", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_Groep)
+            Me._columnPD_Beschrijving_2_ = New Global.System.Data.DataColumn("PD_Beschrijving(2)", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            Me._columnPD_Beschrijving_2_.ExtendedProperties.Add("Generator_ColumnVarNameInTable", "_columnPD_Beschrijving_2_")
+            Me._columnPD_Beschrijving_2_.ExtendedProperties.Add("Generator_UserColumnName", "PD_Beschrijving(2)")
+            MyBase.Columns.Add(Me._columnPD_Beschrijving_2_)
+            Me.columnPD_Voorraad = New Global.System.Data.DataColumn("PD_Voorraad", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnPD_Voorraad)
+            Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_Product}, true))
+            Me.columnID_Product.AutoIncrement = true
+            Me.columnID_Product.AutoIncrementSeed = -1
+            Me.columnID_Product.AutoIncrementStep = -1
+            Me.columnID_Product.AllowDBNull = false
+            Me.columnID_Product.ReadOnly = true
+            Me.columnID_Product.Unique = true
+            Me._columnPD_Beschrijving_2_.MaxLength = 2147483647
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function NewProductZoekRow() As ProductZoekRow
+            Return CType(Me.NewRow,ProductZoekRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function NewRowFromBuilder(ByVal builder As Global.System.Data.DataRowBuilder) As Global.System.Data.DataRow
+            Return New ProductZoekRow(builder)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Function GetRowType() As Global.System.Type
+            Return GetType(ProductZoekRow)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanged(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanged(e)
+            If (Not (Me.ProductZoekRowChangedEvent) Is Nothing) Then
+                RaiseEvent ProductZoekRowChanged(Me, New ProductZoekRowChangeEvent(CType(e.Row,ProductZoekRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowChanging(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowChanging(e)
+            If (Not (Me.ProductZoekRowChangingEvent) Is Nothing) Then
+                RaiseEvent ProductZoekRowChanging(Me, New ProductZoekRowChangeEvent(CType(e.Row,ProductZoekRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleted(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleted(e)
+            If (Not (Me.ProductZoekRowDeletedEvent) Is Nothing) Then
+                RaiseEvent ProductZoekRowDeleted(Me, New ProductZoekRowChangeEvent(CType(e.Row,ProductZoekRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Overrides Sub OnRowDeleting(ByVal e As Global.System.Data.DataRowChangeEventArgs)
+            MyBase.OnRowDeleting(e)
+            If (Not (Me.ProductZoekRowDeletingEvent) Is Nothing) Then
+                RaiseEvent ProductZoekRowDeleting(Me, New ProductZoekRowChangeEvent(CType(e.Row,ProductZoekRow), e.Action))
+            End If
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub RemoveProductZoekRow(ByVal row As ProductZoekRow)
+            Me.Rows.Remove(row)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Shared Function GetTypedTableSchema(ByVal xs As Global.System.Xml.Schema.XmlSchemaSet) As Global.System.Xml.Schema.XmlSchemaComplexType
+            Dim type As Global.System.Xml.Schema.XmlSchemaComplexType = New Global.System.Xml.Schema.XmlSchemaComplexType()
+            Dim sequence As Global.System.Xml.Schema.XmlSchemaSequence = New Global.System.Xml.Schema.XmlSchemaSequence()
+            Dim ds As DS_Product = New DS_Product()
+            Dim any1 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any1.Namespace = "http://www.w3.org/2001/XMLSchema"
+            any1.MinOccurs = New Decimal(0)
+            any1.MaxOccurs = Decimal.MaxValue
+            any1.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any1)
+            Dim any2 As Global.System.Xml.Schema.XmlSchemaAny = New Global.System.Xml.Schema.XmlSchemaAny()
+            any2.Namespace = "urn:schemas-microsoft-com:xml-diffgram-v1"
+            any2.MinOccurs = New Decimal(1)
+            any2.ProcessContents = Global.System.Xml.Schema.XmlSchemaContentProcessing.Lax
+            sequence.Items.Add(any2)
+            Dim attribute1 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute1.Name = "namespace"
+            attribute1.FixedValue = ds.Namespace
+            type.Attributes.Add(attribute1)
+            Dim attribute2 As Global.System.Xml.Schema.XmlSchemaAttribute = New Global.System.Xml.Schema.XmlSchemaAttribute()
+            attribute2.Name = "tableTypeName"
+            attribute2.FixedValue = "ProductZoekDataTable"
+            type.Attributes.Add(attribute2)
+            type.Particle = sequence
+            Dim dsSchema As Global.System.Xml.Schema.XmlSchema = ds.GetSchemaSerializable
+            If xs.Contains(dsSchema.TargetNamespace) Then
+                Dim s1 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Dim s2 As Global.System.IO.MemoryStream = New Global.System.IO.MemoryStream()
+                Try 
+                    Dim schema As Global.System.Xml.Schema.XmlSchema = Nothing
+                    dsSchema.Write(s1)
+                    Dim schemas As Global.System.Collections.IEnumerator = xs.Schemas(dsSchema.TargetNamespace).GetEnumerator
+                    Do While schemas.MoveNext
+                        schema = CType(schemas.Current,Global.System.Xml.Schema.XmlSchema)
+                        s2.SetLength(0)
+                        schema.Write(s2)
+                        If (s1.Length = s2.Length) Then
+                            s1.Position = 0
+                            s2.Position = 0
+                            
+                            Do While ((s1.Position <> s1.Length)  _
+                                        AndAlso (s1.ReadByte = s2.ReadByte))
+                                
+                                
+                            Loop
+                            If (s1.Position = s1.Length) Then
+                                Return type
+                            End If
+                        End If
+                        
+                    Loop
+                Finally
+                    If (Not (s1) Is Nothing) Then
+                        s1.Close
+                    End If
+                    If (Not (s2) Is Nothing) Then
+                        s2.Close
+                    End If
+                End Try
+            End If
+            xs.Add(dsSchema)
+            Return type
+        End Function
+    End Class
+    
+    '''<summary>
     '''Represents strongly named DataRow class.
     '''</summary>
     Partial Public Class GroepRow
@@ -6547,66 +6821,6 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PD_Naam() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableGetProductList.PD_NaamColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Naam' in table 'GetProductList' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableGetProductList.PD_NaamColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PD_Functie() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableGetProductList.PD_FunctieColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Functie' in table 'GetProductList' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableGetProductList.PD_FunctieColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PD_Waarde() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableGetProductList.PD_WaardeColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Waarde' in table 'GetProductList' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableGetProductList.PD_WaardeColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PD_Behuizing() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableGetProductList.PD_BehuizingColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Behuizing' in table 'GetProductList' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableGetProductList.PD_BehuizingColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property PD_Voorraad() As Integer
             Get
                 Try 
@@ -6617,21 +6831,6 @@ Partial Public Class DS_Product
             End Get
             Set
                 Me(Me.tableGetProductList.PD_VoorraadColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property PD_Voorraadordered() As Integer
-            Get
-                Try 
-                    Return CType(Me(Me.tableGetProductList.PD_VoorraadorderedColumn),Integer)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Voorraadordered' in table 'GetProductList' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableGetProductList.PD_VoorraadorderedColumn) = value
             End Set
         End Property
         
@@ -6704,21 +6903,6 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Property product() As String
-            Get
-                Try 
-                    Return CType(Me(Me.tableGetProductList.productColumn),String)
-                Catch e As Global.System.InvalidCastException
-                    Throw New Global.System.Data.StrongTypingException("The value for column 'product' in table 'GetProductList' is DBNull.", e)
-                End Try
-            End Get
-            Set
-                Me(Me.tableGetProductList.productColumn) = value
-            End Set
-        End Property
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Property LK_Code() As String
             Get
                 Try 
@@ -6729,6 +6913,21 @@ Partial Public Class DS_Product
             End Get
             Set
                 Me(Me.tableGetProductList.LK_CodeColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property _PD_Beschrijving_2_() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableGetProductList._PD_Beschrijving_2_Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Beschrijving(2)' in table 'GetProductList' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableGetProductList._PD_Beschrijving_2_Column) = value
             End Set
         End Property
         
@@ -6769,54 +6968,6 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPD_NaamNull() As Boolean
-            Return Me.IsNull(Me.tableGetProductList.PD_NaamColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPD_NaamNull()
-            Me(Me.tableGetProductList.PD_NaamColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPD_FunctieNull() As Boolean
-            Return Me.IsNull(Me.tableGetProductList.PD_FunctieColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPD_FunctieNull()
-            Me(Me.tableGetProductList.PD_FunctieColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPD_WaardeNull() As Boolean
-            Return Me.IsNull(Me.tableGetProductList.PD_WaardeColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPD_WaardeNull()
-            Me(Me.tableGetProductList.PD_WaardeColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPD_BehuizingNull() As Boolean
-            Return Me.IsNull(Me.tableGetProductList.PD_BehuizingColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPD_BehuizingNull()
-            Me(Me.tableGetProductList.PD_BehuizingColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsPD_VoorraadNull() As Boolean
             Return Me.IsNull(Me.tableGetProductList.PD_VoorraadColumn)
         End Function
@@ -6825,18 +6976,6 @@ Partial Public Class DS_Product
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetPD_VoorraadNull()
             Me(Me.tableGetProductList.PD_VoorraadColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsPD_VoorraadorderedNull() As Boolean
-            Return Me.IsNull(Me.tableGetProductList.PD_VoorraadorderedColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetPD_VoorraadorderedNull()
-            Me(Me.tableGetProductList.PD_VoorraadorderedColumn) = Global.System.Convert.DBNull
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -6877,18 +7016,6 @@ Partial Public Class DS_Product
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Function IsproductNull() As Boolean
-            Return Me.IsNull(Me.tableGetProductList.productColumn)
-        End Function
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Sub SetproductNull()
-            Me(Me.tableGetProductList.productColumn) = Global.System.Convert.DBNull
-        End Sub
-        
-        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
-         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsLK_CodeNull() As Boolean
             Return Me.IsNull(Me.tableGetProductList.LK_CodeColumn)
         End Function
@@ -6897,6 +7024,18 @@ Partial Public Class DS_Product
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetLK_CodeNull()
             Me(Me.tableGetProductList.LK_CodeColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Is_PD_Beschrijving_2_Null() As Boolean
+            Return Me.IsNull(Me.tableGetProductList._PD_Beschrijving_2_Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Set_PD_Beschrijving_2_Null()
+            Me(Me.tableGetProductList._PD_Beschrijving_2_Column) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -8014,6 +8153,114 @@ Partial Public Class DS_Product
     End Class
     
     '''<summary>
+    '''Represents strongly named DataRow class.
+    '''</summary>
+    Partial Public Class ProductZoekRow
+        Inherits Global.System.Data.DataRow
+        
+        Private tableProductZoek As ProductZoekDataTable
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Sub New(ByVal rb As Global.System.Data.DataRowBuilder)
+            MyBase.New(rb)
+            Me.tableProductZoek = CType(Me.Table,ProductZoekDataTable)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID_Product() As Integer
+            Get
+                Return CType(Me(Me.tableProductZoek.ID_ProductColumn),Integer)
+            End Get
+            Set
+                Me(Me.tableProductZoek.ID_ProductColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID_Groep() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableProductZoek.ID_GroepColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ID_Groep' in table 'ProductZoek' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProductZoek.ID_GroepColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property _PD_Beschrijving_2_() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableProductZoek._PD_Beschrijving_2_Column),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Beschrijving(2)' in table 'ProductZoek' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProductZoek._PD_Beschrijving_2_Column) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property PD_Voorraad() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableProductZoek.PD_VoorraadColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'PD_Voorraad' in table 'ProductZoek' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableProductZoek.PD_VoorraadColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsID_GroepNull() As Boolean
+            Return Me.IsNull(Me.tableProductZoek.ID_GroepColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetID_GroepNull()
+            Me(Me.tableProductZoek.ID_GroepColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function Is_PD_Beschrijving_2_Null() As Boolean
+            Return Me.IsNull(Me.tableProductZoek._PD_Beschrijving_2_Column)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub Set_PD_Beschrijving_2_Null()
+            Me(Me.tableProductZoek._PD_Beschrijving_2_Column) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsPD_VoorraadNull() As Boolean
+            Return Me.IsNull(Me.tableProductZoek.PD_VoorraadColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetPD_VoorraadNull()
+            Me(Me.tableProductZoek.PD_VoorraadColumn) = Global.System.Convert.DBNull
+        End Sub
+    End Class
+    
+    '''<summary>
     '''Row event argument class
     '''</summary>
     <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
@@ -8503,6 +8750,42 @@ Partial Public Class DS_Product
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public ReadOnly Property Row() As GPA_OntvangenLijst_Row
+            Get
+                Return Me.eventRow
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Action() As Global.System.Data.DataRowAction
+            Get
+                Return Me.eventAction
+            End Get
+        End Property
+    End Class
+    
+    '''<summary>
+    '''Row event argument class
+    '''</summary>
+    <Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+    Public Class ProductZoekRowChangeEvent
+        Inherits Global.System.EventArgs
+        
+        Private eventRow As ProductZoekRow
+        
+        Private eventAction As Global.System.Data.DataRowAction
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New(ByVal row As ProductZoekRow, ByVal action As Global.System.Data.DataRowAction)
+            MyBase.New
+            Me.eventRow = row
+            Me.eventAction = action
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property Row() As ProductZoekRow
             Get
                 Return Me.eventRow
             End Get
@@ -11041,19 +11324,14 @@ Namespace DS_ProductTableAdapters
             tableMapping.DataSetTable = "GetProductList"
             tableMapping.ColumnMappings.Add("ID_GetOntvangst", "ID_GetOntvangst")
             tableMapping.ColumnMappings.Add("GP_BuyPriceEUR", "GP_BuyPriceEUR")
-            tableMapping.ColumnMappings.Add("PD_Naam", "PD_Naam")
-            tableMapping.ColumnMappings.Add("PD_Functie", "PD_Functie")
-            tableMapping.ColumnMappings.Add("PD_Waarde", "PD_Waarde")
-            tableMapping.ColumnMappings.Add("PD_Behuizing", "PD_Behuizing")
             tableMapping.ColumnMappings.Add("PD_Voorraad", "PD_Voorraad")
-            tableMapping.ColumnMappings.Add("PD_Voorraadordered", "PD_Voorraadordered")
             tableMapping.ColumnMappings.Add("ID_Product", "ID_Product")
             tableMapping.ColumnMappings.Add("ID_GetProductAdd", "ID_GetProductAdd")
             tableMapping.ColumnMappings.Add("GP_Lijst", "GP_Lijst")
             tableMapping.ColumnMappings.Add("GP_Besteld", "GP_Besteld")
             tableMapping.ColumnMappings.Add("GP__Ontvangen", "GP__Ontvangen")
-            tableMapping.ColumnMappings.Add("product", "product")
             tableMapping.ColumnMappings.Add("LK_Code", "LK_Code")
+            tableMapping.ColumnMappings.Add("PD_Beschrijving(2)", "PD_Beschrijving(2)")
             Me._adapter.TableMappings.Add(tableMapping)
         End Sub
         
@@ -11070,17 +11348,14 @@ Namespace DS_ProductTableAdapters
             Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
-            Me._commandCollection(0).CommandText = "SELECT        GetProductAdd.ID_GetOntvangst, Product.PD_Naam, Product.PD_Functie,"& _ 
-                " Product.PD_Waarde, Product.PD_Behuizing, GetProductAdd.GP_BuyPriceEUR, Product."& _ 
-                "PD_Voorraad, Product.PD_Voorraadordered, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GetProductAd"& _ 
-                "d.ID_GetProductAdd, Product.ID_Product, GetProductAdd.GP_Lijst, GetProductAdd.GP"& _ 
-                "_Besteld, GetProductAdd.GP__Ontvangen, { fn CONCAT(Product.PD_Naam, { fn CONCAT("& _ 
-                "', ', "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         { fn CONCAT(Product.PD_Functie, { fn CONCAT(', "& _ 
-                "', Product.PD_Waarde) }) }) }) } AS product, Locatie.LK_Code"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            Ge"& _ 
-                "tProductAdd INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Product ON GetProductAdd.ID_Pro"& _ 
-                "duct = Product.ID_Product LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Locatie ON P"& _ 
-                "roduct.ID_Locatie = Locatie.ID_Locatie"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (GetProductAdd.ID_GetOntvan"& _ 
-                "gst = @IDGOP) AND (GetProductAdd.GP_Lijst <> 0)"
+            Me._commandCollection(0).CommandText = "SELECT        GetProductAdd.ID_GetOntvangst, GetProductAdd.GP_BuyPriceEUR, Produc"& _ 
+                "t.PD_Voorraad, GetProductAdd.ID_GetProductAdd, Product.ID_Product, GetProductAdd"& _ 
+                ".GP_Lijst, GetProductAdd.GP_Besteld, "&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         GetProductAdd.GP"& _ 
+                "__Ontvangen, Locatie.LK_Code, Product.[PD_Beschrijving(2)]"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            GetP"& _ 
+                "roductAdd INNER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Product ON GetProductAdd.ID_Produ"& _ 
+                "ct = Product.ID_Product LEFT OUTER JOIN"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"                         Locatie ON Pro"& _ 
+                "duct.ID_Locatie = Locatie.ID_Locatie"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (GetProductAdd.ID_GetOntvangs"& _ 
+                "t = @IDGOP) AND (GetProductAdd.GP_Lijst <> 0)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDGOP", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_GetOntvangst", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -13504,6 +13779,286 @@ Namespace DS_ProductTableAdapters
                 Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
             End If
             Dim dataTable As DS_Product.GPA_OntvangenLijst_DataTable = New DS_Product.GPA_OntvangenLijst_DataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+    End Class
+    
+    '''<summary>
+    '''Represents the connection and commands used to retrieve and save data.
+    '''</summary>
+    <Global.System.ComponentModel.DesignerCategoryAttribute("code"),  _
+     Global.System.ComponentModel.ToolboxItem(true),  _
+     Global.System.ComponentModel.DataObjectAttribute(true),  _
+     Global.System.ComponentModel.DesignerAttribute("Microsoft.VSDesigner.DataSource.Design.TableAdapterDesigner, Microsoft.VSDesigner"& _ 
+        ", Version=10.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a"),  _
+     Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter")>  _
+    Partial Public Class ProductZoekTableAdapter
+        Inherits Global.System.ComponentModel.Component
+        
+        Private WithEvents _adapter As Global.System.Data.SqlClient.SqlDataAdapter
+        
+        Private _connection As Global.System.Data.SqlClient.SqlConnection
+        
+        Private _transaction As Global.System.Data.SqlClient.SqlTransaction
+        
+        Private _commandCollection() As Global.System.Data.SqlClient.SqlCommand
+        
+        Private _clearBeforeFill As Boolean
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub New()
+            MyBase.New
+            Me.ClearBeforeFill = true
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected Friend ReadOnly Property Adapter() As Global.System.Data.SqlClient.SqlDataAdapter
+            Get
+                If (Me._adapter Is Nothing) Then
+                    Me.InitAdapter
+                End If
+                Return Me._adapter
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Connection() As Global.System.Data.SqlClient.SqlConnection
+            Get
+                If (Me._connection Is Nothing) Then
+                    Me.InitConnection
+                End If
+                Return Me._connection
+            End Get
+            Set
+                Me._connection = value
+                If (Not (Me.Adapter.InsertCommand) Is Nothing) Then
+                    Me.Adapter.InsertCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.DeleteCommand) Is Nothing) Then
+                    Me.Adapter.DeleteCommand.Connection = value
+                End If
+                If (Not (Me.Adapter.UpdateCommand) Is Nothing) Then
+                    Me.Adapter.UpdateCommand.Connection = value
+                End If
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    If (Not (Me.CommandCollection(i)) Is Nothing) Then
+                        CType(Me.CommandCollection(i),Global.System.Data.SqlClient.SqlCommand).Connection = value
+                    End If
+                    i = (i + 1)
+                Loop
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Friend Property Transaction() As Global.System.Data.SqlClient.SqlTransaction
+            Get
+                Return Me._transaction
+            End Get
+            Set
+                Me._transaction = value
+                Dim i As Integer = 0
+                Do While (i < Me.CommandCollection.Length)
+                    Me.CommandCollection(i).Transaction = Me._transaction
+                    i = (i + 1)
+                Loop
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.DeleteCommand) Is Nothing)) Then
+                    Me.Adapter.DeleteCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.InsertCommand) Is Nothing)) Then
+                    Me.Adapter.InsertCommand.Transaction = Me._transaction
+                End If
+                If ((Not (Me.Adapter) Is Nothing)  _
+                            AndAlso (Not (Me.Adapter.UpdateCommand) Is Nothing)) Then
+                    Me.Adapter.UpdateCommand.Transaction = Me._transaction
+                End If
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Protected ReadOnly Property CommandCollection() As Global.System.Data.SqlClient.SqlCommand()
+            Get
+                If (Me._commandCollection Is Nothing) Then
+                    Me.InitCommandCollection
+                End If
+                Return Me._commandCollection
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ClearBeforeFill() As Boolean
+            Get
+                Return Me._clearBeforeFill
+            End Get
+            Set
+                Me._clearBeforeFill = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitAdapter()
+            Me._adapter = New Global.System.Data.SqlClient.SqlDataAdapter()
+            Dim tableMapping As Global.System.Data.Common.DataTableMapping = New Global.System.Data.Common.DataTableMapping()
+            tableMapping.SourceTable = "Table"
+            tableMapping.DataSetTable = "ProductZoek"
+            tableMapping.ColumnMappings.Add("ID_Product", "ID_Product")
+            tableMapping.ColumnMappings.Add("ID_Groep", "ID_Groep")
+            tableMapping.ColumnMappings.Add("PD_Beschrijving(2)", "PD_Beschrijving(2)")
+            tableMapping.ColumnMappings.Add("PD_Voorraad", "PD_Voorraad")
+            Me._adapter.TableMappings.Add(tableMapping)
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitConnection()
+            Me._connection = New Global.System.Data.SqlClient.SqlConnection()
+            Me._connection.ConnectionString = Global.WindowsVB_test.My.MySettings.Default.WMdbConnectionString1
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Private Sub InitCommandCollection()
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(2) {}
+            Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(0).Connection = Me.Connection
+            Me._commandCollection(0).CommandText = "SELECT        ID_Product, ID_Groep, [PD_Beschrijving(2)], PD_Voorraad"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+                "      Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_Groep = @IDGR)"
+            Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDGR", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Groep", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        ID_Product, ID_Groep, [PD_Beschrijving(2)], PD_Voorraad"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+                "      Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_Groep = @IDGR) AND ([PD_Beschrijving(2)] LIKE @Z"& _ 
+                "TXT)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDGR", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Groep", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ZTXT", Global.System.Data.SqlDbType.NVarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "PD_Beschrijving(2)", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(2) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(2).Connection = Me.Connection
+            Me._commandCollection(2).CommandText = "SELECT        ID_Product, ID_Groep, [PD_Beschrijving(2)], PD_Voorraad"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM      "& _ 
+                "      Product"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ([PD_Beschrijving(2)] LIKE @ZTXT)"
+            Me._commandCollection(2).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(2).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ZTXT", Global.System.Data.SqlDbType.NVarChar, 2147483647, Global.System.Data.ParameterDirection.Input, 0, 0, "PD_Beschrijving(2)", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, true)>  _
+        Public Overloads Overridable Function Fill(ByVal dataTable As DS_Product.ProductZoekDataTable, ByVal IDGR As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (IDGR.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDGR.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], true)>  _
+        Public Overloads Overridable Function GetData(ByVal IDGR As Global.System.Nullable(Of Integer)) As DS_Product.ProductZoekDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(0)
+            If (IDGR.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDGR.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            Dim dataTable As DS_Product.ProductZoekDataTable = New DS_Product.ProductZoekDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FiLLGT(ByVal dataTable As DS_Product.ProductZoekDataTable, ByVal IDGR As Global.System.Nullable(Of Integer), ByVal ZTXT As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (IDGR.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDGR.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (ZTXT Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ZTXT,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy(ByVal IDGR As Global.System.Nullable(Of Integer), ByVal ZTXT As String) As DS_Product.ProductZoekDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (IDGR.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDGR.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (ZTXT Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(1).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(1).Value = CType(ZTXT,String)
+            End If
+            Dim dataTable As DS_Product.ProductZoekDataTable = New DS_Product.ProductZoekDataTable()
+            Me.Adapter.Fill(dataTable)
+            Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FillT(ByVal dataTable As DS_Product.ProductZoekDataTable, ByVal ZTXT As String) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (ZTXT Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(ZTXT,String)
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.[Select], false)>  _
+        Public Overloads Overridable Function GetDataBy1(ByVal ZTXT As String) As DS_Product.ProductZoekDataTable
+            Me.Adapter.SelectCommand = Me.CommandCollection(2)
+            If (ZTXT Is Nothing) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(ZTXT,String)
+            End If
+            Dim dataTable As DS_Product.ProductZoekDataTable = New DS_Product.ProductZoekDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
         End Function

@@ -20,10 +20,14 @@
     End Sub
 
     Private Sub Knop_opslaan_Click(sender As Object, e As EventArgs) Handles Knop_opslaan.Click
+        Try
+            OPslaanShop()
+            IDSHOP = Me.TXT_IDSHOP.Text
+            Me.Close()
+        Catch ex As Exception
+            MsgBox(ErrorToString,, "knop opslaan (F_shop)")
+        End Try
 
-        OPslaanShop()
-        IDSHOP = Me.TXT_IDSHOP.Text
-        Me.Close()
 
     End Sub
     Public Sub LaadForm()

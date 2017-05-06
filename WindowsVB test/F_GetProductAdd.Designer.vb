@@ -126,9 +126,6 @@ Partial Class F_GetProductAdd
         Me.GroupBox1.Controls.Add(Me.Knop_Zoek)
         Me.GroupBox1.Controls.Add(PD_VoorraadLabel)
         Me.GroupBox1.Controls.Add(Me.PD_VoorraadTextBox)
-        Me.GroupBox1.Controls.Add(Me.TXT_PDbehuizing)
-        Me.GroupBox1.Controls.Add(Me.TXT_PDwaarde)
-        Me.GroupBox1.Controls.Add(Me.TXT_PDfunctie)
         Me.GroupBox1.Controls.Add(Me.TXT_PDnaam)
         Me.GroupBox1.Controls.Add(Me.Label4)
         Me.GroupBox1.Controls.Add(ID_GetProductAddLabel)
@@ -177,7 +174,7 @@ Partial Class F_GetProductAdd
         '
         Me.TXT_PDbehuizing.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TXT_PDbehuizing.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Behuizing", True))
-        Me.TXT_PDbehuizing.Location = New System.Drawing.Point(172, 76)
+        Me.TXT_PDbehuizing.Location = New System.Drawing.Point(486, 342)
         Me.TXT_PDbehuizing.Name = "TXT_PDbehuizing"
         Me.TXT_PDbehuizing.ReadOnly = True
         Me.TXT_PDbehuizing.Size = New System.Drawing.Size(100, 20)
@@ -187,7 +184,7 @@ Partial Class F_GetProductAdd
         '
         Me.TXT_PDwaarde.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TXT_PDwaarde.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Waarde", True))
-        Me.TXT_PDwaarde.Location = New System.Drawing.Point(69, 76)
+        Me.TXT_PDwaarde.Location = New System.Drawing.Point(486, 368)
         Me.TXT_PDwaarde.Name = "TXT_PDwaarde"
         Me.TXT_PDwaarde.ReadOnly = True
         Me.TXT_PDwaarde.Size = New System.Drawing.Size(100, 20)
@@ -197,7 +194,7 @@ Partial Class F_GetProductAdd
         '
         Me.TXT_PDfunctie.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
         Me.TXT_PDfunctie.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Functie", True))
-        Me.TXT_PDfunctie.Location = New System.Drawing.Point(172, 55)
+        Me.TXT_PDfunctie.Location = New System.Drawing.Point(486, 316)
         Me.TXT_PDfunctie.Name = "TXT_PDfunctie"
         Me.TXT_PDfunctie.ReadOnly = True
         Me.TXT_PDfunctie.Size = New System.Drawing.Size(100, 20)
@@ -206,11 +203,12 @@ Partial Class F_GetProductAdd
         'TXT_PDnaam
         '
         Me.TXT_PDnaam.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle
-        Me.TXT_PDnaam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Naam", True))
+        Me.TXT_PDnaam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Beschrijving(2)", True))
         Me.TXT_PDnaam.Location = New System.Drawing.Point(69, 55)
+        Me.TXT_PDnaam.Multiline = True
         Me.TXT_PDnaam.Name = "TXT_PDnaam"
         Me.TXT_PDnaam.ReadOnly = True
-        Me.TXT_PDnaam.Size = New System.Drawing.Size(100, 20)
+        Me.TXT_PDnaam.Size = New System.Drawing.Size(219, 37)
         Me.TXT_PDnaam.TabIndex = 12
         '
         'Label4
@@ -477,8 +475,11 @@ Partial Class F_GetProductAdd
         Me.Controls.Add(Me.Knop_Verwijder)
         Me.Controls.Add(Me.TXT_IDONTV)
         Me.Controls.Add(Label8)
+        Me.Controls.Add(Me.TXT_PDwaarde)
+        Me.Controls.Add(Me.TXT_PDbehuizing)
         Me.Controls.Add(Me.Knop_Annuleren)
         Me.Controls.Add(Me.Knop_NieuwProduct)
+        Me.Controls.Add(Me.TXT_PDfunctie)
         Me.Controls.Add(Me.Knop_Opslaan)
         Me.Controls.Add(Me.GB_Prijs)
         Me.Controls.Add(Me.GroupBox1)

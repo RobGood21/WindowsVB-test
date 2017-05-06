@@ -19,6 +19,12 @@
     Public OPSUPPLIER As Integer '1=open met ID supplier
     Public OPADMINKOOP As Integer '1=open nieuw van F_GetPoduct , 2=openbestaand vanuit F_getproduct, 3= openleeg
 
+    'Zoek formulier onthouden laatste waarde
+    Public ZOEKGROEP As Integer
+    Public ZOEKTXT As String
+    Public ZOEKGROEPCH As Boolean
+    Public ZOEKTXTCH As Boolean
+
 
 
 
