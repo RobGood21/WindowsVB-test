@@ -1,5 +1,6 @@
 ﻿Public Class F_Product
     Public NUZ As Boolean = False 'nuz=nieuw uitzondering
+    Public LUZ As Boolean = False 'laden uitzonderng, vooral om txtchange even uit te schakelen
     Public Sub ToolTipsInstellen()
         ' Create the ToolTip and associate with the Form container.
         Dim TT_Product As New ToolTip()
@@ -52,12 +53,15 @@
             Select Case OPPRODUCT
                 Case 1 'bestaand product
                     Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
-                    If IDPRODUCT > 0 Then Me.Knop_Opslaan.Enabled = True
+                    LUZ = True
+                    Me.TXT_Productnummer.Text = IDPRODUCT
+
+                    'If IDPRODUCT > 0 Then Me.Knop_Opslaan.Enabled = True
                 Case 2 'nieuw product invoeren.
 
                 Case Else 'opening vrij
                     Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
-                    Me.Knop_Opslaan.Enabled = False
+                    'Me.Knop_Opslaan.Enabled = False
                     Me.TXT_Productnummer.Select()
             End Select
         Catch ex As Exception
@@ -100,12 +104,9 @@
                     Me.CB_Groep.Select()
                 End If
             End If
-
-
         Catch ex As Exception
             MsgBox(ErrorToString,, "Öpslaan() F_product")
         End Try
-
     End Sub
     Private Sub NoEmpty()
         'voorkomt dat lege teksten in de velden komen
@@ -122,7 +123,6 @@
         'stelt alles in voor een nieuwe invoer.
         'knoppen
         Me.Knop_Opslaan.Enabled = True
-
         'velden
         With Me
             NUZ = True
@@ -133,10 +133,7 @@
             .TXT_Minimal.Text = 0
             .CB_Locatie.SelectedValue = 1
             Me.CB_Groep.Select()
-
-
         End With
-
     End Sub
     Private Sub Knop_Locatie_Click(sender As Object, e As EventArgs) Handles Knop_Locatie.Click
         Try
@@ -149,7 +146,12 @@
         End Try
     End Sub
     Private Sub TXT_Productnummer_TextChanged(sender As Object, e As EventArgs) Handles TXT_Productnummer.TextChanged
-        PLaatsProduct()
+        If LUZ = False Then 'voorkomt dat als het idproduct wordt ingeschreven opnieuw het product wordt geladen
+            PLaatsProduct()
+        Else
+            LUZ = False
+        End If
+
     End Sub
     Private Sub PLaatsProduct()
         If NUZ = False Then 'als de knop nieuw is gebruikt 
@@ -228,7 +230,7 @@
         If IsNumeric(Me.TXT_Verkoopprijs.Text) = True Then TXT_Verkoopprijs.Text = FormatNumber(TXT_Verkoopprijs.Text, -1)
     End Sub
     Private Sub TXT_Inkoopwaarde_Validated(sender As Object, e As EventArgs) Handles TXT_Inkoopwaarde.Validated
-        TXT_Inkoopwaarde.Text = FormatNumber(Me.TXT_Inkoopwaarde.Text, -1)
+        If IsNumeric(TXT_Inkoopwaarde.Text) = True Then TXT_Inkoopwaarde.Text = FormatNumber(Me.TXT_Inkoopwaarde.Text, -1)
     End Sub
     Private Sub TSM_Opslaan_Click(sender As Object, e As EventArgs) Handles TSM_Opslaan.Click
         OPSLAAN()
@@ -244,7 +246,6 @@
     Private Sub NieuwProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NieuwProductToolStripMenuItem.Click
         Me.DT_productBindingSource.AddNew()
         INITNieuw()
-
     End Sub
     Private Sub ProductWissenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductWissenToolStripMenuItem.Click
         Dim JaNee As Integer

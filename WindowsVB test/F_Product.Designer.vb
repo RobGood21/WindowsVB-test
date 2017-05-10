@@ -82,9 +82,9 @@ Partial Class F_Product
         Me.Button1 = New System.Windows.Forms.Button()
         Me.MenuStrip1 = New System.Windows.Forms.MenuStrip()
         Me.SluitenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.NieuwProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.TSM_Opslaan = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnnulerenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
-        Me.NieuwProductToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductWissenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         PD_NaamLabel = New System.Windows.Forms.Label()
         PD_BehuizingLabel = New System.Windows.Forms.Label()
@@ -572,7 +572,7 @@ Partial Class F_Product
         Me.TabPage5.Location = New System.Drawing.Point(4, 22)
         Me.TabPage5.Name = "TabPage5"
         Me.TabPage5.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage5.Size = New System.Drawing.Size(707, 283)
+        Me.TabPage5.Size = New System.Drawing.Size(681, 283)
         Me.TabPage5.TabIndex = 4
         Me.TabPage5.Text = "Afbeeldingen"
         Me.TabPage5.UseVisualStyleBackColor = True
@@ -581,7 +581,7 @@ Partial Class F_Product
         '
         Me.TabPage6.Location = New System.Drawing.Point(4, 22)
         Me.TabPage6.Name = "TabPage6"
-        Me.TabPage6.Size = New System.Drawing.Size(707, 283)
+        Me.TabPage6.Size = New System.Drawing.Size(681, 283)
         Me.TabPage6.TabIndex = 5
         Me.TabPage6.Text = "Hyperlinks "
         Me.TabPage6.UseVisualStyleBackColor = True
@@ -591,7 +591,7 @@ Partial Class F_Product
         Me.TabPage2.Location = New System.Drawing.Point(4, 22)
         Me.TabPage2.Name = "TabPage2"
         Me.TabPage2.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage2.Size = New System.Drawing.Size(707, 283)
+        Me.TabPage2.Size = New System.Drawing.Size(681, 283)
         Me.TabPage2.TabIndex = 1
         Me.TabPage2.Text = "Gebruikt voor"
         Me.TabPage2.UseVisualStyleBackColor = True
@@ -601,15 +601,14 @@ Partial Class F_Product
         Me.TabPage1.Location = New System.Drawing.Point(4, 22)
         Me.TabPage1.Name = "TabPage1"
         Me.TabPage1.Padding = New System.Windows.Forms.Padding(3)
-        Me.TabPage1.Size = New System.Drawing.Size(707, 283)
+        Me.TabPage1.Size = New System.Drawing.Size(681, 283)
         Me.TabPage1.TabIndex = 0
         Me.TabPage1.Text = "Ontvangen "
         Me.TabPage1.UseVisualStyleBackColor = True
         '
         'Knop_Opslaan
         '
-        Me.Knop_Opslaan.Enabled = False
-        Me.Knop_Opslaan.Location = New System.Drawing.Point(595, 253)
+        Me.Knop_Opslaan.Location = New System.Drawing.Point(596, 253)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(106, 23)
         Me.Knop_Opslaan.TabIndex = 41
@@ -656,6 +655,13 @@ Partial Class F_Product
         Me.SluitenToolStripMenuItem.Size = New System.Drawing.Size(71, 20)
         Me.SluitenToolStripMenuItem.Text = "Sluiten"
         '
+        'NieuwProductToolStripMenuItem
+        '
+        Me.NieuwProductToolStripMenuItem.Image = Global.WindowsVB_test.My.Resources.Resources.Button_Add_icon
+        Me.NieuwProductToolStripMenuItem.Name = "NieuwProductToolStripMenuItem"
+        Me.NieuwProductToolStripMenuItem.Size = New System.Drawing.Size(114, 20)
+        Me.NieuwProductToolStripMenuItem.Text = "Nieuw product"
+        '
         'TSM_Opslaan
         '
         Me.TSM_Opslaan.Image = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
@@ -669,13 +675,6 @@ Partial Class F_Product
         Me.AnnulerenToolStripMenuItem.Name = "AnnulerenToolStripMenuItem"
         Me.AnnulerenToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
         Me.AnnulerenToolStripMenuItem.Text = "Annuleren"
-        '
-        'NieuwProductToolStripMenuItem
-        '
-        Me.NieuwProductToolStripMenuItem.Image = Global.WindowsVB_test.My.Resources.Resources.Button_Add_icon
-        Me.NieuwProductToolStripMenuItem.Name = "NieuwProductToolStripMenuItem"
-        Me.NieuwProductToolStripMenuItem.Size = New System.Drawing.Size(114, 20)
-        Me.NieuwProductToolStripMenuItem.Text = "Nieuw product"
         '
         'ProductWissenToolStripMenuItem
         '
