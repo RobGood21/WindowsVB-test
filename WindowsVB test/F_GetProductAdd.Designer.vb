@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F_GetProductAdd
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class F_GetProductAdd
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim ID_GetProductAddLabel As System.Windows.Forms.Label
@@ -67,6 +67,7 @@ Partial Class F_GetProductAdd
         Me.ValutaTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.ValutaTableAdapter()
         Me.TXT_IDONTV = New System.Windows.Forms.TextBox()
         Me.Knop_Verwijder = New System.Windows.Forms.Button()
+        Me.Knop_Reset = New System.Windows.Forms.Button()
         ID_GetProductAddLabel = New System.Windows.Forms.Label()
         Label8 = New System.Windows.Forms.Label()
         PD_VoorraadLabel = New System.Windows.Forms.Label()
@@ -304,6 +305,7 @@ Partial Class F_GetProductAdd
         '
         'GB_Prijs
         '
+        Me.GB_Prijs.Controls.Add(Me.Knop_Reset)
         Me.GB_Prijs.Controls.Add(Me.CB_valuta)
         Me.GB_Prijs.Controls.Add(Me.Label9)
         Me.GB_Prijs.Controls.Add(Me.Button1)
@@ -483,6 +485,15 @@ Partial Class F_GetProductAdd
         Me.Knop_Verwijder.Text = "Verwijder"
         Me.Knop_Verwijder.UseVisualStyleBackColor = True
         '
+        'Knop_Reset
+        '
+        Me.Knop_Reset.Location = New System.Drawing.Point(231, 93)
+        Me.Knop_Reset.Name = "Knop_Reset"
+        Me.Knop_Reset.Size = New System.Drawing.Size(65, 23)
+        Me.Knop_Reset.TabIndex = 26
+        Me.Knop_Reset.Text = "Reset "
+        Me.Knop_Reset.UseVisualStyleBackColor = True
+        '
         'F_GetProductAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -557,4 +568,5 @@ Partial Class F_GetProductAdd
     Friend WithEvents ValutaTableAdapter As DS_ProductTableAdapters.ValutaTableAdapter
     Friend WithEvents TXT_IDONTV As TextBox
     Friend WithEvents Knop_Verwijder As Button
+    Friend WithEvents Knop_Reset As Button
 End Class

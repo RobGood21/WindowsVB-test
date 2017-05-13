@@ -12,7 +12,6 @@
     ' verwijderen uit datagridview  DG_Lijst.Rows.Remove(DG_Lijst.Rows(DG_Lijst.SelectedCells.Item(0).RowIndex))
     Dim BeVat As Boolean = False
     Dim STATUS As Integer = 1 'als boven 
-
     Public Sub ToolTipsInstellen()
         Dim TT_GetProduct As New ToolTip()
         ' Set up the delays for the ToolTip.
@@ -27,12 +26,16 @@
             'Knoppen
             .SetToolTip(Me.Knop_Nieuw, "Maak een nieuwe productlijst")
             .SetToolTip(Me.Knop_Opslaan, "Productlijst tussendoor opslaan")
+            .SetToolTip(Me.Knop_Project_bereken, "Bereken de totalen in de velden")
             '.SetToolTip(Me.Knop_Annuleren, "alle invoer ongedaan maken")
             '.SetToolTip(Me.Knop_Opslaan, "Alle invoer en aanpassingen opslaan en formulier sluiten")
             '.SetToolTip(Me.Knop_Save, "Alle invoer (tussentijds) opslaan.")
 
             'Textboxes en comboos
             .SetToolTip(Me.TXT_NaamGet, "Het kenmerk van deze productlijst")
+            .SetToolTip(Me.TXT_Project_Max, "Het aantal projecten wat met de huidige voorraad maximaal kan worden samengesteld")
+            .SetToolTip(Me.TXT_Project_Voorraad, "Het voorraad aantal van dit project")
+            .SetToolTip(Me.TXT_Project_AantalMaak, "Geef hoeveel je van dit project wilt samenstellen.")
 
             'Overige
             .SetToolTip(Me.CB_Ontvangen, "Kies een productlijst in behandeling")
@@ -112,6 +115,12 @@
 
 
     End Sub
+    Private Sub LaadProduct()
+        'laad de product gegevens (voor project)
+        If IsNumeric(Me.TXT_Project_ProductID.Text) = True Then
+            Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, Me.TXT_Project_ProductID.Text)
+        End If
+    End Sub
     Private Sub Knop_DetailsShop_Click(sender As Object, e As EventArgs) Handles Knop_DetailsShop.Click
 
         IDSUPPLIER = Me.CB_Supplier.SelectedValue
@@ -167,18 +176,12 @@
         LaadShop(1)
         Me.CB_Shop.SelectedValue = tempID
     End Sub
-    Private Sub ProductLoad()
-        Try
-            'Me.GetProductListTableAdapter.Fill(Me.DS_Product.GetProductList, New System.Nullable(Of Integer)(CType(IDGOPToolStripTextBox.Text, Integer)))
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
-
-    End Sub
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         LaadForm()
     End Sub
     Private Sub EditGrid()
+
+        '13mei2017 ?? Wat is dit nakijken of het wel wordt gebruikt...
         Dim I As Integer, a As Integer, b As Integer
         Try
             For I = 0 To DG_Lijst.Rows.Count - 1
@@ -205,21 +208,16 @@
 
                 MsgBox(DG_Lijst.Rows(I).Cells(1).Value & "' " & DG_Lijst.Rows(I).Cells(3).Value)
             Next
-
             LaadProductList()
             'op = DG_List.Rows(1).Cells(2).Value
         Catch ex As Exception
             MsgBox(ErrorToString)
         End Try
-
-
-
         ' MsgBox(op)
-
     End Sub
-    Private Sub Knop_update_Click(sender As Object, e As EventArgs) Handles Knop_update.Click
+    Private Sub Knop_update_Click(sender As Object, e As EventArgs) Handles Knop_test.Click
+        BerekenProject()
 
-        If Len(Me.TXT_NaamGet.Text) < 2 Then MsgBox("Is niks...")
 
     End Sub
     Private Sub Knop_OpslaanDB_Click(sender As Object, e As EventArgs) Handles Knop_OpslaanDB.Click
@@ -293,6 +291,80 @@
         End Try
 
     End Sub
+    Private Sub BerekenProject()
+        'bereken de velden voor een project
+        'optellingen maken van inhoud van cells in de datagrid. 
+        'Volgorde van de cells in een row even vastleggen in variablene, aan te passen als de volgeorde veranderd
+        Dim CA As Integer = 5 'aantal
+        Dim CI As Integer = 8 'inkoopprijs
+        Dim CV As Integer = 9 'verkoopprijs
+        Dim CS As Integer = 7 'huidige voorraad
+
+        Dim i As Integer 'teller
+        Dim L As Integer 'de te selecteren rij bij verlaten deze sub
+        Dim msg As Integer
+
+        Dim Aantalparts As Integer 'som van items 
+        Dim Inkoop As Decimal 'totaal inkoop waarde
+        Dim verkoop As Decimal 'som verkoop van de product
+        Dim Max As Integer = 10000  'maximaal te maken projecten
+        Dim MaxTEMP As Integer
+
+        For i = 0 To Me.DG_Lijst.Rows.Count - 1
+            Aantalparts = Aantalparts + (Me.DG_Lijst.Rows(i).Cells(CA).Value)
+            If IsNumeric(Me.DG_Lijst.Rows(i).Cells(CS).Value) = True Then
+                'is de voorraadwaarde bepaald
+                MaxTEMP = Int(Me.DG_Lijst.Rows(i).Cells(CS).Value / Me.DG_Lijst.Rows(i).Cells(CA).Value)
+                If Max > MaxTEMP Then
+                    Max = MaxTEMP
+                    L = i
+                End If
+
+            Else
+                msg = 1
+                L = i
+                GoTo Verlaat
+            End If
+
+            If IsNumeric(Me.DG_Lijst.Rows(i).Cells(CI).Value) = True Then
+                Inkoop = Inkoop + (Me.DG_Lijst.Rows(i).Cells(CA).Value * Me.DG_Lijst.Rows(i).Cells(CI).Value)
+            Else
+                msg = 2
+                L = i
+                GoTo Verlaat
+            End If
+
+            If IsNumeric(Me.DG_Lijst.Rows(i).Cells(CV).Value) = True Then
+                verkoop = verkoop + (Me.DG_Lijst.Rows(i).Cells(CA).Value * Me.DG_Lijst.Rows(i).Cells(CV).Value)
+            Else
+                msg = 3
+                L = i
+                GoTo Verlaat
+            End If
+        Next
+        'gevonden waardes op formulier tonen
+        Me.TXT_Project_AantalParts.Text = Aantalparts
+        Me.TXT_Project_SomInkoop.Text = Inkoop
+        Me.TXT_Project_SomVerkoop.Text = verkoop
+        Me.TXT_Project_Max.Text = Max
+
+Verlaat:
+        'als er in de optelling iets niet klopt
+        Select Case msg
+            Case 1
+                MsgBox("Voor het product in rij: " & i + 1 & " is geen voorraadwaarde bepaald. Bepaal een voorraad. (Mag ook 0 zijn....).", vbExclamation, "Voorraadwaarde is niet bepaald")
+            Case 2 ' Niet alle inkoopprijzen bekend
+                MsgBox("De inkoopprijs van het product in rij: " & i + 1 & " is niet bekend. Bepaal voor dit product een inkoopprijs.", vbExclamation, "Inkoopprijs niet bekend.")
+
+            Case 3 'niet alle verkoopprijzen bekend.  
+                MsgBox("De verkoopprijs van het product in rij: " & i + 1 & " is niet bekend. Bepaal voor dit product een verkoopprijs.", vbExclamation, "Verkoopprijs niet bekend.")
+            Case 4
+        End Select
+        Me.DG_Lijst.Rows(L).Selected = True
+
+
+
+    End Sub
     Private Sub Knop_BoekOntvangst_Click(sender As Object, e As EventArgs) Handles Knop_BoekOntvangst.Click
         BoekOntvangst()
     End Sub
@@ -325,6 +397,12 @@
             MsgBox(ErrorToString,, "OPslaan tables")
         End Try
     End Sub
+    Private Sub Opslaanproduct()
+        Me.Validate()
+        Me.DT_productBindingSource.EndEdit()
+        Me.DT_productTableAdapter.Update(DS_Product.DT_product)
+    End Sub
+
     Private Sub knop_OpslaanLijst_Click(sender As Object, e As EventArgs)
 
         Me.Validate()
@@ -474,7 +552,39 @@ Eindeloop:
     Private Function ValidatieProjectBuild() As Boolean
         '' valideerd of er projecten kunnen worden gemaakt, dus producten samenvoegen tot een project product
         Dim jn As Boolean = False
-
+        Dim msg As Integer = 0
+        If IsNumeric(Me.TXT_Project_AantalMaak.Text) = True Then
+            'Moet een product gekoppeld zijn.
+            If Me.TXT_Project_AantalMaak.Text > 0 Then
+                If IsNumeric(Me.txt_Status.Text) = True Then
+                    If Me.txt_Status.Text = 5 Then
+                        If IsNumeric(Me.TXT_Project_Max.Text) = True Then
+                            If Me.TXT_Project_Max.Text >= Me.TXT_Project_AantalMaak.Text Then
+                                jn = True
+                            Else
+                                MsgBox("Er is onvoldoende voorraad aan producten om zoveel projecten aan te maken", vbExclamation, "Onvoldoende voorraad...")
+                            End If
+                        Else
+                            MsgBox("Druk op [bereken] om het maximaal aantal te maken projecten te berekenen", vbExclamation, "Gegevens van de lijst niet berekend...")
+                        End If
+                    Else
+                        msg = 1
+                    End If
+                Else
+                    msg = 1
+                End If
+            Else
+                msg = 2
+            End If
+        Else
+            msg = 2
+        End If
+        Select Case msg
+            Case 1
+                MsgBox("Er moet eerst een project worden aangemaakt, voordat je de producten kan groeperen", vbExclamation, "Geen project bepaald...")
+            Case 2
+                MsgBox("Geef hoeveel projecten er moeten worden samengesteld", vbExclamation, "Geen aantal opgegeven...")
+        End Select
         Return jn
     End Function
     Private Function ValidatieProject() As Boolean
@@ -598,6 +708,34 @@ Eindeloop:
             End Try
         End If
     End Sub
+    Private Sub Boekprojecten()
+        Dim i As Integer
+        'Groepeerd de in de lijst staande producten tot het aantal opgegeven producten als project
+        ' werkt alle voorraden bij van project-producten en alle daaruit bestaande producten
+        'maakt geen administratieve boekingen omdat de Inkoopwaarde van het project-product gelijk blijft de som van de samengevoegde producten
+
+        'volgorde van de kollomen in de datagrid zijn essentieel gerbruiken van een variabele om eenvoudiger te kunnen aanpassen
+        Dim LA As Integer = 5 'Aantal
+        Dim LIDP As Integer = 2 'ID van het product
+
+
+        'eerst project-product bijwerken, deze is op dit moment al geladen. 
+        Me.TXT_Project_Voorraad.Text = Int(Me.TXT_Project_Voorraad.Text) + Int(Me.TXT_Project_AantalMaak.Text)
+        'inkoopwaarde is al ingevoerd
+        Opslaanproduct()
+
+        'van alle producten in de lijst de voorraden aanpassen
+        'merk op dit is dezelfde tableadaptor als van het project-product kan problemen geven na afloop project-product weer laden
+
+        For i = 0 To Me.DG_Lijst.Rows.Count - 1
+            Me.DT_productTableAdapter.Fill(DS_Product.DT_product, Me.DG_Lijst.Rows(i).Cells(LIDP).Value)
+            Me.TXT_Voorraad.Text = Int(Me.TXT_Voorraad.Text) - Int((Me.DG_Lijst.Rows(i).Cells(LA).Value * Me.TXT_Project_AantalMaak.Text))
+            Opslaanproduct()
+            LaadProductList()
+        Next
+        'projectpoduct weer terugladen
+        LaadProduct()
+    End Sub
     Private Sub Tpage_Product_Ontvang_Enter(sender As Object, e As EventArgs) Handles Tpage_Product_Ontvang.Enter
         'als tabblad ontvangen wordt getoond nu de datable vullen met ontvangsten van deze leverancier
         LaadOntvang()
@@ -645,6 +783,8 @@ Eindeloop:
     Private Sub Optie_besteld_Click(sender As Object, e As EventArgs) Handles Optie_besteld.Click
         'MsgBox("besteld")
         LaadGetOntvangst(2)
+        Me.TB_Doel.SelectTab(1)
+        Me.TB_Products.SelectTab(2)
         STATUS = 2
     End Sub
     Private Sub Optie_Open_Click(sender As Object, e As EventArgs) Handles Optie_Open.Click
@@ -655,6 +795,8 @@ Eindeloop:
     Private Sub Optie_Ontvangst_Click(sender As Object, e As EventArgs) Handles Optie_Ontvangst.Click
         'MsgBox("Ontvangst")
         LaadGetOntvangst(3)
+        Me.TB_Doel.SelectTab(0)
+        Me.TB_Products.SelectTab(1)
         STATUS = 3
     End Sub
     Private Sub Optie_Verbruik_Click(sender As Object, e As EventArgs) Handles Optie_Verbruik.Click
@@ -665,6 +807,7 @@ Eindeloop:
         'MsgBox("Project")
         LaadGetOntvangst(5)
         Me.TB_Doel.SelectTab(2)
+        Me.TB_Products.SelectTab(0)
     End Sub
     Private Sub CH_AlleBestel_CheckedChanged(sender As Object, e As EventArgs) Handles CH_AlleBestel.CheckedChanged
         LaadBesteld()
@@ -689,19 +832,19 @@ Eindeloop:
         End If
     End Sub
     Private Sub Knop_Project_Build_Click(sender As Object, e As EventArgs) Handles Knop_Project_Build.Click
+        Dim jn As Integer
         'nu worden projecten gemaakt. 
         'samen voegen van producten tot 1 of meerdere projecten. 
         'eerst kijken of alle gegevens er zijn:
         If ValidatieProjectBuild() = True Then
-            MsgBox("Validatie akkoord nu producten groeperen")
-            '-Voorraden aanpassen
-            'ontvangst record maken in getproductadd voor aantal projecten
-            'Verbruik records maken van alle afzonderlijke producten 
+            jn = MsgBox(Me.TXT_Project_AantalMaak.Text & " Projecten aanmaken en de voorraden van de producten in de lijst aanpassen? ", vbQuestion + vbYesNo, "bevestigen aanmaken projecten..")
+            If jn = 6 Then
+                Boekprojecten()
+            End If
         Else
-            MsgBox("validatie failed")
+            'MsgBox("validatie failed")
 
         End If
-
     End Sub
     Private Sub TXT_project_maak_Click(sender As Object, e As EventArgs) Handles TXT_project_maak.Click
         'project maken
@@ -713,5 +856,12 @@ Eindeloop:
             Opslaan()
             'MsgBox("Validatie is akkoord nu aanmaken project")
         End If
+    End Sub
+    Private Sub Knop_Project_bereken_Click(sender As Object, e As EventArgs) Handles Knop_Project_bereken.Click
+        BerekenProject()
+    End Sub
+    Private Sub TXT_Project_ProductID_TextChanged(sender As Object, e As EventArgs) Handles TXT_Project_ProductID.TextChanged
+        'productdetails nu laden?
+        LaadProduct()
     End Sub
 End Class

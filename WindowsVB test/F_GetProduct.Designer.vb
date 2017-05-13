@@ -56,7 +56,7 @@ Partial Class F_GetProduct
         Me.SupplierTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.SupplierTableAdapter()
         Me.ShopTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.ShopTableAdapter()
         Me.Button1 = New System.Windows.Forms.Button()
-        Me.Knop_update = New System.Windows.Forms.Button()
+        Me.Knop_test = New System.Windows.Forms.Button()
         Me.Knop_OpslaanDB = New System.Windows.Forms.Button()
         Me.DT_productTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
         Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -85,9 +85,12 @@ Partial Class F_GetProduct
         Me.Label6 = New System.Windows.Forms.Label()
         Me.TXT_Kenmerk = New System.Windows.Forms.TextBox()
         Me.Tpage_Doel_Project = New System.Windows.Forms.TabPage()
+        Me.Label17 = New System.Windows.Forms.Label()
+        Me.TXT_Project_Voorraad = New System.Windows.Forms.TextBox()
+        Me.Knop_Project_bereken = New System.Windows.Forms.Button()
         Me.TXT_project_maak = New System.Windows.Forms.Button()
         Me.Knop_Project_Build = New System.Windows.Forms.Button()
-        Me.TextBox1 = New System.Windows.Forms.TextBox()
+        Me.TXT_Project_AantalMaak = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
         Me.TXT_Project_Max = New System.Windows.Forms.TextBox()
         Me.Knop_Project_Product = New System.Windows.Forms.Button()
@@ -95,9 +98,9 @@ Partial Class F_GetProduct
         Me.Label15 = New System.Windows.Forms.Label()
         Me.TXT_Project_Prijs = New System.Windows.Forms.TextBox()
         Me.Label9 = New System.Windows.Forms.Label()
-        Me.TXT_Project_Somvk = New System.Windows.Forms.TextBox()
+        Me.TXT_Project_SomVerkoop = New System.Windows.Forms.TextBox()
         Me.Label8 = New System.Windows.Forms.Label()
-        Me.TXT__Project_SomIK = New System.Windows.Forms.TextBox()
+        Me.TXT_Project_SomInkoop = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXT_Project_AantalParts = New System.Windows.Forms.TextBox()
         Me.TXT_Voorraad = New System.Windows.Forms.TextBox()
@@ -134,15 +137,6 @@ Partial Class F_GetProduct
         Me.Knop_Toon = New System.Windows.Forms.Button()
         Me.Knop_ProductPLus = New System.Windows.Forms.Button()
         Me.DG_Lijst = New System.Windows.Forms.DataGridView()
-        Me.TB_Products = New System.Windows.Forms.TabControl()
-        Me.GB_Hulpvelden = New System.Windows.Forms.GroupBox()
-        Me.GPA_BesteldTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GPA_BesteldTableAdapter()
-        Me.Optie_Open = New System.Windows.Forms.RadioButton()
-        Me.Optie_Ontvangst = New System.Windows.Forms.RadioButton()
-        Me.Optie_besteld = New System.Windows.Forms.RadioButton()
-        Me.Optie_Verbruik = New System.Windows.Forms.RadioButton()
-        Me.Optie_Project = New System.Windows.Forms.RadioButton()
-        Me.GB_Sectie = New System.Windows.Forms.GroupBox()
         Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
@@ -154,6 +148,15 @@ Partial Class F_GetProduct
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.PD_Sale_Prijs = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn10 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.TB_Products = New System.Windows.Forms.TabControl()
+        Me.GB_Hulpvelden = New System.Windows.Forms.GroupBox()
+        Me.GPA_BesteldTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GPA_BesteldTableAdapter()
+        Me.Optie_Open = New System.Windows.Forms.RadioButton()
+        Me.Optie_Ontvangst = New System.Windows.Forms.RadioButton()
+        Me.Optie_besteld = New System.Windows.Forms.RadioButton()
+        Me.Optie_Verbruik = New System.Windows.Forms.RadioButton()
+        Me.Optie_Project = New System.Windows.Forms.RadioButton()
+        Me.GB_Sectie = New System.Windows.Forms.GroupBox()
         GV_DatumLabel = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
         Label5 = New System.Windows.Forms.Label()
@@ -454,14 +457,14 @@ Partial Class F_GetProduct
         Me.Button1.Text = "herlaad form"
         Me.Button1.UseVisualStyleBackColor = True
         '
-        'Knop_update
+        'Knop_test
         '
-        Me.Knop_update.Location = New System.Drawing.Point(801, 27)
-        Me.Knop_update.Name = "Knop_update"
-        Me.Knop_update.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_update.TabIndex = 13
-        Me.Knop_update.Text = "Update lijst naar DB"
-        Me.Knop_update.UseVisualStyleBackColor = True
+        Me.Knop_test.Location = New System.Drawing.Point(801, 27)
+        Me.Knop_test.Name = "Knop_test"
+        Me.Knop_test.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_test.TabIndex = 13
+        Me.Knop_test.Text = "Testknop"
+        Me.Knop_test.UseVisualStyleBackColor = True
         '
         'Knop_OpslaanDB
         '
@@ -684,9 +687,12 @@ Partial Class F_GetProduct
         '
         'Tpage_Doel_Project
         '
+        Me.Tpage_Doel_Project.Controls.Add(Me.Label17)
+        Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_Voorraad)
+        Me.Tpage_Doel_Project.Controls.Add(Me.Knop_Project_bereken)
         Me.Tpage_Doel_Project.Controls.Add(Me.TXT_project_maak)
         Me.Tpage_Doel_Project.Controls.Add(Me.Knop_Project_Build)
-        Me.Tpage_Doel_Project.Controls.Add(Me.TextBox1)
+        Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_AantalMaak)
         Me.Tpage_Doel_Project.Controls.Add(Me.Label16)
         Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_Max)
         Me.Tpage_Doel_Project.Controls.Add(Me.Knop_Project_Product)
@@ -694,9 +700,9 @@ Partial Class F_GetProduct
         Me.Tpage_Doel_Project.Controls.Add(Me.Label15)
         Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_Prijs)
         Me.Tpage_Doel_Project.Controls.Add(Me.Label9)
-        Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_Somvk)
+        Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_SomVerkoop)
         Me.Tpage_Doel_Project.Controls.Add(Me.Label8)
-        Me.Tpage_Doel_Project.Controls.Add(Me.TXT__Project_SomIK)
+        Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_SomInkoop)
         Me.Tpage_Doel_Project.Controls.Add(Me.Label1)
         Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_AantalParts)
         Me.Tpage_Doel_Project.Location = New System.Drawing.Point(4, 22)
@@ -707,36 +713,67 @@ Partial Class F_GetProduct
         Me.Tpage_Doel_Project.Text = "Project"
         Me.Tpage_Doel_Project.UseVisualStyleBackColor = True
         '
+        'Label17
+        '
+        Me.Label17.AutoSize = True
+        Me.Label17.Location = New System.Drawing.Point(279, 58)
+        Me.Label17.Name = "Label17"
+        Me.Label17.Size = New System.Drawing.Size(53, 13)
+        Me.Label17.TabIndex = 18
+        Me.Label17.Text = "Voorraad:"
+        '
+        'TXT_Project_Voorraad
+        '
+        Me.TXT_Project_Voorraad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
+        Me.TXT_Project_Voorraad.Location = New System.Drawing.Point(357, 54)
+        Me.TXT_Project_Voorraad.Name = "TXT_Project_Voorraad"
+        Me.TXT_Project_Voorraad.ReadOnly = True
+        Me.TXT_Project_Voorraad.Size = New System.Drawing.Size(40, 20)
+        Me.TXT_Project_Voorraad.TabIndex = 17
+        Me.TXT_Project_Voorraad.TabStop = False
+        '
+        'Knop_Project_bereken
+        '
+        Me.Knop_Project_bereken.Location = New System.Drawing.Point(279, 9)
+        Me.Knop_Project_bereken.Name = "Knop_Project_bereken"
+        Me.Knop_Project_bereken.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Project_bereken.TabIndex = 16
+        Me.Knop_Project_bereken.TabStop = False
+        Me.Knop_Project_bereken.Text = "Bereken"
+        Me.Knop_Project_bereken.UseVisualStyleBackColor = True
+        '
         'TXT_project_maak
         '
-        Me.TXT_project_maak.Location = New System.Drawing.Point(6, 37)
+        Me.TXT_project_maak.Location = New System.Drawing.Point(6, 31)
         Me.TXT_project_maak.Name = "TXT_project_maak"
         Me.TXT_project_maak.Size = New System.Drawing.Size(120, 23)
         Me.TXT_project_maak.TabIndex = 15
+        Me.TXT_project_maak.TabStop = False
         Me.TXT_project_maak.Text = "Maak project"
         Me.TXT_project_maak.UseVisualStyleBackColor = True
         '
         'Knop_Project_Build
         '
-        Me.Knop_Project_Build.Location = New System.Drawing.Point(274, 30)
+        Me.Knop_Project_Build.Location = New System.Drawing.Point(279, 75)
         Me.Knop_Project_Build.Name = "Knop_Project_Build"
-        Me.Knop_Project_Build.Size = New System.Drawing.Size(82, 23)
+        Me.Knop_Project_Build.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Project_Build.TabIndex = 14
-        Me.Knop_Project_Build.Text = "Build Project:"
-        Me.Knop_Project_Build.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        Me.Knop_Project_Build.TabStop = False
+        Me.Knop_Project_Build.Text = "Maak:"
+        Me.Knop_Project_Build.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
         Me.Knop_Project_Build.UseVisualStyleBackColor = True
         '
-        'TextBox1
+        'TXT_Project_AantalMaak
         '
-        Me.TextBox1.Location = New System.Drawing.Point(357, 32)
-        Me.TextBox1.Name = "TextBox1"
-        Me.TextBox1.Size = New System.Drawing.Size(40, 20)
-        Me.TextBox1.TabIndex = 13
+        Me.TXT_Project_AantalMaak.Location = New System.Drawing.Point(357, 76)
+        Me.TXT_Project_AantalMaak.Name = "TXT_Project_AantalMaak"
+        Me.TXT_Project_AantalMaak.Size = New System.Drawing.Size(40, 20)
+        Me.TXT_Project_AantalMaak.TabIndex = 0
         '
         'Label16
         '
         Me.Label16.AutoSize = True
-        Me.Label16.Location = New System.Drawing.Point(281, 14)
+        Me.Label16.Location = New System.Drawing.Point(279, 36)
         Me.Label16.Name = "Label16"
         Me.Label16.Size = New System.Drawing.Size(70, 13)
         Me.Label16.TabIndex = 12
@@ -744,10 +781,12 @@ Partial Class F_GetProduct
         '
         'TXT_Project_Max
         '
-        Me.TXT_Project_Max.Location = New System.Drawing.Point(357, 11)
+        Me.TXT_Project_Max.Location = New System.Drawing.Point(357, 32)
         Me.TXT_Project_Max.Name = "TXT_Project_Max"
+        Me.TXT_Project_Max.ReadOnly = True
         Me.TXT_Project_Max.Size = New System.Drawing.Size(40, 20)
         Me.TXT_Project_Max.TabIndex = 11
+        Me.TXT_Project_Max.TabStop = False
         '
         'Knop_Project_Product
         '
@@ -755,13 +794,14 @@ Partial Class F_GetProduct
         Me.Knop_Project_Product.Name = "Knop_Project_Product"
         Me.Knop_Project_Product.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Project_Product.TabIndex = 10
+        Me.Knop_Project_Product.TabStop = False
         Me.Knop_Project_Product.Text = "Product"
         Me.Knop_Project_Product.UseVisualStyleBackColor = True
         '
         'TXT_Project_ProductID
         '
         Me.TXT_Project_ProductID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetOntvangstBindingSource, "ID_Product", True))
-        Me.TXT_Project_ProductID.Location = New System.Drawing.Point(86, 11)
+        Me.TXT_Project_ProductID.Location = New System.Drawing.Point(86, 10)
         Me.TXT_Project_ProductID.Name = "TXT_Project_ProductID"
         Me.TXT_Project_ProductID.ReadOnly = True
         Me.TXT_Project_ProductID.Size = New System.Drawing.Size(40, 20)
@@ -770,55 +810,63 @@ Partial Class F_GetProduct
         'Label15
         '
         Me.Label15.AutoSize = True
-        Me.Label15.Location = New System.Drawing.Point(147, 77)
+        Me.Label15.Location = New System.Drawing.Point(147, 80)
         Me.Label15.Name = "Label15"
-        Me.Label15.Size = New System.Drawing.Size(72, 13)
+        Me.Label15.Size = New System.Drawing.Size(65, 13)
         Me.Label15.TabIndex = 7
-        Me.Label15.Text = "Verkoop Prijs:"
+        Me.Label15.Text = "Prijs Project:"
         '
         'TXT_Project_Prijs
         '
-        Me.TXT_Project_Prijs.Location = New System.Drawing.Point(223, 73)
+        Me.TXT_Project_Prijs.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Sale_Prijs", True))
+        Me.TXT_Project_Prijs.Location = New System.Drawing.Point(223, 76)
         Me.TXT_Project_Prijs.Name = "TXT_Project_Prijs"
-        Me.TXT_Project_Prijs.Size = New System.Drawing.Size(40, 20)
+        Me.TXT_Project_Prijs.ReadOnly = True
+        Me.TXT_Project_Prijs.Size = New System.Drawing.Size(50, 20)
         Me.TXT_Project_Prijs.TabIndex = 6
+        Me.TXT_Project_Prijs.TabStop = False
         '
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(147, 55)
+        Me.Label9.Location = New System.Drawing.Point(147, 58)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(73, 13)
         Me.Label9.TabIndex = 5
         Me.Label9.Text = "Som verkoop:"
         '
-        'TXT_Project_Somvk
+        'TXT_Project_SomVerkoop
         '
-        Me.TXT_Project_Somvk.Location = New System.Drawing.Point(223, 52)
-        Me.TXT_Project_Somvk.Name = "TXT_Project_Somvk"
-        Me.TXT_Project_Somvk.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_Project_Somvk.TabIndex = 4
+        Me.TXT_Project_SomVerkoop.Location = New System.Drawing.Point(223, 54)
+        Me.TXT_Project_SomVerkoop.Name = "TXT_Project_SomVerkoop"
+        Me.TXT_Project_SomVerkoop.ReadOnly = True
+        Me.TXT_Project_SomVerkoop.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Project_SomVerkoop.TabIndex = 4
+        Me.TXT_Project_SomVerkoop.TabStop = False
         '
         'Label8
         '
         Me.Label8.AutoSize = True
-        Me.Label8.Location = New System.Drawing.Point(147, 34)
+        Me.Label8.Location = New System.Drawing.Point(147, 36)
         Me.Label8.Name = "Label8"
         Me.Label8.Size = New System.Drawing.Size(66, 13)
         Me.Label8.TabIndex = 3
         Me.Label8.Text = "Som inkoop:"
         '
-        'TXT__Project_SomIK
+        'TXT_Project_SomInkoop
         '
-        Me.TXT__Project_SomIK.Location = New System.Drawing.Point(223, 31)
-        Me.TXT__Project_SomIK.Name = "TXT__Project_SomIK"
-        Me.TXT__Project_SomIK.Size = New System.Drawing.Size(40, 20)
-        Me.TXT__Project_SomIK.TabIndex = 2
+        Me.TXT_Project_SomInkoop.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Buy_Cost", True))
+        Me.TXT_Project_SomInkoop.Location = New System.Drawing.Point(223, 32)
+        Me.TXT_Project_SomInkoop.Name = "TXT_Project_SomInkoop"
+        Me.TXT_Project_SomInkoop.ReadOnly = True
+        Me.TXT_Project_SomInkoop.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Project_SomInkoop.TabIndex = 2
+        Me.TXT_Project_SomInkoop.TabStop = False
         '
         'Label1
         '
         Me.Label1.AutoSize = True
-        Me.Label1.Location = New System.Drawing.Point(147, 13)
+        Me.Label1.Location = New System.Drawing.Point(147, 14)
         Me.Label1.Name = "Label1"
         Me.Label1.Size = New System.Drawing.Size(66, 13)
         Me.Label1.TabIndex = 1
@@ -828,8 +876,10 @@ Partial Class F_GetProduct
         '
         Me.TXT_Project_AantalParts.Location = New System.Drawing.Point(223, 10)
         Me.TXT_Project_AantalParts.Name = "TXT_Project_AantalParts"
-        Me.TXT_Project_AantalParts.Size = New System.Drawing.Size(40, 20)
+        Me.TXT_Project_AantalParts.ReadOnly = True
+        Me.TXT_Project_AantalParts.Size = New System.Drawing.Size(50, 20)
         Me.TXT_Project_AantalParts.TabIndex = 0
+        Me.TXT_Project_AantalParts.TabStop = False
         '
         'TXT_Voorraad
         '
@@ -1141,6 +1191,95 @@ Partial Class F_GetProduct
         Me.DG_Lijst.Size = New System.Drawing.Size(756, 178)
         Me.DG_Lijst.TabIndex = 0
         '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "ID_GetProductAdd"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "ID_GetProductAdd"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Visible = False
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_GetOntvangst"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_GetOntvangst"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Visible = False
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "ID_Product"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Product"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 50
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "GP__Ontvangen"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "GP__Ontvangen"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Visible = False
+        Me.DataGridViewTextBoxColumn9.Width = 50
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "GP_Besteld"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "GP_Besteld"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Visible = False
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "GP_Lijst"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "aantal"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 50
+        '
+        'DataGridViewTextBoxColumn11
+        '
+        Me.DataGridViewTextBoxColumn11.DataPropertyName = "PD_Beschrijving(2)"
+        Me.DataGridViewTextBoxColumn11.HeaderText = "Omschrijving"
+        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
+        Me.DataGridViewTextBoxColumn11.ReadOnly = True
+        Me.DataGridViewTextBoxColumn11.Width = 300
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "PD_Voorraad"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Voorraad"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 60
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "GP_BuyPriceEUR"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Inkoop"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 50
+        '
+        'PD_Sale_Prijs
+        '
+        Me.PD_Sale_Prijs.DataPropertyName = "PD_Sale_Prijs"
+        Me.PD_Sale_Prijs.HeaderText = "Verkoop"
+        Me.PD_Sale_Prijs.Name = "PD_Sale_Prijs"
+        Me.PD_Sale_Prijs.ReadOnly = True
+        Me.PD_Sale_Prijs.Width = 50
+        '
+        'DataGridViewTextBoxColumn10
+        '
+        Me.DataGridViewTextBoxColumn10.DataPropertyName = "LK_Code"
+        Me.DataGridViewTextBoxColumn10.HeaderText = "Locatie"
+        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
+        Me.DataGridViewTextBoxColumn10.ReadOnly = True
+        Me.DataGridViewTextBoxColumn10.Width = 70
+        '
         'TB_Products
         '
         Me.TB_Products.Controls.Add(Me.Tpage_Product_Lijst)
@@ -1252,95 +1391,6 @@ Partial Class F_GetProduct
         Me.GB_Sectie.TabIndex = 27
         Me.GB_Sectie.TabStop = False
         '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "ID_GetProductAdd"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "ID_GetProductAdd"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Visible = False
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_GetOntvangst"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID_GetOntvangst"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "ID_Product"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Product"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 50
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "GP__Ontvangen"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "GP__Ontvangen"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Visible = False
-        Me.DataGridViewTextBoxColumn9.Width = 50
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "GP_Besteld"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "GP_Besteld"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Visible = False
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "GP_Lijst"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "aantal"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Width = 50
-        '
-        'DataGridViewTextBoxColumn11
-        '
-        Me.DataGridViewTextBoxColumn11.DataPropertyName = "PD_Beschrijving(2)"
-        Me.DataGridViewTextBoxColumn11.HeaderText = "Omschrijving"
-        Me.DataGridViewTextBoxColumn11.Name = "DataGridViewTextBoxColumn11"
-        Me.DataGridViewTextBoxColumn11.ReadOnly = True
-        Me.DataGridViewTextBoxColumn11.Width = 300
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "PD_Voorraad"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Voorraad"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 60
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "GP_BuyPriceEUR"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Inkoop"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 50
-        '
-        'PD_Sale_Prijs
-        '
-        Me.PD_Sale_Prijs.DataPropertyName = "PD_Sale_Prijs"
-        Me.PD_Sale_Prijs.HeaderText = "Verkoop"
-        Me.PD_Sale_Prijs.Name = "PD_Sale_Prijs"
-        Me.PD_Sale_Prijs.ReadOnly = True
-        Me.PD_Sale_Prijs.Width = 50
-        '
-        'DataGridViewTextBoxColumn10
-        '
-        Me.DataGridViewTextBoxColumn10.DataPropertyName = "LK_Code"
-        Me.DataGridViewTextBoxColumn10.HeaderText = "Locatie"
-        Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
-        Me.DataGridViewTextBoxColumn10.ReadOnly = True
-        Me.DataGridViewTextBoxColumn10.Width = 70
-        '
         'F_GetProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1353,7 +1403,7 @@ Partial Class F_GetProduct
         Me.Controls.Add(Me.TB_Doel)
         Me.Controls.Add(Me.Knop_OpslaanDB)
         Me.Controls.Add(Me.TXT_getontvangstid)
-        Me.Controls.Add(Me.Knop_update)
+        Me.Controls.Add(Me.Knop_test)
         Me.Controls.Add(Me.Button1)
         Me.Controls.Add(Me.Knop_Sluiten)
         Me.Controls.Add(Me.GB_Get)
@@ -1417,7 +1467,7 @@ Partial Class F_GetProduct
     Friend WithEvents Knop_Nieuw As Button
     Friend WithEvents Button1 As Button
     Friend WithEvents Knop_BoekOntvangst As Button
-    Friend WithEvents Knop_update As Button
+    Friend WithEvents Knop_test As Button
     Friend WithEvents Knop_OpslaanDB As Button
     Friend WithEvents DT_productBindingSource As BindingSource
     Friend WithEvents DT_productTableAdapter As DS_ProductTableAdapters.DT_productTableAdapter
@@ -1501,9 +1551,9 @@ Partial Class F_GetProduct
     Friend WithEvents Label15 As Label
     Friend WithEvents TXT_Project_Prijs As TextBox
     Friend WithEvents Label9 As Label
-    Friend WithEvents TXT_Project_Somvk As TextBox
+    Friend WithEvents TXT_Project_SomVerkoop As TextBox
     Friend WithEvents Label8 As Label
-    Friend WithEvents TXT__Project_SomIK As TextBox
+    Friend WithEvents TXT_Project_SomInkoop As TextBox
     Friend WithEvents Label1 As Label
     Friend WithEvents TXT_Project_AantalParts As TextBox
     Friend WithEvents Knop_Project_Product As Button
@@ -1511,7 +1561,7 @@ Partial Class F_GetProduct
     Friend WithEvents Label16 As Label
     Friend WithEvents TXT_Project_Max As TextBox
     Friend WithEvents Knop_Project_Build As Button
-    Friend WithEvents TextBox1 As TextBox
+    Friend WithEvents TXT_Project_AantalMaak As TextBox
     Friend WithEvents TXT_project_maak As Button
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
@@ -1524,4 +1574,7 @@ Partial Class F_GetProduct
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewTextBoxColumn
     Friend WithEvents PD_Sale_Prijs As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
+    Friend WithEvents Knop_Project_bereken As Button
+    Friend WithEvents Label17 As Label
+    Friend WithEvents TXT_Project_Voorraad As TextBox
 End Class

@@ -1,8 +1,8 @@
 ﻿Public Class F_GetProductAdd
     Private UP As Boolean = False 'UP= uitzondering prijs, voorkomt het aanpassen van de inkoopprijs. Bij txtchange
     Private UID As Boolean = False ' laad uitzondering als product wordt opgezocht of bij laden al meegekregen. TXT_change van IDproduct
-    Private Vprijs As Boolean = False
     Private Sub F_GetProductAdd_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        ToolTips()
         Me.ValutaTableAdapter.Fill(Me.DS_Product.Valuta)
         LoadForm()
     End Sub
@@ -15,14 +15,41 @@
                     INITvelden()
                     LoadProduct() 'dit is JUIST, laden met lege waardes
                 Case 2 'Openen met een bestaande getProductadd
-                    UID = True
+                    'UID = True
                     Me.GetProductAddTableAdapter.Fill(Me.DS_Product.GetProductAdd, IDGETPRODUCTADD)
             End Select
         Catch ex As Exception
             MsgBox(ErrorToString,, "loadform (getproductadd)")
         End Try
     End Sub
+    Private Sub ToolTips()
+        Dim TT_GetProductADD As New ToolTip()
+        ' Set up the delays for the ToolTip.
+        TT_GetProductADD.AutoPopDelay = 5000
+        TT_GetProductADD.InitialDelay = 100
+        TT_GetProductADD.ReshowDelay = 50
+        ' Force the ToolTip text to be displayed whether or not the form is active.
+        TT_GetProductADD.ShowAlways = True
+        ' Set up the ToolTip text for the Button and Checkbox.
+        'Knoppen
+        With TT_GetProductADD
+            'Knoppen
+            .SetToolTip(Me.Knop_Reset, "Reset inkoopprijs naar de inkoopprijs als bepaald in het product.")
+            '.SetToolTip(Me.Knop_Opslaan, "Productlijst tussendoor opslaan")
+            '.SetToolTip(Me.Knop_Annuleren, "alle invoer ongedaan maken")
+            '.SetToolTip(Me.Knop_Opslaan, "Alle invoer en aanpassingen opslaan en formulier sluiten")
+            '.SetToolTip(Me.Knop_Save, "Alle invoer (tussentijds) opslaan.")
+
+            'Textboxes en comboos
+            .SetToolTip(Me.CB_valuta, "Valuta alleen voor berekening inkoopprijs, wordt hier niet opgeslagen")
+            .SetToolTip(Me.TXT_TotaalBetaaldVAL, "Kies de valuta, het aantal en vul het totaal betaalde bedrag in om de inkoopprijs per stuk te berekenen.")
+
+            'Overige
+            '.SetToolTip(Me.CB_Ontvangen, "Kies een productlijst in behandeling")
+        End With
+    End Sub
     Private Sub INITvelden()
+
         'Me.TXT_PDnaam.Text = ""
         'Me.TXT_Product_Inkoop.Text = ""
         'Me.TXT_PDwaarde.Text = ""
@@ -68,12 +95,13 @@
 
         F_Product.ShowDialog()
         Me.TXT_ProductID.Text = IDPRODUCT
+        LoadProduct()
     End Sub
     Private Sub GetProductAddBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         'Opslaan()
     End Sub
     Public Sub Opslaan()
-        Dim jn As Integer = 6
+        Dim jn As Integer
         Try
 
             If Validatie() = True Then
@@ -84,13 +112,16 @@
                 Me.GetProductAddBindingSource.EndEdit()
                 Me.GetProductAddTableAdapter.Update(Me.DS_Product.GetProductAdd)
 
-                If Vprijs = True Then jn = MsgBox("Wil je de inkoopprijs ook in de product gegevens opslaan?", vbQuestion + vbYesNo, "Inkoopprijs verschilt van bekende product inkoopprijs...")
-                If jn = True Then
-                    MsgBox("nu product record updatten")
+                If TXT_Product_Inkoop.Text <> Me.TXT_Prijs.Text Then jn = MsgBox("Wil je deze inkoopprijs ook in de product gegevens opslaan?", vbQuestion + vbYesNo, "Inkoopprijs verschilt van bekende product inkoopprijs...")
+                If jn = 6 Then
+                    Me.TXT_Product_Inkoop.Text = Me.TXT_Prijs.Text
+                    'MsgBox("nu product record updatten")
+                    Me.DT_productBindingSource.EndEdit()
+                    Me.DT_productTableAdapter.Update(DS_Product.DT_product)
                 End If
 
             Else
-                MsgBox("Invoer of verandering is niet opgeslagen.", vbExclamation, "Opslaan niet mogelijk")
+                    MsgBox("Invoer of verandering is niet opgeslagen.", vbExclamation, "Opslaan niet mogelijk")
             End If
         Catch ex As Exception
             MsgBox(ErrorToString,, "Opslaan (getproductadd) ")
@@ -159,8 +190,7 @@
             End Select
             If IsNumeric(Me.TXT_aantal.Text) = True Then Me.TXT_Prijs.Text = FormatNumber(TXT_TotaalBetaaldEur.Text / Me.TXT_aantal.Text, -1)
             'prijs is veranderd dus vlag naar true, bij sluiten inkoopprijs in product aanpassen
-            Vprijs = True
-
+            'Vprijs = True
         Catch ex As Exception
             ' MsgBox(ErrorToString,, "Bereken")
         End Try
@@ -189,5 +219,9 @@
             Me.Close()
         End If
 
+    End Sub
+
+    Private Sub Knop_Reset_Click(sender As Object, e As EventArgs) Handles Knop_Reset.Click
+        If IsNumeric(Me.TXT_Product_Inkoop.Text) = True Then Me.TXT_Prijs.Text = Me.TXT_Product_Inkoop.Text
     End Sub
 End Class
