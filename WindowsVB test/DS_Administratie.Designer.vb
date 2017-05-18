@@ -1139,6 +1139,8 @@ Partial Public Class DS_Administratie
         
         Private columnID_Boekstuk As Global.System.Data.DataColumn
         
+        Private columnID_Getontvangst As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1231,6 +1233,14 @@ Partial Public Class DS_Administratie
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property ID_GetontvangstColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnID_Getontvangst
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1267,9 +1277,9 @@ Partial Public Class DS_Administratie
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddAdmJournaalRow(ByVal ID_AdmBoek As Integer, ByVal ID_Grootboek As Integer, ByVal JP_Debet As Decimal, ByVal JP_Credit As Decimal, ByVal JP_Datum As Date, ByVal ID_Boekstuk As Integer) As AdmJournaalRow
+        Public Overloads Function AddAdmJournaalRow(ByVal ID_AdmBoek As Integer, ByVal ID_Grootboek As Integer, ByVal JP_Debet As Decimal, ByVal JP_Credit As Decimal, ByVal JP_Datum As Date, ByVal ID_Boekstuk As Integer, ByVal ID_Getontvangst As Integer) As AdmJournaalRow
             Dim rowAdmJournaalRow As AdmJournaalRow = CType(Me.NewRow,AdmJournaalRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ID_AdmBoek, ID_Grootboek, JP_Debet, JP_Credit, JP_Datum, ID_Boekstuk}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ID_AdmBoek, ID_Grootboek, JP_Debet, JP_Credit, JP_Datum, ID_Boekstuk, ID_Getontvangst}
             rowAdmJournaalRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAdmJournaalRow)
             Return rowAdmJournaalRow
@@ -1305,6 +1315,7 @@ Partial Public Class DS_Administratie
             Me.columnJP_Credit = MyBase.Columns("JP_Credit")
             Me.columnJP_Datum = MyBase.Columns("JP_Datum")
             Me.columnID_Boekstuk = MyBase.Columns("ID_Boekstuk")
+            Me.columnID_Getontvangst = MyBase.Columns("ID_Getontvangst")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1324,6 +1335,8 @@ Partial Public Class DS_Administratie
             MyBase.Columns.Add(Me.columnJP_Datum)
             Me.columnID_Boekstuk = New Global.System.Data.DataColumn("ID_Boekstuk", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnID_Boekstuk)
+            Me.columnID_Getontvangst = New Global.System.Data.DataColumn("ID_Getontvangst", GetType(Integer), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnID_Getontvangst)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_JournaalPost}, true))
             Me.columnID_JournaalPost.AutoIncrement = true
             Me.columnID_JournaalPost.AutoIncrementSeed = -1
@@ -3408,6 +3421,21 @@ Partial Public Class DS_Administratie
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property ID_Getontvangst() As Integer
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdmJournaal.ID_GetontvangstColumn),Integer)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'ID_Getontvangst' in table 'AdmJournaal' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdmJournaal.ID_GetontvangstColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsID_GrootboekNull() As Boolean
             Return Me.IsNull(Me.tableAdmJournaal.ID_GrootboekColumn)
         End Function
@@ -3440,6 +3468,18 @@ Partial Public Class DS_Administratie
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetJP_CreditNull()
             Me(Me.tableAdmJournaal.JP_CreditColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsID_GetontvangstNull() As Boolean
+            Return Me.IsNull(Me.tableAdmJournaal.ID_GetontvangstColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetID_GetontvangstNull()
+            Me(Me.tableAdmJournaal.ID_GetontvangstColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -5413,6 +5453,7 @@ Namespace DS_AdministratieTableAdapters
             tableMapping.ColumnMappings.Add("JP_Credit", "JP_Credit")
             tableMapping.ColumnMappings.Add("JP_Datum", "JP_Datum")
             tableMapping.ColumnMappings.Add("ID_Boekstuk", "ID_Boekstuk")
+            tableMapping.ColumnMappings.Add("ID_Getontvangst", "ID_Getontvangst")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -5422,7 +5463,8 @@ Namespace DS_AdministratieTableAdapters
                 "m] = @Original_JP_Datum) AND ([ID_Boekstuk] = @Original_ID_Boekstuk) AND ((@IsNu"& _ 
                 "ll_JP_Debet = 1 AND [JP_Debet] IS NULL) OR ([JP_Debet] = @Original_JP_Debet)) AN"& _ 
                 "D ((@IsNull_JP_Credit = 1 AND [JP_Credit] IS NULL) OR ([JP_Credit] = @Original_J"& _ 
-                "P_Credit)))"
+                "P_Credit)) AND ((@IsNull_ID_Getontvangst = 1 AND [ID_Getontvangst] IS NULL) OR ("& _ 
+                "[ID_Getontvangst] = @Original_ID_Getontvangst)))"
             Me._adapter.DeleteCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_JournaalPost", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_JournaalPost", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_AdmBoek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_AdmBoek", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -5434,13 +5476,16 @@ Namespace DS_AdministratieTableAdapters
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_JP_Debet", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Debet", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_JP_Credit", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "JP_Credit", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_JP_Credit", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Credit", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Getontvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Getontvangst", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.DeleteCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Getontvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Getontvangst", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [AdmJournaal] ([ID_AdmBoek], [ID_Grootboek], [JP_Datum], [ID_Boekstuk"& _ 
-                "], [JP_Debet], [JP_Credit]) VALUES (@ID_AdmBoek, @ID_Grootboek, @JP_Datum, @ID_B"& _ 
-                "oekstuk, @JP_Debet, @JP_Credit);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_JournaalPost, ID_AdmBoek, ID_Grootbo"& _ 
-                "ek, JP_Datum, ID_Boekstuk, JP_Debet, JP_Credit FROM AdmJournaal WHERE (ID_Journa"& _ 
-                "alPost = SCOPE_IDENTITY())"
+                "], [JP_Debet], [JP_Credit], [ID_Getontvangst]) VALUES (@ID_AdmBoek, @ID_Grootboe"& _ 
+                "k, @JP_Datum, @ID_Boekstuk, @JP_Debet, @JP_Credit, @ID_Getontvangst);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID"& _ 
+                "_JournaalPost, ID_AdmBoek, ID_Grootboek, JP_Datum, ID_Boekstuk, JP_Debet, JP_Cre"& _ 
+                "dit, ID_Getontvangst FROM AdmJournaal WHERE (ID_JournaalPost = SCOPE_IDENTITY())"& _ 
+                ""
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_AdmBoek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_AdmBoek", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5448,19 +5493,22 @@ Namespace DS_AdministratieTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Boekstuk", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Boekstuk", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@JP_Debet", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Debet", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@JP_Credit", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Credit", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Getontvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Getontvangst", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [AdmJournaal] SET [ID_AdmBoek] = @ID_AdmBoek, [ID_Grootboek] = @ID_Grootbo"& _ 
                 "ek, [JP_Datum] = @JP_Datum, [ID_Boekstuk] = @ID_Boekstuk, [JP_Debet] = @JP_Debet"& _ 
-                ", [JP_Credit] = @JP_Credit WHERE (([ID_JournaalPost] = @Original_ID_JournaalPost"& _ 
-                ") AND ([ID_AdmBoek] = @Original_ID_AdmBoek) AND ((@IsNull_ID_Grootboek = 1 AND ["& _ 
-                "ID_Grootboek] IS NULL) OR ([ID_Grootboek] = @Original_ID_Grootboek)) AND ([JP_Da"& _ 
-                "tum] = @Original_JP_Datum) AND ([ID_Boekstuk] = @Original_ID_Boekstuk) AND ((@Is"& _ 
-                "Null_JP_Debet = 1 AND [JP_Debet] IS NULL) OR ([JP_Debet] = @Original_JP_Debet)) "& _ 
-                "AND ((@IsNull_JP_Credit = 1 AND [JP_Credit] IS NULL) OR ([JP_Credit] = @Original"& _ 
-                "_JP_Credit)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_JournaalPost, ID_AdmBoek, ID_Grootboek, JP_Datum, ID_B"& _ 
-                "oekstuk, JP_Debet, JP_Credit FROM AdmJournaal WHERE (ID_JournaalPost = @ID_Journ"& _ 
-                "aalPost)"
+                ", [JP_Credit] = @JP_Credit, [ID_Getontvangst] = @ID_Getontvangst WHERE (([ID_Jou"& _ 
+                "rnaalPost] = @Original_ID_JournaalPost) AND ([ID_AdmBoek] = @Original_ID_AdmBoek"& _ 
+                ") AND ((@IsNull_ID_Grootboek = 1 AND [ID_Grootboek] IS NULL) OR ([ID_Grootboek] "& _ 
+                "= @Original_ID_Grootboek)) AND ([JP_Datum] = @Original_JP_Datum) AND ([ID_Boekst"& _ 
+                "uk] = @Original_ID_Boekstuk) AND ((@IsNull_JP_Debet = 1 AND [JP_Debet] IS NULL) "& _ 
+                "OR ([JP_Debet] = @Original_JP_Debet)) AND ((@IsNull_JP_Credit = 1 AND [JP_Credit"& _ 
+                "] IS NULL) OR ([JP_Credit] = @Original_JP_Credit)) AND ((@IsNull_ID_Getontvangst"& _ 
+                " = 1 AND [ID_Getontvangst] IS NULL) OR ([ID_Getontvangst] = @Original_ID_Getontv"& _ 
+                "angst)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_JournaalPost, ID_AdmBoek, ID_Grootboek, JP_Datum, ID_Boekst"& _ 
+                "uk, JP_Debet, JP_Credit, ID_Getontvangst FROM AdmJournaal WHERE (ID_JournaalPost"& _ 
+                " = @ID_JournaalPost)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_AdmBoek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_AdmBoek", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -5468,6 +5516,7 @@ Namespace DS_AdministratieTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Boekstuk", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Boekstuk", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@JP_Debet", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Debet", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@JP_Credit", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Credit", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Getontvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Getontvangst", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_JournaalPost", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_JournaalPost", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_AdmBoek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_AdmBoek", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Grootboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Grootboek", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
@@ -5478,6 +5527,8 @@ Namespace DS_AdministratieTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_JP_Debet", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Debet", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_JP_Credit", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "JP_Credit", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_JP_Credit", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "JP_Credit", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Getontvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Getontvangst", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Getontvangst", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Getontvangst", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_JournaalPost", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_JournaalPost", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
@@ -5491,14 +5542,21 @@ Namespace DS_AdministratieTableAdapters
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Private Sub InitCommandCollection()
-            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(0) {}
+            Me._commandCollection = New Global.System.Data.SqlClient.SqlCommand(1) {}
             Me._commandCollection(0) = New Global.System.Data.SqlClient.SqlCommand()
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID_JournaalPost, ID_AdmBoek, ID_Grootboek, JP_Datum, ID_Boekstuk, J"& _ 
-                "P_Debet, JP_Credit"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AdmJournaal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_Boekstuk = @ID"& _ 
-                "BS)"
+                "P_Debet, JP_Credit, ID_Getontvangst"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AdmJournaal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
+                "ID_Boekstuk = @IDBS)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDBS", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Boekstuk", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._commandCollection(1) = New Global.System.Data.SqlClient.SqlCommand()
+            Me._commandCollection(1).Connection = Me.Connection
+            Me._commandCollection(1).CommandText = "SELECT        ID_JournaalPost, ID_AdmBoek, ID_Grootboek, JP_Datum, ID_Boekstuk, J"& _ 
+                "P_Debet, JP_Credit, ID_Getontvangst"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AdmJournaal"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        ("& _ 
+                "ID_Getontvangst = @IDGO)"
+            Me._commandCollection(1).CommandType = Global.System.Data.CommandType.Text
+            Me._commandCollection(1).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IDGO", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Getontvangst", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5525,6 +5583,24 @@ Namespace DS_AdministratieTableAdapters
             Dim dataTable As DS_Administratie.AdmJournaalDataTable = New DS_Administratie.AdmJournaalDataTable()
             Me.Adapter.Fill(dataTable)
             Return dataTable
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
+         Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
+         Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Fill, false)>  _
+        Public Overloads Overridable Function FilLIDGO(ByVal dataTable As DS_Administratie.AdmJournaalDataTable, ByVal IDGO As Global.System.Nullable(Of Integer)) As Integer
+            Me.Adapter.SelectCommand = Me.CommandCollection(1)
+            If (IDGO.HasValue = true) Then
+                Me.Adapter.SelectCommand.Parameters(0).Value = CType(IDGO.Value,Integer)
+            Else
+                Me.Adapter.SelectCommand.Parameters(0).Value = Global.System.DBNull.Value
+            End If
+            If (Me.ClearBeforeFill = true) Then
+                dataTable.Clear
+            End If
+            Dim returnValue As Integer = Me.Adapter.Fill(dataTable)
+            Return returnValue
         End Function
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -5559,7 +5635,7 @@ Namespace DS_AdministratieTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Delete, true)>  _
-        Public Overloads Overridable Function Delete(ByVal Original_ID_JournaalPost As Integer, ByVal Original_ID_AdmBoek As Integer, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer), ByVal Original_JP_Datum As Date, ByVal Original_ID_Boekstuk As Integer, ByVal Original_JP_Debet As Global.System.Nullable(Of Decimal), ByVal Original_JP_Credit As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Delete(ByVal Original_ID_JournaalPost As Integer, ByVal Original_ID_AdmBoek As Integer, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer), ByVal Original_JP_Datum As Date, ByVal Original_ID_Boekstuk As Integer, ByVal Original_JP_Debet As Global.System.Nullable(Of Decimal), ByVal Original_JP_Credit As Global.System.Nullable(Of Decimal), ByVal Original_ID_Getontvangst As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.DeleteCommand.Parameters(0).Value = CType(Original_ID_JournaalPost,Integer)
             Me.Adapter.DeleteCommand.Parameters(1).Value = CType(Original_ID_AdmBoek,Integer)
             If (Original_ID_Grootboek.HasValue = true) Then
@@ -5585,6 +5661,13 @@ Namespace DS_AdministratieTableAdapters
                 Me.Adapter.DeleteCommand.Parameters(8).Value = CType(1,Object)
                 Me.Adapter.DeleteCommand.Parameters(9).Value = Global.System.DBNull.Value
             End If
+            If (Original_ID_Getontvangst.HasValue = true) Then
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(0,Object)
+                Me.Adapter.DeleteCommand.Parameters(11).Value = CType(Original_ID_Getontvangst.Value,Integer)
+            Else
+                Me.Adapter.DeleteCommand.Parameters(10).Value = CType(1,Object)
+                Me.Adapter.DeleteCommand.Parameters(11).Value = Global.System.DBNull.Value
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.DeleteCommand.Connection.State
             If ((Me.Adapter.DeleteCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -5604,7 +5687,7 @@ Namespace DS_AdministratieTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ID_AdmBoek As Integer, ByVal ID_Grootboek As Global.System.Nullable(Of Integer), ByVal JP_Datum As Date, ByVal ID_Boekstuk As Integer, ByVal JP_Debet As Global.System.Nullable(Of Decimal), ByVal JP_Credit As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Insert(ByVal ID_AdmBoek As Integer, ByVal ID_Grootboek As Global.System.Nullable(Of Integer), ByVal JP_Datum As Date, ByVal ID_Boekstuk As Integer, ByVal JP_Debet As Global.System.Nullable(Of Decimal), ByVal JP_Credit As Global.System.Nullable(Of Decimal), ByVal ID_Getontvangst As Global.System.Nullable(Of Integer)) As Integer
             Me.Adapter.InsertCommand.Parameters(0).Value = CType(ID_AdmBoek,Integer)
             If (ID_Grootboek.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(1).Value = CType(ID_Grootboek.Value,Integer)
@@ -5622,6 +5705,11 @@ Namespace DS_AdministratieTableAdapters
                 Me.Adapter.InsertCommand.Parameters(5).Value = CType(JP_Credit.Value,Decimal)
             Else
                 Me.Adapter.InsertCommand.Parameters(5).Value = Global.System.DBNull.Value
+            End If
+            If (ID_Getontvangst.HasValue = true) Then
+                Me.Adapter.InsertCommand.Parameters(6).Value = CType(ID_Getontvangst.Value,Integer)
+            Else
+                Me.Adapter.InsertCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
@@ -5642,7 +5730,23 @@ Namespace DS_AdministratieTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ID_AdmBoek As Integer, ByVal ID_Grootboek As Global.System.Nullable(Of Integer), ByVal JP_Datum As Date, ByVal ID_Boekstuk As Integer, ByVal JP_Debet As Global.System.Nullable(Of Decimal), ByVal JP_Credit As Global.System.Nullable(Of Decimal), ByVal Original_ID_JournaalPost As Integer, ByVal Original_ID_AdmBoek As Integer, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer), ByVal Original_JP_Datum As Date, ByVal Original_ID_Boekstuk As Integer, ByVal Original_JP_Debet As Global.System.Nullable(Of Decimal), ByVal Original_JP_Credit As Global.System.Nullable(Of Decimal), ByVal ID_JournaalPost As Integer) As Integer
+        Public Overloads Overridable Function Update( _
+                    ByVal ID_AdmBoek As Integer,  _
+                    ByVal ID_Grootboek As Global.System.Nullable(Of Integer),  _
+                    ByVal JP_Datum As Date,  _
+                    ByVal ID_Boekstuk As Integer,  _
+                    ByVal JP_Debet As Global.System.Nullable(Of Decimal),  _
+                    ByVal JP_Credit As Global.System.Nullable(Of Decimal),  _
+                    ByVal ID_Getontvangst As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_ID_JournaalPost As Integer,  _
+                    ByVal Original_ID_AdmBoek As Integer,  _
+                    ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer),  _
+                    ByVal Original_JP_Datum As Date,  _
+                    ByVal Original_ID_Boekstuk As Integer,  _
+                    ByVal Original_JP_Debet As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_JP_Credit As Global.System.Nullable(Of Decimal),  _
+                    ByVal Original_ID_Getontvangst As Global.System.Nullable(Of Integer),  _
+                    ByVal ID_JournaalPost As Integer) As Integer
             Me.Adapter.UpdateCommand.Parameters(0).Value = CType(ID_AdmBoek,Integer)
             If (ID_Grootboek.HasValue = true) Then
                 Me.Adapter.UpdateCommand.Parameters(1).Value = CType(ID_Grootboek.Value,Integer)
@@ -5661,32 +5765,44 @@ Namespace DS_AdministratieTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(5).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(6).Value = CType(Original_ID_JournaalPost,Integer)
-            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_ID_AdmBoek,Integer)
-            If (Original_ID_Grootboek.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(Original_ID_Grootboek.Value,Integer)
+            If (ID_Getontvangst.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(6).Value = CType(ID_Getontvangst.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(8).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(9).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(6).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_JP_Datum,Date)
-            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_ID_Boekstuk,Integer)
-            If (Original_JP_Debet.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_JP_Debet.Value,Decimal)
+            Me.Adapter.UpdateCommand.Parameters(7).Value = CType(Original_ID_JournaalPost,Integer)
+            Me.Adapter.UpdateCommand.Parameters(8).Value = CType(Original_ID_AdmBoek,Integer)
+            If (Original_ID_Grootboek.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = CType(Original_ID_Grootboek.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(13).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(9).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(10).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(11).Value = CType(Original_JP_Datum,Date)
+            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ID_Boekstuk,Integer)
+            If (Original_JP_Debet.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_JP_Debet.Value,Decimal)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
             End If
             If (Original_JP_Credit.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_JP_Credit.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_JP_Credit.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(16).Value = CType(ID_JournaalPost,Integer)
+            If (Original_ID_Getontvangst.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_ID_Getontvangst.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+            End If
+            Me.Adapter.UpdateCommand.Parameters(19).Value = CType(ID_JournaalPost,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -5706,8 +5822,8 @@ Namespace DS_AdministratieTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Update, true)>  _
-        Public Overloads Overridable Function Update(ByVal ID_AdmBoek As Integer, ByVal ID_Grootboek As Global.System.Nullable(Of Integer), ByVal JP_Datum As Date, ByVal ID_Boekstuk As Integer, ByVal JP_Debet As Global.System.Nullable(Of Decimal), ByVal JP_Credit As Global.System.Nullable(Of Decimal), ByVal Original_ID_JournaalPost As Integer, ByVal Original_ID_AdmBoek As Integer, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer), ByVal Original_JP_Datum As Date, ByVal Original_ID_Boekstuk As Integer, ByVal Original_JP_Debet As Global.System.Nullable(Of Decimal), ByVal Original_JP_Credit As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(ID_AdmBoek, ID_Grootboek, JP_Datum, ID_Boekstuk, JP_Debet, JP_Credit, Original_ID_JournaalPost, Original_ID_AdmBoek, Original_ID_Grootboek, Original_JP_Datum, Original_ID_Boekstuk, Original_JP_Debet, Original_JP_Credit, Original_ID_JournaalPost)
+        Public Overloads Overridable Function Update(ByVal ID_AdmBoek As Integer, ByVal ID_Grootboek As Global.System.Nullable(Of Integer), ByVal JP_Datum As Date, ByVal ID_Boekstuk As Integer, ByVal JP_Debet As Global.System.Nullable(Of Decimal), ByVal JP_Credit As Global.System.Nullable(Of Decimal), ByVal ID_Getontvangst As Global.System.Nullable(Of Integer), ByVal Original_ID_JournaalPost As Integer, ByVal Original_ID_AdmBoek As Integer, ByVal Original_ID_Grootboek As Global.System.Nullable(Of Integer), ByVal Original_JP_Datum As Date, ByVal Original_ID_Boekstuk As Integer, ByVal Original_JP_Debet As Global.System.Nullable(Of Decimal), ByVal Original_JP_Credit As Global.System.Nullable(Of Decimal), ByVal Original_ID_Getontvangst As Global.System.Nullable(Of Integer)) As Integer
+            Return Me.Update(ID_AdmBoek, ID_Grootboek, JP_Datum, ID_Boekstuk, JP_Debet, JP_Credit, ID_Getontvangst, Original_ID_JournaalPost, Original_ID_AdmBoek, Original_ID_Grootboek, Original_JP_Datum, Original_ID_Boekstuk, Original_JP_Debet, Original_JP_Credit, Original_ID_Getontvangst, Original_ID_JournaalPost)
         End Function
     End Class
     

@@ -2,6 +2,7 @@
     'Variabelen definieren
     Private DEBETT As Decimal = 0
     Private CREDITT As Decimal = 0
+    Private IDGO As Integer = 0
     Public Sub ToolTipsInstellen()
         ' Create the ToolTip and associate with the Form container.
         Dim TT_Kosten As New ToolTip()
@@ -60,6 +61,10 @@
                     Me.Validate()
                     Me.AdmInkoopBoekBindingSource.EndEdit()
                     Me.AdmInkoopBoekTableAdapter.Update(DS_Administratie.AdmInkoopBoek)
+
+                    'data van parentform halen
+                    IDGO = F_GetProduct.CB_Ontvangen.SelectedValue
+
                     'parent form direct aanpassen
                     F_GetProduct.TXT_AdmInkoop.Text = Me.TXT_Boeknummer.Text
                     F_GetProduct.Validate()
@@ -84,6 +89,9 @@
                     Me.Knop_Annuleren.Enabled = False
                     'Gegevens op Parentform aanpassen
                     'F_GetProduct.TXT_Boekwaarde.Text = Me.TXT_WaardeEuro.Text
+
+                    'data van parentform halen
+                    IDGO = F_GetProduct.CB_Ontvangen.SelectedValue
 
                 Case 3 'openen met een vooraf bepaald adminkoopnummer, dus na een zoekactie
 
@@ -236,12 +244,15 @@
     End Sub
     Private Sub JN_Regel(GB As Integer, DB As Decimal, CR As Decimal) '1=automatisch, 2=handmatig
         Dim Rij As Integer
+
         'maakt regel in journaal posten
         'Cells 0=id 1=soort boek (1=inkoop (crediteuren) boek 2=Boekstuknummer (deze factuur dus) 3=datum 4= grootboekrekening 5 =debet bedrag 6 = credit bedrag
         'Merk op dat inkoopboek NIET uit DB komt dus zorg dat deze waarde niet veranderd in de dbtabel admboek
 
         'hoeveel rows zijn er al?
         Rij = Me.DG_Journaal.Rows.Count
+
+        'ID_getontvangst aan Journaal meegeven om journaals zicht baat te keijgen in getontvangst
 
         Try
             Me.AdmJournaalBindingSource.AddNew()
@@ -251,6 +262,7 @@
             DG_Journaal.Rows(Rij).Cells(4).Value = GB
             DG_Journaal.Rows(Rij).Cells(5).Value = DB
             DG_Journaal.Rows(Rij).Cells(6).Value = CR
+            DG_Journaal.Rows(Rij).Cells(7).Value = IDGO 'geef het onderliggende getontvangst nummer mee aan ieder journaalpost (of een 0)
 
             DEBETT = DEBETT + DB
             CREDITT = CREDITT + CR

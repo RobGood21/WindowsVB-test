@@ -16,8 +16,8 @@
             'Teksten
             .SetToolTip(Me.TXT_Verkoopprijs, "Verkoopprijs incl. BTW")
             .SetToolTip(Me.TXT_Inkoopwaarde, "Gestelde inkoop- of voorraadwaarde excl.BTW")
-            .SetToolTip(Me.TXT_Laatste_inkoop_Datum, "Datum, laatste ontvangst van dit product")
-            .SetToolTip(Me.TXT_LaatsteInkoop_Waarde, "Betaalde bedrag in € ex.BTW")
+            .SetToolTip(Me.TXT_BTW, "Datum, laatste ontvangst van dit product")
+            '.SetToolTip(Me.TXT_LaatsteInkoop_Waarde, "Betaalde bedrag in € ex.BTW")
             .SetToolTip(Me.TXT_Productnummer, "Voer een productnummer in om product te zoeken")
             'Knoppen
             .SetToolTip(Me.Knop_Locatie, "Bepaal de standaard locatie voor dit product")
@@ -43,7 +43,26 @@
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
     End Sub
+    Private Sub BerekenPrijzen()
+        'berekend de diverse prijzen en steld juiste format in
+        If IsNumeric(Me.TXT_Verkoopprijs.Text) = True Then
+            TXT_Verkoopprijs.Text = FormatNumber(TXT_Verkoopprijs.Text, -1)
+            'btw berekenen
+            ' MsgBox("nu")
+            If IsNumeric(Me.LBL_BTWperc.Text) = True Then
+                Me.TXT_BTW.Text = FormatNumber(Me.TXT_Verkoopprijs.Text / (100 + Me.LBL_BTWperc.Text) * Me.LBL_BTWperc.Text, -1)
+                Me.TXT_prijsexBTW.Text = FormatNumber(Me.TXT_Verkoopprijs.Text - Me.TXT_BTW.Text, -1)
+            End If
+        Else
+            Me.TXT_Verkoopprijs.Text = FormatNumber(0, -1)
+            Me.TXT_BTW.Text = FormatNumber(0, -1)
+        End If
+
+
+    End Sub
     Private Sub F_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DS_Product1.GroepPD' table. You can move, or remove it, as needed.
+        Me.GroepPDTableAdapter.Fill(Me.DS_Product1.GroepPD)
         Me.ToolTipsInstellen()
         LoadProduct()
     End Sub
@@ -71,7 +90,7 @@
     Private Sub LoadTables()
         'LET OP volgorde van laden is hier belangrijk
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
-        Me.GroepTableAdapter.Fill(Me.DS_Product.Groep)
+        'Me.GroepTableAdapter.Fill(Me.DS_Product.Groep)
         Me.LocatieTableAdapter.FillByALL(Me.DS_Product.Locatie)
     End Sub
     Private Sub Knop_ZoekProduct_Click(sender As Object, e As EventArgs) Handles Knop_ZoekProduct.Click
@@ -95,6 +114,7 @@
         Try
             If ValiDatie() = True Then
                 OPSLAAN()
+                If IsNumeric(Me.TXT_IDP.Text) = True Then IDPRODUCT = Me.TXT_IDP.Text
                 Me.Close()
             Else
                 jn = MsgBox("De gegevens kunnen niet worden opgeslagen." & Chr(13) & Chr(13) & "Wil je het formulier wel sluiten?", vbCritical + vbYesNo, "Opslaan niet mogelijk..")
@@ -115,9 +135,6 @@
         If Len(Me.TXT_functie.Text) < 1 Then Me.TXT_functie.Text = " "
         If Len(Me.TXT_waarde.Text) < 1 Then Me.TXT_waarde.Text = " "
         If Len(Me.TXT_behuizing.Text) < 1 Then Me.TXT_behuizing.Text = " "
-    End Sub
-    Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs)
-
     End Sub
     Private Sub INITNieuw()
         'stelt alles in voor een nieuwe invoer.
@@ -148,10 +165,8 @@
     Private Sub TXT_Productnummer_TextChanged(sender As Object, e As EventArgs) Handles TXT_Productnummer.TextChanged
         If LUZ = False Then 'voorkomt dat als het idproduct wordt ingeschreven opnieuw het product wordt geladen
             PLaatsProduct()
-        Else
-            LUZ = False
         End If
-
+        LUZ = False
     End Sub
     Private Sub PLaatsProduct()
         If NUZ = False Then 'als de knop nieuw is gebruikt 
@@ -189,8 +204,6 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
         MsgBox(ValiDatie)
     End Sub
-    Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs)
-    End Sub
     Private Sub TXT_Productnummer_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Productnummer.KeyPress
         'snelkoppelingen voor allerlei functies op het artikelnummervak 
         If IsNumeric(e.KeyChar) = False Then
@@ -227,7 +240,7 @@
         OmSchrijVing()
     End Sub
     Private Sub TXT_Verkoopprijs_Validated(sender As Object, e As EventArgs) Handles TXT_Verkoopprijs.Validated
-        If IsNumeric(Me.TXT_Verkoopprijs.Text) = True Then TXT_Verkoopprijs.Text = FormatNumber(TXT_Verkoopprijs.Text, -1)
+        'BerekenPrijzen()
     End Sub
     Private Sub TXT_Inkoopwaarde_Validated(sender As Object, e As EventArgs) Handles TXT_Inkoopwaarde.Validated
         If IsNumeric(TXT_Inkoopwaarde.Text) = True Then TXT_Inkoopwaarde.Text = FormatNumber(Me.TXT_Inkoopwaarde.Text, -1)
@@ -255,5 +268,10 @@
             OPSLAAN()
             Me.Knop_ZoekProduct.Select()
         End If
+    End Sub
+
+    Private Sub TXT_Verkoopprijs_TextChanged(sender As Object, e As EventArgs) Handles TXT_Verkoopprijs.TextChanged
+        BerekenPrijzen()
+
     End Sub
 End Class

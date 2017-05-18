@@ -88,7 +88,7 @@ Partial Class F_GetProduct
         Me.Label17 = New System.Windows.Forms.Label()
         Me.TXT_Project_Voorraad = New System.Windows.Forms.TextBox()
         Me.Knop_Project_bereken = New System.Windows.Forms.Button()
-        Me.TXT_project_maak = New System.Windows.Forms.Button()
+        Me.Knop_project_maak = New System.Windows.Forms.Button()
         Me.Knop_Project_Build = New System.Windows.Forms.Button()
         Me.TXT_Project_AantalMaak = New System.Windows.Forms.TextBox()
         Me.Label16 = New System.Windows.Forms.Label()
@@ -103,6 +103,26 @@ Partial Class F_GetProduct
         Me.TXT_Project_SomInkoop = New System.Windows.Forms.TextBox()
         Me.Label1 = New System.Windows.Forms.Label()
         Me.TXT_Project_AantalParts = New System.Windows.Forms.TextBox()
+        Me.Tpage_Doel_Sale = New System.Windows.Forms.TabPage()
+        Me.Label24 = New System.Windows.Forms.Label()
+        Me.TXT_Push_Kas = New System.Windows.Forms.TextBox()
+        Me.Label23 = New System.Windows.Forms.Label()
+        Me.TXT_Push_Bank = New System.Windows.Forms.TextBox()
+        Me.Label22 = New System.Windows.Forms.Label()
+        Me.Label18 = New System.Windows.Forms.Label()
+        Me.LBL_Push_Btw = New System.Windows.Forms.Label()
+        Me.BTWBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Knop_Push_Boek = New System.Windows.Forms.Button()
+        Me.Label21 = New System.Windows.Forms.Label()
+        Me.TXT_Push_Verkoop = New System.Windows.Forms.TextBox()
+        Me.Label20 = New System.Windows.Forms.Label()
+        Me.TXT_Push_BTW = New System.Windows.Forms.TextBox()
+        Me.Label19 = New System.Windows.Forms.Label()
+        Me.TXT_Push_Omzet = New System.Windows.Forms.TextBox()
+        Me.TXT_Push_Inkoop = New System.Windows.Forms.TextBox()
+        Me.Knop_Push_Bereken = New System.Windows.Forms.Button()
+        Me.Knop_Push_Maak = New System.Windows.Forms.Button()
+        Me.CB_Push_soort = New System.Windows.Forms.ComboBox()
         Me.TXT_Voorraad = New System.Windows.Forms.TextBox()
         Me.TXT_LijstAantal = New System.Windows.Forms.TextBox()
         Me.Label10 = New System.Windows.Forms.Label()
@@ -114,6 +134,17 @@ Partial Class F_GetProduct
         Me.TXT_Prijs = New System.Windows.Forms.TextBox()
         Me.Label14 = New System.Windows.Forms.Label()
         Me.Tpage_Product_new = New System.Windows.Forms.TabPage()
+        Me.DG_Journaal = New System.Windows.Forms.DataGridView()
+        Me.IDJournaalPostDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDAdmBoekDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDGrootboekDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JPDebetDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JPCreditDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.JPDatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDBoekstukDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDGetontvangstDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.AdmJournaalBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_Administratie = New WindowsVB_test.DS_Administratie()
         Me.Tpage_Product_Besteld = New System.Windows.Forms.TabPage()
         Me.CH_AlleBestel = New System.Windows.Forms.CheckBox()
         Me.GPA_BesteldDataGridView = New System.Windows.Forms.DataGridView()
@@ -157,6 +188,8 @@ Partial Class F_GetProduct
         Me.Optie_Verbruik = New System.Windows.Forms.RadioButton()
         Me.Optie_Project = New System.Windows.Forms.RadioButton()
         Me.GB_Sectie = New System.Windows.Forms.GroupBox()
+        Me.BTWTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.BTWTableAdapter()
+        Me.AdmJournaalTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmJournaalTableAdapter()
         GV_DatumLabel = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
         Label5 = New System.Windows.Forms.Label()
@@ -174,6 +207,12 @@ Partial Class F_GetProduct
         Me.TPage_Doel_Ontvang.SuspendLayout()
         Me.Tpage_Doel_Bestel.SuspendLayout()
         Me.Tpage_Doel_Project.SuspendLayout()
+        Me.Tpage_Doel_Sale.SuspendLayout()
+        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Tpage_Product_new.SuspendLayout()
+        CType(Me.DG_Journaal, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.AdmJournaalBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_Administratie, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tpage_Product_Besteld.SuspendLayout()
         CType(Me.GPA_BesteldDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GPA_BesteldBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -607,7 +646,8 @@ Partial Class F_GetProduct
         Me.TB_Doel.Controls.Add(Me.TPage_Doel_Ontvang)
         Me.TB_Doel.Controls.Add(Me.Tpage_Doel_Bestel)
         Me.TB_Doel.Controls.Add(Me.Tpage_Doel_Project)
-        Me.TB_Doel.ItemSize = New System.Drawing.Size(150, 18)
+        Me.TB_Doel.Controls.Add(Me.Tpage_Doel_Sale)
+        Me.TB_Doel.ItemSize = New System.Drawing.Size(140, 18)
         Me.TB_Doel.Location = New System.Drawing.Point(12, 136)
         Me.TB_Doel.Name = "TB_Doel"
         Me.TB_Doel.SelectedIndex = 0
@@ -690,7 +730,7 @@ Partial Class F_GetProduct
         Me.Tpage_Doel_Project.Controls.Add(Me.Label17)
         Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_Voorraad)
         Me.Tpage_Doel_Project.Controls.Add(Me.Knop_Project_bereken)
-        Me.Tpage_Doel_Project.Controls.Add(Me.TXT_project_maak)
+        Me.Tpage_Doel_Project.Controls.Add(Me.Knop_project_maak)
         Me.Tpage_Doel_Project.Controls.Add(Me.Knop_Project_Build)
         Me.Tpage_Doel_Project.Controls.Add(Me.TXT_Project_AantalMaak)
         Me.Tpage_Doel_Project.Controls.Add(Me.Label16)
@@ -742,15 +782,16 @@ Partial Class F_GetProduct
         Me.Knop_Project_bereken.Text = "Bereken"
         Me.Knop_Project_bereken.UseVisualStyleBackColor = True
         '
-        'TXT_project_maak
+        'Knop_project_maak
         '
-        Me.TXT_project_maak.Location = New System.Drawing.Point(6, 31)
-        Me.TXT_project_maak.Name = "TXT_project_maak"
-        Me.TXT_project_maak.Size = New System.Drawing.Size(120, 23)
-        Me.TXT_project_maak.TabIndex = 15
-        Me.TXT_project_maak.TabStop = False
-        Me.TXT_project_maak.Text = "Maak project"
-        Me.TXT_project_maak.UseVisualStyleBackColor = True
+        Me.Knop_project_maak.Enabled = False
+        Me.Knop_project_maak.Location = New System.Drawing.Point(6, 31)
+        Me.Knop_project_maak.Name = "Knop_project_maak"
+        Me.Knop_project_maak.Size = New System.Drawing.Size(120, 23)
+        Me.Knop_project_maak.TabIndex = 15
+        Me.Knop_project_maak.TabStop = False
+        Me.Knop_project_maak.Text = "Maak project"
+        Me.Knop_project_maak.UseVisualStyleBackColor = True
         '
         'Knop_Project_Build
         '
@@ -881,6 +922,198 @@ Partial Class F_GetProduct
         Me.TXT_Project_AantalParts.TabIndex = 0
         Me.TXT_Project_AantalParts.TabStop = False
         '
+        'Tpage_Doel_Sale
+        '
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Label24)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.TXT_Push_Kas)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Label23)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.TXT_Push_Bank)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Label22)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Label18)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.LBL_Push_Btw)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Knop_Push_Boek)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Label21)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.TXT_Push_Verkoop)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Label20)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.TXT_Push_BTW)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Label19)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.TXT_Push_Omzet)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.TXT_Push_Inkoop)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Knop_Push_Bereken)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.Knop_Push_Maak)
+        Me.Tpage_Doel_Sale.Controls.Add(Me.CB_Push_soort)
+        Me.Tpage_Doel_Sale.Location = New System.Drawing.Point(4, 22)
+        Me.Tpage_Doel_Sale.Name = "Tpage_Doel_Sale"
+        Me.Tpage_Doel_Sale.Padding = New System.Windows.Forms.Padding(3)
+        Me.Tpage_Doel_Sale.Size = New System.Drawing.Size(560, 107)
+        Me.Tpage_Doel_Sale.TabIndex = 3
+        Me.Tpage_Doel_Sale.Text = "Verbruik"
+        Me.Tpage_Doel_Sale.UseVisualStyleBackColor = True
+        '
+        'Label24
+        '
+        Me.Label24.AutoSize = True
+        Me.Label24.Location = New System.Drawing.Point(218, 81)
+        Me.Label24.Name = "Label24"
+        Me.Label24.Size = New System.Drawing.Size(46, 13)
+        Me.Label24.TabIndex = 19
+        Me.Label24.Text = "Per kas:"
+        '
+        'TXT_Push_Kas
+        '
+        Me.TXT_Push_Kas.Location = New System.Drawing.Point(279, 76)
+        Me.TXT_Push_Kas.Name = "TXT_Push_Kas"
+        Me.TXT_Push_Kas.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Push_Kas.TabIndex = 1
+        '
+        'Label23
+        '
+        Me.Label23.AutoSize = True
+        Me.Label23.Location = New System.Drawing.Point(218, 58)
+        Me.Label23.Name = "Label23"
+        Me.Label23.Size = New System.Drawing.Size(59, 13)
+        Me.Label23.TabIndex = 17
+        Me.Label23.Text = "Bank(PIN):"
+        '
+        'TXT_Push_Bank
+        '
+        Me.TXT_Push_Bank.Location = New System.Drawing.Point(279, 53)
+        Me.TXT_Push_Bank.Name = "TXT_Push_Bank"
+        Me.TXT_Push_Bank.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Push_Bank.TabIndex = 0
+        '
+        'Label22
+        '
+        Me.Label22.AutoSize = True
+        Me.Label22.Location = New System.Drawing.Point(15, 60)
+        Me.Label22.Name = "Label22"
+        Me.Label22.Size = New System.Drawing.Size(66, 13)
+        Me.Label22.TabIndex = 15
+        Me.Label22.Text = "Som inkoop:"
+        '
+        'Label18
+        '
+        Me.Label18.AutoSize = True
+        Me.Label18.Location = New System.Drawing.Point(9, 11)
+        Me.Label18.Name = "Label18"
+        Me.Label18.Size = New System.Drawing.Size(76, 13)
+        Me.Label18.TabIndex = 14
+        Me.Label18.Text = "Soort verbruik:"
+        '
+        'LBL_Push_Btw
+        '
+        Me.LBL_Push_Btw.AutoSize = True
+        Me.LBL_Push_Btw.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BTWBindingSource, "BTW_Perc", True))
+        Me.LBL_Push_Btw.Location = New System.Drawing.Point(218, 31)
+        Me.LBL_Push_Btw.Name = "LBL_Push_Btw"
+        Me.LBL_Push_Btw.Size = New System.Drawing.Size(10, 13)
+        Me.LBL_Push_Btw.TabIndex = 13
+        Me.LBL_Push_Btw.Text = "-"
+        '
+        'BTWBindingSource
+        '
+        Me.BTWBindingSource.DataMember = "BTW"
+        Me.BTWBindingSource.DataSource = Me.DS_Product
+        '
+        'Knop_Push_Boek
+        '
+        Me.Knop_Push_Boek.Location = New System.Drawing.Point(481, 40)
+        Me.Knop_Push_Boek.Name = "Knop_Push_Boek"
+        Me.Knop_Push_Boek.Size = New System.Drawing.Size(73, 23)
+        Me.Knop_Push_Boek.TabIndex = 12
+        Me.Knop_Push_Boek.Text = "Boeking"
+        Me.Knop_Push_Boek.UseVisualStyleBackColor = True
+        '
+        'Label21
+        '
+        Me.Label21.AutoSize = True
+        Me.Label21.Location = New System.Drawing.Point(14, 80)
+        Me.Label21.Name = "Label21"
+        Me.Label21.Size = New System.Drawing.Size(73, 13)
+        Me.Label21.TabIndex = 11
+        Me.Label21.Text = "Som verkoop:"
+        '
+        'TXT_Push_Verkoop
+        '
+        Me.TXT_Push_Verkoop.Location = New System.Drawing.Point(90, 76)
+        Me.TXT_Push_Verkoop.Name = "TXT_Push_Verkoop"
+        Me.TXT_Push_Verkoop.ReadOnly = True
+        Me.TXT_Push_Verkoop.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Push_Verkoop.TabIndex = 10
+        Me.TXT_Push_Verkoop.TabStop = False
+        '
+        'Label20
+        '
+        Me.Label20.AutoSize = True
+        Me.Label20.Location = New System.Drawing.Point(230, 31)
+        Me.Label20.Name = "Label20"
+        Me.Label20.Size = New System.Drawing.Size(49, 13)
+        Me.Label20.TabIndex = 9
+        Me.Label20.Text = " % BTW:"
+        '
+        'TXT_Push_BTW
+        '
+        Me.TXT_Push_BTW.Location = New System.Drawing.Point(279, 27)
+        Me.TXT_Push_BTW.Name = "TXT_Push_BTW"
+        Me.TXT_Push_BTW.ReadOnly = True
+        Me.TXT_Push_BTW.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Push_BTW.TabIndex = 8
+        Me.TXT_Push_BTW.TabStop = False
+        '
+        'Label19
+        '
+        Me.Label19.AutoSize = True
+        Me.Label19.Location = New System.Drawing.Point(218, 10)
+        Me.Label19.Name = "Label19"
+        Me.Label19.Size = New System.Drawing.Size(40, 13)
+        Me.Label19.TabIndex = 7
+        Me.Label19.Text = "Omzet:"
+        '
+        'TXT_Push_Omzet
+        '
+        Me.TXT_Push_Omzet.Location = New System.Drawing.Point(279, 6)
+        Me.TXT_Push_Omzet.Name = "TXT_Push_Omzet"
+        Me.TXT_Push_Omzet.ReadOnly = True
+        Me.TXT_Push_Omzet.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Push_Omzet.TabIndex = 6
+        '
+        'TXT_Push_Inkoop
+        '
+        Me.TXT_Push_Inkoop.Location = New System.Drawing.Point(90, 55)
+        Me.TXT_Push_Inkoop.Name = "TXT_Push_Inkoop"
+        Me.TXT_Push_Inkoop.ReadOnly = True
+        Me.TXT_Push_Inkoop.Size = New System.Drawing.Size(50, 20)
+        Me.TXT_Push_Inkoop.TabIndex = 4
+        Me.TXT_Push_Inkoop.TabStop = False
+        '
+        'Knop_Push_Bereken
+        '
+        Me.Knop_Push_Bereken.Location = New System.Drawing.Point(481, 11)
+        Me.Knop_Push_Bereken.Name = "Knop_Push_Bereken"
+        Me.Knop_Push_Bereken.Size = New System.Drawing.Size(73, 23)
+        Me.Knop_Push_Bereken.TabIndex = 3
+        Me.Knop_Push_Bereken.Text = "Bereken"
+        Me.Knop_Push_Bereken.UseVisualStyleBackColor = True
+        '
+        'Knop_Push_Maak
+        '
+        Me.Knop_Push_Maak.Enabled = False
+        Me.Knop_Push_Maak.Location = New System.Drawing.Point(431, 78)
+        Me.Knop_Push_Maak.Name = "Knop_Push_Maak"
+        Me.Knop_Push_Maak.Size = New System.Drawing.Size(126, 23)
+        Me.Knop_Push_Maak.TabIndex = 2
+        Me.Knop_Push_Maak.Text = "Boek Verbruik"
+        Me.Knop_Push_Maak.UseVisualStyleBackColor = True
+        '
+        'CB_Push_soort
+        '
+        Me.CB_Push_soort.FormattingEnabled = True
+        Me.CB_Push_soort.Items.AddRange(New Object() {"Omzet, verkoop", "Naar Inventaris", "Verlies, afboeken "})
+        Me.CB_Push_soort.Location = New System.Drawing.Point(86, 8)
+        Me.CB_Push_soort.Name = "CB_Push_soort"
+        Me.CB_Push_soort.Size = New System.Drawing.Size(120, 21)
+        Me.CB_Push_soort.TabIndex = 0
+        '
         'TXT_Voorraad
         '
         Me.TXT_Voorraad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
@@ -969,13 +1202,84 @@ Partial Class F_GetProduct
         '
         'Tpage_Product_new
         '
+        Me.Tpage_Product_new.Controls.Add(Me.DG_Journaal)
         Me.Tpage_Product_new.Location = New System.Drawing.Point(4, 22)
         Me.Tpage_Product_new.Name = "Tpage_Product_new"
         Me.Tpage_Product_new.Padding = New System.Windows.Forms.Padding(3)
         Me.Tpage_Product_new.Size = New System.Drawing.Size(805, 234)
         Me.Tpage_Product_new.TabIndex = 5
-        Me.Tpage_Product_new.Text = "nieuw"
+        Me.Tpage_Product_new.Text = "Journaalboeking"
         Me.Tpage_Product_new.UseVisualStyleBackColor = True
+        '
+        'DG_Journaal
+        '
+        Me.DG_Journaal.AutoGenerateColumns = False
+        Me.DG_Journaal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DG_Journaal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.IDJournaalPostDataGridViewTextBoxColumn, Me.IDAdmBoekDataGridViewTextBoxColumn, Me.IDGrootboekDataGridViewTextBoxColumn, Me.JPDebetDataGridViewTextBoxColumn, Me.JPCreditDataGridViewTextBoxColumn, Me.JPDatumDataGridViewTextBoxColumn, Me.IDBoekstukDataGridViewTextBoxColumn, Me.IDGetontvangstDataGridViewTextBoxColumn1})
+        Me.DG_Journaal.DataSource = Me.AdmJournaalBindingSource
+        Me.DG_Journaal.Location = New System.Drawing.Point(13, 24)
+        Me.DG_Journaal.Name = "DG_Journaal"
+        Me.DG_Journaal.Size = New System.Drawing.Size(812, 150)
+        Me.DG_Journaal.TabIndex = 0
+        '
+        'IDJournaalPostDataGridViewTextBoxColumn
+        '
+        Me.IDJournaalPostDataGridViewTextBoxColumn.DataPropertyName = "ID_JournaalPost"
+        Me.IDJournaalPostDataGridViewTextBoxColumn.HeaderText = "ID_JournaalPost"
+        Me.IDJournaalPostDataGridViewTextBoxColumn.Name = "IDJournaalPostDataGridViewTextBoxColumn"
+        Me.IDJournaalPostDataGridViewTextBoxColumn.ReadOnly = True
+        '
+        'IDAdmBoekDataGridViewTextBoxColumn
+        '
+        Me.IDAdmBoekDataGridViewTextBoxColumn.DataPropertyName = "ID_AdmBoek"
+        Me.IDAdmBoekDataGridViewTextBoxColumn.HeaderText = "ID_AdmBoek"
+        Me.IDAdmBoekDataGridViewTextBoxColumn.Name = "IDAdmBoekDataGridViewTextBoxColumn"
+        '
+        'IDGrootboekDataGridViewTextBoxColumn
+        '
+        Me.IDGrootboekDataGridViewTextBoxColumn.DataPropertyName = "ID_Grootboek"
+        Me.IDGrootboekDataGridViewTextBoxColumn.HeaderText = "ID_Grootboek"
+        Me.IDGrootboekDataGridViewTextBoxColumn.Name = "IDGrootboekDataGridViewTextBoxColumn"
+        '
+        'JPDebetDataGridViewTextBoxColumn
+        '
+        Me.JPDebetDataGridViewTextBoxColumn.DataPropertyName = "JP_Debet"
+        Me.JPDebetDataGridViewTextBoxColumn.HeaderText = "JP_Debet"
+        Me.JPDebetDataGridViewTextBoxColumn.Name = "JPDebetDataGridViewTextBoxColumn"
+        '
+        'JPCreditDataGridViewTextBoxColumn
+        '
+        Me.JPCreditDataGridViewTextBoxColumn.DataPropertyName = "JP_Credit"
+        Me.JPCreditDataGridViewTextBoxColumn.HeaderText = "JP_Credit"
+        Me.JPCreditDataGridViewTextBoxColumn.Name = "JPCreditDataGridViewTextBoxColumn"
+        '
+        'JPDatumDataGridViewTextBoxColumn
+        '
+        Me.JPDatumDataGridViewTextBoxColumn.DataPropertyName = "JP_Datum"
+        Me.JPDatumDataGridViewTextBoxColumn.HeaderText = "JP_Datum"
+        Me.JPDatumDataGridViewTextBoxColumn.Name = "JPDatumDataGridViewTextBoxColumn"
+        '
+        'IDBoekstukDataGridViewTextBoxColumn
+        '
+        Me.IDBoekstukDataGridViewTextBoxColumn.DataPropertyName = "ID_Boekstuk"
+        Me.IDBoekstukDataGridViewTextBoxColumn.HeaderText = "ID_Boekstuk"
+        Me.IDBoekstukDataGridViewTextBoxColumn.Name = "IDBoekstukDataGridViewTextBoxColumn"
+        '
+        'IDGetontvangstDataGridViewTextBoxColumn1
+        '
+        Me.IDGetontvangstDataGridViewTextBoxColumn1.DataPropertyName = "ID_Getontvangst"
+        Me.IDGetontvangstDataGridViewTextBoxColumn1.HeaderText = "ID_Getontvangst"
+        Me.IDGetontvangstDataGridViewTextBoxColumn1.Name = "IDGetontvangstDataGridViewTextBoxColumn1"
+        '
+        'AdmJournaalBindingSource
+        '
+        Me.AdmJournaalBindingSource.DataMember = "AdmJournaal"
+        Me.AdmJournaalBindingSource.DataSource = Me.DS_Administratie
+        '
+        'DS_Administratie
+        '
+        Me.DS_Administratie.DataSetName = "DS_Administratie"
+        Me.DS_Administratie.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'Tpage_Product_Besteld
         '
@@ -1391,6 +1695,14 @@ Partial Class F_GetProduct
         Me.GB_Sectie.TabIndex = 27
         Me.GB_Sectie.TabStop = False
         '
+        'BTWTableAdapter
+        '
+        Me.BTWTableAdapter.ClearBeforeFill = True
+        '
+        'AdmJournaalTableAdapter
+        '
+        Me.AdmJournaalTableAdapter.ClearBeforeFill = True
+        '
         'F_GetProduct
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -1428,6 +1740,13 @@ Partial Class F_GetProduct
         Me.Tpage_Doel_Bestel.PerformLayout()
         Me.Tpage_Doel_Project.ResumeLayout(False)
         Me.Tpage_Doel_Project.PerformLayout()
+        Me.Tpage_Doel_Sale.ResumeLayout(False)
+        Me.Tpage_Doel_Sale.PerformLayout()
+        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Tpage_Product_new.ResumeLayout(False)
+        CType(Me.DG_Journaal, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.AdmJournaalBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_Administratie, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tpage_Product_Besteld.ResumeLayout(False)
         Me.Tpage_Product_Besteld.PerformLayout()
         CType(Me.GPA_BesteldDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
@@ -1562,7 +1881,7 @@ Partial Class F_GetProduct
     Friend WithEvents TXT_Project_Max As TextBox
     Friend WithEvents Knop_Project_Build As Button
     Friend WithEvents TXT_Project_AantalMaak As TextBox
-    Friend WithEvents TXT_project_maak As Button
+    Friend WithEvents Knop_project_maak As Button
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
@@ -1577,4 +1896,37 @@ Partial Class F_GetProduct
     Friend WithEvents Knop_Project_bereken As Button
     Friend WithEvents Label17 As Label
     Friend WithEvents TXT_Project_Voorraad As TextBox
+    Friend WithEvents Tpage_Doel_Sale As TabPage
+    Friend WithEvents CB_Push_soort As ComboBox
+    Friend WithEvents Knop_Push_Maak As Button
+    Friend WithEvents Knop_Push_Bereken As Button
+    Friend WithEvents Label21 As Label
+    Friend WithEvents TXT_Push_Verkoop As TextBox
+    Friend WithEvents Label20 As Label
+    Friend WithEvents TXT_Push_BTW As TextBox
+    Friend WithEvents Label19 As Label
+    Friend WithEvents TXT_Push_Omzet As TextBox
+    Friend WithEvents TXT_Push_Inkoop As TextBox
+    Friend WithEvents Knop_Push_Boek As Button
+    Friend WithEvents LBL_Push_Btw As Label
+    Friend WithEvents BTWBindingSource As BindingSource
+    Friend WithEvents BTWTableAdapter As DS_ProductTableAdapters.BTWTableAdapter
+    Friend WithEvents DG_Journaal As DataGridView
+    Friend WithEvents AdmJournaalBindingSource As BindingSource
+    Friend WithEvents DS_Administratie As DS_Administratie
+    Friend WithEvents AdmJournaalTableAdapter As DS_AdministratieTableAdapters.AdmJournaalTableAdapter
+    Friend WithEvents IDJournaalPostDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDAdmBoekDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDGrootboekDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents JPDebetDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents JPCreditDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents JPDatumDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDBoekstukDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDGetontvangstDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents Label22 As Label
+    Friend WithEvents Label18 As Label
+    Friend WithEvents Label24 As Label
+    Friend WithEvents TXT_Push_Kas As TextBox
+    Friend WithEvents Label23 As Label
+    Friend WithEvents TXT_Push_Bank As TextBox
 End Class

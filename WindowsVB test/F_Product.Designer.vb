@@ -35,35 +35,36 @@ Partial Class F_Product
         Dim Label1 As System.Windows.Forms.Label
         Dim ID_GroepLabel As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
+        Dim Label3 As System.Windows.Forms.Label
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.LBL_PN = New System.Windows.Forms.Label()
         Me.TXT_Productnummer = New System.Windows.Forms.TextBox()
         Me.Knop_ZoekProduct = New System.Windows.Forms.Button()
         Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
-        Me.GroepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.MerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DSProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DT_productTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
-        Me.GroepTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepTableAdapter()
         Me.MerkTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.MerkTableAdapter()
         Me.GBOX_Velden = New System.Windows.Forms.GroupBox()
         Me.CB_Groep = New System.Windows.Forms.ComboBox()
+        Me.GroepPDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.DS_Product1 = New WindowsVB_test.DS_Product()
         Me.GB_Merk = New System.Windows.Forms.ComboBox()
         Me.TXT_Naam = New System.Windows.Forms.TextBox()
         Me.TXT_functie = New System.Windows.Forms.TextBox()
         Me.TXT_behuizing = New System.Windows.Forms.TextBox()
         Me.TXT_waarde = New System.Windows.Forms.TextBox()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.Label5 = New System.Windows.Forms.Label()
+        Me.LBL_BTWperc = New System.Windows.Forms.Label()
         Me.TXT_Locatie = New System.Windows.Forms.TextBox()
         Me.LocatieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.TXT_Beschrijving2 = New System.Windows.Forms.TextBox()
         Me.Knop_Locatie = New System.Windows.Forms.Button()
         Me.CB_Locatie = New System.Windows.Forms.ComboBox()
-        Me.Label5 = New System.Windows.Forms.Label()
-        Me.TXT_LaatsteInkoop_Waarde = New System.Windows.Forms.TextBox()
-        Me.TXT_Laatste_inkoop_Datum = New System.Windows.Forms.TextBox()
+        Me.TXT_BTW = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TXT_Minimal = New System.Windows.Forms.TextBox()
         Me.TXT_Voorraad = New System.Windows.Forms.TextBox()
@@ -86,6 +87,8 @@ Partial Class F_Product
         Me.TSM_Opslaan = New System.Windows.Forms.ToolStripMenuItem()
         Me.AnnulerenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductWissenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.GroepPDTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepPDTableAdapter()
+        Me.TXT_prijsexBTW = New System.Windows.Forms.TextBox()
         PD_NaamLabel = New System.Windows.Forms.Label()
         PD_BehuizingLabel = New System.Windows.Forms.Label()
         PD_FunctieLabel = New System.Windows.Forms.Label()
@@ -98,13 +101,15 @@ Partial Class F_Product
         Label1 = New System.Windows.Forms.Label()
         ID_GroepLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
+        Label3 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
         CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DSProductBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GBOX_Velden.SuspendLayout()
+        CType(Me.GroepPDBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        CType(Me.DS_Product1, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox3.SuspendLayout()
         CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.TAB_Product.SuspendLayout()
@@ -115,7 +120,7 @@ Partial Class F_Product
         'PD_NaamLabel
         '
         PD_NaamLabel.AutoSize = True
-        PD_NaamLabel.Location = New System.Drawing.Point(28, 39)
+        PD_NaamLabel.Location = New System.Drawing.Point(27, 37)
         PD_NaamLabel.Name = "PD_NaamLabel"
         PD_NaamLabel.Size = New System.Drawing.Size(68, 13)
         PD_NaamLabel.TabIndex = 18
@@ -124,7 +129,7 @@ Partial Class F_Product
         'PD_BehuizingLabel
         '
         PD_BehuizingLabel.AutoSize = True
-        PD_BehuizingLabel.Location = New System.Drawing.Point(40, 110)
+        PD_BehuizingLabel.Location = New System.Drawing.Point(27, 108)
         PD_BehuizingLabel.Name = "PD_BehuizingLabel"
         PD_BehuizingLabel.Size = New System.Drawing.Size(56, 13)
         PD_BehuizingLabel.TabIndex = 24
@@ -133,7 +138,7 @@ Partial Class F_Product
         'PD_FunctieLabel
         '
         PD_FunctieLabel.AutoSize = True
-        PD_FunctieLabel.Location = New System.Drawing.Point(51, 62)
+        PD_FunctieLabel.Location = New System.Drawing.Point(27, 60)
         PD_FunctieLabel.Name = "PD_FunctieLabel"
         PD_FunctieLabel.Size = New System.Drawing.Size(45, 13)
         PD_FunctieLabel.TabIndex = 20
@@ -142,7 +147,7 @@ Partial Class F_Product
         'PD_WaardeLabel
         '
         PD_WaardeLabel.AutoSize = True
-        PD_WaardeLabel.Location = New System.Drawing.Point(43, 86)
+        PD_WaardeLabel.Location = New System.Drawing.Point(27, 84)
         PD_WaardeLabel.Name = "PD_WaardeLabel"
         PD_WaardeLabel.Size = New System.Drawing.Size(53, 13)
         PD_WaardeLabel.TabIndex = 22
@@ -151,7 +156,7 @@ Partial Class F_Product
         'ID_MerkLabel
         '
         ID_MerkLabel.AutoSize = True
-        ID_MerkLabel.Location = New System.Drawing.Point(62, 134)
+        ID_MerkLabel.Location = New System.Drawing.Point(27, 132)
         ID_MerkLabel.Name = "ID_MerkLabel"
         ID_MerkLabel.Size = New System.Drawing.Size(34, 13)
         ID_MerkLabel.TabIndex = 26
@@ -160,7 +165,7 @@ Partial Class F_Product
         'PD_Sale_PrijsLabel
         '
         PD_Sale_PrijsLabel.AutoSize = True
-        PD_Sale_PrijsLabel.Location = New System.Drawing.Point(25, 21)
+        PD_Sale_PrijsLabel.Location = New System.Drawing.Point(32, 21)
         PD_Sale_PrijsLabel.Name = "PD_Sale_PrijsLabel"
         PD_Sale_PrijsLabel.Size = New System.Drawing.Size(68, 13)
         PD_Sale_PrijsLabel.TabIndex = 22
@@ -188,7 +193,7 @@ Partial Class F_Product
         'PD_VoorraadLabel
         '
         PD_VoorraadLabel.AutoSize = True
-        PD_VoorraadLabel.Location = New System.Drawing.Point(43, 89)
+        PD_VoorraadLabel.Location = New System.Drawing.Point(32, 89)
         PD_VoorraadLabel.Name = "PD_VoorraadLabel"
         PD_VoorraadLabel.Size = New System.Drawing.Size(56, 13)
         PD_VoorraadLabel.TabIndex = 28
@@ -197,7 +202,7 @@ Partial Class F_Product
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(51, 113)
+        Label1.Location = New System.Drawing.Point(32, 113)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(45, 13)
         Label1.TabIndex = 38
@@ -206,7 +211,7 @@ Partial Class F_Product
         'ID_GroepLabel
         '
         ID_GroepLabel.AutoSize = True
-        ID_GroepLabel.Location = New System.Drawing.Point(22, 15)
+        ID_GroepLabel.Location = New System.Drawing.Point(27, 13)
         ID_GroepLabel.Name = "ID_GroepLabel"
         ID_GroepLabel.Size = New System.Drawing.Size(74, 13)
         ID_GroepLabel.TabIndex = 29
@@ -215,7 +220,7 @@ Partial Class F_Product
         'Label2
         '
         Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(23, 139)
+        Label2.Location = New System.Drawing.Point(32, 139)
         Label2.Name = "Label2"
         Label2.Size = New System.Drawing.Size(70, 13)
         Label2.TabIndex = 41
@@ -269,11 +274,6 @@ Partial Class F_Product
         Me.DS_Product.DataSetName = "DS_Product"
         Me.DS_Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
-        'GroepBindingSource
-        '
-        Me.GroepBindingSource.DataMember = "Groep"
-        Me.GroepBindingSource.DataSource = Me.DS_Product
-        '
         'MerkBindingSource
         '
         Me.MerkBindingSource.DataMember = "Merk"
@@ -303,10 +303,6 @@ Partial Class F_Product
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
-        'GroepTableAdapter
-        '
-        Me.GroepTableAdapter.ClearBeforeFill = True
-        '
         'MerkTableAdapter
         '
         Me.MerkTableAdapter.ClearBeforeFill = True
@@ -334,8 +330,7 @@ Partial Class F_Product
         'CB_Groep
         '
         Me.CB_Groep.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Groep", True))
-        Me.CB_Groep.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GroepBindingSource, "GP_Naam", True))
-        Me.CB_Groep.DataSource = Me.GroepBindingSource
+        Me.CB_Groep.DataSource = Me.GroepPDBindingSource
         Me.CB_Groep.DisplayMember = "GP_Naam"
         Me.CB_Groep.FormattingEnabled = True
         Me.CB_Groep.Location = New System.Drawing.Point(102, 9)
@@ -343,6 +338,16 @@ Partial Class F_Product
         Me.CB_Groep.Size = New System.Drawing.Size(184, 21)
         Me.CB_Groep.TabIndex = 0
         Me.CB_Groep.ValueMember = "ID_Groep"
+        '
+        'GroepPDBindingSource
+        '
+        Me.GroepPDBindingSource.DataMember = "GroepPD"
+        Me.GroepPDBindingSource.DataSource = Me.DS_Product1
+        '
+        'DS_Product1
+        '
+        Me.DS_Product1.DataSetName = "DS_Product"
+        Me.DS_Product1.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
         'GB_Merk
         '
@@ -390,15 +395,17 @@ Partial Class F_Product
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Label3)
+        Me.GroupBox3.Controls.Add(Me.TXT_prijsexBTW)
+        Me.GroupBox3.Controls.Add(Me.Label5)
+        Me.GroupBox3.Controls.Add(Me.LBL_BTWperc)
         Me.GroupBox3.Controls.Add(Me.TXT_Locatie)
         Me.GroupBox3.Controls.Add(Label2)
         Me.GroupBox3.Controls.Add(Me.TXT_Beschrijving2)
         Me.GroupBox3.Controls.Add(Me.Knop_Locatie)
         Me.GroupBox3.Controls.Add(Me.CB_Locatie)
         Me.GroupBox3.Controls.Add(Label1)
-        Me.GroupBox3.Controls.Add(Me.Label5)
-        Me.GroupBox3.Controls.Add(Me.TXT_LaatsteInkoop_Waarde)
-        Me.GroupBox3.Controls.Add(Me.TXT_Laatste_inkoop_Datum)
+        Me.GroupBox3.Controls.Add(Me.TXT_BTW)
         Me.GroupBox3.Controls.Add(Me.Label4)
         Me.GroupBox3.Controls.Add(PD_MinimumVoorraadLabel)
         Me.GroupBox3.Controls.Add(Me.TXT_Minimal)
@@ -414,6 +421,26 @@ Partial Class F_Product
         Me.GroupBox3.TabIndex = 22
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Prijzen"
+        '
+        'Label5
+        '
+        Me.Label5.AutoSize = True
+        Me.Label5.Location = New System.Drawing.Point(80, 42)
+        Me.Label5.Name = "Label5"
+        Me.Label5.Size = New System.Drawing.Size(21, 13)
+        Me.Label5.TabIndex = 44
+        Me.Label5.Text = "% :"
+        Me.Label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft
+        '
+        'LBL_BTWperc
+        '
+        Me.LBL_BTWperc.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GroepPDBindingSource, "BTW_Perc", True))
+        Me.LBL_BTWperc.Location = New System.Drawing.Point(64, 42)
+        Me.LBL_BTWperc.Name = "LBL_BTWperc"
+        Me.LBL_BTWperc.Size = New System.Drawing.Size(20, 13)
+        Me.LBL_BTWperc.TabIndex = 43
+        Me.LBL_BTWperc.Text = "00"
+        Me.LBL_BTWperc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
         '
         'TXT_Locatie
         '
@@ -462,41 +489,22 @@ Partial Class F_Product
         Me.CB_Locatie.TabIndex = 39
         Me.CB_Locatie.ValueMember = "ID_Locatie"
         '
-        'Label5
+        'TXT_BTW
         '
-        Me.Label5.AutoSize = True
-        Me.Label5.Location = New System.Drawing.Point(48, 67)
-        Me.Label5.Name = "Label5"
-        Me.Label5.Size = New System.Drawing.Size(46, 13)
-        Me.Label5.TabIndex = 37
-        Me.Label5.Text = "Betaald:"
-        '
-        'TXT_LaatsteInkoop_Waarde
-        '
-        Me.TXT_LaatsteInkoop_Waarde.Location = New System.Drawing.Point(102, 64)
-        Me.TXT_LaatsteInkoop_Waarde.Name = "TXT_LaatsteInkoop_Waarde"
-        Me.TXT_LaatsteInkoop_Waarde.ReadOnly = True
-        Me.TXT_LaatsteInkoop_Waarde.Size = New System.Drawing.Size(69, 20)
-        Me.TXT_LaatsteInkoop_Waarde.TabIndex = 36
-        Me.TXT_LaatsteInkoop_Waarde.TabStop = False
-        '
-        'TXT_Laatste_inkoop_Datum
-        '
-        Me.TXT_Laatste_inkoop_Datum.Location = New System.Drawing.Point(102, 42)
-        Me.TXT_Laatste_inkoop_Datum.Name = "TXT_Laatste_inkoop_Datum"
-        Me.TXT_Laatste_inkoop_Datum.ReadOnly = True
-        Me.TXT_Laatste_inkoop_Datum.Size = New System.Drawing.Size(206, 20)
-        Me.TXT_Laatste_inkoop_Datum.TabIndex = 35
-        Me.TXT_Laatste_inkoop_Datum.TabStop = False
+        Me.TXT_BTW.Location = New System.Drawing.Point(102, 38)
+        Me.TXT_BTW.Name = "TXT_BTW"
+        Me.TXT_BTW.Size = New System.Drawing.Size(54, 20)
+        Me.TXT_BTW.TabIndex = 35
+        Me.TXT_BTW.TabStop = False
         '
         'Label4
         '
         Me.Label4.AutoSize = True
-        Me.Label4.Location = New System.Drawing.Point(19, 45)
+        Me.Label4.Location = New System.Drawing.Point(32, 42)
         Me.Label4.Name = "Label4"
-        Me.Label4.Size = New System.Drawing.Size(80, 13)
+        Me.Label4.Size = New System.Drawing.Size(32, 13)
         Me.Label4.TabIndex = 34
-        Me.Label4.Text = "Laatste inkoop:"
+        Me.Label4.Text = "BTW"
         '
         'TXT_Minimal
         '
@@ -517,7 +525,7 @@ Partial Class F_Product
         'TXT_Verkoopprijs
         '
         Me.TXT_Verkoopprijs.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Sale_Prijs", True))
-        Me.TXT_Verkoopprijs.Location = New System.Drawing.Point(102, 18)
+        Me.TXT_Verkoopprijs.Location = New System.Drawing.Point(102, 17)
         Me.TXT_Verkoopprijs.Name = "TXT_Verkoopprijs"
         Me.TXT_Verkoopprijs.Size = New System.Drawing.Size(54, 20)
         Me.TXT_Verkoopprijs.TabIndex = 23
@@ -525,7 +533,7 @@ Partial Class F_Product
         'TXT_Inkoopwaarde
         '
         Me.TXT_Inkoopwaarde.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Buy_Cost", True))
-        Me.TXT_Inkoopwaarde.Location = New System.Drawing.Point(254, 18)
+        Me.TXT_Inkoopwaarde.Location = New System.Drawing.Point(254, 17)
         Me.TXT_Inkoopwaarde.Name = "TXT_Inkoopwaarde"
         Me.TXT_Inkoopwaarde.Size = New System.Drawing.Size(54, 20)
         Me.TXT_Inkoopwaarde.TabIndex = 25
@@ -683,6 +691,26 @@ Partial Class F_Product
         Me.ProductWissenToolStripMenuItem.Size = New System.Drawing.Size(115, 20)
         Me.ProductWissenToolStripMenuItem.Text = "Product wissen"
         '
+        'GroepPDTableAdapter
+        '
+        Me.GroepPDTableAdapter.ClearBeforeFill = True
+        '
+        'Label3
+        '
+        Label3.AutoSize = True
+        Label3.Location = New System.Drawing.Point(180, 42)
+        Label3.Name = "Label3"
+        Label3.Size = New System.Drawing.Size(71, 13)
+        Label3.TabIndex = 45
+        Label3.Text = "Prijs ex.BTW:"
+        '
+        'TXT_prijsexBTW
+        '
+        Me.TXT_prijsexBTW.Location = New System.Drawing.Point(254, 38)
+        Me.TXT_prijsexBTW.Name = "TXT_prijsexBTW"
+        Me.TXT_prijsexBTW.Size = New System.Drawing.Size(54, 20)
+        Me.TXT_prijsexBTW.TabIndex = 46
+        '
         'F_Product
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -704,11 +732,12 @@ Partial Class F_Product
         Me.GroupBox1.PerformLayout()
         CType(Me.DT_productBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DSProductBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GBOX_Velden.ResumeLayout(False)
         Me.GBOX_Velden.PerformLayout()
+        CType(Me.GroepPDBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        CType(Me.DS_Product1, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
@@ -727,8 +756,6 @@ Partial Class F_Product
     Friend WithEvents DT_productBindingSource As BindingSource
     Friend WithEvents DT_productTableAdapter As DS_ProductTableAdapters.DT_productTableAdapter
     Friend WithEvents TableAdapterManager As DS_ProductTableAdapters.TableAdapterManager
-    Friend WithEvents GroepBindingSource As BindingSource
-    Friend WithEvents GroepTableAdapter As DS_ProductTableAdapters.GroepTableAdapter
     Friend WithEvents DSProductBindingSource As BindingSource
     Friend WithEvents MerkBindingSource As BindingSource
     Friend WithEvents MerkTableAdapter As DS_ProductTableAdapters.MerkTableAdapter
@@ -744,12 +771,10 @@ Partial Class F_Product
     Friend WithEvents GroupBox3 As GroupBox
     Friend WithEvents TXT_Verkoopprijs As TextBox
     Friend WithEvents TXT_Inkoopwaarde As TextBox
-    Friend WithEvents TXT_Laatste_inkoop_Datum As TextBox
+    Friend WithEvents TXT_BTW As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents TXT_Minimal As TextBox
     Friend WithEvents TXT_Voorraad As TextBox
-    Friend WithEvents TXT_LaatsteInkoop_Waarde As TextBox
-    Friend WithEvents Label5 As Label
     Friend WithEvents TAB_Product As TabControl
     Friend WithEvents TabPage1 As TabPage
     Friend WithEvents TabPage2 As TabPage
@@ -773,4 +798,10 @@ Partial Class F_Product
     Friend WithEvents SluitenToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents NieuwProductToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductWissenToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents LBL_BTWperc As Label
+    Friend WithEvents Label5 As Label
+    Friend WithEvents DS_Product1 As DS_Product
+    Friend WithEvents GroepPDBindingSource As BindingSource
+    Friend WithEvents GroepPDTableAdapter As DS_ProductTableAdapters.GroepPDTableAdapter
+    Friend WithEvents TXT_prijsexBTW As TextBox
 End Class

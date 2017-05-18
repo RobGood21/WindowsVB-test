@@ -31,15 +31,8 @@ Partial Class F_AdmInkoopboek
         Me.TXT_CreditTotaal = New System.Windows.Forms.TextBox()
         Me.Knop_Bereken = New System.Windows.Forms.Button()
         Me.DG_Journaal = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
         Me.AdmGBrekeningBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Administratie = New WindowsVB_test.DS_Administratie()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.AdmJournaalBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Knop_Journaal = New System.Windows.Forms.Button()
         Me.Knop_Nieuweregel = New System.Windows.Forms.Button()
@@ -87,6 +80,14 @@ Partial Class F_AdmInkoopboek
         Me.AdmGBrekeningTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmGBrekeningTableAdapter()
         Me.Knop_Close = New System.Windows.Forms.Button()
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewComboBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.ID_Getontvangst = New System.Windows.Forms.DataGridViewTextBoxColumn()
         IB_DatumLabel = New System.Windows.Forms.Label()
         IB_PaidDatumLabel = New System.Windows.Forms.Label()
         Me.GB_JournaalPosten.SuspendLayout()
@@ -179,7 +180,7 @@ Partial Class F_AdmInkoopboek
         Me.DG_Journaal.AllowUserToAddRows = False
         Me.DG_Journaal.AutoGenerateColumns = False
         Me.DG_Journaal.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_Journaal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5})
+        Me.DG_Journaal.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.ID_Getontvangst})
         Me.DG_Journaal.DataSource = Me.AdmJournaalBindingSource
         Me.DG_Journaal.Location = New System.Drawing.Point(6, 19)
         Me.DG_Journaal.MultiSelect = False
@@ -187,48 +188,6 @@ Partial Class F_AdmInkoopboek
         Me.DG_Journaal.Size = New System.Drawing.Size(451, 151)
         Me.DG_Journaal.TabIndex = 0
         Me.DG_Journaal.TabStop = False
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_JournaalPost"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 40
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_AdmBoek"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "ID_AdmBoek"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "ID_Boekstuk"
-        Me.DataGridViewTextBoxColumn7.HeaderText = "ID_Boekstuk"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.Visible = False
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "JP_Datum"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Datum"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.Width = 80
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ID_Grootboek"
-        Me.DataGridViewTextBoxColumn3.DataSource = Me.AdmGBrekeningBindingSource
-        Me.DataGridViewTextBoxColumn3.DisplayMember = "GB_naam"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Grootboek"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
-        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
-        Me.DataGridViewTextBoxColumn3.ToolTipText = "Het grootboek rekeningnummer"
-        Me.DataGridViewTextBoxColumn3.ValueMember = "ID_Grootboek"
-        Me.DataGridViewTextBoxColumn3.Width = 120
         '
         'AdmGBrekeningBindingSource
         '
@@ -239,20 +198,6 @@ Partial Class F_AdmInkoopboek
         '
         Me.DS_Administratie.DataSetName = "DS_Administratie"
         Me.DS_Administratie.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "JP_Debet"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Debet"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.Width = 80
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "JP_Credit"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Credit"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.Width = 80
         '
         'AdmJournaalBindingSource
         '
@@ -681,6 +626,69 @@ Partial Class F_AdmInkoopboek
         Me.Knop_Nieuw.Text = "&Opslaan, nieuwe invoer"
         Me.Knop_Nieuw.UseVisualStyleBackColor = True
         '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_JournaalPost"
+        Me.DataGridViewTextBoxColumn1.HeaderText = "id"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 40
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_AdmBoek"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "ID_AdmBoek"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "ID_Boekstuk"
+        Me.DataGridViewTextBoxColumn7.HeaderText = "ID_Boekstuk"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.Visible = False
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "JP_Datum"
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Datum"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.Width = 80
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "ID_Grootboek"
+        Me.DataGridViewTextBoxColumn3.DataSource = Me.AdmGBrekeningBindingSource
+        Me.DataGridViewTextBoxColumn3.DisplayMember = "GB_naam"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Grootboek"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.Resizable = System.Windows.Forms.DataGridViewTriState.[True]
+        Me.DataGridViewTextBoxColumn3.SortMode = System.Windows.Forms.DataGridViewColumnSortMode.Automatic
+        Me.DataGridViewTextBoxColumn3.ToolTipText = "Het grootboek rekeningnummer"
+        Me.DataGridViewTextBoxColumn3.ValueMember = "ID_Grootboek"
+        Me.DataGridViewTextBoxColumn3.Width = 120
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "JP_Debet"
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Debet"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.Width = 80
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "JP_Credit"
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Credit"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.Width = 80
+        '
+        'ID_Getontvangst
+        '
+        Me.ID_Getontvangst.DataPropertyName = "ID_Getontvangst"
+        Me.ID_Getontvangst.HeaderText = "ID_Getontvangst"
+        Me.ID_Getontvangst.Name = "ID_Getontvangst"
+        Me.ID_Getontvangst.Visible = False
+        '
         'F_AdmInkoopboek
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -766,6 +774,7 @@ Partial Class F_AdmInkoopboek
     Friend WithEvents TXT_SupBetaalWijze As TextBox
     Friend WithEvents TXT_SUPValuta As TextBox
     Friend WithEvents Knop_Nieuw As Button
+    Friend WithEvents TXT_supplierID As TextBox
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn7 As DataGridViewTextBoxColumn
@@ -773,5 +782,5 @@ Partial Class F_AdmInkoopboek
     Friend WithEvents DataGridViewTextBoxColumn3 As DataGridViewComboBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
-    Friend WithEvents TXT_supplierID As TextBox
+    Friend WithEvents ID_Getontvangst As DataGridViewTextBoxColumn
 End Class

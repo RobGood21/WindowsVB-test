@@ -7,6 +7,8 @@
     End Sub
 
     Private Sub F_Groep_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DS_Product.BTW' table. You can move, or remove it, as needed.
+        Me.BTWTableAdapter.Fill(Me.DS_Product.BTW)
         'TODO: This line of code loads data into the 'DS_Product.Groep' table. You can move, or remove it, as needed.
         ' MsgBox(IDGROEP)
 

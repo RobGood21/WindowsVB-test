@@ -26,6 +26,9 @@ Partial Class F_Groep
         Dim GP_NaamLabel As System.Windows.Forms.Label
         Dim GP_BeschrijvingLabel As System.Windows.Forms.Label
         Dim GP_KenmerkLabel As System.Windows.Forms.Label
+        Dim Label1 As System.Windows.Forms.Label
+        Dim LBL_Perc As System.Windows.Forms.Label
+        Dim Label2 As System.Windows.Forms.Label
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.GroepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroepTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepTableAdapter()
@@ -36,22 +39,29 @@ Partial Class F_Groep
         Me.GP_BeschrijvingTextBox = New System.Windows.Forms.TextBox()
         Me.GP_KenmerkTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
+        Me.ComboBox1 = New System.Windows.Forms.ComboBox()
+        Me.BTWBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Knop_Save = New System.Windows.Forms.Button()
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.Knop_nieuw = New System.Windows.Forms.Button()
-        Me.Knop_Save = New System.Windows.Forms.Button()
+        Me.BTWTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.BTWTableAdapter()
         GP_NaamLabel = New System.Windows.Forms.Label()
         GP_BeschrijvingLabel = New System.Windows.Forms.Label()
         GP_KenmerkLabel = New System.Windows.Forms.Label()
+        Label1 = New System.Windows.Forms.Label()
+        LBL_Perc = New System.Windows.Forms.Label()
+        Label2 = New System.Windows.Forms.Label()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GP_NaamLabel
         '
         GP_NaamLabel.AutoSize = True
-        GP_NaamLabel.Location = New System.Drawing.Point(32, 48)
+        GP_NaamLabel.Location = New System.Drawing.Point(9, 48)
         GP_NaamLabel.Name = "GP_NaamLabel"
         GP_NaamLabel.Size = New System.Drawing.Size(38, 13)
         GP_NaamLabel.TabIndex = 4
@@ -60,7 +70,7 @@ Partial Class F_Groep
         'GP_BeschrijvingLabel
         '
         GP_BeschrijvingLabel.AutoSize = True
-        GP_BeschrijvingLabel.Location = New System.Drawing.Point(3, 166)
+        GP_BeschrijvingLabel.Location = New System.Drawing.Point(9, 147)
         GP_BeschrijvingLabel.Name = "GP_BeschrijvingLabel"
         GP_BeschrijvingLabel.Size = New System.Drawing.Size(67, 13)
         GP_BeschrijvingLabel.TabIndex = 6
@@ -69,11 +79,20 @@ Partial Class F_Groep
         'GP_KenmerkLabel
         '
         GP_KenmerkLabel.AutoSize = True
-        GP_KenmerkLabel.Location = New System.Drawing.Point(18, 75)
+        GP_KenmerkLabel.Location = New System.Drawing.Point(9, 91)
         GP_KenmerkLabel.Name = "GP_KenmerkLabel"
         GP_KenmerkLabel.Size = New System.Drawing.Size(52, 13)
         GP_KenmerkLabel.TabIndex = 8
         GP_KenmerkLabel.Text = "Kenmerk:"
+        '
+        'Label1
+        '
+        Label1.AutoSize = True
+        Label1.Location = New System.Drawing.Point(9, 70)
+        Label1.Name = "Label1"
+        Label1.Size = New System.Drawing.Size(62, 13)
+        Label1.TabIndex = 21
+        Label1.Text = "BTWgroep:"
         '
         'DS_Product
         '
@@ -93,10 +112,15 @@ Partial Class F_Groep
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.DT_productTableAdapter = Nothing
+        Me.TableAdapterManager.GetOntvangstTableAdapter = Nothing
+        Me.TableAdapterManager.GetProductAddTableAdapter = Nothing
+        Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Me.GroepTableAdapter
+        Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
-        Me.TableAdapterManager.DT_productTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
         'ID_GroepTextBox
         '
@@ -117,7 +141,7 @@ Partial Class F_Groep
         Me.LB_Groep.FormattingEnabled = True
         Me.LB_Groep.Location = New System.Drawing.Point(15, 18)
         Me.LB_Groep.Name = "LB_Groep"
-        Me.LB_Groep.Size = New System.Drawing.Size(153, 277)
+        Me.LB_Groep.Size = New System.Drawing.Size(153, 251)
         Me.LB_Groep.TabIndex = 3
         Me.LB_Groep.TabStop = False
         '
@@ -132,7 +156,7 @@ Partial Class F_Groep
         'GP_BeschrijvingTextBox
         '
         Me.GP_BeschrijvingTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GroepBindingSource, "GP_Beschrijving", True))
-        Me.GP_BeschrijvingTextBox.Location = New System.Drawing.Point(76, 163)
+        Me.GP_BeschrijvingTextBox.Location = New System.Drawing.Point(76, 144)
         Me.GP_BeschrijvingTextBox.Multiline = True
         Me.GP_BeschrijvingTextBox.Name = "GP_BeschrijvingTextBox"
         Me.GP_BeschrijvingTextBox.Size = New System.Drawing.Size(192, 62)
@@ -141,14 +165,18 @@ Partial Class F_Groep
         'GP_KenmerkTextBox
         '
         Me.GP_KenmerkTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GroepBindingSource, "GP_Kenmerk", True))
-        Me.GP_KenmerkTextBox.Location = New System.Drawing.Point(76, 72)
+        Me.GP_KenmerkTextBox.Location = New System.Drawing.Point(76, 88)
         Me.GP_KenmerkTextBox.Multiline = True
         Me.GP_KenmerkTextBox.Name = "GP_KenmerkTextBox"
-        Me.GP_KenmerkTextBox.Size = New System.Drawing.Size(192, 85)
+        Me.GP_KenmerkTextBox.Size = New System.Drawing.Size(192, 55)
         Me.GP_KenmerkTextBox.TabIndex = 1
         '
         'GroupBox1
         '
+        Me.GroupBox1.Controls.Add(Label2)
+        Me.GroupBox1.Controls.Add(LBL_Perc)
+        Me.GroupBox1.Controls.Add(Label1)
+        Me.GroupBox1.Controls.Add(Me.ComboBox1)
         Me.GroupBox1.Controls.Add(Me.Knop_Save)
         Me.GroupBox1.Controls.Add(Me.ID_GroepTextBox)
         Me.GroupBox1.Controls.Add(GP_KenmerkLabel)
@@ -159,39 +187,26 @@ Partial Class F_Groep
         Me.GroupBox1.Controls.Add(Me.GP_BeschrijvingTextBox)
         Me.GroupBox1.Location = New System.Drawing.Point(190, 18)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(283, 235)
+        Me.GroupBox1.Size = New System.Drawing.Size(283, 220)
         Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
-        'Knop_Opslaan
+        'ComboBox1
         '
-        Me.Knop_Opslaan.Location = New System.Drawing.Point(353, 272)
-        Me.Knop_Opslaan.Name = "Knop_Opslaan"
-        Me.Knop_Opslaan.Size = New System.Drawing.Size(120, 23)
-        Me.Knop_Opslaan.TabIndex = 2
-        Me.Knop_Opslaan.Text = "&Opslaan en sluiten"
-        Me.Knop_Opslaan.UseCompatibleTextRendering = True
-        Me.Knop_Opslaan.UseVisualStyleBackColor = True
+        Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.GroepBindingSource, "ID_BTW", True))
+        Me.ComboBox1.DataSource = Me.BTWBindingSource
+        Me.ComboBox1.DisplayMember = "BTW_Kort"
+        Me.ComboBox1.FormattingEnabled = True
+        Me.ComboBox1.Location = New System.Drawing.Point(76, 66)
+        Me.ComboBox1.Name = "ComboBox1"
+        Me.ComboBox1.Size = New System.Drawing.Size(62, 21)
+        Me.ComboBox1.TabIndex = 19
+        Me.ComboBox1.ValueMember = "ID_BTW"
         '
-        'Knop_Annuleren
+        'BTWBindingSource
         '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(272, 271)
-        Me.Knop_Annuleren.Name = "Knop_Annuleren"
-        Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Annuleren.TabIndex = 12
-        Me.Knop_Annuleren.TabStop = False
-        Me.Knop_Annuleren.Text = "&Annuleren"
-        Me.Knop_Annuleren.UseVisualStyleBackColor = True
-        '
-        'Knop_nieuw
-        '
-        Me.Knop_nieuw.Location = New System.Drawing.Point(190, 271)
-        Me.Knop_nieuw.Name = "Knop_nieuw"
-        Me.Knop_nieuw.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_nieuw.TabIndex = 13
-        Me.Knop_nieuw.TabStop = False
-        Me.Knop_nieuw.Text = "&Nieuw"
-        Me.Knop_nieuw.UseVisualStyleBackColor = True
+        Me.BTWBindingSource.DataMember = "BTW"
+        Me.BTWBindingSource.DataSource = Me.DS_Product
         '
         'Knop_Save
         '
@@ -204,11 +219,65 @@ Partial Class F_Groep
         Me.Knop_Save.TabIndex = 18
         Me.Knop_Save.UseVisualStyleBackColor = True
         '
+        'Knop_Opslaan
+        '
+        Me.Knop_Opslaan.Location = New System.Drawing.Point(353, 246)
+        Me.Knop_Opslaan.Name = "Knop_Opslaan"
+        Me.Knop_Opslaan.Size = New System.Drawing.Size(120, 23)
+        Me.Knop_Opslaan.TabIndex = 2
+        Me.Knop_Opslaan.Text = "&Opslaan en sluiten"
+        Me.Knop_Opslaan.UseCompatibleTextRendering = True
+        Me.Knop_Opslaan.UseVisualStyleBackColor = True
+        '
+        'Knop_Annuleren
+        '
+        Me.Knop_Annuleren.Location = New System.Drawing.Point(272, 245)
+        Me.Knop_Annuleren.Name = "Knop_Annuleren"
+        Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Annuleren.TabIndex = 12
+        Me.Knop_Annuleren.TabStop = False
+        Me.Knop_Annuleren.Text = "&Annuleren"
+        Me.Knop_Annuleren.UseVisualStyleBackColor = True
+        '
+        'Knop_nieuw
+        '
+        Me.Knop_nieuw.Location = New System.Drawing.Point(190, 245)
+        Me.Knop_nieuw.Name = "Knop_nieuw"
+        Me.Knop_nieuw.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_nieuw.TabIndex = 13
+        Me.Knop_nieuw.TabStop = False
+        Me.Knop_nieuw.Text = "&Nieuw"
+        Me.Knop_nieuw.UseVisualStyleBackColor = True
+        '
+        'BTWTableAdapter
+        '
+        Me.BTWTableAdapter.ClearBeforeFill = True
+        '
+        'LBL_Perc
+        '
+        LBL_Perc.AutoSize = True
+        LBL_Perc.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BTWBindingSource, "BTW_Perc", True))
+        LBL_Perc.Location = New System.Drawing.Point(139, 70)
+        LBL_Perc.Name = "LBL_Perc"
+        LBL_Perc.Size = New System.Drawing.Size(21, 13)
+        LBL_Perc.TabIndex = 22
+        LBL_Perc.Text = "[%]"
+        LBL_Perc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(152, 70)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(15, 13)
+        Label2.TabIndex = 23
+        Label2.Text = "%"
+        '
         'F_Groep
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(494, 321)
+        Me.ClientSize = New System.Drawing.Size(494, 284)
         Me.Controls.Add(Me.Knop_nieuw)
         Me.Controls.Add(Me.Knop_Annuleren)
         Me.Controls.Add(Me.Knop_Opslaan)
@@ -220,6 +289,7 @@ Partial Class F_Groep
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub
@@ -238,4 +308,7 @@ Partial Class F_Groep
     Friend WithEvents Knop_Annuleren As Button
     Friend WithEvents Knop_nieuw As Button
     Friend WithEvents Knop_Save As Button
+    Friend WithEvents ComboBox1 As ComboBox
+    Friend WithEvents BTWBindingSource As BindingSource
+    Friend WithEvents BTWTableAdapter As DS_ProductTableAdapters.BTWTableAdapter
 End Class
