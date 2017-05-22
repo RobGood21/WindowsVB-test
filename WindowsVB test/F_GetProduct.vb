@@ -30,6 +30,9 @@
             '.SetToolTip(Me.Knop_Annuleren, "alle invoer ongedaan maken")
             '.SetToolTip(Me.Knop_Opslaan, "Alle invoer en aanpassingen opslaan en formulier sluiten")
             '.SetToolTip(Me.Knop_Save, "Alle invoer (tussentijds) opslaan.")
+            'voor push
+            .SetToolTip(Me.Knop_Push_Bereken, "Bereken de totalen van de productlijst")
+
 
             'Textboxes en comboos
             .SetToolTip(Me.TXT_NaamGet, "Het kenmerk van deze productlijst")
@@ -46,7 +49,6 @@
         Me.TB_Doel.SelectTab(0)
         Me.DA_Datum.Value = Now() 'aanmaakdatum instellen
         Me.txt_Status.Text = 1 'statusveld naar 1 (in behandeling)
-        Me.Knop_BoekOntvangst.Enabled = False
         Me.Optie_Open.Checked = True
         Me.CH_AlleBestel.Checked = True
         Me.CH_AlleOntvangst.Checked = True
@@ -55,7 +57,7 @@
     End Sub
     Private Sub INITkosten()
         Me.TXT_Boekwaarde.Text = FormatNumber(0, -1)
-        Me.TXT_Lijstwaarde.Text = FormatNumber(0, -1)
+        'Me.TXT_Lijstwaarde.Text = FormatNumber(0, -1)
         Me.BeVat = False
     End Sub
     Private Sub F_GetProduct_Load(sender As Object, e As EventArgs) Handles MyBase.Load
@@ -94,8 +96,12 @@
 
             Me.LaadShop(1)
             LaadGetOntvangst(1)
-            LaadProductList()
-            INITvelden() ' weet niet zeker... toegevoegd 7mei2017
+
+            INITvelden()
+            OpmaakJournaal() 'opmaak van datagrid journaal
+
+            ' MsgBox("laadform")
+            'LaadProductList()
 
 
         Catch ex As Exception
@@ -139,8 +145,14 @@
         End Select
     End Sub
     Public Sub LaadProductList()
+        'MsgBox("laad productlist")
         Try
             Me.GetProductListTableAdapter.Fill(Me.DS_Product.GetProductList, Me.CB_Ontvangen.SelectedValue)
+            If Me.DG_Lijst.Rows.Count > 0 Then
+                BerekenProject()
+            Else
+                Me.TXT_Lijstwaarde.Text = FormatNumber(0, -1)
+            End If
         Catch ex As System.Exception
             System.Windows.Forms.MessageBox.Show(ex.Message)
         End Try
@@ -151,10 +163,6 @@
         Me.TXT_NaamGet.Select()
     End Sub
     Private Sub CB_Supplier_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Supplier.SelectionChangeCommitted
-
-    End Sub
-    Private Sub CB_Ontvangen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectedIndexChanged
-        LaadProductList()
 
     End Sub
     Private Sub TXT_getontvangstid_TextChanged(sender As Object, e As EventArgs) Handles TXT_getontvangstid.TextChanged
@@ -226,14 +234,6 @@
         Me.GetOntvangstBindingSource.EndEdit()
         'Me.GetProductListTableAdapter.update(DS_Product.GetProductList)
         Me.GetOntvangstTableAdapter.Update(DS_Product.GetOntvangst)
-
-    End Sub
-    Private Sub FillToolStripButton1_Click(sender As Object, e As EventArgs)
-        Try
-            '  Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, CType(IDProductToolStripTextBox.Text, Integer))
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
 
     End Sub
     Private Sub DG_List_Click(sender As Object, e As EventArgs)  ' ByVal sender As Object, ByVal e As System.EventArgs)_Handles selectedRowsButton.Click
@@ -343,10 +343,13 @@
         Next
         'gevonden waardes op formulier tonen
         Select Case Me.TB_Doel.SelectedIndex
+            Case 0 'ontvangst
+                Me.TXT_Lijstwaarde.Text = FormatNumber(Inkoop, -1)
+
             Case 3 'bij verbruik
-                Me.TXT_Push_Verkoop.Text = verkoop
-                Me.TXT_Push_Inkoop.Text = Inkoop
-                Me.TXT_Push_Omzet.Text = verkoop
+                Me.TXT_Push_Verkoop.Text = FormatNumber(verkoop, -1)
+                Me.TXT_Push_Inkoop.Text = FormatNumber(Inkoop, -1)
+                Me.TXT_Push_Omzet.Text = FormatNumber(verkoop, -1)
                 'standaard kas onvangst instellen
                 Me.TXT_Push_Kas.Text = Me.TXT_Push_Verkoop.Text
                 Me.TXT_Push_Bank.Text = FormatNumber(0, -1)
@@ -387,13 +390,13 @@ Verlaat:
         Dim V As Integer = 0 'Zorgen dat de text velden WAARDES gaan bevatten en geen teksten
 
         Try
-            If IsNumeric(Me.TXT_LijstAantal.Text) = True Then L = Me.TXT_LijstAantal.Text
-            If IsNumeric(Me.TXT_Voorraad.Text) = True Then V = Me.TXT_Voorraad.Text
+            If IsNumeric(Me.TXT_LijstAantal.Text) = True Then L = CDec(Me.TXT_LijstAantal.Text)
+            If IsNumeric(Me.TXT_Voorraad.Text) = True Then V = CDec(Me.TXT_Voorraad.Text)
 
             Me.TXT_ontvangen.Text = L
             Me.TXT_Voorraad.Text = L + V
             Me.TXT_Prijs.Text = Prijs
-            Me.TXT_LijstAantal.Text = 0
+            'Me.TXT_LijstAantal.Text = 0  'nee de lijst hoeft niet gewist te worden. 
 
         Catch ex As Exception
             MsgBox(ErrorToString,, "Waardesmove")
@@ -403,9 +406,9 @@ Verlaat:
         'gebruikr voor ussendoor opalssn van de datatables
         Try
             Me.Validate()
-            Me.GPA_AantalBindingSource.EndEdit()
+            'Me.GPA_AantalBindingSource.EndEdit()
             Me.DT_productBindingSource.EndEdit()
-            Me.GPA_AantalTableAdapter.Update(DS_Product.GPA_Aantal)
+            'Me.GPA_AantalTableAdapter.Update(DS_Product.GPA_Aantal) 'Nee aanpassen lijst niet wenselijk
             Me.DT_productTableAdapter.Update(DS_Product.DT_product)
         Catch ex As Exception
             MsgBox(ErrorToString,, "OPslaan tables")
@@ -445,7 +448,13 @@ Verlaat:
 Eindeloop:
             'MsgBox(ID)
             IDGETPRODUCTADD = ID
-            OPGETPRODUCTADD = 2
+            If ValidatieProductPlus() = True Then
+                OPGETPRODUCTADD = 2
+            Else
+                OPGETPRODUCTADD = 3 'aanpassen van het getproductadd record niet meer mogelijk
+            End If
+
+
             IDGETONTVANGST = Me.TXT_getontvangstid.Text
             F_GetProductAdd.ShowDialog()
             'Productlijst herladen
@@ -458,22 +467,24 @@ Eindeloop:
         ProductTonen()
     End Sub
     Private Sub Knop_ProductPLus_Click(sender As Object, e As EventArgs) Handles Knop_ProductPLus.Click
-        Try
-            IDGETONTVANGST = Me.CB_Ontvangen.SelectedValue
-            OPGETPRODUCTADD = 1
-            IDPRODUCT = -1
-            ' MsgBox(IDGETONTVANGST)
-            F_GetProductAdd.ShowDialog()
-            LaadProductList()
-            BerekenProject()
+        If ValidatieProductPlus() = True Then
+            Try
+                IDGETONTVANGST = Me.CB_Ontvangen.SelectedValue
+                OPGETPRODUCTADD = 1
+                IDPRODUCT = -1
+                F_GetProductAdd.ShowDialog()
+                LaadProductList()
+                BerekenProject()
 
-        Catch ex As Exception
-            MsgBox(ErrorToString,, "Knop productplus")
+            Catch ex As Exception
+                MsgBox(ErrorToString,, "Knop productplus")
 
-        End Try
+            End Try
+        End If
 
     End Sub
     Private Sub Knop_Toon_Click(sender As Object, e As EventArgs) Handles Knop_Toon.Click
+
         ProductTonen()
     End Sub
     Private Sub Knop_Bestelling_Click(sender As Object, e As EventArgs) Handles Knop_Bestelling.Click
@@ -551,16 +562,30 @@ Eindeloop:
     End Function
     Private Function ValidatieOntvangst() As Boolean
         Dim jn As Boolean = False
+        Dim msg As Integer
         'check commen validatie
         If ValidatieCommonIO() = True Then
-            jn = True
+            If IsNumeric(Me.TXT_Boekwaarde.Text) = True Then
+                If Me.TXT_Boekwaarde.Text <> 0 Then
+                    jn = True
+                Else
+                    msg = 1
+                End If
+            Else
+                msg = 1
+            End If
         End If
 
         'onderstaand gaat nu dubbel wordt gedaan in validatiecommonio
         'is er een leverancier bepaald? dit wordt nu anders geregeld, misschien anders meer centraal regelen? Nog te doen?
         'zit nu in enabllen van knoppen en waardes in verlden kijk in boekontvangst en boekkosten
         'zijn er kosten geboekt?  (zelfde verhaal als boven.)
-
+        If jn = False Then
+            Select Case msg
+                Case 1
+                    MsgBox("Er moeten kosten worden geboekt om producten als ontvangst te kunnen boeken", vbExclamation, "Boek eerst de kosten...")
+            End Select
+        End If
 
         Return jn
     End Function
@@ -664,6 +689,20 @@ Eindeloop:
         End Select
         Return jn
     End Function
+    Private Function ValidatieProductPlus() As Boolean
+        Dim jn As Integer = False
+
+        Select Case Me.txt_Status.Text
+            Case 1 'producten toevoegn mogelijk
+                jn = True
+            Case 5
+                jn = True
+            Case Else
+                jn = False
+        End Select
+        If jn = False Then MsgBox("Toevoegen of aanpassen van een product in deze lijst is niet meer mogelijk", vbExclamation, "Lijst is al afgesloten..")
+        Return jn
+    End Function
     Private Sub BoekOntvangst()
         'maakt van de lijst een ontvangst (dus producten ingekocht)
         If ValidatieOntvangst() = True Then
@@ -707,7 +746,7 @@ Eindeloop:
 
             End If 'voor "wil je het boeken
         Else
-            MsgBox("Validatie failed")
+            'MsgBox("Validatie failed")
         End If 'voor validatieOntvangst
     End Sub
     Private Sub BoekBesteld()
@@ -721,7 +760,7 @@ Eindeloop:
             Me.GPA_AantalTableAdapter.Fill(DS_Product.GPA_Aantal, GPAID)
             'verplaats lijstwaarde naar besteld
             Me.TXT_besteld.Text = Me.TXT_LijstAantal.Text
-            Me.TXT_LijstAantal.Text = 0
+            ' Me.TXT_LijstAantal.Text = 0 ' niet doen lijst leegmaken is niet nodig
             Me.Validate()
             Me.GPA_AantalBindingSource.EndEdit()
             Me.GPA_AantalTableAdapter.Update(DS_Product.GPA_Aantal)
@@ -732,6 +771,7 @@ Eindeloop:
         Opslaan()
         Me.CH_AlleBestel.Checked = False
         Me.TB_Products.SelectTab(2) 'toont tabblad bestelling
+        Me.Optie_besteld.Checked = True
     End Sub
     Private Sub BoekKosten()
         If ValidatieINKOOP() = True Then
@@ -750,7 +790,7 @@ Eindeloop:
                     IDSUPPLIER = Me.CB_Supplier.SelectedValue
                     F_AdmInkoopboek.ShowDialog()
                     'verkregen gegevens inschrijven
-                    BerekenLijstWaarde()
+                    'BerekenLijstWaarde()
                     If Len(Me.TXT_Boekwaarde.Text) > 0 And BeVat = True Then 'bevat is of er een item in de lijst staat met lijstaantal <> 0
                         Me.Knop_BoekOntvangst.Enabled = True
                     End If
@@ -810,7 +850,7 @@ Eindeloop:
             Else
                 IDSUP = Me.CB_Supplier.SelectedValue
             End If
-            Me.GPA_BesteldTableAdapter.FillByIDGO(Me.DS_Product.GPA_Besteld, IDSUP, Me.TXT_getontvangstid.Text)
+            If IsNumeric(Me.TXT_getontvangstid.Text) = True Then Me.GPA_BesteldTableAdapter.FillByIDGO(Me.DS_Product.GPA_Besteld, IDSUP, Me.TXT_getontvangstid.Text)
         End If
     End Sub
     Private Sub LaadOntvang()
@@ -842,6 +882,13 @@ Eindeloop:
         End Select
         Me.txt_Status.Text = STATUS
         Opslaan()
+
+        'formulier achterlaten dit ergens in een select case doen voor alle opties
+        LaadGetOntvangst(STATUS)
+        Me.Optie_Verbruik.Select()
+        Me.TB_Doel.SelectTab(3)
+        LaadProductList()
+
     End Sub
     Private Sub GB_Get_Leave(sender As Object, e As EventArgs) Handles GB_Get.Leave
         'als groupbox wordt verlaten, automatisch veranderingen opslaan
@@ -853,12 +900,16 @@ Eindeloop:
         Me.TB_Doel.SelectTab(1)
         Me.TB_Products.SelectTab(2)
         STATUS = 2
+        LaadProductList()
+
     End Sub
     Private Sub Optie_Open_Click(sender As Object, e As EventArgs) Handles Optie_Open.Click
         'MsgBox("open")
         LaadGetOntvangst(1)
         STATUS = 1
         Me.TB_Doel.SelectTab(0)
+        Me.TB_Products.SelectTab(0)
+        LaadProductList()
     End Sub
     Private Sub Optie_Ontvangst_Click(sender As Object, e As EventArgs) Handles Optie_Ontvangst.Click
         'MsgBox("Ontvangst")
@@ -866,6 +917,9 @@ Eindeloop:
         Me.TB_Doel.SelectTab(0)
         Me.TB_Products.SelectTab(1)
         STATUS = 3
+        'MsgBox("optieontvangst")
+        LaadProductList()
+
     End Sub
     Private Sub Optie_Verbruik_Click(sender As Object, e As EventArgs) Handles Optie_Verbruik.Click
         'MsgBox("Ontvangst")
@@ -874,6 +928,7 @@ Eindeloop:
         Me.TB_Products.SelectTab(0)
         STATUS = 4
         Me.CB_Push_soort.SelectedIndex = 0
+        LaadProductList()
 
     End Sub
     Private Sub Optie_Project_Click(sender As Object, e As EventArgs) Handles Optie_Project.Click
@@ -881,13 +936,11 @@ Eindeloop:
         LaadGetOntvangst(5)
         Me.TB_Doel.SelectTab(2)
         Me.TB_Products.SelectTab(0)
+        LaadProductList()
     End Sub
     Private Sub CH_AlleBestel_CheckedChanged(sender As Object, e As EventArgs) Handles CH_AlleBestel.CheckedChanged
         LaadBesteld()
-    End Sub
-    Private Sub Optie_Verbruik_CheckedChanged(sender As Object, e As EventArgs) Handles Optie_Verbruik.CheckedChanged
-        LaadGetOntvangst(5)
-        STATUS = 5
+        LaadProductList()
     End Sub
     Private Sub CH_AlleOntvangst_CheckedChanged(sender As Object, e As EventArgs) Handles CH_AlleOntvangst.CheckedChanged
         LaadOntvang()
@@ -968,51 +1021,151 @@ Eindeloop:
             jn = MsgBox("De getoonde productlijst verwerken in de voorraad en administratie bijwerken?", vbQuestion + vbYesNo, "Bevestig omzet of verbruik boeking....")
             'VOLGORDE belangrijk
             'getontvangst als verbruik instellen, status wordt hier ingesteld 
-            If jn = 32 Then 'moet 6 worden
-                MaakVerbruik()
+            If jn = 6 Then 'moet 6 worden
+
                 'journaalposten aanmaken
                 Journaalverbruik()
-                ' de hele boel opnieuw laden
+                VerbruikVoorraad()
+                MaakVerbruik()
             Else
-                MsgBox("efkens nog nie boeken...")
+                'MsgBox("efkens nog nie boeken...")
             End If
-
         End If
-        'LaadVerbruik(1) 'mode=1 initieel opslaan door knop
+    End Sub
+    Private Sub VerbruikVoorraad()
+        'werkt voorraden bij
+        'in alle voorkomenende gevallen binnen verbuik wordt de lijst aantal afgetrokken van de voorraad en de lijstwaarde op nul gesteld
+        'id's halen we uit de datagrid, alleen productid = van belang
+        Dim i As Integer
+        Dim idP As Integer 'id van product
+        Dim idG As Integer 'id van getproductadd
+        For i = 0 To Me.DG_Lijst.Rows.Count - 1
+            idP = Me.DG_Lijst.Rows(i).Cells(2).Value
+            idG = Me.DG_Lijst.Rows(i).Cells(0).Value
+            'datatables vullen
+            Me.GPA_AantalTableAdapter.Fill(DS_Product.GPA_Aantal, idG)
+            Me.DT_productTableAdapter.Fill(DS_Product.DT_product, idP)
+            'waardes aanpassen
+            Me.TXT_Voorraad.Text = Int(Me.TXT_Voorraad.Text) - Int(Me.TXT_LijstAantal.Text)
+            'Me.TXT_LijstAantal.Text = 0 NEE niet de lijst gewoon intact laten
+            'datatables updatten
+            Me.Validate()
+            'Me.GPA_AantalBindingSource.EndEdit() 'niet 
+            Me.DT_productBindingSource.EndEdit()
+            'Me.GPA_AantalTableAdapter.Update(DS_Product.GPA_Aantal) 'niet
+            Me.DT_productTableAdapter.Update(DS_Product.DT_product)
+        Next
     End Sub
     Private Sub Journaalverbruik()
         'maakt journaalposten voor verbruik
-        Select Case STATUS
-            Case 4 'omzet door verkoop
-                'journaal aan bank
-                'journaal aan kas
-                'journaal aan voorraad (netto inkoopwaarde)
-                'journaal aan btw te verrekenen
-                'journaal aan opbrengst 
-            Case 40 'voorraad correctie naar inventaris
-                'Journaal aan voorraad
-                'journaal aan inventaris
-            Case 41 'Voorraad correctie aan verlies 
-                'journaal aan voorraad
-                'journaal aan verlies ev.
+        'vaste velden : id_Admboek =5 (verbruikboek?) jp_datum=da_datum.value  id_boekstuk=TXT_getontvangstid.text  ID_getontvangst= TXT_getontvangstid.text
+        Dim db As Decimal
+        Dim cr As Decimal
+        Dim ib As Integer = 5
+        Dim dt As Date = Me.DA_Datum.Value
+        Dim go As Integer = Me.TXT_getontvangstid.Text
+
+        Dim Bank As Decimal
+        Dim Kas As Decimal
+        Dim inkoop As Decimal
+        Dim btw As Decimal
+
+        If IsNumeric(Me.TXT_Push_Bank.Text) = True Then
+            Bank = Me.TXT_Push_Bank.Text
+        Else
+            Bank = 0
+        End If
+
+        If IsNumeric(Me.TXT_Push_Kas.Text) = True Then
+            Kas = Me.TXT_Push_Kas.Text
+        Else
+            Kas = 0
+        End If
+
+        If IsNumeric(Me.TXT_Push_Inkoop.Text) = True Then
+            inkoop = Me.TXT_Push_Inkoop.Text
+        Else
+            inkoop = 0
+        End If
+
+        If IsNumeric(Me.TXT_Push_BTW.Text) = True Then
+            btw = Me.TXT_Push_BTW.Text
+        Else
+            btw = 0
+        End If
+
+        Select Case Me.CB_Push_soort.SelectedIndex
+            Case 0 'omzet door verkoop
+                'journaal aan bank (1120)
+                db = Bank
+                cr = 0
+                If db <> 0 Then Me.AdmJournaalTableAdapter.Insert(ib, 1120, dt, go, db, cr, go)
+                'journaal aan kas (1020)
+                db = Kas
+                cr = 0
+                If db <> 0 Then Me.AdmJournaalTableAdapter.Insert(ib, 1020, dt, go, db, cr, go)
+                'journaal aan voorraad (netto inkoopwaarde) (3010)
+                db = 0
+                cr = inkoop
+                Me.AdmJournaalTableAdapter.Insert(ib, 3010, dt, go, db, cr, go)
+                'journaal aan btw te verrekenen (1510)
+                db = 0
+                cr = btw
+                Me.AdmJournaalTableAdapter.Insert(ib, 1510, dt, go, db, cr, go)
+                'journaal aan opbrengst (8020)
+                db = 0
+                cr = Bank + Kas - inkoop - btw
+                Me.AdmJournaalTableAdapter.Insert(ib, 8020, dt, go, db, cr, go)
+
+            Case 1 'voorraad correctie naar inventaris 
+                'Journaal aan voorraad (3010)
+                db = 0
+                cr = inkoop
+                Me.AdmJournaalTableAdapter.Insert(ib, 3010, dt, go, db, cr, go)
+                'journaal aan inventaris (0070)
+                db = inkoop
+                cr = 0
+                Me.AdmJournaalTableAdapter.Insert(ib, 70, dt, go, db, cr, go)
+            Case 2 'Voorraad correctie aan verlies 
+                'journaal aan voorraad (3010)
+                db = 0
+                cr = inkoop
+                Me.AdmJournaalTableAdapter.Insert(ib, 3010, dt, go, db, cr, go)
+                'journaal aan verlies ev.(7020)
+                db = inkoop
+                cr = 0
+                Me.AdmJournaalTableAdapter.Insert(ib, 7020, dt, go, db, cr, go)
         End Select
-
-
-
-
     End Sub
     Private Sub CB_Push_soort_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Push_soort.SelectionChangeCommitted
-        'instellen getontvangst voor opzoeken
-        'If Me.txt_Status.Text <> 1 Then LaadVerbruik(2) 'mode=2 nu om bestaande getontvangst van verbruik in zoekvak te krijgen
+        'instellen getontvangst voor opzoeken de diverse verbruiken
+        Dim s As Integer = Me.txt_Status.Text
+        Dim st As Integer
+        If s = 4 Or s = 40 Or s = 41 Or s = 42 Then s = 4 'enz
+
+        If s = 4 Then 'is dus al een verbruik ingesteld
+            Select Case Me.CB_Push_soort.SelectedIndex
+                Case 0 'verkoop
+                    st = 4
+                Case 1 'naar inventaris
+                    st = 40
+                Case 2 'naar verlies
+                    st = 41
+                Case 3
+                    st = 42
+            End Select
+            'sTATUS = st
+            LaadGetOntvangst(st)
+        End If
         ' Me.TXT_Push_Omzet.Select()
-        'Me.Knop_Push_Maak.Enabled = False
+        ' Me.Knop_Push_Maak.Enabled = False
     End Sub
     Private Sub txt_Status_TextChanged(sender As Object, e As EventArgs) Handles txt_Status.TextChanged
         Select Case Me.txt_Status.Text
             Case 1
-                Me.Knop_Push_Maak.Enabled = True
+                ' Me.Knop_Push_Maak.Enabled = True
             Case Else
-                Me.Knop_Push_Maak.Enabled = False
+                '  Me.Knop_Push_Maak.Enabled = False
         End Select
     End Sub
     Private Sub Knop_Push_Bereken_Click(sender As Object, e As EventArgs) Handles Knop_Push_Bereken.Click
@@ -1021,9 +1174,6 @@ Eindeloop:
     Private Sub TXT_Push_Omzet_Validated(sender As Object, e As EventArgs) Handles TXT_Push_Omzet.Validated
         Me.TXT_Push_Omzet.Text = FormatNumber(Me.TXT_Push_Omzet.Text, -1)
         BerekenBTWVerbruik()
-    End Sub
-    Private Sub Tpage_Product_new_Enter(sender As Object, e As EventArgs) Handles Tpage_Product_new.Enter
-        Me.AdmJournaalTableAdapter.FilLIDGO(DS_Administratie.AdmJournaal, Me.CB_Ontvangen.SelectedValue)
     End Sub
     Private Sub TB_Doel_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TB_Doel.SelectedIndexChanged
         Select Case Me.TB_Doel.SelectedIndex
@@ -1038,16 +1188,39 @@ Eindeloop:
 
         End Select
     End Sub
-
     Private Sub TXT_Push_Bank_Validated(sender As Object, e As EventArgs) Handles TXT_Push_Bank.Validated
         Me.TXT_Push_Omzet.Text = FormatNumber(CDec(Me.TXT_Push_Kas.Text) + CDec(Me.TXT_Push_Bank.Text), -1)
         Me.TXT_Push_Bank.Text = FormatNumber(Me.TXT_Push_Bank.Text, -1)
         BerekenBTWVerbruik()
     End Sub
-
     Private Sub TXT_Push_Kas_Validated(sender As Object, e As EventArgs) Handles TXT_Push_Kas.Validated
         Me.TXT_Push_Omzet.Text = FormatNumber(CDec(Me.TXT_Push_Kas.Text) + CDec(Me.TXT_Push_Bank.Text), -1)
         Me.TXT_Push_Kas.Text = FormatNumber(Me.TXT_Push_Kas.Text, -1)
         BerekenBTWVerbruik()
+    End Sub
+    Private Sub TB_Products_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TB_Products.SelectedIndexChanged
+        Select Case Me.TB_Products.SelectedIndex
+            Case 0
+            Case 1
+            Case 2
+            Case 3
+
+                Me.JN_LijstDatatable.Fill(DS_Administratie.JN_Lijst, Me.CB_Ontvangen.SelectedValue)
+        End Select
+    End Sub
+    Public Sub OpmaakJournaal()
+        'verzorgt de opmaak van de datagrid journaal
+        'Me.DG_Journaal.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
+        Me.DG_Journaal.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter
+    End Sub
+    Private Sub CB_Ontvangen_SelectedValueChanged(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectedValueChanged
+        ' MsgBox("nu")
+        ' LaadProductList()
+    End Sub
+    Private Sub CB_Ontvangen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectedIndexChanged
+        '
+    End Sub
+    Private Sub CB_Ontvangen_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectionChangeCommitted
+        LaadProductList()
     End Sub
 End Class

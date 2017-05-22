@@ -92,6 +92,9 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>DS_Administratie.xsd</DependentUpon>
     </Compile>
+    <Compile Include="DS_Administratie.vb">
+      <DependentUpon>DS_Administratie.xsd</DependentUpon>
+    </Compile>
     <Compile Include="DS_Product.Designer.vb">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -421,6 +424,12 @@
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\Button-Add-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calculator-icon.png" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="Resources\Calculator-icon %281%29.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

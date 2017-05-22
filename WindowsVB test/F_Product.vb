@@ -240,7 +240,7 @@
         OmSchrijVing()
     End Sub
     Private Sub TXT_Verkoopprijs_Validated(sender As Object, e As EventArgs) Handles TXT_Verkoopprijs.Validated
-        'BerekenPrijzen()
+        BerekenPrijzen()
     End Sub
     Private Sub TXT_Inkoopwaarde_Validated(sender As Object, e As EventArgs) Handles TXT_Inkoopwaarde.Validated
         If IsNumeric(TXT_Inkoopwaarde.Text) = True Then TXT_Inkoopwaarde.Text = FormatNumber(Me.TXT_Inkoopwaarde.Text, -1)
@@ -271,7 +271,7 @@
     End Sub
 
     Private Sub TXT_Verkoopprijs_TextChanged(sender As Object, e As EventArgs) Handles TXT_Verkoopprijs.TextChanged
-        BerekenPrijzen()
+        'BerekenPrijzen()
 
     End Sub
 End Class

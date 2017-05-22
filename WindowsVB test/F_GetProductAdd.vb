@@ -12,11 +12,13 @@
             Select Case OPGETPRODUCTADD
                 Case 1 'openen met nieuw aan de lijst toe te voegen product
                     Me.GetProductAddBindingSource.AddNew()
-                    INITvelden()
                     LoadProduct() 'dit is JUIST, laden met lege waardes
-                Case 2 'Openen met een bestaande getProductadd
+                    Me.Knop_Zoek.Select()
+                Case 2, 3 'Openen met een bestaande getProductadd
                     'UID = True
                     Me.GetProductAddTableAdapter.Fill(Me.DS_Product.GetProductAdd, IDGETPRODUCTADD)
+                    Me.TXT_aantal.Select()
+
             End Select
         Catch ex As Exception
             MsgBox(ErrorToString,, "loadform (getproductadd)")
@@ -47,13 +49,6 @@
             'Overige
             '.SetToolTip(Me.CB_Ontvangen, "Kies een productlijst in behandeling")
         End With
-    End Sub
-    Private Sub INITvelden()
-
-        'Me.TXT_PDnaam.Text = ""
-        'Me.TXT_Product_Inkoop.Text = ""
-        'Me.TXT_PDwaarde.Text = ""
-        'Me.TXT_PDbehuizing.Text = ""
     End Sub
     Private Sub LoadProduct()
         'MsgBox("loadproduct?")
@@ -131,18 +126,26 @@
         'controleren of er kan worden opgeslagen
         Dim JN As Boolean
         JN = False
-        If IsNumeric(Me.TXT_aantal.Text) = True Then
-            If Me.TXT_aantal.Text <> 0 Then
-                If IsNumeric(TXT_ProductID.Text) = True Then
-                    If (Me.TXT_ProductID.Text) > 0 Then JN = True
+        If OPGETPRODUCTADD = 3 Then 'opslaan nu niet mogelijk
+            JN = False
+        Else
+            If IsNumeric(Me.TXT_aantal.Text) = True Then
+                If Me.TXT_aantal.Text <> 0 Then
+                    If IsNumeric(TXT_ProductID.Text) = True Then
+                        If (Me.TXT_ProductID.Text) > 0 Then JN = True
+                    End If
                 End If
             End If
+
+
         End If
+
+
         Return JN
     End Function
     Private Sub Knop_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Annuleren.Click
-        Me.GetProductAddBindingSource.EndEdit()
-        Me.Validate()
+        'Me.GetProductAddBindingSource.EndEdit()
+        'Me.Validate()
         Me.Close()
     End Sub
     Private Sub F_GetProductAdd_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
@@ -161,7 +164,7 @@
         End If
 
     End Sub
-    Private Sub Knop_NieuwProduct_Click(sender As Object, e As EventArgs) Handles Knop_NieuwProduct.Click
+    Private Sub Knop_NieuwProduct_Click(sender As Object, e As EventArgs)
         Me.Close()
     End Sub
     Private Sub Knop_Zoek_Click(sender As Object, e As EventArgs) Handles Knop_Zoek.Click
@@ -169,9 +172,7 @@
         LoadProduct()
         UID = True
         Me.TXT_ProductID.Text = IDPRODUCT
-    End Sub
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MsgBox(Validatie())
+        Me.TXT_aantal.Select()
     End Sub
     Private Sub TXT_TotaalBetaaldVAL_Validated(sender As Object, e As EventArgs) Handles TXT_TotaalBetaaldVAL.Validated
         bereken(1)
@@ -220,7 +221,6 @@
         End If
 
     End Sub
-
     Private Sub Knop_Reset_Click(sender As Object, e As EventArgs) Handles Knop_Reset.Click
         If IsNumeric(Me.TXT_Product_Inkoop.Text) = True Then Me.TXT_Prijs.Text = Me.TXT_Product_Inkoop.Text
     End Sub

@@ -44,7 +44,7 @@ Partial Class F_AdmGBrekening
         '
         'Knop_Nieuw
         '
-        Me.Knop_Nieuw.Location = New System.Drawing.Point(303, 259)
+        Me.Knop_Nieuw.Location = New System.Drawing.Point(335, 426)
         Me.Knop_Nieuw.Name = "Knop_Nieuw"
         Me.Knop_Nieuw.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Nieuw.TabIndex = 56
@@ -53,7 +53,7 @@ Partial Class F_AdmGBrekening
         '
         'Knop_Annuleren
         '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(384, 259)
+        Me.Knop_Annuleren.Location = New System.Drawing.Point(416, 426)
         Me.Knop_Annuleren.Name = "Knop_Annuleren"
         Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Annuleren.TabIndex = 55
@@ -62,7 +62,7 @@ Partial Class F_AdmGBrekening
         '
         'Knop_opslaan
         '
-        Me.Knop_opslaan.Location = New System.Drawing.Point(465, 259)
+        Me.Knop_opslaan.Location = New System.Drawing.Point(497, 426)
         Me.Knop_opslaan.Name = "Knop_opslaan"
         Me.Knop_opslaan.Size = New System.Drawing.Size(150, 23)
         Me.Knop_opslaan.TabIndex = 54
@@ -74,7 +74,7 @@ Partial Class F_AdmGBrekening
         Me.GB_GBRekening.Controls.Add(Me.AdmGBrekeningDataGridView)
         Me.GB_GBRekening.Location = New System.Drawing.Point(12, 12)
         Me.GB_GBRekening.Name = "GB_GBRekening"
-        Me.GB_GBRekening.Size = New System.Drawing.Size(603, 241)
+        Me.GB_GBRekening.Size = New System.Drawing.Size(635, 408)
         Me.GB_GBRekening.TabIndex = 57
         Me.GB_GBRekening.TabStop = False
         '
@@ -87,7 +87,7 @@ Partial Class F_AdmGBrekening
         Me.AdmGBrekeningDataGridView.DataSource = Me.AdmGBrekeningBindingSource
         Me.AdmGBrekeningDataGridView.Location = New System.Drawing.Point(6, 19)
         Me.AdmGBrekeningDataGridView.Name = "AdmGBrekeningDataGridView"
-        Me.AdmGBrekeningDataGridView.Size = New System.Drawing.Size(590, 214)
+        Me.AdmGBrekeningDataGridView.Size = New System.Drawing.Size(619, 380)
         Me.AdmGBrekeningDataGridView.TabIndex = 0
         '
         'DataGridViewTextBoxColumn1
@@ -146,7 +146,7 @@ Partial Class F_AdmGBrekening
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(624, 300)
+        Me.ClientSize = New System.Drawing.Size(659, 466)
         Me.Controls.Add(Me.GB_GBRekening)
         Me.Controls.Add(Me.Knop_Nieuw)
         Me.Controls.Add(Me.Knop_Annuleren)
