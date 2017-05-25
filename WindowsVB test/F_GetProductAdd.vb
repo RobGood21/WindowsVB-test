@@ -8,17 +8,21 @@
     End Sub
     Private Sub LoadForm()
         Try
+            'gegevens uit parentform
+            Me.TXT_GetPA_parent.Text = F_GetProduct.TXT_getontvangstid.Text
             Me.TXT_ProductLijst.Text = F_GetProduct.TXT_NaamGet.Text
+            'MsgBox(OPGETPRODUCTADD)
             Select Case OPGETPRODUCTADD
                 Case 1 'openen met nieuw aan de lijst toe te voegen product
                     Me.GetProductAddBindingSource.AddNew()
                     LoadProduct() 'dit is JUIST, laden met lege waardes
                     Me.Knop_Zoek.Select()
-                Case 2, 3 'Openen met een bestaande getProductadd
-                    'UID = True
+                    Me.TXT_aantal.Text = 0
+                Case 2, 3, 4 'Openen met een bestaande getProductadd
+                    '3=opslaan niet mogelijk 4 = openen vanuit een besteld artikel
+                    'dus het BESTEL getontvangstadd nu laden... bij het opslaan een NIEUW record voor de ontvangst aanmaken.
                     Me.GetProductAddTableAdapter.Fill(Me.DS_Product.GetProductAdd, IDGETPRODUCTADD)
                     Me.TXT_aantal.Select()
-
             End Select
         Catch ex As Exception
             MsgBox(ErrorToString,, "loadform (getproductadd)")
@@ -71,7 +75,15 @@
     End Sub
     Private Sub Knop_Opslaan_Click(sender As Object, e As EventArgs) Handles Knop_Opslaan.Click
         Opslaan()
+        afsluiten()
+    End Sub
+    Private Sub afsluiten()
+        'bij afsluiten diverse txtvelden even initialiseren. 
+        'Me.TXT_ProductID.Text = -1
+        'Me.TXT_LijstAAntal.Text = -1
+        'Me.TXT_Besteld.Text = -1
         Me.Close()
+
     End Sub
     Private Sub Knop_Details_Click(sender As Object, e As EventArgs) Handles Knop_Details.Click
         'is er een product al bepaald? 
@@ -95,17 +107,32 @@
     Private Sub GetProductAddBindingNavigatorSaveItem_Click(sender As Object, e As EventArgs)
         'Opslaan()
     End Sub
+    Private Sub GPAUpdate()
+        'MsgBox("gaupupdate")
+        'opslaan van getproductadd record
+        Me.Validate()
+        Me.GetProductAddBindingSource.EndEdit()
+        Me.GetProductAddTableAdapter.Update(Me.DS_Product.GetProductAdd)
+    End Sub
     Public Sub Opslaan()
         Dim jn As Integer
         Try
-
             If Validatie() = True Then
-
-                'getontvangstID koppelen aan dit form
-                Me.TXT_IDONTV.Text = IDGETONTVANGST
-                Me.Validate()
-                Me.GetProductAddBindingSource.EndEdit()
-                Me.GetProductAddTableAdapter.Update(Me.DS_Product.GetProductAdd)
+                Select Case OPGETPRODUCTADD
+                    Case 1, 2 'nieuw of besteaand uit productlijst
+                        'getontvangstID koppelen aan dit form
+                        Me.TXT_IDONTV.Text = IDGETONTVANGST
+                        ' Me.TXT_LijstAAntal.Text = Me.TXT_aantal.Text
+                        GPAUpdate()
+                    Case 3 'niet toegestaan iets op te slaan
+                    Case 4 'besteld product naar ontvangst zetten
+                        'nieuw record aanmaken voor ontvangen spullejes
+                        MsgBox(Me.TXT_aantal.Text)
+                        Me.GetProductAddTableAdapter.Insert(Me.TXT_GetPA_parent.Text, Me.TXT_ProductID.Text, 0, Me.TXT_Prijs.Text, 0, Me.TXT_aantal.Text, 0)
+                        'parent of het getproductadd waarnee form is geladen aanpassen. (besteld aantal)
+                        Me.TXT_Besteld.Text = Int(Me.TXT_Besteld.Text) - Int(Me.TXT_aantal.Text) 'bereken rest wat nog in bestelling staat
+                        GPAUpdate()
+                End Select
 
                 If TXT_Product_Inkoop.Text <> Me.TXT_Prijs.Text Then jn = MsgBox("Wil je deze inkoopprijs ook in de product gegevens opslaan?", vbQuestion + vbYesNo, "Inkoopprijs verschilt van bekende product inkoopprijs...")
                 If jn = 6 Then
@@ -116,7 +143,7 @@
                 End If
 
             Else
-                    MsgBox("Invoer of verandering is niet opgeslagen.", vbExclamation, "Opslaan niet mogelijk")
+                MsgBox("Invoer of verandering is niet opgeslagen.", vbExclamation, "Opslaan niet mogelijk")
             End If
         Catch ex As Exception
             MsgBox(ErrorToString,, "Opslaan (getproductadd) ")
@@ -136,19 +163,13 @@
                     End If
                 End If
             End If
-
-
         End If
-
-
         Return JN
     End Function
     Private Sub Knop_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Annuleren.Click
-        'Me.GetProductAddBindingSource.EndEdit()
-        'Me.Validate()
-        Me.Close()
+        afsluiten()
     End Sub
-    Private Sub F_GetProductAdd_FormClosed(sender As Object, e As FormClosedEventArgs) Handles Me.FormClosed
+    Private Sub F_GetProductAdd_FormClosed(sender As Object, e As FormClosedEventArgs) Handles MyBase.FormClosed
         'reset publieke variabelen bij verlaten form.
         OPGETPRODUCTADD = 0
         IDGETPRODUCTADD = 0
@@ -162,7 +183,6 @@
         Else
             UID = False
         End If
-
     End Sub
     Private Sub Knop_NieuwProduct_Click(sender As Object, e As EventArgs)
         Me.Close()
@@ -197,13 +217,11 @@
         End Try
 
     End Sub
-    Private Sub TXT_Lijstaantal_Validated(sender As Object, e As EventArgs) Handles TXT_aantal.Validated
-        If IsNumeric(Me.TXT_TotaalBetaaldVAL.Text) = True Then bereken(1)
-    End Sub
     Private Sub TXT_Koers_TextChanged(sender As Object, e As EventArgs) Handles TXT_Koers.TextChanged
         bereken(1)
     End Sub
     Private Sub TXT_aantal_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_aantal.KeyPress
+        'MsgBox("key")
         If Not IsNumeric(e.KeyChar) And e.KeyChar <> "-" And e.KeyChar <> vbBack Then
             e.KeyChar = Nothing
             'MsgBox(e.KeyChar)
@@ -223,5 +241,26 @@
     End Sub
     Private Sub Knop_Reset_Click(sender As Object, e As EventArgs) Handles Knop_Reset.Click
         If IsNumeric(Me.TXT_Product_Inkoop.Text) = True Then Me.TXT_Prijs.Text = Me.TXT_Product_Inkoop.Text
+    End Sub
+    Private Sub TXT_Besteld_TextChanged(sender As Object, e As EventArgs) Handles TXT_Besteld.TextChanged
+        If OPGETPRODUCTADD = 4 Then Me.TXT_aantal.Text = Me.TXT_Besteld.Text
+    End Sub
+    Private Sub TXT_aantal_Validated(sender As Object, e As EventArgs) Handles TXT_aantal.Validated
+        If IsNumeric(Me.TXT_aantal.Text = True) Then
+            Select Case OPGETPRODUCTADD
+                Case 1, 2
+                    Me.TXT_LijstAAntal.Text = Me.TXT_aantal.Text
+                Case 4
+
+            End Select
+            bereken(1)
+        End If
+
+    End Sub
+    Private Sub TXT_LijstAAntal_TextChanged(sender As Object, e As EventArgs) Handles TXT_LijstAAntal.TextChanged
+        Select Case OPGETPRODUCTADD
+            Case 2
+                Me.TXT_aantal.Text = Me.TXT_LijstAAntal.Text
+        End Select
     End Sub
 End Class

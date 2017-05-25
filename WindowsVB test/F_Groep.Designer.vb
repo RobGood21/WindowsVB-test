@@ -29,6 +29,7 @@ Partial Class F_Groep
         Dim Label1 As System.Windows.Forms.Label
         Dim LBL_Perc As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
+        Me.BTWBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.GroepBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroepTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GroepTableAdapter()
@@ -40,7 +41,6 @@ Partial Class F_Groep
         Me.GP_KenmerkTextBox = New System.Windows.Forms.TextBox()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.ComboBox1 = New System.Windows.Forms.ComboBox()
-        Me.BTWBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Knop_Save = New System.Windows.Forms.Button()
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
@@ -52,10 +52,10 @@ Partial Class F_Groep
         Label1 = New System.Windows.Forms.Label()
         LBL_Perc = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
+        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
-        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
         '
         'GP_NaamLabel
@@ -94,10 +94,35 @@ Partial Class F_Groep
         Label1.TabIndex = 21
         Label1.Text = "BTWgroep:"
         '
+        'LBL_Perc
+        '
+        LBL_Perc.AutoSize = True
+        LBL_Perc.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BTWBindingSource, "BTW_Perc", True))
+        LBL_Perc.Location = New System.Drawing.Point(139, 70)
+        LBL_Perc.Name = "LBL_Perc"
+        LBL_Perc.Size = New System.Drawing.Size(21, 13)
+        LBL_Perc.TabIndex = 22
+        LBL_Perc.Text = "[%]"
+        LBL_Perc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
+        '
+        'BTWBindingSource
+        '
+        Me.BTWBindingSource.DataMember = "BTW"
+        Me.BTWBindingSource.DataSource = Me.DS_Product
+        '
         'DS_Product
         '
         Me.DS_Product.DataSetName = "DS_Product"
         Me.DS_Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
+        '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(152, 70)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(15, 13)
+        Label2.TabIndex = 23
+        Label2.Text = "%"
         '
         'GroepBindingSource
         '
@@ -203,11 +228,6 @@ Partial Class F_Groep
         Me.ComboBox1.TabIndex = 19
         Me.ComboBox1.ValueMember = "ID_BTW"
         '
-        'BTWBindingSource
-        '
-        Me.BTWBindingSource.DataMember = "BTW"
-        Me.BTWBindingSource.DataSource = Me.DS_Product
-        '
         'Knop_Save
         '
         Me.Knop_Save.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
@@ -253,26 +273,6 @@ Partial Class F_Groep
         '
         Me.BTWTableAdapter.ClearBeforeFill = True
         '
-        'LBL_Perc
-        '
-        LBL_Perc.AutoSize = True
-        LBL_Perc.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BTWBindingSource, "BTW_Perc", True))
-        LBL_Perc.Location = New System.Drawing.Point(139, 70)
-        LBL_Perc.Name = "LBL_Perc"
-        LBL_Perc.Size = New System.Drawing.Size(21, 13)
-        LBL_Perc.TabIndex = 22
-        LBL_Perc.Text = "[%]"
-        LBL_Perc.TextAlign = System.Drawing.ContentAlignment.MiddleRight
-        '
-        'Label2
-        '
-        Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(152, 70)
-        Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(15, 13)
-        Label2.TabIndex = 23
-        Label2.Text = "%"
-        '
         'F_Groep
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -284,12 +284,13 @@ Partial Class F_Groep
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.LB_Groep)
         Me.Name = "F_Groep"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Product groepen"
+        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.GroepBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
-        CType(Me.BTWBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
 
     End Sub

@@ -49,14 +49,16 @@
             JourNaalInstellen() 'opmaak van het datagridview
             'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, -1)
             LoadTables()
-
+            Me.CB_Valuta.SelectedValue = 1
             Select Case OPADMINKOOP
-                Case 1 'van form getontvangst NIeuw, dsnog geen inkoopboek record aan deze ontvangst
+                Case 1 'van form getontvangst NIeuw, dus nog geen inkoopboek record aan deze ontvangst
                     Me.AdmInkoopBoekBindingSource.AddNew()
                     Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
                     'MsgBox(Me.AdmInkoopBoekBindingSource.Count)
                     Me.CB_Supplier.SelectedValue = IDSUPPLIER
-                    ClearControls()
+
+                    ' ClearControls()
+
                     'nieuwe record direct vastleggen
                     Me.Validate()
                     Me.AdmInkoopBoekBindingSource.EndEdit()
@@ -77,7 +79,6 @@
                 Case 2 'van form getontvangst, idadminkoop = nu bepaald
                     Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers laden
                     Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, IDADMINKOOP)
-                    'Me.CB_Supplier.Enabled = False
                     Me.CB_Supplier.DropDownStyle = ComboBoxStyle.Simple
                     Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, IDADMINKOOP)
                     JournaalTotaal()
@@ -98,7 +99,7 @@
                 Case Else 'openen als nieuwe invoer, niet afhankelijk van getproduct(ontvangst)
                     NieuweInkoop()
             End Select
-
+            If IsNumeric(Me.CB_Valuta.SelectedValue) = False Then Me.CB_Valuta.SelectedValue = 1
         Catch ex As Exception
             MsgBox(ErrorToString)
         End Try
@@ -137,21 +138,14 @@
         LoadForm()
     End Sub
     Private Sub BerekenWaardeEuro()
-        Try
-            If IsNumeric(Me.TXT_Waarde.Text) = True Then
-                Me.TXT_WaardeEuro.Text = ((Me.TXT_Waarde.Text * Me.TXT_Koers.Text).ToString("c"))
-                If Me.TXT_Koers.Text = 1 Then
-                    Me.TXT_BTW.Text = ((Me.TXT_Waarde.Text / 121 * 21).ToString("c"))
-                Else
-                    Me.TXT_BTW.Text = 0
-                End If
+        If IsNumeric(Me.TXT_Waarde.Text) = True And IsNumeric(Me.TXT_Koers.Text) = True Then
+            Me.TXT_WaardeEuro.Text = FormatNumber(Me.TXT_Waarde.Text * Me.TXT_Koers.Text, -1)
+            If Me.TXT_Koers.Text = 1 Then
+                Me.TXT_BTW.Text = FormatNumber(Me.TXT_Waarde.Text / 121 * 21, -1)
+            Else
+                Me.TXT_BTW.Text = FormatNumber(0, -1)
             End If
-        Catch ex As Exception
-            MsgBox(ErrorToString,, "berekenwaardeEuro")
-        End Try
-
-
-
+        End If
     End Sub
     Private Sub Knop_Actie_Click(sender As Object, e As EventArgs)
         'FormatControls()
@@ -198,7 +192,7 @@
 
             If Me.CB_Supplier.SelectedValue > 0 Then
                 If Len(Me.TXT_Kenmerk.Text) > 0 Then
-                    If Len(txt_grootboekSupplier.Text) > 0 And Len(TXT_SUPValuta.Text) > 0 Then
+                    If Len(txt_grootboekSupplier.Text) > 0 Then
                         If Me.TXT_WaardeEuro.Text <> 0 Then
                             Me.Validate()
                             Me.AdmInkoopBoekBindingSource.EndEdit()
@@ -325,7 +319,6 @@
     End Sub
     Private Sub Knop_Bereken_Click(sender As Object, e As EventArgs) Handles Knop_Bereken.Click
         Bereken()
-
     End Sub
     Private Sub DG_Journaal_CellValidated(sender As Object, e As DataGridViewCellEventArgs) Handles DG_Journaal.CellValidated
         Bereken()
@@ -384,22 +377,7 @@
     End Sub
     Private Sub TXT_Waarde_Validated(sender As Object, e As EventArgs) Handles TXT_Waarde.Validated
         BerekenWaardeEuro()
-    End Sub
-    Private Sub CB_Valuta_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Valuta.SelectedIndexChanged
-        ' BerekenWaardeEuro()
-    End Sub
-    Private Sub TXT_Koers_TextChanged(sender As Object, e As EventArgs)
-        BerekenWaardeEuro()
-    End Sub
-    Private Sub CB_Supplier_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Supplier.SelectedIndexChanged
-
-    End Sub
-    Private Sub TXT_SUPValuta_TextChanged(sender As Object, e As EventArgs) Handles TXT_SUPValuta.TextChanged
-        Select Case IDADMINKOOP
-            Case 2
-                CB_Valuta.SelectedValue = Me.TXT_SUPValuta.Text
-        End Select
-
+        Me.TXT_Waarde.Text = FormatNumber(Me.TXT_Waarde.Text, -1)
     End Sub
     Private Sub TXT_SupBetaalWijze_TextChanged(sender As Object, e As EventArgs) Handles TXT_SupBetaalWijze.TextChanged
         Try
@@ -419,5 +397,8 @@
     End Sub
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         OpslaanAlles(False)
+    End Sub
+    Private Sub TXT_Koers_TextChanged(sender As Object, e As EventArgs) Handles TXT_Koers.TextChanged
+        BerekenWaardeEuro()
     End Sub
 End Class

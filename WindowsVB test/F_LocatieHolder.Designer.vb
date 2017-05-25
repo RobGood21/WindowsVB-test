@@ -24,13 +24,13 @@ Partial Class F_LocatieHolder
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Me.LocatieHolderDataGridView = New System.Windows.Forms.DataGridView()
-        Me.Knop_Sluiten = New System.Windows.Forms.Button()
         Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.LocatieHolderBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
+        Me.Knop_Sluiten = New System.Windows.Forms.Button()
         Me.LocatieHolderTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.LocatieHolderTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
         CType(Me.LocatieHolderDataGridView, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -48,15 +48,6 @@ Partial Class F_LocatieHolder
         Me.LocatieHolderDataGridView.Name = "LocatieHolderDataGridView"
         Me.LocatieHolderDataGridView.Size = New System.Drawing.Size(572, 220)
         Me.LocatieHolderDataGridView.TabIndex = 1
-        '
-        'Knop_Sluiten
-        '
-        Me.Knop_Sluiten.Location = New System.Drawing.Point(509, 251)
-        Me.Knop_Sluiten.Name = "Knop_Sluiten"
-        Me.Knop_Sluiten.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Sluiten.TabIndex = 2
-        Me.Knop_Sluiten.Text = "&Sluiten"
-        Me.Knop_Sluiten.UseVisualStyleBackColor = True
         '
         'DataGridViewTextBoxColumn1
         '
@@ -97,6 +88,15 @@ Partial Class F_LocatieHolder
         Me.DS_Product.DataSetName = "DS_Product"
         Me.DS_Product.SchemaSerializationMode = System.Data.SchemaSerializationMode.IncludeSchema
         '
+        'Knop_Sluiten
+        '
+        Me.Knop_Sluiten.Location = New System.Drawing.Point(509, 251)
+        Me.Knop_Sluiten.Name = "Knop_Sluiten"
+        Me.Knop_Sluiten.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Sluiten.TabIndex = 2
+        Me.Knop_Sluiten.Text = "&Sluiten"
+        Me.Knop_Sluiten.UseVisualStyleBackColor = True
+        '
         'LocatieHolderTableAdapter
         '
         Me.LocatieHolderTableAdapter.ClearBeforeFill = True
@@ -111,8 +111,10 @@ Partial Class F_LocatieHolder
         Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Nothing
         Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
         'F_LocatieHolder
         '
@@ -122,6 +124,7 @@ Partial Class F_LocatieHolder
         Me.Controls.Add(Me.Knop_Sluiten)
         Me.Controls.Add(Me.LocatieHolderDataGridView)
         Me.Name = "F_LocatieHolder"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Kasten, holders en bakken"
         CType(Me.LocatieHolderDataGridView, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LocatieHolderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()

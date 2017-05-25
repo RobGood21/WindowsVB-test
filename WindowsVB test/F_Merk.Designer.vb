@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F_Merk
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class F_Merk
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim LB_Merk As System.Windows.Forms.ListBox
@@ -29,10 +29,7 @@ Partial Class F_Merk
         Me.MerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.TXT_Zoektekst = New System.Windows.Forms.TextBox()
-        Me.MerkTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.MerkTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
-        Me.ProductTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
-        Me.FKProductMerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Knop_Save = New System.Windows.Forms.Button()
         Me.MK_BeschrijvingTextBox = New System.Windows.Forms.TextBox()
@@ -42,17 +39,18 @@ Partial Class F_Merk
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.Knop_Annuleren = New System.Windows.Forms.Button()
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
+        Me.MerkTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.MerkTableAdapter()
         LB_Merk = New System.Windows.Forms.ListBox()
         MK_BeschrijvingLabel = New System.Windows.Forms.Label()
         MK_MerkNaamLabel = New System.Windows.Forms.Label()
         CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.FKProductMerkBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
         Me.SuspendLayout()
         '
         'LB_Merk
         '
+        LB_Merk.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.MerkBindingSource, "ID_Merk", True))
         LB_Merk.DataSource = Me.MerkBindingSource
         LB_Merk.DisplayMember = "MK_MerkNaam"
         LB_Merk.FormattingEnabled = True
@@ -61,6 +59,7 @@ Partial Class F_Merk
         LB_Merk.Size = New System.Drawing.Size(136, 303)
         LB_Merk.TabIndex = 8
         LB_Merk.TabStop = False
+        LB_Merk.ValueMember = "ID_Merk"
         '
         'MerkBindingSource
         '
@@ -97,27 +96,20 @@ Partial Class F_Merk
         Me.TXT_Zoektekst.Size = New System.Drawing.Size(135, 20)
         Me.TXT_Zoektekst.TabIndex = 0
         '
-        'MerkTableAdapter
-        '
-        Me.MerkTableAdapter.ClearBeforeFill = True
-        '
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
+        Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.DT_productTableAdapter = Nothing
+        Me.TableAdapterManager.GetOntvangstTableAdapter = Nothing
+        Me.TableAdapterManager.GetProductAddTableAdapter = Nothing
+        Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Nothing
-        Me.TableAdapterManager.MerkTableAdapter = Me.MerkTableAdapter
-        Me.TableAdapterManager.DT_productTableAdapter = Me.ProductTableAdapter
+        Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieTableAdapter = Nothing
+        Me.TableAdapterManager.MerkTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
-        '
-        'ProductTableAdapter
-        '
-        Me.ProductTableAdapter.ClearBeforeFill = True
-        '
-        'FKProductMerkBindingSource
-        '
-        Me.FKProductMerkBindingSource.DataMember = "FK_Product_Merk"
-        Me.FKProductMerkBindingSource.DataSource = Me.MerkBindingSource
+        Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
         'GroupBox1
         '
@@ -210,6 +202,10 @@ Partial Class F_Merk
         Me.Knop_Nieuw.Text = "&Nieuw"
         Me.Knop_Nieuw.UseVisualStyleBackColor = True
         '
+        'MerkTableAdapter
+        '
+        Me.MerkTableAdapter.ClearBeforeFill = True
+        '
         'F_Merk
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
@@ -224,10 +220,10 @@ Partial Class F_Merk
         Me.Controls.Add(Me.TXT_Zoektekst)
         Me.KeyPreview = True
         Me.Name = "F_Merk"
+        Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Merken"
         CType(Me.MerkBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.FKProductMerkBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
         Me.ResumeLayout(False)
@@ -236,11 +232,7 @@ Partial Class F_Merk
     End Sub
     Friend WithEvents TXT_Zoektekst As TextBox
     Friend WithEvents DS_Product As DS_Product
-    Friend WithEvents MerkBindingSource As BindingSource
-    Friend WithEvents MerkTableAdapter As DS_ProductTableAdapters.MerkTableAdapter
     Friend WithEvents TableAdapterManager As DS_ProductTableAdapters.TableAdapterManager
-    Friend WithEvents ProductTableAdapter As DS_ProductTableAdapters.DT_productTableAdapter
-    Friend WithEvents FKProductMerkBindingSource As BindingSource
     Friend WithEvents GroupBox1 As GroupBox
     Friend WithEvents MK_BeschrijvingTextBox As TextBox
     Friend WithEvents TXT_Merknaam As TextBox
@@ -250,4 +242,6 @@ Partial Class F_Merk
     Friend WithEvents Knop_Annuleren As Button
     Friend WithEvents Knop_Nieuw As Button
     Friend WithEvents Knop_Save As Button
+    Friend WithEvents MerkBindingSource As BindingSource
+    Friend WithEvents MerkTableAdapter As DS_ProductTableAdapters.MerkTableAdapter
 End Class

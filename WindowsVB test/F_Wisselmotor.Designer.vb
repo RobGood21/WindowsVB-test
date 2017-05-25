@@ -28,6 +28,7 @@ Partial Class F_Wisselmotor
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
         Me.AfsluitenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.OnderhoudToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ProductLijstToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ProductenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
         Me.ProductgroepenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -83,10 +84,16 @@ Partial Class F_Wisselmotor
         '
         'OnderhoudToolStripMenuItem
         '
-        Me.OnderhoudToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductenToolStripMenuItem, Me.ToolStripSeparator3, Me.ProductgroepenToolStripMenuItem, Me.MerkenToolStripMenuItem, Me.OpbergersToolStripMenuItem})
+        Me.OnderhoudToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ProductLijstToolStripMenuItem, Me.ProductenToolStripMenuItem, Me.ToolStripSeparator3, Me.ProductgroepenToolStripMenuItem, Me.MerkenToolStripMenuItem, Me.OpbergersToolStripMenuItem})
         Me.OnderhoudToolStripMenuItem.Name = "OnderhoudToolStripMenuItem"
-        Me.OnderhoudToolStripMenuItem.Size = New System.Drawing.Size(80, 20)
-        Me.OnderhoudToolStripMenuItem.Text = "Onderhoud"
+        Me.OnderhoudToolStripMenuItem.Size = New System.Drawing.Size(74, 20)
+        Me.OnderhoudToolStripMenuItem.Text = "Producten"
+        '
+        'ProductLijstToolStripMenuItem
+        '
+        Me.ProductLijstToolStripMenuItem.Name = "ProductLijstToolStripMenuItem"
+        Me.ProductLijstToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.ProductLijstToolStripMenuItem.Text = "Product-Lijst"
         '
         'ProductenToolStripMenuItem
         '
@@ -195,7 +202,7 @@ Partial Class F_Wisselmotor
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.AutoSize = True
-        Me.ClientSize = New System.Drawing.Size(784, 561)
+        Me.ClientSize = New System.Drawing.Size(784, 761)
         Me.Controls.Add(Me.MenuStrip1)
         Me.IsMdiContainer = True
         Me.MainMenuStrip = Me.MenuStrip1
@@ -231,4 +238,5 @@ Partial Class F_Wisselmotor
     Friend WithEvents ToolStripMenuItem3 As ToolStripMenuItem
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents OpbergersToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ProductLijstToolStripMenuItem As ToolStripMenuItem
 End Class

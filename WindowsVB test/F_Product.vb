@@ -61,8 +61,12 @@
 
     End Sub
     Private Sub F_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
+        'TODO: This line of code loads data into the 'DS_Product.ProductMut' table. You can move, or remove it, as needed.
+        Me.ProductMutTableAdapter.Fill(Me.DS_Product.ProductMut)
+        'TODO: This line of code loads data into the 'DS_Product.GroepPD' table. You can move, or remove it, as needed.
+        Me.GroepPDTableAdapter.Fill(Me.DS_Product.GroepPD)
         'TODO: This line of code loads data into the 'DS_Product1.GroepPD' table. You can move, or remove it, as needed.
-        Me.GroepPDTableAdapter.Fill(Me.DS_Product1.GroepPD)
+        'Me.GroepPDTableAdapter.Fill(Me.DS_Product1.GroepPD)
         Me.ToolTipsInstellen()
         LoadProduct()
     End Sub
@@ -88,9 +92,7 @@
         End Try
     End Sub
     Private Sub LoadTables()
-        'LET OP volgorde van laden is hier belangrijk
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
-        'Me.GroepTableAdapter.Fill(Me.DS_Product.Groep)
         Me.LocatieTableAdapter.FillByALL(Me.DS_Product.Locatie)
     End Sub
     Private Sub Knop_ZoekProduct_Click(sender As Object, e As EventArgs) Handles Knop_ZoekProduct.Click
@@ -202,7 +204,7 @@
         Return JN
     End Function
     Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
-        MsgBox(ValiDatie)
+        Me.TB_Product.SelectTab(1)
     End Sub
     Private Sub TXT_Productnummer_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Productnummer.KeyPress
         'snelkoppelingen voor allerlei functies op het artikelnummervak 
@@ -211,9 +213,7 @@
                 Case "z"
                     e.KeyChar = Nothing
                     PLaatsProduct()
-
                 Case vbBack
-
                 Case Else
                     e.KeyChar = Nothing
             End Select
@@ -230,11 +230,9 @@
     End Sub
     Private Sub TXT_functie_TextChanged(sender As Object, e As EventArgs) Handles TXT_functie.TextChanged
         OmSchrijVing()
-
     End Sub
     Private Sub TXT_waarde_TextChanged(sender As Object, e As EventArgs) Handles TXT_waarde.TextChanged
         OmSchrijVing()
-
     End Sub
     Private Sub TXT_behuizing_TextChanged(sender As Object, e As EventArgs) Handles TXT_behuizing.TextChanged
         OmSchrijVing()
@@ -269,9 +267,14 @@
             Me.Knop_ZoekProduct.Select()
         End If
     End Sub
-
-    Private Sub TXT_Verkoopprijs_TextChanged(sender As Object, e As EventArgs) Handles TXT_Verkoopprijs.TextChanged
-        'BerekenPrijzen()
-
+    Private Sub Knop_Merk_Click(sender As Object, e As EventArgs) Handles Knop_Merk.Click
+        F_Merk.ShowDialog()
+        Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
+    End Sub
+    Private Sub TXT_Productnummer_Validated(sender As Object, e As EventArgs) Handles TXT_Productnummer.Validated
+        'PLaatsProduct()
+    End Sub
+    Private Sub TB_Product_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TB_Product.SelectedIndexChanged
+        MsgBox(Me.TB_Product.SelectedIndex)
     End Sub
 End Class

@@ -36,13 +36,16 @@ Partial Class F_GetProductAdd
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TXT_Product_Inkoop = New System.Windows.Forms.TextBox()
         Me.TXT_aantal = New System.Windows.Forms.TextBox()
-        Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TXT_GetProductAdd = New System.Windows.Forms.TextBox()
         Me.Knop_Details = New System.Windows.Forms.Button()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXT_ProductID = New System.Windows.Forms.TextBox()
+        Me.GetProductAddBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TXT_GetProductAdd = New System.Windows.Forms.TextBox()
         Me.GB_Prijs = New System.Windows.Forms.GroupBox()
+        Me.TXT_Besteld = New System.Windows.Forms.TextBox()
+        Me.TXT_LijstAAntal = New System.Windows.Forms.TextBox()
         Me.Knop_Reset = New System.Windows.Forms.Button()
+        Me.TXT_IDONTV = New System.Windows.Forms.TextBox()
         Me.CB_valuta = New System.Windows.Forms.ComboBox()
         Me.ValutaBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label9 = New System.Windows.Forms.Label()
@@ -60,8 +63,8 @@ Partial Class F_GetProductAdd
         Me.GetProductAddTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.GetProductAddTableAdapter()
         Me.DT_productTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
         Me.ValutaTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.ValutaTableAdapter()
-        Me.TXT_IDONTV = New System.Windows.Forms.TextBox()
         Me.Knop_Verwijder = New System.Windows.Forms.Button()
+        Me.TXT_GetPA_parent = New System.Windows.Forms.TextBox()
         PD_VoorraadLabel = New System.Windows.Forms.Label()
         Label10 = New System.Windows.Forms.Label()
         Me.GroupBox1.SuspendLayout()
@@ -192,27 +195,10 @@ Partial Class F_GetProductAdd
         '
         'TXT_aantal
         '
-        Me.TXT_aantal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_Lijst", True))
         Me.TXT_aantal.Location = New System.Drawing.Point(77, 120)
         Me.TXT_aantal.Name = "TXT_aantal"
         Me.TXT_aantal.Size = New System.Drawing.Size(63, 20)
         Me.TXT_aantal.TabIndex = 1
-        '
-        'GetProductAddBindingSource
-        '
-        Me.GetProductAddBindingSource.DataMember = "GetProductAdd"
-        Me.GetProductAddBindingSource.DataSource = Me.DS_Product
-        '
-        'TXT_GetProductAdd
-        '
-        Me.TXT_GetProductAdd.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetProductAdd", True))
-        Me.TXT_GetProductAdd.Enabled = False
-        Me.TXT_GetProductAdd.Location = New System.Drawing.Point(258, 88)
-        Me.TXT_GetProductAdd.Name = "TXT_GetProductAdd"
-        Me.TXT_GetProductAdd.ReadOnly = True
-        Me.TXT_GetProductAdd.Size = New System.Drawing.Size(38, 20)
-        Me.TXT_GetProductAdd.TabIndex = 11
-        Me.TXT_GetProductAdd.TabStop = False
         '
         'Knop_Details
         '
@@ -243,8 +229,27 @@ Partial Class F_GetProductAdd
         Me.TXT_ProductID.TabIndex = 2
         Me.TXT_ProductID.TabStop = False
         '
+        'GetProductAddBindingSource
+        '
+        Me.GetProductAddBindingSource.DataMember = "GetProductAdd"
+        Me.GetProductAddBindingSource.DataSource = Me.DS_Product
+        '
+        'TXT_GetProductAdd
+        '
+        Me.TXT_GetProductAdd.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetProductAdd", True))
+        Me.TXT_GetProductAdd.Enabled = False
+        Me.TXT_GetProductAdd.Location = New System.Drawing.Point(281, 87)
+        Me.TXT_GetProductAdd.Name = "TXT_GetProductAdd"
+        Me.TXT_GetProductAdd.ReadOnly = True
+        Me.TXT_GetProductAdd.Size = New System.Drawing.Size(20, 20)
+        Me.TXT_GetProductAdd.TabIndex = 11
+        Me.TXT_GetProductAdd.TabStop = False
+        Me.TXT_GetProductAdd.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'GB_Prijs
         '
+        Me.GB_Prijs.Controls.Add(Me.TXT_Besteld)
+        Me.GB_Prijs.Controls.Add(Me.TXT_LijstAAntal)
         Me.GB_Prijs.Controls.Add(Me.Knop_Reset)
         Me.GB_Prijs.Controls.Add(Me.TXT_IDONTV)
         Me.GB_Prijs.Controls.Add(Me.CB_valuta)
@@ -265,6 +270,29 @@ Partial Class F_GetProductAdd
         Me.GB_Prijs.TabStop = False
         Me.GB_Prijs.Text = "Bereken stuks inkoopprijs"
         '
+        'TXT_Besteld
+        '
+        Me.TXT_Besteld.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_Besteld", True))
+        Me.TXT_Besteld.Location = New System.Drawing.Point(209, 87)
+        Me.TXT_Besteld.Name = "TXT_Besteld"
+        Me.TXT_Besteld.ReadOnly = True
+        Me.TXT_Besteld.Size = New System.Drawing.Size(20, 20)
+        Me.TXT_Besteld.TabIndex = 28
+        Me.TXT_Besteld.TabStop = False
+        Me.TXT_Besteld.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'TXT_LijstAAntal
+        '
+        Me.TXT_LijstAAntal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "GP_Lijst", True))
+        Me.TXT_LijstAAntal.Enabled = False
+        Me.TXT_LijstAAntal.Location = New System.Drawing.Point(232, 87)
+        Me.TXT_LijstAAntal.Name = "TXT_LijstAAntal"
+        Me.TXT_LijstAAntal.ReadOnly = True
+        Me.TXT_LijstAAntal.Size = New System.Drawing.Size(20, 20)
+        Me.TXT_LijstAAntal.TabIndex = 27
+        Me.TXT_LijstAAntal.TabStop = False
+        Me.TXT_LijstAAntal.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'Knop_Reset
         '
         Me.Knop_Reset.Location = New System.Drawing.Point(231, 49)
@@ -274,6 +302,17 @@ Partial Class F_GetProductAdd
         Me.Knop_Reset.TabStop = False
         Me.Knop_Reset.Text = "Reset "
         Me.Knop_Reset.UseVisualStyleBackColor = True
+        '
+        'TXT_IDONTV
+        '
+        Me.TXT_IDONTV.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetOntvangst", True))
+        Me.TXT_IDONTV.Location = New System.Drawing.Point(258, 87)
+        Me.TXT_IDONTV.Name = "TXT_IDONTV"
+        Me.TXT_IDONTV.ReadOnly = True
+        Me.TXT_IDONTV.Size = New System.Drawing.Size(20, 20)
+        Me.TXT_IDONTV.TabIndex = 14
+        Me.TXT_IDONTV.TabStop = False
+        Me.TXT_IDONTV.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
         '
         'CB_valuta
         '
@@ -422,16 +461,6 @@ Partial Class F_GetProductAdd
         '
         Me.ValutaTableAdapter.ClearBeforeFill = True
         '
-        'TXT_IDONTV
-        '
-        Me.TXT_IDONTV.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.GetProductAddBindingSource, "ID_GetOntvangst", True))
-        Me.TXT_IDONTV.Location = New System.Drawing.Point(212, 88)
-        Me.TXT_IDONTV.Name = "TXT_IDONTV"
-        Me.TXT_IDONTV.ReadOnly = True
-        Me.TXT_IDONTV.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_IDONTV.TabIndex = 14
-        Me.TXT_IDONTV.TabStop = False
-        '
         'Knop_Verwijder
         '
         Me.Knop_Verwijder.Location = New System.Drawing.Point(19, 349)
@@ -442,11 +471,23 @@ Partial Class F_GetProductAdd
         Me.Knop_Verwijder.Text = "Verwijder"
         Me.Knop_Verwijder.UseVisualStyleBackColor = True
         '
+        'TXT_GetPA_parent
+        '
+        Me.TXT_GetPA_parent.Enabled = False
+        Me.TXT_GetPA_parent.Location = New System.Drawing.Point(277, 42)
+        Me.TXT_GetPA_parent.Name = "TXT_GetPA_parent"
+        Me.TXT_GetPA_parent.ReadOnly = True
+        Me.TXT_GetPA_parent.Size = New System.Drawing.Size(51, 20)
+        Me.TXT_GetPA_parent.TabIndex = 16
+        Me.TXT_GetPA_parent.TabStop = False
+        Me.TXT_GetPA_parent.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
         'F_GetProductAdd
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(345, 385)
+        Me.Controls.Add(Me.TXT_GetPA_parent)
         Me.Controls.Add(Me.Knop_Verwijder)
         Me.Controls.Add(Me.Knop_Annuleren)
         Me.Controls.Add(Me.Knop_Opslaan)
@@ -507,4 +548,7 @@ Partial Class F_GetProductAdd
     Friend WithEvents TXT_IDONTV As TextBox
     Friend WithEvents Knop_Verwijder As Button
     Friend WithEvents Knop_Reset As Button
+    Friend WithEvents TXT_Besteld As TextBox
+    Friend WithEvents TXT_LijstAAntal As TextBox
+    Friend WithEvents TXT_GetPA_parent As TextBox
 End Class

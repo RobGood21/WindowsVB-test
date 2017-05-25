@@ -23,18 +23,15 @@ Partial Class F_AdmInkoopboekLijst
     <System.Diagnostics.DebuggerStepThrough()> _
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DS_Administratie = New WindowsVB_test.DS_Administratie()
         Me.AdmInkoopboekLijstBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.AdmInkoopboekLijstTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.admInkoopboekLijstTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager()
         Me.DG_AdmInkoopLijst = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GroupBox1 = New System.Windows.Forms.GroupBox()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXT_Waarde = New System.Windows.Forms.TextBox()
@@ -50,6 +47,13 @@ Partial Class F_AdmInkoopboekLijst
         Me.OptieBetaald = New System.Windows.Forms.RadioButton()
         Me.Optie_openstaand = New System.Windows.Forms.RadioButton()
         Me.SupplierTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.SupplierTableAdapter()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewCheckBoxColumn1 = New System.Windows.Forms.DataGridViewCheckBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         CType(Me.DS_Administratie, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdmInkoopboekLijstBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DG_AdmInkoopLijst, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -89,6 +93,7 @@ Partial Class F_AdmInkoopboekLijst
         Me.DG_AdmInkoopLijst.AllowUserToResizeColumns = False
         Me.DG_AdmInkoopLijst.AllowUserToResizeRows = False
         Me.DG_AdmInkoopLijst.AutoGenerateColumns = False
+        Me.DG_AdmInkoopLijst.BackgroundColor = System.Drawing.SystemColors.InactiveBorder
         Me.DG_AdmInkoopLijst.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.DisableResizing
         Me.DG_AdmInkoopLijst.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewCheckBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.DataGridViewTextBoxColumn4, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6})
         Me.DG_AdmInkoopLijst.DataSource = Me.AdmInkoopboekLijstBindingSource
@@ -97,64 +102,8 @@ Partial Class F_AdmInkoopboekLijst
         Me.DG_AdmInkoopLijst.Name = "DG_AdmInkoopLijst"
         Me.DG_AdmInkoopLijst.ReadOnly = True
         Me.DG_AdmInkoopLijst.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DG_AdmInkoopLijst.Size = New System.Drawing.Size(748, 411)
+        Me.DG_AdmInkoopLijst.Size = New System.Drawing.Size(677, 411)
         Me.DG_AdmInkoopLijst.TabIndex = 1
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_AdmInkoopboek"
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Width = 50
-        '
-        'DataGridViewCheckBoxColumn1
-        '
-        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "IB_Paid"
-        Me.DataGridViewCheckBoxColumn1.HeaderText = "Betaald"
-        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
-        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
-        Me.DataGridViewCheckBoxColumn1.Width = 50
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "IB_Kenmerk"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "Kenmerk"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Width = 140
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "SP_Naam"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "Crediteur"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Width = 150
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "IB_WaardeEuro"
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Waarde"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 80
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "IB_DueDatum"
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Datum"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 80
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "IB_Datum"
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Vervalt"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 80
         '
         'GroupBox1
         '
@@ -171,7 +120,7 @@ Partial Class F_AdmInkoopboekLijst
         Me.GroupBox1.Controls.Add(Me.Optie_openstaand)
         Me.GroupBox1.Location = New System.Drawing.Point(12, 18)
         Me.GroupBox1.Name = "GroupBox1"
-        Me.GroupBox1.Size = New System.Drawing.Size(748, 80)
+        Me.GroupBox1.Size = New System.Drawing.Size(677, 80)
         Me.GroupBox1.TabIndex = 2
         Me.GroupBox1.TabStop = False
         '
@@ -232,7 +181,7 @@ Partial Class F_AdmInkoopboekLijst
         '
         'Knop_Sluiten
         '
-        Me.Knop_Sluiten.Location = New System.Drawing.Point(657, 45)
+        Me.Knop_Sluiten.Location = New System.Drawing.Point(595, 45)
         Me.Knop_Sluiten.Name = "Knop_Sluiten"
         Me.Knop_Sluiten.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Sluiten.TabIndex = 4
@@ -296,11 +245,75 @@ Partial Class F_AdmInkoopboekLijst
         '
         Me.SupplierTableAdapter.ClearBeforeFill = True
         '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_AdmInkoopboek"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Width = 50
+        '
+        'DataGridViewCheckBoxColumn1
+        '
+        Me.DataGridViewCheckBoxColumn1.DataPropertyName = "IB_Paid"
+        Me.DataGridViewCheckBoxColumn1.HeaderText = "Betaald"
+        Me.DataGridViewCheckBoxColumn1.Name = "DataGridViewCheckBoxColumn1"
+        Me.DataGridViewCheckBoxColumn1.ReadOnly = True
+        Me.DataGridViewCheckBoxColumn1.Width = 50
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "IB_Kenmerk"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "Kenmerk"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Width = 140
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "SP_Naam"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "Crediteur"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Width = 150
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "IB_WaardeEuro"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle6
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Waarde"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 80
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "IB_DueDatum"
+        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle7
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Datum"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 80
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "IB_Datum"
+        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle8
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Vervalt"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 80
+        '
         'F_AdmInkoopboekLijst
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(779, 532)
+        Me.ClientSize = New System.Drawing.Size(701, 532)
         Me.Controls.Add(Me.GroupBox1)
         Me.Controls.Add(Me.DG_AdmInkoopLijst)
         Me.Name = "F_AdmInkoopboekLijst"
@@ -334,6 +347,9 @@ Partial Class F_AdmInkoopboekLijst
     Friend WithEvents TXT_Waarde As TextBox
     Friend WithEvents Label2 As Label
     Friend WithEvents TXT_aantal As TextBox
+    Friend WithEvents DS_Administratie1 As DS_Administratie
+    Friend WithEvents SupplierBindingSource As BindingSource
+    Friend WithEvents SupplierTableAdapter As DS_AdministratieTableAdapters.SupplierTableAdapter
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewCheckBoxColumn1 As DataGridViewCheckBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
@@ -341,7 +357,4 @@ Partial Class F_AdmInkoopboekLijst
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
-    Friend WithEvents DS_Administratie1 As DS_Administratie
-    Friend WithEvents SupplierBindingSource As BindingSource
-    Friend WithEvents SupplierTableAdapter As DS_AdministratieTableAdapters.SupplierTableAdapter
 End Class
