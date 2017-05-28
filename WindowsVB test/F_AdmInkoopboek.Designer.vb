@@ -314,12 +314,12 @@ Partial Class F_AdmInkoopboek
         Me.CB_Valuta.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.AdmInkoopBoekBindingSource, "IB_Valuta", True))
         Me.CB_Valuta.DataSource = Me.ValutaBindingSource
         Me.CB_Valuta.DisplayMember = "VT_Short"
+        Me.CB_Valuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Valuta.FormattingEnabled = True
         Me.CB_Valuta.Location = New System.Drawing.Point(209, 91)
         Me.CB_Valuta.Name = "CB_Valuta"
         Me.CB_Valuta.Size = New System.Drawing.Size(74, 21)
-        Me.CB_Valuta.TabIndex = 30
-        Me.CB_Valuta.TabStop = False
+        Me.CB_Valuta.TabIndex = 4
         Me.CB_Valuta.ValueMember = "ID_valuta"
         '
         'AdmInkoopBoekBindingSource
@@ -403,8 +403,7 @@ Partial Class F_AdmInkoopboek
         Me.TXT_WaardeEuro.Location = New System.Drawing.Point(83, 111)
         Me.TXT_WaardeEuro.Name = "TXT_WaardeEuro"
         Me.TXT_WaardeEuro.Size = New System.Drawing.Size(73, 20)
-        Me.TXT_WaardeEuro.TabIndex = 26
-        Me.TXT_WaardeEuro.TabStop = False
+        Me.TXT_WaardeEuro.TabIndex = 5
         '
         'Label5
         '

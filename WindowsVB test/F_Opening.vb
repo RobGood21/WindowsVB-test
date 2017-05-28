@@ -10,8 +10,12 @@
 
     End Sub
 
-    Private Sub Knop_afsluiten_Click(sender As Object, e As EventArgs) Handles Knop_afsluiten.Click
+    Private Sub Knop_afsluiten_Click(sender As Object, e As EventArgs)
         F_Wisselmotor.Close()
 
+    End Sub
+
+    Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs) Handles Knop_Sluiten.Click
+        F_Wisselmotor.Close()
     End Sub
 End Class

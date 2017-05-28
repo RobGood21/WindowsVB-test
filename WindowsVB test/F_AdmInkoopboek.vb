@@ -47,26 +47,19 @@
         Try
             ToolTipsInstellen()
             JourNaalInstellen() 'opmaak van het datagridview
-            'Me.AdmInkoopBoekTableAdapter.Fill(Me.DS_Administratie.AdmInkoopBoek, -1)
             LoadTables()
             Me.CB_Valuta.SelectedValue = 1
             Select Case OPADMINKOOP
                 Case 1 'van form getontvangst NIeuw, dus nog geen inkoopboek record aan deze ontvangst
                     Me.AdmInkoopBoekBindingSource.AddNew()
                     Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
-                    'MsgBox(Me.AdmInkoopBoekBindingSource.Count)
                     Me.CB_Supplier.SelectedValue = IDSUPPLIER
-
-                    ' ClearControls()
-
                     'nieuwe record direct vastleggen
                     Me.Validate()
                     Me.AdmInkoopBoekBindingSource.EndEdit()
                     Me.AdmInkoopBoekTableAdapter.Update(DS_Administratie.AdmInkoopBoek)
-
                     'data van parentform halen
                     IDGO = F_GetProduct.CB_Ontvangen.SelectedValue
-
                     'parent form direct aanpassen
                     F_GetProduct.TXT_AdmInkoop.Text = Me.TXT_Boeknummer.Text
                     F_GetProduct.Validate()
@@ -93,9 +86,7 @@
 
                     'data van parentform halen
                     IDGO = F_GetProduct.CB_Ontvangen.SelectedValue
-
                 Case 3 'openen met een vooraf bepaald adminkoopnummer, dus na een zoekactie
-
                 Case Else 'openen als nieuwe invoer, niet afhankelijk van getproduct(ontvangst)
                     NieuweInkoop()
             End Select
@@ -109,11 +100,9 @@
         Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
         LoadTables()
         Me.CB_Supplier.SelectedValue = -1
-        'Me.CB_BetaalWijze.SelectedValue = -1
-        'Me.CB_Valuta.SelectedValue = -1
         ClearControls()
-        Me.CB_Supplier.Select()
         Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, 0)
+        Me.CB_Supplier.Select()
     End Sub
     Public Sub JourNaalInstellen()
         Me.DG_Journaal.Columns(5).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleRight
@@ -155,11 +144,9 @@
         Me.IB_Datum.Value = Now
         Me.IB_DueDatum.Value = Now
         Me.IB_betaaldatum.Value = Me.IB_betaaldatum.MinDate
-
-        Me.TXT_Waarde.Text = 0
-        Me.TXT_WaardeEuro.Text = 0
-        Me.TXT_BTW.Text = 0
-
+        Me.TXT_Waarde.Text = FormatNumber(0, -1)
+        Me.TXT_WaardeEuro.Text = FormatNumber(0, -1)
+        Me.TXT_BTW.Text = FormatNumber(0, -1)
         Me.CH_Betaald.Checked = False
     End Sub
     Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs) Handles Knop_Sluiten.Click
@@ -400,5 +387,17 @@
     End Sub
     Private Sub TXT_Koers_TextChanged(sender As Object, e As EventArgs) Handles TXT_Koers.TextChanged
         BerekenWaardeEuro()
+    End Sub
+    Private Sub GB_Betaling_Enter(sender As Object, e As EventArgs) Handles GB_Betaling.Enter
+
+    End Sub
+    Private Sub TXT_WaardeEuro_Validated(sender As Object, e As EventArgs) Handles TXT_WaardeEuro.Validated
+
+        Dim K As Decimal
+        K = Me.TXT_WaardeEuro.Text / Me.TXT_Waarde.Text
+        MsgBox(K)
+
+
+        Me.TXT_WaardeEuro.Text = FormatNumber(Me.TXT_WaardeEuro.Text, -1)
     End Sub
 End Class

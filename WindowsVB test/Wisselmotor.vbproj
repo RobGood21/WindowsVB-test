@@ -62,8 +62,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>
-    </ApplicationIcon>
+    <ApplicationIcon>Icons8-Ios7-Transport-Train.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -437,6 +436,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons8-Ios7-Transport-Train.ico" />
+    <None Include="Resources\Wisselmotor program opening.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />
 </Project>

@@ -1256,7 +1256,6 @@ GeVonden:
     Private Sub DG_Besteld_DoubleClick(sender As Object, e As EventArgs) Handles DG_Besteld.DoubleClick
         ToonBesteld()
     End Sub
-
     Private Sub GB_Sectie_Validated(sender As Object, e As EventArgs) Handles GB_Sectie.Validated
         BlokSupplier()
     End Sub

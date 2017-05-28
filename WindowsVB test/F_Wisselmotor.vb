@@ -26,9 +26,6 @@
     Private Sub ValutaToolStripMenuItem_Click(sender As Object, e As EventArgs)
         F_Valuta.ShowDialog()
     End Sub
-    Private Sub LandenToolStripMenuItem_Click(sender As Object, e As EventArgs)
-        F_Land.ShowDialog()
-    End Sub
     Private Sub SuppliersToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SuppliersToolStripMenuItem.Click
         F_Supplier.MdiParent = Me
         F_Supplier.Show()
@@ -41,11 +38,8 @@
         F_AdmGBrekening.MdiParent = Me
         F_AdmGBrekening.Show()
         F_AdmGBrekening.BringToFront()
+    End Sub
 
-    End Sub
-    Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BetaalWijzenToolStripMenuItem.Click
-        F_Betaalwijzen.ShowDialog()
-    End Sub
     Private Sub ToolStripMenuItem2_Click(sender As Object, e As EventArgs) Handles ToolStripMenuItem2.Click
         F_AdmInkoopboek.MdiParent = Me
         F_AdmInkoopboek.Show()
@@ -69,15 +63,6 @@
         F_Product.BringToFront()
 
     End Sub
-
-    Private Sub MenuStrip1_ItemClicked(sender As Object, e As ToolStripItemClickedEventArgs) Handles MenuStrip1.ItemClicked
-
-    End Sub
-
-    Private Sub OnderhoudToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles OnderhoudToolStripMenuItem.Click
-
-    End Sub
-
     Private Sub ProductLijstToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductLijstToolStripMenuItem.Click
         ShowGetproducts()
     End Sub
@@ -85,5 +70,16 @@
         F_GetProduct.MdiParent = Me
         F_GetProduct.Show()
         F_GetProduct.BringToFront()
+    End Sub
+
+    Private Sub ValutaToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ValutaToolStripMenuItem.Click
+        F_Valuta.ShowDialog()
+    End Sub
+
+    Private Sub BetaalWijzenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles BetaalWijzenToolStripMenuItem.Click
+        F_Betaalwijzen.ShowDialog()
+    End Sub
+    Private Sub LandenToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles LandenToolStripMenuItem.Click
+        F_Land.ShowDialog()
     End Sub
 End Class

@@ -61,30 +61,72 @@
 
     End Sub
     Private Sub F_Product_Load(sender As Object, e As EventArgs) Handles MyBase.Load
-        'TODO: This line of code loads data into the 'DS_Product.ProductMut' table. You can move, or remove it, as needed.
-        Me.ProductMutTableAdapter.Fill(Me.DS_Product.ProductMut)
-        'TODO: This line of code loads data into the 'DS_Product.GroepPD' table. You can move, or remove it, as needed.
         Me.GroepPDTableAdapter.Fill(Me.DS_Product.GroepPD)
-        'TODO: This line of code loads data into the 'DS_Product1.GroepPD' table. You can move, or remove it, as needed.
-        'Me.GroepPDTableAdapter.Fill(Me.DS_Product1.GroepPD)
         Me.ToolTipsInstellen()
         LoadProduct()
+    End Sub
+    Private Sub LaadMutLijst(S As Integer)
+        'MsgBox(IDPRODUCT)
+        MutLijstKolom(S)
+        Select Case S
+            Case 1 'alles laden
+                Me.ProductMutTableAdapter.Fill(Me.DS_Product.ProductMut, IDPRODUCT)
+            Case 2 'alleen ontvangsten
+                Me.ProductMutTableAdapter.FillByStatus(Me.DS_Product.ProductMut, IDPRODUCT, 2)
+            Case 3 'Alleen nog in bestelling
+                Me.ProductMutTableAdapter.FillByStatus(Me.DS_Product.ProductMut, IDPRODUCT, 3)
+            Case 4 'Alleen verbruik, verkoop
+                Me.ProductMutTableAdapter.FillByStatus(Me.DS_Product.ProductMut, IDPRODUCT, 4)
+        End Select
+
+    End Sub
+    Private Sub MutLijstKolom(S As Integer)
+        Select Case S
+            Case 1 'alles
+                Me.DG_Mutaties.Columns(5).Visible = True
+                Me.DG_Mutaties.Columns(6).Visible = False
+                Me.DG_Mutaties.Columns(7).Visible = False
+                Me.DG_Mutaties.Columns(8).Visible = True
+                Me.DG_Mutaties.Columns(9).Visible = True
+                Me.DG_Mutaties.Columns(10).Visible = True
+            Case 2 'besteld
+                Me.DG_Mutaties.Columns(5).Visible = True
+                Me.DG_Mutaties.Columns(6).Visible = False
+                Me.DG_Mutaties.Columns(7).Visible = True
+                Me.DG_Mutaties.Columns(8).Visible = True
+                Me.DG_Mutaties.Columns(9).Visible = True
+                Me.DG_Mutaties.Columns(10).Visible = True
+            Case 3 'ontvangen
+                Me.DG_Mutaties.Columns(5).Visible = False
+                Me.DG_Mutaties.Columns(6).Visible = True
+                Me.DG_Mutaties.Columns(7).Visible = False
+                Me.DG_Mutaties.Columns(8).Visible = True
+                Me.DG_Mutaties.Columns(9).Visible = True
+                Me.DG_Mutaties.Columns(10).Visible = True
+            Case 4 'verbruik
+                Me.DG_Mutaties.Columns(5).Visible = True
+                Me.DG_Mutaties.Columns(6).Visible = False
+                Me.DG_Mutaties.Columns(7).Visible = False
+                Me.DG_Mutaties.Columns(8).Visible = False
+                Me.DG_Mutaties.Columns(9).Visible = False
+                Me.DG_Mutaties.Columns(10).Visible = False
+        End Select
+
     End Sub
     Public Sub LoadProduct()
         Try
             LoadTables()
             Select Case OPPRODUCT
                 Case 1 'bestaand product
+                    INITBerekend()
                     Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
                     LUZ = True
                     Me.TXT_Productnummer.Text = IDPRODUCT
-
-                    'If IDPRODUCT > 0 Then Me.Knop_Opslaan.Enabled = True
                 Case 2 'nieuw product invoeren.
 
                 Case Else 'opening vrij
+                    INITBerekend()
                     Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
-                    'Me.Knop_Opslaan.Enabled = False
                     Me.TXT_Productnummer.Select()
             End Select
         Catch ex As Exception
@@ -154,6 +196,11 @@
             Me.CB_Groep.Select()
         End With
     End Sub
+    Private Sub INITBerekend()
+        'berekende velden even 'schonen'
+        Me.TXT_BTW.Text = FormatNumber(0, -1)
+        Me.TXT_prijsexBTW.Text = FormatNumber(0, -1)
+    End Sub
     Private Sub Knop_Locatie_Click(sender As Object, e As EventArgs) Handles Knop_Locatie.Click
         Try
             IDLOCATIE = Me.CB_Locatie.SelectedValue
@@ -175,6 +222,7 @@
             If IsNumeric(Me.TXT_Productnummer.Text) = True Then
                 IDPRODUCT = Me.TXT_Productnummer.Text
                 LoadProduct()
+                BerekenPrijzen()
                 If ValiDatie() = True Then
                     Me.Knop_Opslaan.Enabled = True
                 End If
@@ -203,7 +251,7 @@
         End If
         Return JN
     End Function
-    Private Sub Button1_Click(sender As Object, e As EventArgs) Handles Button1.Click
+    Private Sub Button1_Click(sender As Object, e As EventArgs)
         Me.TB_Product.SelectTab(1)
     End Sub
     Private Sub TXT_Productnummer_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Productnummer.KeyPress
@@ -271,10 +319,32 @@
         F_Merk.ShowDialog()
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
     End Sub
-    Private Sub TXT_Productnummer_Validated(sender As Object, e As EventArgs) Handles TXT_Productnummer.Validated
-        'PLaatsProduct()
-    End Sub
     Private Sub TB_Product_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TB_Product.SelectedIndexChanged
-        MsgBox(Me.TB_Product.SelectedIndex)
+        Dim T As Integer 'tag voor welke optie gekozen
+        Select Case TB_Product.SelectedIndex
+            Case 0 'Beschrijving
+            Case 1 'Lijst, ontvangen, besteld, verbuikt
+                For Each control In GB_Mutaties.Controls
+                    If control.checked = True Then T = control.tag
+                Next
+                LaadMutLijst(T)
+
+
+            Case 3 'not used 27mei2017
+            Case 4 'not used 27mei2017
+        End Select
+        'MsgBox(Me.TB_Product.SelectedIndex)
+    End Sub
+    Private Sub Optie_Mutatie_alles_Click(sender As Object, e As EventArgs) Handles Optie_Mutatie_alles.Click
+        LaadMutLijst(1)
+    End Sub
+    Private Sub Optie_Mutatie_Ontvang_Click(sender As Object, e As EventArgs) Handles Optie_Mutatie_Ontvang.Click
+        LaadMutLijst(3)
+    End Sub
+    Private Sub OPtie_Mutatie_Besteld_Click(sender As Object, e As EventArgs) Handles OPtie_Mutatie_Besteld.Click
+        LaadMutLijst(2)
+    End Sub
+    Private Sub Optie_mutatie_Verbuik_Click(sender As Object, e As EventArgs) Handles Optie_mutatie_Verbuik.Click
+        LaadMutLijst(4)
     End Sub
 End Class

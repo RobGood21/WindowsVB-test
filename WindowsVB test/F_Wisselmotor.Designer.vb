@@ -40,9 +40,10 @@ Partial Class F_Wisselmotor
         Me.KlantenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.FinancieelToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripMenuItem2 = New System.Windows.Forms.ToolStripMenuItem()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
         Me.ToolStripMenuItem3 = New System.Windows.Forms.ToolStripMenuItem()
-        Me.GrootboekrekeningenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.GrootboekrekeningenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.ValutaToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.LandenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
         Me.BetaalWijzenToolStripMenuItem = New System.Windows.Forms.ToolStripMenuItem()
@@ -62,13 +63,14 @@ Partial Class F_Wisselmotor
         '
         Me.ToolStripMenuItem1.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.OpeningToolStripMenuItem, Me.ToolStripSeparator1, Me.AfsluitenToolStripMenuItem})
         Me.ToolStripMenuItem1.Name = "ToolStripMenuItem1"
-        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(52, 20)
-        Me.ToolStripMenuItem1.Text = "Forms"
+        Me.ToolStripMenuItem1.Size = New System.Drawing.Size(61, 20)
+        Me.ToolStripMenuItem1.Text = "Bestand"
         '
         'OpeningToolStripMenuItem
         '
         Me.OpeningToolStripMenuItem.Name = "OpeningToolStripMenuItem"
-        Me.OpeningToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.OpeningToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.B), System.Windows.Forms.Keys)
+        Me.OpeningToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
         Me.OpeningToolStripMenuItem.Text = "Opening"
         '
         'ToolStripSeparator1
@@ -79,7 +81,9 @@ Partial Class F_Wisselmotor
         'AfsluitenToolStripMenuItem
         '
         Me.AfsluitenToolStripMenuItem.Name = "AfsluitenToolStripMenuItem"
-        Me.AfsluitenToolStripMenuItem.Size = New System.Drawing.Size(121, 22)
+        Me.AfsluitenToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.C), System.Windows.Forms.Keys)
+        Me.AfsluitenToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
         Me.AfsluitenToolStripMenuItem.Text = "Afsluiten"
         '
         'OnderhoudToolStripMenuItem
@@ -92,36 +96,41 @@ Partial Class F_Wisselmotor
         'ProductLijstToolStripMenuItem
         '
         Me.ProductLijstToolStripMenuItem.Name = "ProductLijstToolStripMenuItem"
-        Me.ProductLijstToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.ProductLijstToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
+        Me.ProductLijstToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.ProductLijstToolStripMenuItem.Text = "Product-Lijst"
         '
         'ProductenToolStripMenuItem
         '
         Me.ProductenToolStripMenuItem.Name = "ProductenToolStripMenuItem"
-        Me.ProductenToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.ProductenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.ProductenToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.ProductenToolStripMenuItem.Text = "Producten"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(157, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(180, 6)
         '
         'ProductgroepenToolStripMenuItem
         '
         Me.ProductgroepenToolStripMenuItem.Name = "ProductgroepenToolStripMenuItem"
-        Me.ProductgroepenToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.ProductgroepenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
+        Me.ProductgroepenToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.ProductgroepenToolStripMenuItem.Text = "Productgroepen"
         '
         'MerkenToolStripMenuItem
         '
         Me.MerkenToolStripMenuItem.Name = "MerkenToolStripMenuItem"
-        Me.MerkenToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.MerkenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
+        Me.MerkenToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.MerkenToolStripMenuItem.Text = "Merken"
         '
         'OpbergersToolStripMenuItem
         '
         Me.OpbergersToolStripMenuItem.Name = "OpbergersToolStripMenuItem"
-        Me.OpbergersToolStripMenuItem.Size = New System.Drawing.Size(160, 22)
+        Me.OpbergersToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.K), System.Windows.Forms.Keys)
+        Me.OpbergersToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.OpbergersToolStripMenuItem.Text = "Opbergers"
         '
         'RelatiesToolStripMenuItem
@@ -134,7 +143,8 @@ Partial Class F_Wisselmotor
         'SuppliersToolStripMenuItem
         '
         Me.SuppliersToolStripMenuItem.Name = "SuppliersToolStripMenuItem"
-        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.SuppliersToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.SuppliersToolStripMenuItem.Text = "Suppliers"
         '
         'ShopsToolStripMenuItem
@@ -151,7 +161,7 @@ Partial Class F_Wisselmotor
         '
         'FinancieelToolStripMenuItem
         '
-        Me.FinancieelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripMenuItem3, Me.GrootboekrekeningenToolStripMenuItem, Me.ToolStripSeparator2, Me.ValutaToolStripMenuItem, Me.LandenToolStripMenuItem, Me.BetaalWijzenToolStripMenuItem})
+        Me.FinancieelToolStripMenuItem.DropDownItems.AddRange(New System.Windows.Forms.ToolStripItem() {Me.ToolStripMenuItem2, Me.ToolStripSeparator4, Me.ToolStripMenuItem3, Me.ToolStripSeparator2, Me.GrootboekrekeningenToolStripMenuItem, Me.ValutaToolStripMenuItem, Me.LandenToolStripMenuItem, Me.BetaalWijzenToolStripMenuItem})
         Me.FinancieelToolStripMenuItem.Name = "FinancieelToolStripMenuItem"
         Me.FinancieelToolStripMenuItem.Size = New System.Drawing.Size(90, 20)
         Me.FinancieelToolStripMenuItem.Text = "Administratie"
@@ -162,22 +172,27 @@ Partial Class F_Wisselmotor
         Me.ToolStripMenuItem2.Size = New System.Drawing.Size(189, 22)
         Me.ToolStripMenuItem2.Text = "Kosten boeken"
         '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(186, 6)
+        '
         'ToolStripMenuItem3
         '
         Me.ToolStripMenuItem3.Name = "ToolStripMenuItem3"
         Me.ToolStripMenuItem3.Size = New System.Drawing.Size(189, 22)
         Me.ToolStripMenuItem3.Text = "Inkoopboek overzicht"
         '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(186, 6)
+        '
         'GrootboekrekeningenToolStripMenuItem
         '
         Me.GrootboekrekeningenToolStripMenuItem.Name = "GrootboekrekeningenToolStripMenuItem"
         Me.GrootboekrekeningenToolStripMenuItem.Size = New System.Drawing.Size(189, 22)
         Me.GrootboekrekeningenToolStripMenuItem.Text = "Grootboekrekeningen"
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(186, 6)
         '
         'ValutaToolStripMenuItem
         '
@@ -239,4 +254,5 @@ Partial Class F_Wisselmotor
     Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
     Friend WithEvents OpbergersToolStripMenuItem As ToolStripMenuItem
     Friend WithEvents ProductLijstToolStripMenuItem As ToolStripMenuItem
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
 End Class
