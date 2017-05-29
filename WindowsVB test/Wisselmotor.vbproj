@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <StartupObject>WindowsVB_test.My.MyApplication</StartupObject>
     <RootNamespace>WindowsVB_test</RootNamespace>
-    <AssemblyName>WindowsVB test</AssemblyName>
+    <AssemblyName>Wisselmotor</AssemblyName>
     <FileAlignment>512</FileAlignment>
     <MyType>WindowsForms</MyType>
     <TargetFrameworkVersion>v4.6.2</TargetFrameworkVersion>
@@ -36,7 +36,7 @@
     <DefineDebug>true</DefineDebug>
     <DefineTrace>true</DefineTrace>
     <OutputPath>bin\Debug\</OutputPath>
-    <DocumentationFile>WindowsVB test.xml</DocumentationFile>
+    <DocumentationFile>Wisselmotor.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
@@ -46,7 +46,7 @@
     <DefineTrace>true</DefineTrace>
     <Optimize>true</Optimize>
     <OutputPath>bin\Release\</OutputPath>
-    <DocumentationFile>WindowsVB test.xml</DocumentationFile>
+    <DocumentationFile>Wisselmotor.xml</DocumentationFile>
     <NoWarn>42016,41999,42017,42018,42019,42032,42036,42020,42021,42022</NoWarn>
   </PropertyGroup>
   <PropertyGroup>
@@ -62,7 +62,7 @@
     <OptionInfer>On</OptionInfer>
   </PropertyGroup>
   <PropertyGroup>
-    <ApplicationIcon>Icons8-Ios7-Transport-Train.ico</ApplicationIcon>
+    <ApplicationIcon>train-5-multi-size.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="System" />
@@ -436,6 +436,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="Icons8-Ios7-Transport-Train.ico" />
+    <Content Include="train-5-multi-size.ico" />
+    <None Include="Resources\copy-icon.png" />
     <None Include="Resources\Wisselmotor program opening.png" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.VisualBasic.targets" />

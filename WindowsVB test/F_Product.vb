@@ -291,30 +291,6 @@
     Private Sub TXT_Inkoopwaarde_Validated(sender As Object, e As EventArgs) Handles TXT_Inkoopwaarde.Validated
         If IsNumeric(TXT_Inkoopwaarde.Text) = True Then TXT_Inkoopwaarde.Text = FormatNumber(Me.TXT_Inkoopwaarde.Text, -1)
     End Sub
-    Private Sub TSM_Opslaan_Click(sender As Object, e As EventArgs) Handles TSM_Opslaan.Click
-        OPSLAAN()
-    End Sub
-    Private Sub AnnulerenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles AnnulerenToolStripMenuItem.Click
-        LoadProduct()
-    End Sub
-    Private Sub SluitenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles SluitenToolStripMenuItem.Click
-        Dim jn As Integer
-        jn = MsgBox("Wil je dit formulier sluiten, en alle gemaakte toevoegingen en veranderingen ongedaan maken?", vbQuestion + vbYesNo, "Afsluiten en annuleren?")
-        If jn = 6 Then Me.Close()
-    End Sub
-    Private Sub NieuwProductToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles NieuwProductToolStripMenuItem.Click
-        Me.DT_productBindingSource.AddNew()
-        INITNieuw()
-    End Sub
-    Private Sub ProductWissenToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductWissenToolStripMenuItem.Click
-        Dim JaNee As Integer
-        JaNee = MsgBox("Weet je zeker dat je dit product wilt verwijderen?", vbYesNo, " Product verwijderen.")
-        If JaNee = 6 Then
-            Me.DT_productBindingSource.RemoveCurrent()
-            OPSLAAN()
-            Me.Knop_ZoekProduct.Select()
-        End If
-    End Sub
     Private Sub Knop_Merk_Click(sender As Object, e As EventArgs) Handles Knop_Merk.Click
         F_Merk.ShowDialog()
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
@@ -328,8 +304,6 @@
                     If control.checked = True Then T = control.tag
                 Next
                 LaadMutLijst(T)
-
-
             Case 3 'not used 27mei2017
             Case 4 'not used 27mei2017
         End Select
@@ -346,5 +320,45 @@
     End Sub
     Private Sub Optie_mutatie_Verbuik_Click(sender As Object, e As EventArgs) Handles Optie_mutatie_Verbuik.Click
         LaadMutLijst(4)
+    End Sub
+    Private Sub TKnop_Sluiten_Click(sender As Object, e As EventArgs) Handles TKnop_Sluiten.Click
+        Dim jn As Integer
+        jn = MsgBox("Wil je dit formulier sluiten, en alle gemaakte toevoegingen en veranderingen ongedaan maken?", vbQuestion + vbYesNo, "Afsluiten en annuleren?")
+        If jn = 6 Then Me.Close()
+    End Sub
+    Private Sub Tknop_Nieuw_Click(sender As Object, e As EventArgs) Handles Tknop_Nieuw.Click
+        Me.DT_productBindingSource.AddNew()
+        INITNieuw()
+    End Sub
+    Private Sub Tknop_Opslaan_Click(sender As Object, e As EventArgs) Handles Tknop_Opslaan.Click
+        OPSLAAN()
+    End Sub
+
+    Private Sub Tknop_annuleren_Click(sender As Object, e As EventArgs) Handles Tknop_annuleren.Click
+        LoadProduct()
+    End Sub
+
+    Private Sub Tknop_Kopieer_Click(sender As Object, e As EventArgs) Handles Tknop_Kopieer.Click
+        'kopieert het getoonde product naar een nieuw product, maakt nieuw record aan
+        Dim jn As Integer
+        If IsNumeric(Me.TXT_Productnummer.Text) = True Then
+            If Me.TXT_Productnummer.Text > 0 Then
+                jn = MsgBox("Kopie na aanmaken opzoeken, heet: Kopie laatst gemaakt." & Chr(13) & Chr(13) & "Het getoonde product kopieëren naar een nieuw product?", vbQuestion + vbYesNo, "Kopieëren bevestigen...")
+                If jn = 6 Then
+                    Me.DT_productTableAdapter.Insert(Me.CB_Groep.SelectedValue, Me.CB_Groep.SelectedValue, Me.TXT_Naam.Text & "(kopie)", Me.TXT_functie.Text, Me.TXT_waarde.Text, Me.TXT_behuizing.Text, "", "Kopie laatst gemaakt", Me.TXT_Verkoopprijs.Text, 0, 0, 0, 0)
+                    Me.DT_productBindingSource.MoveLast()
+                End If
+            End If
+        End If
+    End Sub
+
+    Private Sub Tknop_Delete_Click(sender As Object, e As EventArgs) Handles Tknop_Delete.Click
+        Dim JaNee As Integer
+        JaNee = MsgBox("Weet je zeker dat je dit product wilt verwijderen?", vbYesNo, " Product verwijderen.")
+        If JaNee = 6 Then
+            Me.DT_productBindingSource.RemoveCurrent()
+            OPSLAAN()
+            Me.Knop_ZoekProduct.Select()
+        End If
     End Sub
 End Class

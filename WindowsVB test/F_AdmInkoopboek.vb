@@ -392,12 +392,18 @@
 
     End Sub
     Private Sub TXT_WaardeEuro_Validated(sender As Object, e As EventArgs) Handles TXT_WaardeEuro.Validated
-
         Dim K As Decimal
-        K = Me.TXT_WaardeEuro.Text / Me.TXT_Waarde.Text
-        MsgBox(K)
-
-
+        If Me.TXT_Waarde.Text <> 0 Then K = Me.TXT_WaardeEuro.Text / Me.TXT_Waarde.Text
+        If Me.CB_Valuta.SelectedIndex > 0 Then
+            Me.TXT_Koers.Text = K
+            Me.Validate()
+            Me.ValutaBindingSource.EndEdit()
+            Me.ValutaTableAdapter.Update(DS_Administratie.Valuta)
+        End If
         Me.TXT_WaardeEuro.Text = FormatNumber(Me.TXT_WaardeEuro.Text, -1)
+    End Sub
+
+    Private Sub TXT_BTW_Validated(sender As Object, e As EventArgs) Handles TXT_BTW.Validated
+        Me.TXT_BTW.Text = FormatNumber(Me.TXT_BTW.Text, -1)
     End Sub
 End Class

@@ -136,17 +136,38 @@
         End Select
     End Sub
     Public Sub LaadProductList()
-        'MsgBox("laad productlist")
-        Try
-            Me.GetProductListTableAdapter.Fill(Me.DS_Product.GetProductList, Me.CB_Ontvangen.SelectedValue)
-            If Me.DG_Lijst.Rows.Count > 0 Then
-                BerekenProject()
-            Else
-                Me.TXT_Lijstwaarde.Text = FormatNumber(0, -1)
-            End If
-        Catch ex As System.Exception
-            System.Windows.Forms.MessageBox.Show(ex.Message)
-        End Try
+        Select Case Me.TB_Products.SelectedIndex
+            Case 0 'productlijst
+                Me.GetProductListTableAdapter.Fill(Me.DS_Product.GetProductList, Me.CB_Ontvangen.SelectedValue)
+                If Me.DG_Lijst.Rows.Count > 0 Then
+                    BerekenProject()
+                Else
+                    Me.TXT_Lijstwaarde.Text = FormatNumber(0, -1)
+                End If
+            Case 1 'ontvangenlijst
+                'laad de data in de datagridview ontvangen producten DG_ontvangen
+                If Me.CH_AlleOntvangst.Checked = True Then
+                    Me.GPA_OntvangenLijstTableAdaptor_.Fill(DS_Product.GPA_OntvangenLijst_, Me.CB_Supplier.SelectedValue)
+                Else
+                    Me.GPA_OntvangenLijstTableAdaptor_.FillByIDGO(DS_Product.GPA_OntvangenLijst_, Me.CB_Supplier.SelectedValue, Me.TXT_getontvangstid.Text)
+                End If
+            Case 2 'besteld
+                Dim IDSUP As Integer = 0
+                'MsgBox("Nu blad gekozen, hier nu de bestelling lijst maken en vullen")
+                If Me.CH_AlleBestel.Checked = True Then
+                    Me.GPA_BesteldTableAdapter.Fill(Me.DS_Product.GPA_Besteld, Me.CB_Supplier.SelectedValue)
+                Else
+                    'denkbaar dat er geen supplier is bepaald, dit uitvangen
+                    If IsNumeric(Me.CB_Supplier.SelectedValue) = False Then
+                        IDSUP = 0
+                    Else
+                        IDSUP = Me.CB_Supplier.SelectedValue
+                    End If
+                    If IsNumeric(Me.TXT_getontvangstid.Text) = True Then Me.GPA_BesteldTableAdapter.FillByIDGO(Me.DS_Product.GPA_Besteld, IDSUP, Me.TXT_getontvangstid.Text)
+                End If
+            Case 3 'verbruikt
+                Me.JN_LijstDatatable.Fill(DS_Administratie.JN_Lijst, Me.CB_Ontvangen.SelectedValue)
+        End Select
     End Sub
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         GetOntvangstBindingSource.AddNew() 'nieuwe order, ontvangst aanmaken
@@ -157,13 +178,7 @@
 
     End Sub
     Private Sub TXT_getontvangstid_TextChanged(sender As Object, e As EventArgs) Handles TXT_getontvangstid.TextChanged
-        'Journaalposten altijd laden
-        Select Case STATUS
-            Case 2 'besteld
-                LaadBesteld()
-            Case 3
-                LaadOntvang()
-        End Select
+        LaadProductList()
     End Sub
     Private Sub CB_Shop_Enter(sender As Object, e As EventArgs) Handles CB_Shop.Enter
         LaadShop(2)
@@ -818,42 +833,10 @@ Eindeloop:
     End Sub
     Private Sub Tpage_Product_Ontvang_Enter(sender As Object, e As EventArgs) Handles Tpage_Product_Ontvang.Enter
         'als tabblad ontvangen wordt getoond nu de datable vullen met ontvangsten van deze leverancier
-        LaadOntvang()
+        LaadProductList()
     End Sub
     Private Sub Tpage_Product_Besteld_Enter(sender As Object, e As EventArgs) Handles Tpage_Product_Besteld.Enter
-        LaadBesteld()
-    End Sub
-    Private Sub LaadBesteld()
-
-        Dim IDSUP As Integer = 0
-        'MsgBox("Nu blad gekozen, hier nu de bestelling lijst maken en vullen")
-        If Me.CH_AlleBestel.Checked = True Then
-            Me.GPA_BesteldTableAdapter.Fill(Me.DS_Product.GPA_Besteld, Me.CB_Supplier.SelectedValue)
-        Else
-            'denkbaar dat er geen supplier is bepaald, dit uitvangen
-            If IsNumeric(Me.CB_Supplier.SelectedValue) = False Then
-                IDSUP = 0
-            Else
-                IDSUP = Me.CB_Supplier.SelectedValue
-            End If
-            If IsNumeric(Me.TXT_getontvangstid.Text) = True Then Me.GPA_BesteldTableAdapter.FillByIDGO(Me.DS_Product.GPA_Besteld, IDSUP, Me.TXT_getontvangstid.Text)
-        End If
-    End Sub
-    Private Sub LaadOntvang()
-        Try
-            'laad de data in de datagridview ontvangen producten DG_ontvangen
-            If Me.CH_AlleOntvangst.Checked = True Then
-                Me.GPA_OntvangenLijstTableAdaptor_.Fill(DS_Product.GPA_OntvangenLijst_, Me.CB_Supplier.SelectedValue)
-            Else
-                Me.GPA_OntvangenLijstTableAdaptor_.FillByIDGO(DS_Product.GPA_OntvangenLijst_, Me.CB_Supplier.SelectedValue, Me.TXT_getontvangstid.Text)
-            End If
-        Catch ex As Exception
-
-            'geeft een fout in later stadium proberen op te lossen
-
-        End Try
-
-
+        LaadProductList()
     End Sub
     Private Sub MaakVerbruik()
         'Maakt deze getontvangst record container tot een verbruik, verkoop. 
@@ -925,11 +908,10 @@ Eindeloop:
         LaadProductList()
     End Sub
     Private Sub CH_AlleBestel_CheckedChanged(sender As Object, e As EventArgs) Handles CH_AlleBestel.CheckedChanged
-        LaadBesteld()
         LaadProductList()
     End Sub
     Private Sub CH_AlleOntvangst_CheckedChanged(sender As Object, e As EventArgs) Handles CH_AlleOntvangst.CheckedChanged
-        LaadOntvang()
+        LaadProductList()
     End Sub
     Private Sub Knop_Project_Product_Click(sender As Object, e As EventArgs) Handles Knop_Project_Product.Click
         Dim N As Boolean = False
@@ -1211,26 +1193,13 @@ Eindeloop:
         BerekenBTWVerbruik()
     End Sub
     Private Sub TB_Products_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TB_Products.SelectedIndexChanged
-        Select Case Me.TB_Products.SelectedIndex
-            Case 0
-            Case 1
-            Case 2
-            Case 3
-
-                Me.JN_LijstDatatable.Fill(DS_Administratie.JN_Lijst, Me.CB_Ontvangen.SelectedValue)
-        End Select
+        LaadProductList()
     End Sub
+
     Private Sub OpmaakJournaal()
         'verzorgt de opmaak van de datagrid journaal
         'Me.DG_Journaal.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.DG_Journaal.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter
-    End Sub
-    Private Sub CB_Ontvangen_SelectedValueChanged(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectedValueChanged
-        ' MsgBox("nu")
-        ' LaadProductList()
-    End Sub
-    Private Sub CB_Ontvangen_SelectedIndexChanged(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectedIndexChanged
-        '
     End Sub
     Private Sub CB_Ontvangen_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectionChangeCommitted
         LaadProductList()
@@ -1276,7 +1245,6 @@ GeVonden:
 
             Case Else
                 Me.CB_Supplier.DropDownStyle = ComboBoxStyle.Simple
-
         End Select
     End Sub
 End Class

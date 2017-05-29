@@ -385,8 +385,7 @@ Partial Class F_AdmInkoopboek
         Me.TXT_BTW.Location = New System.Drawing.Point(83, 133)
         Me.TXT_BTW.Name = "TXT_BTW"
         Me.TXT_BTW.Size = New System.Drawing.Size(73, 20)
-        Me.TXT_BTW.TabIndex = 4
-        Me.TXT_BTW.TabStop = False
+        Me.TXT_BTW.TabIndex = 6
         '
         'Label6
         '
@@ -636,6 +635,7 @@ Partial Class F_AdmInkoopboek
         Me.TableAdapterManager.AdmJournaalTableAdapter = Me.AdmJournaalTableAdapter
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
         'AdmJournaalTableAdapter
         '
@@ -664,7 +664,7 @@ Partial Class F_AdmInkoopboek
         Me.Knop_Close.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Close.TabIndex = 46
         Me.Knop_Close.TabStop = False
-        Me.Knop_Close.Text = "Sluiten"
+        Me.Knop_Close.Text = "&Sluiten"
         Me.Knop_Close.UseVisualStyleBackColor = True
         '
         'Knop_Nieuw
@@ -673,7 +673,7 @@ Partial Class F_AdmInkoopboek
         Me.Knop_Nieuw.Name = "Knop_Nieuw"
         Me.Knop_Nieuw.Size = New System.Drawing.Size(135, 23)
         Me.Knop_Nieuw.TabIndex = 9
-        Me.Knop_Nieuw.Text = "&Opslaan, nieuwe invoer"
+        Me.Knop_Nieuw.Text = "Opslaan, &nieuwe invoer"
         Me.Knop_Nieuw.UseVisualStyleBackColor = True
         '
         'F_AdmInkoopboek

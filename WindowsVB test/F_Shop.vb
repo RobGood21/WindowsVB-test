@@ -46,44 +46,39 @@
         End Try
 
     End Sub
-
-    Private Sub Knop_Save_Click(sender As Object, e As EventArgs) Handles Knop_Save.Click
-        'te gebruiken om tijdens editing gegevens vast te leggen.
-        OPslaanShop()
+    Public Sub OPslaanShop()
+        Me.Validate()
+        Me.ShopBindingSource.EndEdit()
+        Me.ShopTableAdapter.Update(DS_Supplier.Shop)
 
     End Sub
 
-    Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
-        'Maakt een nieuwe shop aan
+    Private Sub Tknop_Nieuw_Click(sender As Object, e As EventArgs) Handles Tknop_Nieuw.Click
         Me.ShopBindingSource.AddNew()
         Me.txt_IDSupplier_Shop.SelectedText = IDSUPPLIER
-
-
     End Sub
 
-    Private Sub Knop_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Annuleren.Click
-        'Opnieuw beginnen, alle veranderingen ongedaan maken
-        LaadForm()
-
+    Private Sub Tknop_Opslaan_Click(sender As Object, e As EventArgs) Handles Tknop_Opslaan.Click
+        OPslaanShop()
     End Sub
 
-    Private Sub Knop_Delete_Click(sender As Object, e As EventArgs) Handles Knop_Delete.Click
+    Private Sub Tknop_Delete_Click(sender As Object, e As EventArgs) Handles Tknop_Delete.Click
         Dim janee As Integer
         janee = MsgBox("Wil je deze shop verwijderen?", vbYesNo, "verwijderen bevestigen..")
         If janee = 6 Then
             Me.ShopBindingSource.RemoveCurrent()
             OPslaanShop()
             Me.Close()
-
         End If
-
     End Sub
 
-    Public Sub OPslaanShop()
+    Private Sub Tknop_Annuleren_Click(sender As Object, e As EventArgs) Handles Tknop_Annuleren.Click
+        LaadForm()
+    End Sub
 
-        Me.Validate()
-        Me.ShopBindingSource.EndEdit()
-        Me.ShopTableAdapter.Update(DS_Supplier.Shop)
-
+    Private Sub TKnop_Sluit_Click(sender As Object, e As EventArgs) Handles TKnop_Sluit.Click
+        Dim jn As Integer
+        jn = MsgBox("Afsluiten zonder de veranderingen op te slaan?", vbQuestion + vbYesNo, "Veranderingen niet opslaan..")
+        If jn = 6 Then Me.Close()
     End Sub
 End Class

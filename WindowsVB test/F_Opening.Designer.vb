@@ -29,9 +29,6 @@ Partial Class F_Opening
         '
         'Pic_Opening
         '
-        Me.Pic_Opening.Anchor = CType((((System.Windows.Forms.AnchorStyles.Top Or System.Windows.Forms.AnchorStyles.Bottom) _
-            Or System.Windows.Forms.AnchorStyles.Left) _
-            Or System.Windows.Forms.AnchorStyles.Right), System.Windows.Forms.AnchorStyles)
         Me.Pic_Opening.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Wisselmotor_program_opening
         Me.Pic_Opening.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Pic_Opening.Location = New System.Drawing.Point(12, 12)

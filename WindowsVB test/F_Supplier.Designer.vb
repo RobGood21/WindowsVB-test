@@ -81,12 +81,19 @@ Partial Class F_Supplier
         Me.TXT_adres = New System.Windows.Forms.TextBox()
         Me.Knop_opslaan = New System.Windows.Forms.Button()
         Me.BetaalWijzenTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.BetaalWijzenTableAdapter()
-        Me.Knop_Annuleren = New System.Windows.Forms.Button()
-        Me.Knop_Save = New System.Windows.Forms.Button()
-        Me.Knop_Nieuw = New System.Windows.Forms.Button()
-        Me.Knop_Link = New System.Windows.Forms.Button()
         Me.AdmGBrekeningTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.AdmGBrekeningTableAdapter()
         Me.ValutaTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ValutaTableAdapter()
+        Me.TS_Supplier = New System.Windows.Forms.ToolStrip()
+        Me.Tknop_Sluit = New System.Windows.Forms.ToolStripButton()
+        Me.Tknop_nieuw = New System.Windows.Forms.ToolStripButton()
+        Me.Tknop_Annuleren = New System.Windows.Forms.ToolStripButton()
+        Me.Tknop_Opslaan = New System.Windows.Forms.ToolStripButton()
+        Me.Tknop_Website = New System.Windows.Forms.ToolStripButton()
+        Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         SP_AdresXtraLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
         Label1 = New System.Windows.Forms.Label()
@@ -116,6 +123,7 @@ Partial Class F_Supplier
         CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.TS_Supplier.SuspendLayout()
         Me.SuspendLayout()
         '
         'SP_AdresXtraLabel
@@ -347,7 +355,7 @@ Partial Class F_Supplier
         '
         Me.ID_SupplierTextBox.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Supplier", True))
         Me.ID_SupplierTextBox.Enabled = False
-        Me.ID_SupplierTextBox.Location = New System.Drawing.Point(495, 12)
+        Me.ID_SupplierTextBox.Location = New System.Drawing.Point(488, 307)
         Me.ID_SupplierTextBox.Name = "ID_SupplierTextBox"
         Me.ID_SupplierTextBox.ReadOnly = True
         Me.ID_SupplierTextBox.Size = New System.Drawing.Size(37, 20)
@@ -362,6 +370,7 @@ Partial Class F_Supplier
         Me.GB_Supplier.Controls.Add(Me.TextBox1)
         Me.GB_Supplier.Controls.Add(Me.CB_Grootboek)
         Me.GB_Supplier.Controls.Add(Me.CB_Valuta)
+        Me.GB_Supplier.Controls.Add(Me.ID_SupplierTextBox)
         Me.GB_Supplier.Controls.Add(Label4)
         Me.GB_Supplier.Controls.Add(Me.CB_BetaalWijzen)
         Me.GB_Supplier.Controls.Add(Label3)
@@ -401,9 +410,9 @@ Partial Class F_Supplier
         Me.GB_Supplier.Controls.Add(SP_AdresLabel)
         Me.GB_Supplier.Controls.Add(Me.TXT_adres)
         Me.GB_Supplier.Controls.Add(SP_NaamLabel)
-        Me.GB_Supplier.Location = New System.Drawing.Point(22, 38)
+        Me.GB_Supplier.Location = New System.Drawing.Point(7, 29)
         Me.GB_Supplier.Name = "GB_Supplier"
-        Me.GB_Supplier.Size = New System.Drawing.Size(586, 330)
+        Me.GB_Supplier.Size = New System.Drawing.Size(535, 330)
         Me.GB_Supplier.TabIndex = 42
         Me.GB_Supplier.TabStop = False
         '
@@ -643,7 +652,7 @@ Partial Class F_Supplier
         '
         'Knop_opslaan
         '
-        Me.Knop_opslaan.Location = New System.Drawing.Point(458, 371)
+        Me.Knop_opslaan.Location = New System.Drawing.Point(390, 362)
         Me.Knop_opslaan.Name = "Knop_opslaan"
         Me.Knop_opslaan.Size = New System.Drawing.Size(150, 23)
         Me.Knop_opslaan.TabIndex = 46
@@ -654,47 +663,6 @@ Partial Class F_Supplier
         '
         Me.BetaalWijzenTableAdapter.ClearBeforeFill = True
         '
-        'Knop_Annuleren
-        '
-        Me.Knop_Annuleren.Location = New System.Drawing.Point(377, 371)
-        Me.Knop_Annuleren.Name = "Knop_Annuleren"
-        Me.Knop_Annuleren.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Annuleren.TabIndex = 47
-        Me.Knop_Annuleren.TabStop = False
-        Me.Knop_Annuleren.Text = "&Annuleren"
-        Me.Knop_Annuleren.UseVisualStyleBackColor = True
-        '
-        'Knop_Save
-        '
-        Me.Knop_Save.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
-        Me.Knop_Save.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Save.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Save.Location = New System.Drawing.Point(576, 6)
-        Me.Knop_Save.Name = "Knop_Save"
-        Me.Knop_Save.Size = New System.Drawing.Size(30, 30)
-        Me.Knop_Save.TabIndex = 48
-        Me.Knop_Save.UseVisualStyleBackColor = True
-        '
-        'Knop_Nieuw
-        '
-        Me.Knop_Nieuw.Location = New System.Drawing.Point(296, 371)
-        Me.Knop_Nieuw.Name = "Knop_Nieuw"
-        Me.Knop_Nieuw.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Nieuw.TabIndex = 50
-        Me.Knop_Nieuw.TabStop = False
-        Me.Knop_Nieuw.Text = "&Nieuw"
-        Me.Knop_Nieuw.UseVisualStyleBackColor = True
-        '
-        'Knop_Link
-        '
-        Me.Knop_Link.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Insert_hyperlink_icon
-        Me.Knop_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Link.Location = New System.Drawing.Point(538, 6)
-        Me.Knop_Link.Name = "Knop_Link"
-        Me.Knop_Link.Size = New System.Drawing.Size(30, 30)
-        Me.Knop_Link.TabIndex = 52
-        Me.Knop_Link.UseVisualStyleBackColor = True
-        '
         'AdmGBrekeningTableAdapter
         '
         Me.AdmGBrekeningTableAdapter.ClearBeforeFill = True
@@ -703,19 +671,90 @@ Partial Class F_Supplier
         '
         Me.ValutaTableAdapter.ClearBeforeFill = True
         '
+        'TS_Supplier
+        '
+        Me.TS_Supplier.Items.AddRange(New System.Windows.Forms.ToolStripItem() {Me.Tknop_Sluit, Me.ToolStripSeparator1, Me.Tknop_nieuw, Me.ToolStripSeparator2, Me.Tknop_Annuleren, Me.ToolStripSeparator3, Me.Tknop_Opslaan, Me.ToolStripSeparator4, Me.Tknop_Website, Me.ToolStripSeparator5})
+        Me.TS_Supplier.Location = New System.Drawing.Point(0, 0)
+        Me.TS_Supplier.Name = "TS_Supplier"
+        Me.TS_Supplier.Size = New System.Drawing.Size(559, 25)
+        Me.TS_Supplier.TabIndex = 53
+        Me.TS_Supplier.Text = "ToolStrip1"
+        '
+        'Tknop_Sluit
+        '
+        Me.Tknop_Sluit.Image = Global.WindowsVB_test.My.Resources.Resources.close_icon
+        Me.Tknop_Sluit.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Tknop_Sluit.Name = "Tknop_Sluit"
+        Me.Tknop_Sluit.Size = New System.Drawing.Size(63, 22)
+        Me.Tknop_Sluit.Text = "Sluiten"
+        '
+        'Tknop_nieuw
+        '
+        Me.Tknop_nieuw.Image = Global.WindowsVB_test.My.Resources.Resources.Button_Add_icon
+        Me.Tknop_nieuw.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Tknop_nieuw.Name = "Tknop_nieuw"
+        Me.Tknop_nieuw.Size = New System.Drawing.Size(61, 22)
+        Me.Tknop_nieuw.Text = "Nieuw"
+        '
+        'Tknop_Annuleren
+        '
+        Me.Tknop_Annuleren.Image = Global.WindowsVB_test.My.Resources.Resources.Actions_dialog_cancel_icon
+        Me.Tknop_Annuleren.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Tknop_Annuleren.Name = "Tknop_Annuleren"
+        Me.Tknop_Annuleren.Size = New System.Drawing.Size(82, 22)
+        Me.Tknop_Annuleren.Text = "Annuleren"
+        '
+        'Tknop_Opslaan
+        '
+        Me.Tknop_Opslaan.Image = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
+        Me.Tknop_Opslaan.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Tknop_Opslaan.Name = "Tknop_Opslaan"
+        Me.Tknop_Opslaan.Size = New System.Drawing.Size(70, 22)
+        Me.Tknop_Opslaan.Text = "Opslaan"
+        '
+        'Tknop_Website
+        '
+        Me.Tknop_Website.DisplayStyle = System.Windows.Forms.ToolStripItemDisplayStyle.Image
+        Me.Tknop_Website.Image = Global.WindowsVB_test.My.Resources.Resources.Insert_hyperlink_icon
+        Me.Tknop_Website.ImageTransparentColor = System.Drawing.Color.Magenta
+        Me.Tknop_Website.Name = "Tknop_Website"
+        Me.Tknop_Website.Size = New System.Drawing.Size(23, 22)
+        Me.Tknop_Website.Text = "Open Website"
+        '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
+        '
         'F_Supplier
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(637, 421)
-        Me.Controls.Add(Me.Knop_Link)
-        Me.Controls.Add(Me.Knop_Nieuw)
-        Me.Controls.Add(Me.Knop_Save)
-        Me.Controls.Add(Me.Knop_Annuleren)
+        Me.ClientSize = New System.Drawing.Size(559, 413)
+        Me.Controls.Add(Me.TS_Supplier)
         Me.Controls.Add(Me.Knop_opslaan)
         Me.Controls.Add(Me.GB_Supplier)
         Me.Controls.Add(SP_AdresXtraLabel)
-        Me.Controls.Add(Me.ID_SupplierTextBox)
         Me.Name = "F_Supplier"
         Me.StartPosition = System.Windows.Forms.FormStartPosition.CenterParent
         Me.Text = "Leverancier, crediteur"
@@ -727,6 +766,8 @@ Partial Class F_Supplier
         CType(Me.ValutaBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.LandBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.TS_Supplier.ResumeLayout(False)
+        Me.TS_Supplier.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -762,10 +803,6 @@ Partial Class F_Supplier
     Friend WithEvents BetaalWijzenBindingSource As BindingSource
     Friend WithEvents BetaalWijzenTableAdapter As DS_SupplierTableAdapters.BetaalWijzenTableAdapter
     Friend WithEvents CB_Valuta As ComboBox
-    Friend WithEvents Knop_Annuleren As Button
-    Friend WithEvents Knop_Save As Button
-    Friend WithEvents Knop_Nieuw As Button
-    Friend WithEvents Knop_Link As Button
     Friend WithEvents TextBox1 As TextBox
     Friend WithEvents CB_NaamSupplier As ComboBox
     Friend WithEvents AdmGBrekeningTableAdapter As DS_SupplierTableAdapters.AdmGBrekeningTableAdapter
@@ -774,4 +811,15 @@ Partial Class F_Supplier
     Friend WithEvents AdmGBrekeningBindingSource As BindingSource
     Friend WithEvents CB_Grootboek As ComboBox
     Friend WithEvents CH_Actief As CheckBox
+    Friend WithEvents TS_Supplier As ToolStrip
+    Friend WithEvents Tknop_Sluit As ToolStripButton
+    Friend WithEvents Tknop_nieuw As ToolStripButton
+    Friend WithEvents Tknop_Annuleren As ToolStripButton
+    Friend WithEvents Tknop_Opslaan As ToolStripButton
+    Friend WithEvents Tknop_Website As ToolStripButton
+    Friend WithEvents ToolStripSeparator1 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator2 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator3 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
+    Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
 End Class
