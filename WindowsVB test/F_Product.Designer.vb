@@ -35,18 +35,20 @@ Partial Class F_Product
         Dim Label1 As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.MerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DSProductBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DT_productTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.DT_productTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
+        Me.PicturesTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.PicturesTableAdapter()
+        Me.ProductInfoTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.ProductInfoTableAdapter()
         Me.MerkTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.MerkTableAdapter()
         Me.GroepPDBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.LocatieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -63,6 +65,10 @@ Partial Class F_Product
         Me.Tknop_Kopieer = New System.Windows.Forms.ToolStripButton()
         Me.Tknop_Delete = New System.Windows.Forms.ToolStripButton()
         Me.TS_product = New System.Windows.Forms.ToolStrip()
+        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
+        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         Me.Knop_ZoekProduct = New System.Windows.Forms.Button()
         Me.TXT_Productnummer = New System.Windows.Forms.TextBox()
         Me.LBL_PN = New System.Windows.Forms.Label()
@@ -91,31 +97,60 @@ Partial Class F_Product
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
-        Me.DG_Mutaties = New System.Windows.Forms.DataGridView()
-        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GP_Lijst = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GV_Naam = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.GB_Mutaties = New System.Windows.Forms.GroupBox()
-        Me.Optie_Mutatie_alles = New System.Windows.Forms.RadioButton()
-        Me.Optie_Mutatie_Ontvang = New System.Windows.Forms.RadioButton()
-        Me.OPtie_Mutatie_Besteld = New System.Windows.Forms.RadioButton()
         Me.Optie_mutatie_Verbuik = New System.Windows.Forms.RadioButton()
+        Me.OPtie_Mutatie_Besteld = New System.Windows.Forms.RadioButton()
+        Me.Optie_Mutatie_Ontvang = New System.Windows.Forms.RadioButton()
+        Me.Optie_Mutatie_alles = New System.Windows.Forms.RadioButton()
+        Me.DG_Mutaties = New System.Windows.Forms.DataGridView()
+        Me.DataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn3 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GV_Naam = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn4 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GP_Lijst = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn5 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn6 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn7 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn8 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.DataGridViewTextBoxColumn9 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tpage_Product_beschrijving = New System.Windows.Forms.TabPage()
         Me.RTXT_Beschrijving = New System.Windows.Forms.RichTextBox()
         Me.TB_Product = New System.Windows.Forms.TabControl()
+        Me.Tpage_Pics = New System.Windows.Forms.TabPage()
+        Me.TXT_Pics_Idproduct = New System.Windows.Forms.TextBox()
+        Me.PicturesBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.Label9 = New System.Windows.Forms.Label()
+        Me.GB_PicsDetail = New System.Windows.Forms.GroupBox()
+        Me.Knop_Pics_Nieuw = New System.Windows.Forms.Button()
+        Me.Knop_Pics_Annuleren = New System.Windows.Forms.Button()
+        Me.Knop_Pics_Opslaan = New System.Windows.Forms.Button()
+        Me.Label8 = New System.Windows.Forms.Label()
+        Me.TXT_Pics_Url = New System.Windows.Forms.TextBox()
+        Me.Label7 = New System.Windows.Forms.Label()
+        Me.Label6 = New System.Windows.Forms.Label()
+        Me.TXT_Pics_Tekst = New System.Windows.Forms.TextBox()
+        Me.TXT_Pics_Naam = New System.Windows.Forms.TextBox()
+        Me.LB_Pics = New System.Windows.Forms.ListBox()
+        Me.Pic_Pic = New System.Windows.Forms.PictureBox()
+        Me.TXT_Pics_ID = New System.Windows.Forms.TextBox()
+        Me.Tpage_Links = New System.Windows.Forms.TabPage()
+        Me.TXT_Links_IDproduct = New System.Windows.Forms.TextBox()
+        Me.ProductInfoBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.TXT_Links_ID = New System.Windows.Forms.TextBox()
+        Me.Knop_Links_Toon = New System.Windows.Forms.Button()
+        Me.GB_Links = New System.Windows.Forms.GroupBox()
+        Me.Knop_Links_Nieuw = New System.Windows.Forms.Button()
+        Me.Knop_Links_Annuleren = New System.Windows.Forms.Button()
+        Me.Knop_links_opslaan = New System.Windows.Forms.Button()
+        Me.Label10 = New System.Windows.Forms.Label()
+        Me.TXT_Links_URL = New System.Windows.Forms.TextBox()
+        Me.Label11 = New System.Windows.Forms.Label()
+        Me.Label12 = New System.Windows.Forms.Label()
+        Me.TXT_links_tekst = New System.Windows.Forms.TextBox()
+        Me.txt_Links_Naam = New System.Windows.Forms.TextBox()
+        Me.LB_Links = New System.Windows.Forms.ListBox()
         Me.TXT_IDP = New System.Windows.Forms.TextBox()
-        Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
-        Me.ToolStripSeparator6 = New System.Windows.Forms.ToolStripSeparator()
         PD_WaardeLabel = New System.Windows.Forms.Label()
         PD_FunctieLabel = New System.Windows.Forms.Label()
         PD_BehuizingLabel = New System.Windows.Forms.Label()
@@ -140,11 +175,127 @@ Partial Class F_Product
         Me.GBOX_Velden.SuspendLayout()
         Me.GroupBox3.SuspendLayout()
         Me.TabPage2.SuspendLayout()
-        CType(Me.DG_Mutaties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GB_Mutaties.SuspendLayout()
+        CType(Me.DG_Mutaties, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.Tpage_Product_beschrijving.SuspendLayout()
         Me.TB_Product.SuspendLayout()
+        Me.Tpage_Pics.SuspendLayout()
+        CType(Me.PicturesBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GB_PicsDetail.SuspendLayout()
+        CType(Me.Pic_Pic, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.Tpage_Links.SuspendLayout()
+        CType(Me.ProductInfoBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
+        Me.GB_Links.SuspendLayout()
         Me.SuspendLayout()
+        '
+        'PD_WaardeLabel
+        '
+        PD_WaardeLabel.AutoSize = True
+        PD_WaardeLabel.Location = New System.Drawing.Point(27, 84)
+        PD_WaardeLabel.Name = "PD_WaardeLabel"
+        PD_WaardeLabel.Size = New System.Drawing.Size(53, 13)
+        PD_WaardeLabel.TabIndex = 22
+        PD_WaardeLabel.Text = "Waardes:"
+        '
+        'PD_FunctieLabel
+        '
+        PD_FunctieLabel.AutoSize = True
+        PD_FunctieLabel.Location = New System.Drawing.Point(27, 60)
+        PD_FunctieLabel.Name = "PD_FunctieLabel"
+        PD_FunctieLabel.Size = New System.Drawing.Size(45, 13)
+        PD_FunctieLabel.TabIndex = 20
+        PD_FunctieLabel.Text = "Functie:"
+        '
+        'PD_BehuizingLabel
+        '
+        PD_BehuizingLabel.AutoSize = True
+        PD_BehuizingLabel.Location = New System.Drawing.Point(27, 108)
+        PD_BehuizingLabel.Name = "PD_BehuizingLabel"
+        PD_BehuizingLabel.Size = New System.Drawing.Size(56, 13)
+        PD_BehuizingLabel.TabIndex = 24
+        PD_BehuizingLabel.Text = "Behuizing:"
+        '
+        'PD_NaamLabel
+        '
+        PD_NaamLabel.AutoSize = True
+        PD_NaamLabel.Location = New System.Drawing.Point(27, 37)
+        PD_NaamLabel.Name = "PD_NaamLabel"
+        PD_NaamLabel.Size = New System.Drawing.Size(68, 13)
+        PD_NaamLabel.TabIndex = 18
+        PD_NaamLabel.Text = "Naam, code:"
+        '
+        'ID_GroepLabel
+        '
+        ID_GroepLabel.AutoSize = True
+        ID_GroepLabel.Location = New System.Drawing.Point(27, 13)
+        ID_GroepLabel.Name = "ID_GroepLabel"
+        ID_GroepLabel.Size = New System.Drawing.Size(74, 13)
+        ID_GroepLabel.TabIndex = 29
+        ID_GroepLabel.Text = "Productgroep:"
+        '
+        'PD_Buy_CostLabel
+        '
+        PD_Buy_CostLabel.AutoSize = True
+        PD_Buy_CostLabel.Location = New System.Drawing.Point(170, 21)
+        PD_Buy_CostLabel.Name = "PD_Buy_CostLabel"
+        PD_Buy_CostLabel.Size = New System.Drawing.Size(78, 13)
+        PD_Buy_CostLabel.TabIndex = 24
+        PD_Buy_CostLabel.Text = "Inkoopwaarde:"
+        PD_Buy_CostLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight
+        '
+        'PD_Sale_PrijsLabel
+        '
+        PD_Sale_PrijsLabel.AutoSize = True
+        PD_Sale_PrijsLabel.Location = New System.Drawing.Point(32, 21)
+        PD_Sale_PrijsLabel.Name = "PD_Sale_PrijsLabel"
+        PD_Sale_PrijsLabel.Size = New System.Drawing.Size(68, 13)
+        PD_Sale_PrijsLabel.TabIndex = 22
+        PD_Sale_PrijsLabel.Text = "Verkoopprijs:"
+        '
+        'PD_VoorraadLabel
+        '
+        PD_VoorraadLabel.AutoSize = True
+        PD_VoorraadLabel.Location = New System.Drawing.Point(32, 89)
+        PD_VoorraadLabel.Name = "PD_VoorraadLabel"
+        PD_VoorraadLabel.Size = New System.Drawing.Size(56, 13)
+        PD_VoorraadLabel.TabIndex = 28
+        PD_VoorraadLabel.Text = "Voorraad: "
+        '
+        'PD_MinimumVoorraadLabel
+        '
+        PD_MinimumVoorraadLabel.AutoSize = True
+        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(142, 89)
+        PD_MinimumVoorraadLabel.Name = "PD_MinimumVoorraadLabel"
+        PD_MinimumVoorraadLabel.Size = New System.Drawing.Size(51, 13)
+        PD_MinimumVoorraadLabel.TabIndex = 30
+        PD_MinimumVoorraadLabel.Text = "Minimaal:"
+        '
+        'Label1
+        '
+        Label1.AutoSize = True
+        Label1.Location = New System.Drawing.Point(32, 113)
+        Label1.Name = "Label1"
+        Label1.Size = New System.Drawing.Size(45, 13)
+        Label1.TabIndex = 38
+        Label1.Text = "Lokatie:"
+        '
+        'Label2
+        '
+        Label2.AutoSize = True
+        Label2.Location = New System.Drawing.Point(32, 139)
+        Label2.Name = "Label2"
+        Label2.Size = New System.Drawing.Size(70, 13)
+        Label2.TabIndex = 41
+        Label2.Text = "Omschrijving:"
+        '
+        'Label3
+        '
+        Label3.AutoSize = True
+        Label3.Location = New System.Drawing.Point(180, 42)
+        Label3.Name = "Label3"
+        Label3.Size = New System.Drawing.Size(71, 13)
+        Label3.TabIndex = 45
+        Label3.Text = "Prijs ex.BTW:"
         '
         'DT_productBindingSource
         '
@@ -173,8 +324,7 @@ Partial Class F_Product
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Connection = Nothing
-        Me.TableAdapterManager.DT_productTableAdapter = Nothing
+        Me.TableAdapterManager.DT_productTableAdapter = Me.DT_productTableAdapter
         Me.TableAdapterManager.GetOntvangstTableAdapter = Nothing
         Me.TableAdapterManager.GetProductAddTableAdapter = Nothing
         Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
@@ -182,8 +332,18 @@ Partial Class F_Product
         Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
         Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
-        Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.PicturesTableAdapter = Me.PicturesTableAdapter
+        Me.TableAdapterManager.ProductInfoTableAdapter = Me.ProductInfoTableAdapter
+        Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.UpdateInsertDelete
         Me.TableAdapterManager.ValutaTableAdapter = Nothing
+        '
+        'PicturesTableAdapter
+        '
+        Me.PicturesTableAdapter.ClearBeforeFill = True
+        '
+        'ProductInfoTableAdapter
+        '
+        Me.ProductInfoTableAdapter.ClearBeforeFill = True
         '
         'MerkTableAdapter
         '
@@ -283,6 +443,26 @@ Partial Class F_Product
         Me.TS_product.TabIndex = 204
         Me.TS_product.Text = "ToolStrip1"
         '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator5
+        '
+        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
+        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
+        '
+        'ToolStripSeparator6
+        '
+        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
+        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
+        '
         'Knop_ZoekProduct
         '
         Me.Knop_ZoekProduct.Location = New System.Drawing.Point(211, 22)
@@ -329,24 +509,6 @@ Partial Class F_Product
         Me.TXT_waarde.Size = New System.Drawing.Size(184, 20)
         Me.TXT_waarde.TabIndex = 2
         '
-        'PD_WaardeLabel
-        '
-        PD_WaardeLabel.AutoSize = True
-        PD_WaardeLabel.Location = New System.Drawing.Point(27, 84)
-        PD_WaardeLabel.Name = "PD_WaardeLabel"
-        PD_WaardeLabel.Size = New System.Drawing.Size(53, 13)
-        PD_WaardeLabel.TabIndex = 22
-        PD_WaardeLabel.Text = "Waardes:"
-        '
-        'PD_FunctieLabel
-        '
-        PD_FunctieLabel.AutoSize = True
-        PD_FunctieLabel.Location = New System.Drawing.Point(27, 60)
-        PD_FunctieLabel.Name = "PD_FunctieLabel"
-        PD_FunctieLabel.Size = New System.Drawing.Size(45, 13)
-        PD_FunctieLabel.TabIndex = 20
-        PD_FunctieLabel.Text = "Functie:"
-        '
         'TXT_behuizing
         '
         Me.TXT_behuizing.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Behuizing", True))
@@ -363,24 +525,6 @@ Partial Class F_Product
         Me.TXT_functie.Size = New System.Drawing.Size(184, 20)
         Me.TXT_functie.TabIndex = 1
         '
-        'PD_BehuizingLabel
-        '
-        PD_BehuizingLabel.AutoSize = True
-        PD_BehuizingLabel.Location = New System.Drawing.Point(27, 108)
-        PD_BehuizingLabel.Name = "PD_BehuizingLabel"
-        PD_BehuizingLabel.Size = New System.Drawing.Size(56, 13)
-        PD_BehuizingLabel.TabIndex = 24
-        PD_BehuizingLabel.Text = "Behuizing:"
-        '
-        'PD_NaamLabel
-        '
-        PD_NaamLabel.AutoSize = True
-        PD_NaamLabel.Location = New System.Drawing.Point(27, 37)
-        PD_NaamLabel.Name = "PD_NaamLabel"
-        PD_NaamLabel.Size = New System.Drawing.Size(68, 13)
-        PD_NaamLabel.TabIndex = 18
-        PD_NaamLabel.Text = "Naam, code:"
-        '
         'TXT_Naam
         '
         Me.TXT_Naam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Naam", True))
@@ -394,6 +538,7 @@ Partial Class F_Product
         Me.GB_Merk.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Merk", True))
         Me.GB_Merk.DataSource = Me.MerkBindingSource
         Me.GB_Merk.DisplayMember = "MK_MerkNaam"
+        Me.GB_Merk.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.GB_Merk.FormattingEnabled = True
         Me.GB_Merk.Location = New System.Drawing.Point(102, 131)
         Me.GB_Merk.Name = "GB_Merk"
@@ -401,20 +546,12 @@ Partial Class F_Product
         Me.GB_Merk.TabIndex = 4
         Me.GB_Merk.ValueMember = "ID_Merk"
         '
-        'ID_GroepLabel
-        '
-        ID_GroepLabel.AutoSize = True
-        ID_GroepLabel.Location = New System.Drawing.Point(27, 13)
-        ID_GroepLabel.Name = "ID_GroepLabel"
-        ID_GroepLabel.Size = New System.Drawing.Size(74, 13)
-        ID_GroepLabel.TabIndex = 29
-        ID_GroepLabel.Text = "Productgroep:"
-        '
         'CB_Groep
         '
         Me.CB_Groep.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Groep", True))
         Me.CB_Groep.DataSource = Me.GroepPDBindingSource
         Me.CB_Groep.DisplayMember = "GP_Naam"
+        Me.CB_Groep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Groep.FormattingEnabled = True
         Me.CB_Groep.Location = New System.Drawing.Point(102, 9)
         Me.CB_Groep.Name = "CB_Groep"
@@ -453,16 +590,6 @@ Partial Class F_Product
         Me.GBOX_Velden.TabIndex = 201
         Me.GBOX_Velden.TabStop = False
         '
-        'PD_Buy_CostLabel
-        '
-        PD_Buy_CostLabel.AutoSize = True
-        PD_Buy_CostLabel.Location = New System.Drawing.Point(170, 21)
-        PD_Buy_CostLabel.Name = "PD_Buy_CostLabel"
-        PD_Buy_CostLabel.Size = New System.Drawing.Size(78, 13)
-        PD_Buy_CostLabel.TabIndex = 24
-        PD_Buy_CostLabel.Text = "Inkoopwaarde:"
-        PD_Buy_CostLabel.TextAlign = System.Drawing.ContentAlignment.BottomRight
-        '
         'TXT_Inkoopwaarde
         '
         Me.TXT_Inkoopwaarde.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Buy_Cost", True))
@@ -479,15 +606,6 @@ Partial Class F_Product
         Me.TXT_Verkoopprijs.Size = New System.Drawing.Size(54, 20)
         Me.TXT_Verkoopprijs.TabIndex = 5
         '
-        'PD_Sale_PrijsLabel
-        '
-        PD_Sale_PrijsLabel.AutoSize = True
-        PD_Sale_PrijsLabel.Location = New System.Drawing.Point(32, 21)
-        PD_Sale_PrijsLabel.Name = "PD_Sale_PrijsLabel"
-        PD_Sale_PrijsLabel.Size = New System.Drawing.Size(68, 13)
-        PD_Sale_PrijsLabel.TabIndex = 22
-        PD_Sale_PrijsLabel.Text = "Verkoopprijs:"
-        '
         'TXT_Voorraad
         '
         Me.TXT_Voorraad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
@@ -496,15 +614,6 @@ Partial Class F_Product
         Me.TXT_Voorraad.Size = New System.Drawing.Size(34, 20)
         Me.TXT_Voorraad.TabIndex = 29
         '
-        'PD_VoorraadLabel
-        '
-        PD_VoorraadLabel.AutoSize = True
-        PD_VoorraadLabel.Location = New System.Drawing.Point(32, 89)
-        PD_VoorraadLabel.Name = "PD_VoorraadLabel"
-        PD_VoorraadLabel.Size = New System.Drawing.Size(56, 13)
-        PD_VoorraadLabel.TabIndex = 28
-        PD_VoorraadLabel.Text = "Voorraad: "
-        '
         'TXT_Minimal
         '
         Me.TXT_Minimal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_MinimumVoorraad", True))
@@ -512,15 +621,6 @@ Partial Class F_Product
         Me.TXT_Minimal.Name = "TXT_Minimal"
         Me.TXT_Minimal.Size = New System.Drawing.Size(34, 20)
         Me.TXT_Minimal.TabIndex = 31
-        '
-        'PD_MinimumVoorraadLabel
-        '
-        PD_MinimumVoorraadLabel.AutoSize = True
-        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(142, 89)
-        PD_MinimumVoorraadLabel.Name = "PD_MinimumVoorraadLabel"
-        PD_MinimumVoorraadLabel.Size = New System.Drawing.Size(51, 13)
-        PD_MinimumVoorraadLabel.TabIndex = 30
-        PD_MinimumVoorraadLabel.Text = "Minimaal:"
         '
         'Label4
         '
@@ -539,15 +639,6 @@ Partial Class F_Product
         Me.TXT_BTW.Size = New System.Drawing.Size(54, 20)
         Me.TXT_BTW.TabIndex = 35
         Me.TXT_BTW.TabStop = False
-        '
-        'Label1
-        '
-        Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(32, 113)
-        Label1.Name = "Label1"
-        Label1.Size = New System.Drawing.Size(45, 13)
-        Label1.TabIndex = 38
-        Label1.Text = "Lokatie:"
         '
         'CB_Locatie
         '
@@ -582,15 +673,6 @@ Partial Class F_Product
         Me.TXT_Beschrijving2.Size = New System.Drawing.Size(249, 51)
         Me.TXT_Beschrijving2.TabIndex = 35
         Me.TXT_Beschrijving2.TabStop = False
-        '
-        'Label2
-        '
-        Label2.AutoSize = True
-        Label2.Location = New System.Drawing.Point(32, 139)
-        Label2.Name = "Label2"
-        Label2.Size = New System.Drawing.Size(70, 13)
-        Label2.TabIndex = 41
-        Label2.Text = "Omschrijving:"
         '
         'TXT_Locatie
         '
@@ -629,15 +711,6 @@ Partial Class F_Product
         Me.TXT_prijsexBTW.Size = New System.Drawing.Size(54, 20)
         Me.TXT_prijsexBTW.TabIndex = 46
         Me.TXT_prijsexBTW.TabStop = False
-        '
-        'Label3
-        '
-        Label3.AutoSize = True
-        Label3.Location = New System.Drawing.Point(180, 42)
-        Label3.Name = "Label3"
-        Label3.Size = New System.Drawing.Size(71, 13)
-        Label3.TabIndex = 45
-        Label3.Text = "Prijs ex.BTW:"
         '
         'Knop_Opslaan
         '
@@ -690,123 +763,6 @@ Partial Class F_Product
         Me.TabPage2.Text = "Mutaties voorraad"
         Me.TabPage2.UseVisualStyleBackColor = True
         '
-        'DG_Mutaties
-        '
-        Me.DG_Mutaties.AllowUserToAddRows = False
-        Me.DG_Mutaties.AllowUserToDeleteRows = False
-        Me.DG_Mutaties.AutoGenerateColumns = False
-        Me.DG_Mutaties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_Mutaties.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.GV_Naam, Me.DataGridViewTextBoxColumn4, Me.GP_Lijst, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
-        Me.DG_Mutaties.DataSource = Me.ProductMutBindingSource
-        Me.DG_Mutaties.Location = New System.Drawing.Point(6, 55)
-        Me.DG_Mutaties.Name = "DG_Mutaties"
-        Me.DG_Mutaties.ReadOnly = True
-        Me.DG_Mutaties.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
-        Me.DG_Mutaties.Size = New System.Drawing.Size(669, 206)
-        Me.DG_Mutaties.TabIndex = 0
-        Me.DG_Mutaties.TabStop = False
-        '
-        'DataGridViewTextBoxColumn9
-        '
-        Me.DataGridViewTextBoxColumn9.DataPropertyName = "SH_Naam"
-        Me.DataGridViewTextBoxColumn9.HeaderText = "Shop"
-        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
-        Me.DataGridViewTextBoxColumn9.ReadOnly = True
-        Me.DataGridViewTextBoxColumn9.Width = 120
-        '
-        'DataGridViewTextBoxColumn8
-        '
-        Me.DataGridViewTextBoxColumn8.DataPropertyName = "SP_Naam"
-        Me.DataGridViewTextBoxColumn8.HeaderText = "Supplier"
-        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
-        Me.DataGridViewTextBoxColumn8.ReadOnly = True
-        Me.DataGridViewTextBoxColumn8.Width = 120
-        '
-        'DataGridViewTextBoxColumn7
-        '
-        Me.DataGridViewTextBoxColumn7.DataPropertyName = "GP_BuyPriceEUR"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle13
-        Me.DataGridViewTextBoxColumn7.HeaderText = "Inkoop"
-        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
-        Me.DataGridViewTextBoxColumn7.ReadOnly = True
-        Me.DataGridViewTextBoxColumn7.Width = 50
-        '
-        'DataGridViewTextBoxColumn6
-        '
-        Me.DataGridViewTextBoxColumn6.DataPropertyName = "GP_Besteld"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle14
-        Me.DataGridViewTextBoxColumn6.HeaderText = "Backorder"
-        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
-        Me.DataGridViewTextBoxColumn6.ReadOnly = True
-        Me.DataGridViewTextBoxColumn6.Width = 65
-        '
-        'DataGridViewTextBoxColumn5
-        '
-        Me.DataGridViewTextBoxColumn5.DataPropertyName = "GP__Ontvangen"
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle15
-        Me.DataGridViewTextBoxColumn5.HeaderText = "Ontvangen"
-        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
-        Me.DataGridViewTextBoxColumn5.ReadOnly = True
-        Me.DataGridViewTextBoxColumn5.Width = 65
-        '
-        'GP_Lijst
-        '
-        Me.GP_Lijst.DataPropertyName = "GP_Lijst"
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.GP_Lijst.DefaultCellStyle = DataGridViewCellStyle16
-        Me.GP_Lijst.HeaderText = "Aantal"
-        Me.GP_Lijst.Name = "GP_Lijst"
-        Me.GP_Lijst.ReadOnly = True
-        Me.GP_Lijst.Width = 65
-        '
-        'DataGridViewTextBoxColumn4
-        '
-        Me.DataGridViewTextBoxColumn4.DataPropertyName = "GV_Datum"
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle17
-        Me.DataGridViewTextBoxColumn4.HeaderText = "Datum"
-        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
-        Me.DataGridViewTextBoxColumn4.ReadOnly = True
-        Me.DataGridViewTextBoxColumn4.Width = 80
-        '
-        'GV_Naam
-        '
-        Me.GV_Naam.DataPropertyName = "GV_Naam"
-        Me.GV_Naam.HeaderText = "LijstNaam"
-        Me.GV_Naam.Name = "GV_Naam"
-        Me.GV_Naam.ReadOnly = True
-        Me.GV_Naam.Width = 130
-        '
-        'DataGridViewTextBoxColumn3
-        '
-        Me.DataGridViewTextBoxColumn3.DataPropertyName = "GV_Status"
-        Me.DataGridViewTextBoxColumn3.HeaderText = "GV_Status"
-        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
-        Me.DataGridViewTextBoxColumn3.ReadOnly = True
-        Me.DataGridViewTextBoxColumn3.Visible = False
-        '
-        'DataGridViewTextBoxColumn2
-        '
-        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_GetOntvangst"
-        Me.DataGridViewTextBoxColumn2.HeaderText = "ID_GetOntvangst"
-        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
-        Me.DataGridViewTextBoxColumn2.ReadOnly = True
-        Me.DataGridViewTextBoxColumn2.Visible = False
-        '
-        'DataGridViewTextBoxColumn1
-        '
-        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_Product"
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle18
-        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
-        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
-        Me.DataGridViewTextBoxColumn1.ReadOnly = True
-        Me.DataGridViewTextBoxColumn1.Visible = False
-        Me.DataGridViewTextBoxColumn1.Width = 40
-        '
         'GB_Mutaties
         '
         Me.GB_Mutaties.Controls.Add(Me.Optie_mutatie_Verbuik)
@@ -819,31 +775,18 @@ Partial Class F_Product
         Me.GB_Mutaties.TabIndex = 1
         Me.GB_Mutaties.TabStop = False
         '
-        'Optie_Mutatie_alles
+        'Optie_mutatie_Verbuik
         '
-        Me.Optie_Mutatie_alles.Appearance = System.Windows.Forms.Appearance.Button
-        Me.Optie_Mutatie_alles.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Optie_Mutatie_alles.Location = New System.Drawing.Point(6, 15)
-        Me.Optie_Mutatie_alles.Name = "Optie_Mutatie_alles"
-        Me.Optie_Mutatie_alles.Size = New System.Drawing.Size(120, 23)
-        Me.Optie_Mutatie_alles.TabIndex = 300
-        Me.Optie_Mutatie_alles.Tag = "1"
-        Me.Optie_Mutatie_alles.Text = "Alles tonen"
-        Me.Optie_Mutatie_alles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Optie_Mutatie_alles.UseVisualStyleBackColor = True
-        '
-        'Optie_Mutatie_Ontvang
-        '
-        Me.Optie_Mutatie_Ontvang.Appearance = System.Windows.Forms.Appearance.Button
-        Me.Optie_Mutatie_Ontvang.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Optie_Mutatie_Ontvang.Location = New System.Drawing.Point(244, 15)
-        Me.Optie_Mutatie_Ontvang.Name = "Optie_Mutatie_Ontvang"
-        Me.Optie_Mutatie_Ontvang.Size = New System.Drawing.Size(120, 23)
-        Me.Optie_Mutatie_Ontvang.TabIndex = 303
-        Me.Optie_Mutatie_Ontvang.Tag = "3"
-        Me.Optie_Mutatie_Ontvang.Text = "Ontvangen"
-        Me.Optie_Mutatie_Ontvang.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Optie_Mutatie_Ontvang.UseVisualStyleBackColor = True
+        Me.Optie_mutatie_Verbuik.Appearance = System.Windows.Forms.Appearance.Button
+        Me.Optie_mutatie_Verbuik.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Optie_mutatie_Verbuik.Location = New System.Drawing.Point(363, 15)
+        Me.Optie_mutatie_Verbuik.Name = "Optie_mutatie_Verbuik"
+        Me.Optie_mutatie_Verbuik.Size = New System.Drawing.Size(120, 23)
+        Me.Optie_mutatie_Verbuik.TabIndex = 304
+        Me.Optie_mutatie_Verbuik.Tag = "4"
+        Me.Optie_mutatie_Verbuik.Text = "Verbruik, verkoop"
+        Me.Optie_mutatie_Verbuik.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Optie_mutatie_Verbuik.UseVisualStyleBackColor = True
         '
         'OPtie_Mutatie_Besteld
         '
@@ -860,18 +803,148 @@ Partial Class F_Product
         Me.OPtie_Mutatie_Besteld.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
         Me.OPtie_Mutatie_Besteld.UseVisualStyleBackColor = True
         '
-        'Optie_mutatie_Verbuik
+        'Optie_Mutatie_Ontvang
         '
-        Me.Optie_mutatie_Verbuik.Appearance = System.Windows.Forms.Appearance.Button
-        Me.Optie_mutatie_Verbuik.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
-        Me.Optie_mutatie_Verbuik.Location = New System.Drawing.Point(363, 15)
-        Me.Optie_mutatie_Verbuik.Name = "Optie_mutatie_Verbuik"
-        Me.Optie_mutatie_Verbuik.Size = New System.Drawing.Size(120, 23)
-        Me.Optie_mutatie_Verbuik.TabIndex = 304
-        Me.Optie_mutatie_Verbuik.Tag = "4"
-        Me.Optie_mutatie_Verbuik.Text = "Verbruik, verkoop"
-        Me.Optie_mutatie_Verbuik.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
-        Me.Optie_mutatie_Verbuik.UseVisualStyleBackColor = True
+        Me.Optie_Mutatie_Ontvang.Appearance = System.Windows.Forms.Appearance.Button
+        Me.Optie_Mutatie_Ontvang.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Optie_Mutatie_Ontvang.Location = New System.Drawing.Point(244, 15)
+        Me.Optie_Mutatie_Ontvang.Name = "Optie_Mutatie_Ontvang"
+        Me.Optie_Mutatie_Ontvang.Size = New System.Drawing.Size(120, 23)
+        Me.Optie_Mutatie_Ontvang.TabIndex = 303
+        Me.Optie_Mutatie_Ontvang.Tag = "3"
+        Me.Optie_Mutatie_Ontvang.Text = "Ontvangen"
+        Me.Optie_Mutatie_Ontvang.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Optie_Mutatie_Ontvang.UseVisualStyleBackColor = True
+        '
+        'Optie_Mutatie_alles
+        '
+        Me.Optie_Mutatie_alles.Appearance = System.Windows.Forms.Appearance.Button
+        Me.Optie_Mutatie_alles.FlatAppearance.CheckedBackColor = System.Drawing.Color.Khaki
+        Me.Optie_Mutatie_alles.Location = New System.Drawing.Point(6, 15)
+        Me.Optie_Mutatie_alles.Name = "Optie_Mutatie_alles"
+        Me.Optie_Mutatie_alles.Size = New System.Drawing.Size(120, 23)
+        Me.Optie_Mutatie_alles.TabIndex = 300
+        Me.Optie_Mutatie_alles.Tag = "1"
+        Me.Optie_Mutatie_alles.Text = "Alles tonen"
+        Me.Optie_Mutatie_alles.TextAlign = System.Drawing.ContentAlignment.MiddleCenter
+        Me.Optie_Mutatie_alles.UseVisualStyleBackColor = True
+        '
+        'DG_Mutaties
+        '
+        Me.DG_Mutaties.AllowUserToAddRows = False
+        Me.DG_Mutaties.AllowUserToDeleteRows = False
+        Me.DG_Mutaties.AutoGenerateColumns = False
+        Me.DG_Mutaties.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
+        Me.DG_Mutaties.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.DataGridViewTextBoxColumn1, Me.DataGridViewTextBoxColumn2, Me.DataGridViewTextBoxColumn3, Me.GV_Naam, Me.DataGridViewTextBoxColumn4, Me.GP_Lijst, Me.DataGridViewTextBoxColumn5, Me.DataGridViewTextBoxColumn6, Me.DataGridViewTextBoxColumn7, Me.DataGridViewTextBoxColumn8, Me.DataGridViewTextBoxColumn9})
+        Me.DG_Mutaties.DataSource = Me.ProductMutBindingSource
+        Me.DG_Mutaties.Location = New System.Drawing.Point(6, 55)
+        Me.DG_Mutaties.Name = "DG_Mutaties"
+        Me.DG_Mutaties.ReadOnly = True
+        Me.DG_Mutaties.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
+        Me.DG_Mutaties.Size = New System.Drawing.Size(669, 206)
+        Me.DG_Mutaties.TabIndex = 0
+        Me.DG_Mutaties.TabStop = False
+        '
+        'DataGridViewTextBoxColumn1
+        '
+        Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_Product"
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle1
+        Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
+        Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
+        Me.DataGridViewTextBoxColumn1.ReadOnly = True
+        Me.DataGridViewTextBoxColumn1.Visible = False
+        Me.DataGridViewTextBoxColumn1.Width = 40
+        '
+        'DataGridViewTextBoxColumn2
+        '
+        Me.DataGridViewTextBoxColumn2.DataPropertyName = "ID_GetOntvangst"
+        Me.DataGridViewTextBoxColumn2.HeaderText = "ID_GetOntvangst"
+        Me.DataGridViewTextBoxColumn2.Name = "DataGridViewTextBoxColumn2"
+        Me.DataGridViewTextBoxColumn2.ReadOnly = True
+        Me.DataGridViewTextBoxColumn2.Visible = False
+        '
+        'DataGridViewTextBoxColumn3
+        '
+        Me.DataGridViewTextBoxColumn3.DataPropertyName = "GV_Status"
+        Me.DataGridViewTextBoxColumn3.HeaderText = "GV_Status"
+        Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
+        Me.DataGridViewTextBoxColumn3.ReadOnly = True
+        Me.DataGridViewTextBoxColumn3.Visible = False
+        '
+        'GV_Naam
+        '
+        Me.GV_Naam.DataPropertyName = "GV_Naam"
+        Me.GV_Naam.HeaderText = "LijstNaam"
+        Me.GV_Naam.Name = "GV_Naam"
+        Me.GV_Naam.ReadOnly = True
+        Me.GV_Naam.Width = 130
+        '
+        'DataGridViewTextBoxColumn4
+        '
+        Me.DataGridViewTextBoxColumn4.DataPropertyName = "GV_Datum"
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle2
+        Me.DataGridViewTextBoxColumn4.HeaderText = "Datum"
+        Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
+        Me.DataGridViewTextBoxColumn4.ReadOnly = True
+        Me.DataGridViewTextBoxColumn4.Width = 80
+        '
+        'GP_Lijst
+        '
+        Me.GP_Lijst.DataPropertyName = "GP_Lijst"
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.GP_Lijst.DefaultCellStyle = DataGridViewCellStyle3
+        Me.GP_Lijst.HeaderText = "Aantal"
+        Me.GP_Lijst.Name = "GP_Lijst"
+        Me.GP_Lijst.ReadOnly = True
+        Me.GP_Lijst.Width = 65
+        '
+        'DataGridViewTextBoxColumn5
+        '
+        Me.DataGridViewTextBoxColumn5.DataPropertyName = "GP__Ontvangen"
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle4
+        Me.DataGridViewTextBoxColumn5.HeaderText = "Ontvangen"
+        Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
+        Me.DataGridViewTextBoxColumn5.ReadOnly = True
+        Me.DataGridViewTextBoxColumn5.Width = 65
+        '
+        'DataGridViewTextBoxColumn6
+        '
+        Me.DataGridViewTextBoxColumn6.DataPropertyName = "GP_Besteld"
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle5
+        Me.DataGridViewTextBoxColumn6.HeaderText = "Backorder"
+        Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
+        Me.DataGridViewTextBoxColumn6.ReadOnly = True
+        Me.DataGridViewTextBoxColumn6.Width = 65
+        '
+        'DataGridViewTextBoxColumn7
+        '
+        Me.DataGridViewTextBoxColumn7.DataPropertyName = "GP_BuyPriceEUR"
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle6
+        Me.DataGridViewTextBoxColumn7.HeaderText = "Inkoop"
+        Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
+        Me.DataGridViewTextBoxColumn7.ReadOnly = True
+        Me.DataGridViewTextBoxColumn7.Width = 50
+        '
+        'DataGridViewTextBoxColumn8
+        '
+        Me.DataGridViewTextBoxColumn8.DataPropertyName = "SP_Naam"
+        Me.DataGridViewTextBoxColumn8.HeaderText = "Supplier"
+        Me.DataGridViewTextBoxColumn8.Name = "DataGridViewTextBoxColumn8"
+        Me.DataGridViewTextBoxColumn8.ReadOnly = True
+        Me.DataGridViewTextBoxColumn8.Width = 120
+        '
+        'DataGridViewTextBoxColumn9
+        '
+        Me.DataGridViewTextBoxColumn9.DataPropertyName = "SH_Naam"
+        Me.DataGridViewTextBoxColumn9.HeaderText = "Shop"
+        Me.DataGridViewTextBoxColumn9.Name = "DataGridViewTextBoxColumn9"
+        Me.DataGridViewTextBoxColumn9.ReadOnly = True
+        Me.DataGridViewTextBoxColumn9.Width = 120
         '
         'Tpage_Product_beschrijving
         '
@@ -897,11 +970,356 @@ Partial Class F_Product
         '
         Me.TB_Product.Controls.Add(Me.Tpage_Product_beschrijving)
         Me.TB_Product.Controls.Add(Me.TabPage2)
+        Me.TB_Product.Controls.Add(Me.Tpage_Pics)
+        Me.TB_Product.Controls.Add(Me.Tpage_Links)
         Me.TB_Product.Location = New System.Drawing.Point(12, 262)
         Me.TB_Product.Name = "TB_Product"
         Me.TB_Product.SelectedIndex = 0
         Me.TB_Product.Size = New System.Drawing.Size(689, 309)
         Me.TB_Product.TabIndex = 203
+        '
+        'Tpage_Pics
+        '
+        Me.Tpage_Pics.Controls.Add(Me.TXT_Pics_Idproduct)
+        Me.Tpage_Pics.Controls.Add(Me.Label9)
+        Me.Tpage_Pics.Controls.Add(Me.GB_PicsDetail)
+        Me.Tpage_Pics.Controls.Add(Me.LB_Pics)
+        Me.Tpage_Pics.Controls.Add(Me.Pic_Pic)
+        Me.Tpage_Pics.Controls.Add(Me.TXT_Pics_ID)
+        Me.Tpage_Pics.Location = New System.Drawing.Point(4, 22)
+        Me.Tpage_Pics.Name = "Tpage_Pics"
+        Me.Tpage_Pics.Padding = New System.Windows.Forms.Padding(3)
+        Me.Tpage_Pics.Size = New System.Drawing.Size(681, 283)
+        Me.Tpage_Pics.TabIndex = 3
+        Me.Tpage_Pics.Text = "Afbeeldingen"
+        Me.Tpage_Pics.UseVisualStyleBackColor = True
+        '
+        'TXT_Pics_Idproduct
+        '
+        Me.TXT_Pics_Idproduct.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PicturesBindingSource, "ID_Product", True))
+        Me.TXT_Pics_Idproduct.Location = New System.Drawing.Point(636, 32)
+        Me.TXT_Pics_Idproduct.Name = "TXT_Pics_Idproduct"
+        Me.TXT_Pics_Idproduct.ReadOnly = True
+        Me.TXT_Pics_Idproduct.Size = New System.Drawing.Size(39, 20)
+        Me.TXT_Pics_Idproduct.TabIndex = 47
+        Me.TXT_Pics_Idproduct.TabStop = False
+        Me.TXT_Pics_Idproduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'PicturesBindingSource
+        '
+        Me.PicturesBindingSource.DataMember = "Pictures"
+        Me.PicturesBindingSource.DataSource = Me.DS_Product
+        '
+        'Label9
+        '
+        Me.Label9.AutoSize = True
+        Me.Label9.Location = New System.Drawing.Point(0, 6)
+        Me.Label9.Name = "Label9"
+        Me.Label9.Size = New System.Drawing.Size(60, 13)
+        Me.Label9.TabIndex = 5
+        Me.Label9.Text = "Afbeelding:"
+        '
+        'GB_PicsDetail
+        '
+        Me.GB_PicsDetail.Controls.Add(Me.Knop_Pics_Nieuw)
+        Me.GB_PicsDetail.Controls.Add(Me.Knop_Pics_Annuleren)
+        Me.GB_PicsDetail.Controls.Add(Me.Knop_Pics_Opslaan)
+        Me.GB_PicsDetail.Controls.Add(Me.Label8)
+        Me.GB_PicsDetail.Controls.Add(Me.TXT_Pics_Url)
+        Me.GB_PicsDetail.Controls.Add(Me.Label7)
+        Me.GB_PicsDetail.Controls.Add(Me.Label6)
+        Me.GB_PicsDetail.Controls.Add(Me.TXT_Pics_Tekst)
+        Me.GB_PicsDetail.Controls.Add(Me.TXT_Pics_Naam)
+        Me.GB_PicsDetail.Location = New System.Drawing.Point(11, 107)
+        Me.GB_PicsDetail.Name = "GB_PicsDetail"
+        Me.GB_PicsDetail.Size = New System.Drawing.Size(272, 170)
+        Me.GB_PicsDetail.TabIndex = 2
+        Me.GB_PicsDetail.TabStop = False
+        '
+        'Knop_Pics_Nieuw
+        '
+        Me.Knop_Pics_Nieuw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Knop_Pics_Nieuw.Location = New System.Drawing.Point(11, 139)
+        Me.Knop_Pics_Nieuw.Name = "Knop_Pics_Nieuw"
+        Me.Knop_Pics_Nieuw.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Pics_Nieuw.TabIndex = 9
+        Me.Knop_Pics_Nieuw.TabStop = False
+        Me.Knop_Pics_Nieuw.Text = "Nieuw"
+        Me.Knop_Pics_Nieuw.UseVisualStyleBackColor = True
+        '
+        'Knop_Pics_Annuleren
+        '
+        Me.Knop_Pics_Annuleren.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Knop_Pics_Annuleren.Location = New System.Drawing.Point(88, 139)
+        Me.Knop_Pics_Annuleren.Name = "Knop_Pics_Annuleren"
+        Me.Knop_Pics_Annuleren.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Pics_Annuleren.TabIndex = 8
+        Me.Knop_Pics_Annuleren.TabStop = False
+        Me.Knop_Pics_Annuleren.Text = "Annuleren"
+        Me.Knop_Pics_Annuleren.UseVisualStyleBackColor = True
+        '
+        'Knop_Pics_Opslaan
+        '
+        Me.Knop_Pics_Opslaan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Knop_Pics_Opslaan.Location = New System.Drawing.Point(174, 139)
+        Me.Knop_Pics_Opslaan.Name = "Knop_Pics_Opslaan"
+        Me.Knop_Pics_Opslaan.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Pics_Opslaan.TabIndex = 7
+        Me.Knop_Pics_Opslaan.TabStop = False
+        Me.Knop_Pics_Opslaan.Text = "Opslaan"
+        Me.Knop_Pics_Opslaan.UseVisualStyleBackColor = True
+        '
+        'Label8
+        '
+        Me.Label8.AutoSize = True
+        Me.Label8.Location = New System.Drawing.Point(6, 93)
+        Me.Label8.Name = "Label8"
+        Me.Label8.Size = New System.Drawing.Size(32, 13)
+        Me.Label8.TabIndex = 6
+        Me.Label8.Text = "URL:"
+        '
+        'TXT_Pics_Url
+        '
+        Me.TXT_Pics_Url.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PicturesBindingSource, "Pic_URL", True))
+        Me.TXT_Pics_Url.Location = New System.Drawing.Point(50, 89)
+        Me.TXT_Pics_Url.Multiline = True
+        Me.TXT_Pics_Url.Name = "TXT_Pics_Url"
+        Me.TXT_Pics_Url.Size = New System.Drawing.Size(200, 34)
+        Me.TXT_Pics_Url.TabIndex = 223
+        '
+        'Label7
+        '
+        Me.Label7.AutoSize = True
+        Me.Label7.Location = New System.Drawing.Point(6, 37)
+        Me.Label7.Name = "Label7"
+        Me.Label7.Size = New System.Drawing.Size(37, 13)
+        Me.Label7.TabIndex = 4
+        Me.Label7.Text = "Tekst:"
+        '
+        'Label6
+        '
+        Me.Label6.AutoSize = True
+        Me.Label6.Location = New System.Drawing.Point(6, 20)
+        Me.Label6.Name = "Label6"
+        Me.Label6.Size = New System.Drawing.Size(38, 13)
+        Me.Label6.TabIndex = 3
+        Me.Label6.Text = "Naam:"
+        '
+        'TXT_Pics_Tekst
+        '
+        Me.TXT_Pics_Tekst.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PicturesBindingSource, "Pic_Tekst", True))
+        Me.TXT_Pics_Tekst.Location = New System.Drawing.Point(50, 37)
+        Me.TXT_Pics_Tekst.Multiline = True
+        Me.TXT_Pics_Tekst.Name = "TXT_Pics_Tekst"
+        Me.TXT_Pics_Tekst.Size = New System.Drawing.Size(200, 51)
+        Me.TXT_Pics_Tekst.TabIndex = 222
+        '
+        'TXT_Pics_Naam
+        '
+        Me.TXT_Pics_Naam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PicturesBindingSource, "Pic_Naam", True))
+        Me.TXT_Pics_Naam.Location = New System.Drawing.Point(50, 16)
+        Me.TXT_Pics_Naam.Name = "TXT_Pics_Naam"
+        Me.TXT_Pics_Naam.Size = New System.Drawing.Size(200, 20)
+        Me.TXT_Pics_Naam.TabIndex = 221
+        '
+        'LB_Pics
+        '
+        Me.LB_Pics.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.PicturesBindingSource, "ID_Picture", True))
+        Me.LB_Pics.DataSource = Me.PicturesBindingSource
+        Me.LB_Pics.DisplayMember = "Pic_Naam"
+        Me.LB_Pics.FormattingEnabled = True
+        Me.LB_Pics.Location = New System.Drawing.Point(61, 6)
+        Me.LB_Pics.Name = "LB_Pics"
+        Me.LB_Pics.Size = New System.Drawing.Size(200, 95)
+        Me.LB_Pics.TabIndex = 220
+        Me.LB_Pics.ValueMember = "ID_Picture"
+        '
+        'Pic_Pic
+        '
+        Me.Pic_Pic.ImageLocation = ""
+        Me.Pic_Pic.Location = New System.Drawing.Point(316, 6)
+        Me.Pic_Pic.Name = "Pic_Pic"
+        Me.Pic_Pic.Size = New System.Drawing.Size(306, 271)
+        Me.Pic_Pic.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage
+        Me.Pic_Pic.TabIndex = 0
+        Me.Pic_Pic.TabStop = False
+        '
+        'TXT_Pics_ID
+        '
+        Me.TXT_Pics_ID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.PicturesBindingSource, "ID_Picture", True))
+        Me.TXT_Pics_ID.Location = New System.Drawing.Point(636, 6)
+        Me.TXT_Pics_ID.Name = "TXT_Pics_ID"
+        Me.TXT_Pics_ID.ReadOnly = True
+        Me.TXT_Pics_ID.Size = New System.Drawing.Size(39, 20)
+        Me.TXT_Pics_ID.TabIndex = 0
+        Me.TXT_Pics_ID.TabStop = False
+        Me.TXT_Pics_ID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Tpage_Links
+        '
+        Me.Tpage_Links.Controls.Add(Me.TXT_Links_IDproduct)
+        Me.Tpage_Links.Controls.Add(Me.TXT_Links_ID)
+        Me.Tpage_Links.Controls.Add(Me.Knop_Links_Toon)
+        Me.Tpage_Links.Controls.Add(Me.GB_Links)
+        Me.Tpage_Links.Controls.Add(Me.LB_Links)
+        Me.Tpage_Links.Location = New System.Drawing.Point(4, 22)
+        Me.Tpage_Links.Name = "Tpage_Links"
+        Me.Tpage_Links.Padding = New System.Windows.Forms.Padding(3)
+        Me.Tpage_Links.Size = New System.Drawing.Size(681, 283)
+        Me.Tpage_Links.TabIndex = 4
+        Me.Tpage_Links.Text = "Info op internet"
+        Me.Tpage_Links.UseVisualStyleBackColor = True
+        '
+        'TXT_Links_IDproduct
+        '
+        Me.TXT_Links_IDproduct.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductInfoBindingSource, "ID_Product", True))
+        Me.TXT_Links_IDproduct.Location = New System.Drawing.Point(629, 13)
+        Me.TXT_Links_IDproduct.Name = "TXT_Links_IDproduct"
+        Me.TXT_Links_IDproduct.ReadOnly = True
+        Me.TXT_Links_IDproduct.Size = New System.Drawing.Size(39, 20)
+        Me.TXT_Links_IDproduct.TabIndex = 49
+        Me.TXT_Links_IDproduct.TabStop = False
+        Me.TXT_Links_IDproduct.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'ProductInfoBindingSource
+        '
+        Me.ProductInfoBindingSource.DataMember = "ProductInfo"
+        Me.ProductInfoBindingSource.DataSource = Me.DS_Product
+        '
+        'TXT_Links_ID
+        '
+        Me.TXT_Links_ID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductInfoBindingSource, "id_productinfo", True))
+        Me.TXT_Links_ID.Location = New System.Drawing.Point(584, 13)
+        Me.TXT_Links_ID.Name = "TXT_Links_ID"
+        Me.TXT_Links_ID.ReadOnly = True
+        Me.TXT_Links_ID.Size = New System.Drawing.Size(39, 20)
+        Me.TXT_Links_ID.TabIndex = 48
+        Me.TXT_Links_ID.TabStop = False
+        Me.TXT_Links_ID.TextAlign = System.Windows.Forms.HorizontalAlignment.Center
+        '
+        'Knop_Links_Toon
+        '
+        Me.Knop_Links_Toon.Location = New System.Drawing.Point(370, 45)
+        Me.Knop_Links_Toon.Name = "Knop_Links_Toon"
+        Me.Knop_Links_Toon.Size = New System.Drawing.Size(298, 40)
+        Me.Knop_Links_Toon.TabIndex = 2
+        Me.Knop_Links_Toon.Text = "Open Link in Webbrowser"
+        Me.Knop_Links_Toon.UseVisualStyleBackColor = True
+        '
+        'GB_Links
+        '
+        Me.GB_Links.Controls.Add(Me.Knop_Links_Nieuw)
+        Me.GB_Links.Controls.Add(Me.Knop_Links_Annuleren)
+        Me.GB_Links.Controls.Add(Me.Knop_links_opslaan)
+        Me.GB_Links.Controls.Add(Me.Label10)
+        Me.GB_Links.Controls.Add(Me.TXT_Links_URL)
+        Me.GB_Links.Controls.Add(Me.Label11)
+        Me.GB_Links.Controls.Add(Me.Label12)
+        Me.GB_Links.Controls.Add(Me.TXT_links_tekst)
+        Me.GB_Links.Controls.Add(Me.txt_Links_Naam)
+        Me.GB_Links.Location = New System.Drawing.Point(317, 96)
+        Me.GB_Links.Name = "GB_Links"
+        Me.GB_Links.Size = New System.Drawing.Size(351, 177)
+        Me.GB_Links.TabIndex = 1
+        Me.GB_Links.TabStop = False
+        '
+        'Knop_Links_Nieuw
+        '
+        Me.Knop_Links_Nieuw.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Knop_Links_Nieuw.Location = New System.Drawing.Point(54, 138)
+        Me.Knop_Links_Nieuw.Name = "Knop_Links_Nieuw"
+        Me.Knop_Links_Nieuw.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Links_Nieuw.TabIndex = 229
+        Me.Knop_Links_Nieuw.TabStop = False
+        Me.Knop_Links_Nieuw.Text = "Nieuw"
+        Me.Knop_Links_Nieuw.UseVisualStyleBackColor = True
+        '
+        'Knop_Links_Annuleren
+        '
+        Me.Knop_Links_Annuleren.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Knop_Links_Annuleren.Location = New System.Drawing.Point(131, 138)
+        Me.Knop_Links_Annuleren.Name = "Knop_Links_Annuleren"
+        Me.Knop_Links_Annuleren.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_Links_Annuleren.TabIndex = 228
+        Me.Knop_Links_Annuleren.TabStop = False
+        Me.Knop_Links_Annuleren.Text = "Annuleren"
+        Me.Knop_Links_Annuleren.UseVisualStyleBackColor = True
+        '
+        'Knop_links_opslaan
+        '
+        Me.Knop_links_opslaan.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Zoom
+        Me.Knop_links_opslaan.Location = New System.Drawing.Point(270, 138)
+        Me.Knop_links_opslaan.Name = "Knop_links_opslaan"
+        Me.Knop_links_opslaan.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_links_opslaan.TabIndex = 227
+        Me.Knop_links_opslaan.TabStop = False
+        Me.Knop_links_opslaan.Text = "Opslaan"
+        Me.Knop_links_opslaan.UseVisualStyleBackColor = True
+        '
+        'Label10
+        '
+        Me.Label10.AutoSize = True
+        Me.Label10.Location = New System.Drawing.Point(9, 92)
+        Me.Label10.Name = "Label10"
+        Me.Label10.Size = New System.Drawing.Size(32, 13)
+        Me.Label10.TabIndex = 226
+        Me.Label10.Text = "URL:"
+        '
+        'TXT_Links_URL
+        '
+        Me.TXT_Links_URL.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductInfoBindingSource, "PI_URL", True))
+        Me.TXT_Links_URL.Location = New System.Drawing.Point(53, 88)
+        Me.TXT_Links_URL.Multiline = True
+        Me.TXT_Links_URL.Name = "TXT_Links_URL"
+        Me.TXT_Links_URL.Size = New System.Drawing.Size(292, 34)
+        Me.TXT_Links_URL.TabIndex = 232
+        '
+        'Label11
+        '
+        Me.Label11.AutoSize = True
+        Me.Label11.Location = New System.Drawing.Point(9, 36)
+        Me.Label11.Name = "Label11"
+        Me.Label11.Size = New System.Drawing.Size(37, 13)
+        Me.Label11.TabIndex = 225
+        Me.Label11.Text = "Tekst:"
+        '
+        'Label12
+        '
+        Me.Label12.AutoSize = True
+        Me.Label12.Location = New System.Drawing.Point(9, 19)
+        Me.Label12.Name = "Label12"
+        Me.Label12.Size = New System.Drawing.Size(38, 13)
+        Me.Label12.TabIndex = 224
+        Me.Label12.Text = "Naam:"
+        '
+        'TXT_links_tekst
+        '
+        Me.TXT_links_tekst.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductInfoBindingSource, "PI_Tekst", True))
+        Me.TXT_links_tekst.Location = New System.Drawing.Point(53, 36)
+        Me.TXT_links_tekst.Multiline = True
+        Me.TXT_links_tekst.Name = "TXT_links_tekst"
+        Me.TXT_links_tekst.Size = New System.Drawing.Size(292, 51)
+        Me.TXT_links_tekst.TabIndex = 231
+        '
+        'txt_Links_Naam
+        '
+        Me.txt_Links_Naam.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ProductInfoBindingSource, "PI_Naam", True))
+        Me.txt_Links_Naam.Location = New System.Drawing.Point(53, 15)
+        Me.txt_Links_Naam.Name = "txt_Links_Naam"
+        Me.txt_Links_Naam.Size = New System.Drawing.Size(292, 20)
+        Me.txt_Links_Naam.TabIndex = 230
+        '
+        'LB_Links
+        '
+        Me.LB_Links.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.ProductInfoBindingSource, "id_productinfo", True))
+        Me.LB_Links.DataSource = Me.ProductInfoBindingSource
+        Me.LB_Links.DisplayMember = "PI_Naam"
+        Me.LB_Links.FormattingEnabled = True
+        Me.LB_Links.Location = New System.Drawing.Point(14, 9)
+        Me.LB_Links.Name = "LB_Links"
+        Me.LB_Links.Size = New System.Drawing.Size(297, 264)
+        Me.LB_Links.TabIndex = 0
+        Me.LB_Links.ValueMember = "id_productinfo"
         '
         'TXT_IDP
         '
@@ -913,26 +1331,6 @@ Partial Class F_Product
         Me.TXT_IDP.Size = New System.Drawing.Size(34, 20)
         Me.TXT_IDP.TabIndex = 41
         Me.TXT_IDP.TabStop = False
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator5
-        '
-        Me.ToolStripSeparator5.Name = "ToolStripSeparator5"
-        Me.ToolStripSeparator5.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator6
-        '
-        Me.ToolStripSeparator6.Name = "ToolStripSeparator6"
-        Me.ToolStripSeparator6.Size = New System.Drawing.Size(6, 25)
         '
         'F_Product
         '
@@ -964,10 +1362,21 @@ Partial Class F_Product
         Me.GroupBox3.ResumeLayout(False)
         Me.GroupBox3.PerformLayout()
         Me.TabPage2.ResumeLayout(False)
-        CType(Me.DG_Mutaties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GB_Mutaties.ResumeLayout(False)
+        CType(Me.DG_Mutaties, System.ComponentModel.ISupportInitialize).EndInit()
         Me.Tpage_Product_beschrijving.ResumeLayout(False)
         Me.TB_Product.ResumeLayout(False)
+        Me.Tpage_Pics.ResumeLayout(False)
+        Me.Tpage_Pics.PerformLayout()
+        CType(Me.PicturesBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GB_PicsDetail.ResumeLayout(False)
+        Me.GB_PicsDetail.PerformLayout()
+        CType(Me.Pic_Pic, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.Tpage_Links.ResumeLayout(False)
+        Me.Tpage_Links.PerformLayout()
+        CType(Me.ProductInfoBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
+        Me.GB_Links.ResumeLayout(False)
+        Me.GB_Links.PerformLayout()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -1047,4 +1456,39 @@ Partial Class F_Product
     Friend WithEvents ToolStripSeparator4 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator5 As ToolStripSeparator
     Friend WithEvents ToolStripSeparator6 As ToolStripSeparator
+    Friend WithEvents Tpage_Pics As TabPage
+    Friend WithEvents Pic_Pic As PictureBox
+    Friend WithEvents GB_PicsDetail As GroupBox
+    Friend WithEvents LB_Pics As ListBox
+    Friend WithEvents Label9 As Label
+    Friend WithEvents Label8 As Label
+    Friend WithEvents TXT_Pics_Url As TextBox
+    Friend WithEvents Label7 As Label
+    Friend WithEvents Label6 As Label
+    Friend WithEvents TXT_Pics_Tekst As TextBox
+    Friend WithEvents TXT_Pics_Naam As TextBox
+    Friend WithEvents TXT_Pics_ID As TextBox
+    Friend WithEvents Knop_Pics_Opslaan As Button
+    Friend WithEvents Knop_Pics_Nieuw As Button
+    Friend WithEvents Knop_Pics_Annuleren As Button
+    Friend WithEvents TXT_Pics_Idproduct As TextBox
+    Friend WithEvents PicturesBindingSource As BindingSource
+    Friend WithEvents PicturesTableAdapter As DS_ProductTableAdapters.PicturesTableAdapter
+    Friend WithEvents Tpage_Links As TabPage
+    Friend WithEvents LB_Links As ListBox
+    Friend WithEvents Knop_Links_Toon As Button
+    Friend WithEvents GB_Links As GroupBox
+    Friend WithEvents Knop_Links_Nieuw As Button
+    Friend WithEvents Knop_Links_Annuleren As Button
+    Friend WithEvents Knop_links_opslaan As Button
+    Friend WithEvents Label10 As Label
+    Friend WithEvents TXT_Links_URL As TextBox
+    Friend WithEvents Label11 As Label
+    Friend WithEvents Label12 As Label
+    Friend WithEvents TXT_links_tekst As TextBox
+    Friend WithEvents txt_Links_Naam As TextBox
+    Friend WithEvents ProductInfoBindingSource As BindingSource
+    Friend WithEvents ProductInfoTableAdapter As DS_ProductTableAdapters.ProductInfoTableAdapter
+    Friend WithEvents TXT_Links_IDproduct As TextBox
+    Friend WithEvents TXT_Links_ID As TextBox
 End Class

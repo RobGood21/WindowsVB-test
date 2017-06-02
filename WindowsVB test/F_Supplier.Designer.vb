@@ -85,14 +85,14 @@ Partial Class F_Supplier
         Me.ValutaTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.ValutaTableAdapter()
         Me.TS_Supplier = New System.Windows.Forms.ToolStrip()
         Me.Tknop_Sluit = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_nieuw = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_Annuleren = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_Opslaan = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_Website = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_nieuw = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_Annuleren = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_Opslaan = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_Website = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         SP_AdresXtraLabel = New System.Windows.Forms.Label()
         Label2 = New System.Windows.Forms.Label()
@@ -439,6 +439,7 @@ Partial Class F_Supplier
         Me.CB_Grootboek.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SupplierBindingSource, "ID_Grootboek", True))
         Me.CB_Grootboek.DataSource = Me.AdmGBrekeningBindingSource
         Me.CB_Grootboek.DisplayMember = "GB_naam"
+        Me.CB_Grootboek.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Grootboek.FormattingEnabled = True
         Me.CB_Grootboek.Location = New System.Drawing.Point(374, 197)
         Me.CB_Grootboek.Name = "CB_Grootboek"
@@ -457,6 +458,7 @@ Partial Class F_Supplier
         Me.CB_Valuta.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SupplierBindingSource, "ID_Valuta", True))
         Me.CB_Valuta.DataSource = Me.ValutaBindingSource
         Me.CB_Valuta.DisplayMember = "VT_Short"
+        Me.CB_Valuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Valuta.FormattingEnabled = True
         Me.CB_Valuta.Location = New System.Drawing.Point(374, 86)
         Me.CB_Valuta.Name = "CB_Valuta"
@@ -534,6 +536,7 @@ Partial Class F_Supplier
         Me.CB_Land.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.SupplierBindingSource, "ID_Land", True))
         Me.CB_Land.DataSource = Me.LandBindingSource
         Me.CB_Land.DisplayMember = "LD_Naam"
+        Me.CB_Land.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Land.FormattingEnabled = True
         Me.CB_Land.Location = New System.Drawing.Point(83, 128)
         Me.CB_Land.Name = "CB_Land"
@@ -688,6 +691,11 @@ Partial Class F_Supplier
         Me.Tknop_Sluit.Size = New System.Drawing.Size(63, 22)
         Me.Tknop_Sluit.Text = "Sluiten"
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
         'Tknop_nieuw
         '
         Me.Tknop_nieuw.Image = Global.WindowsVB_test.My.Resources.Resources.Button_Add_icon
@@ -695,6 +703,11 @@ Partial Class F_Supplier
         Me.Tknop_nieuw.Name = "Tknop_nieuw"
         Me.Tknop_nieuw.Size = New System.Drawing.Size(61, 22)
         Me.Tknop_nieuw.Text = "Nieuw"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
         '
         'Tknop_Annuleren
         '
@@ -704,6 +717,11 @@ Partial Class F_Supplier
         Me.Tknop_Annuleren.Size = New System.Drawing.Size(82, 22)
         Me.Tknop_Annuleren.Text = "Annuleren"
         '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
         'Tknop_Opslaan
         '
         Me.Tknop_Opslaan.Image = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
@@ -711,6 +729,11 @@ Partial Class F_Supplier
         Me.Tknop_Opslaan.Name = "Tknop_Opslaan"
         Me.Tknop_Opslaan.Size = New System.Drawing.Size(70, 22)
         Me.Tknop_Opslaan.Text = "Opslaan"
+        '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
         'Tknop_Website
         '
@@ -720,26 +743,6 @@ Partial Class F_Supplier
         Me.Tknop_Website.Name = "Tknop_Website"
         Me.Tknop_Website.Size = New System.Drawing.Size(23, 22)
         Me.Tknop_Website.Text = "Open Website"
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
         'ToolStripSeparator5
         '

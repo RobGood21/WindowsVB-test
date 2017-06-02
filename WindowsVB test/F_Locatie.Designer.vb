@@ -31,7 +31,6 @@ Partial Class F_Locatie
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.Label3 = New System.Windows.Forms.Label()
         Me.TXT_Rij = New System.Windows.Forms.TextBox()
-        Me.LocatieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.Label4 = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TXT_locatieCode = New System.Windows.Forms.TextBox()
@@ -42,16 +41,26 @@ Partial Class F_Locatie
         Me.CB_holder = New System.Windows.Forms.ComboBox()
         Me.Knop_Sluiten = New System.Windows.Forms.Button()
         Me.TXT_LocatieID = New System.Windows.Forms.TextBox()
-        Me.LocatieTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.LocatieTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager()
         Me.LocatieHolderTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.LocatieHolderTableAdapter()
         Me.LH_BeschrijvingTextBox = New System.Windows.Forms.TextBox()
+        Me.LocatieBindingSource = New System.Windows.Forms.BindingSource(Me.components)
+        Me.LocatieTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.LocatieTableAdapter()
         LH_BeschrijvingLabel = New System.Windows.Forms.Label()
         CType(Me.LocatieHolderBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).BeginInit()
-        CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.GroupBox1.SuspendLayout()
+        CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
         Me.SuspendLayout()
+        '
+        'LH_BeschrijvingLabel
+        '
+        LH_BeschrijvingLabel.AutoSize = True
+        LH_BeschrijvingLabel.Location = New System.Drawing.Point(16, 64)
+        LH_BeschrijvingLabel.Name = "LH_BeschrijvingLabel"
+        LH_BeschrijvingLabel.Size = New System.Drawing.Size(67, 13)
+        LH_BeschrijvingLabel.TabIndex = 17
+        LH_BeschrijvingLabel.Text = "Beschrijving:"
         '
         'Label1
         '
@@ -105,11 +114,6 @@ Partial Class F_Locatie
         Me.TXT_Rij.Name = "TXT_Rij"
         Me.TXT_Rij.Size = New System.Drawing.Size(40, 20)
         Me.TXT_Rij.TabIndex = 4
-        '
-        'LocatieBindingSource
-        '
-        Me.LocatieBindingSource.DataMember = "Locatie"
-        Me.LocatieBindingSource.DataSource = Me.DS_Product
         '
         'Label4
         '
@@ -179,6 +183,7 @@ Partial Class F_Locatie
         '
         'CB_holder
         '
+        Me.CB_holder.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LocatieHolderBindingSource, "LH_Naam", True))
         Me.CB_holder.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.LocatieBindingSource, "ID_LocatieHolder", True))
         Me.CB_holder.DataSource = Me.LocatieHolderBindingSource
         Me.CB_holder.DisplayMember = "LH_Naam"
@@ -201,41 +206,30 @@ Partial Class F_Locatie
         'TXT_LocatieID
         '
         Me.TXT_LocatieID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LocatieBindingSource, "ID_Locatie", True))
-        Me.TXT_LocatieID.Location = New System.Drawing.Point(218, 12)
+        Me.TXT_LocatieID.Location = New System.Drawing.Point(219, 12)
         Me.TXT_LocatieID.Name = "TXT_LocatieID"
         Me.TXT_LocatieID.Size = New System.Drawing.Size(40, 20)
         Me.TXT_LocatieID.TabIndex = 17
         '
-        'LocatieTableAdapter
-        '
-        Me.LocatieTableAdapter.ClearBeforeFill = True
-        '
         'TableAdapterManager
         '
         Me.TableAdapterManager.BackupDataSetBeforeUpdate = False
-        Me.TableAdapterManager.Connection = Nothing
         Me.TableAdapterManager.DT_productTableAdapter = Nothing
         Me.TableAdapterManager.GetOntvangstTableAdapter = Nothing
         Me.TableAdapterManager.GetProductAddTableAdapter = Nothing
         Me.TableAdapterManager.GPA_AantalTableAdapter = Nothing
         Me.TableAdapterManager.GroepTableAdapter = Nothing
-        Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
+        Me.TableAdapterManager.LocatieHolderTableAdapter = Me.LocatieHolderTableAdapter
         Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
+        Me.TableAdapterManager.PicturesTableAdapter = Nothing
+        Me.TableAdapterManager.ProductInfoTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
+        Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
         'LocatieHolderTableAdapter
         '
         Me.LocatieHolderTableAdapter.ClearBeforeFill = True
-        '
-        'LH_BeschrijvingLabel
-        '
-        LH_BeschrijvingLabel.AutoSize = True
-        LH_BeschrijvingLabel.Location = New System.Drawing.Point(16, 64)
-        LH_BeschrijvingLabel.Name = "LH_BeschrijvingLabel"
-        LH_BeschrijvingLabel.Size = New System.Drawing.Size(67, 13)
-        LH_BeschrijvingLabel.TabIndex = 17
-        LH_BeschrijvingLabel.Text = "Beschrijving:"
         '
         'LH_BeschrijvingTextBox
         '
@@ -247,11 +241,20 @@ Partial Class F_Locatie
         Me.LH_BeschrijvingTextBox.TabIndex = 18
         Me.LH_BeschrijvingTextBox.TabStop = False
         '
+        'LocatieBindingSource
+        '
+        Me.LocatieBindingSource.DataMember = "Locatie"
+        Me.LocatieBindingSource.DataSource = Me.DS_Product
+        '
+        'LocatieTableAdapter
+        '
+        Me.LocatieTableAdapter.ClearBeforeFill = True
+        '
         'F_Locatie
         '
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
-        Me.ClientSize = New System.Drawing.Size(276, 324)
+        Me.ClientSize = New System.Drawing.Size(424, 431)
         Me.Controls.Add(LH_BeschrijvingLabel)
         Me.Controls.Add(Me.LH_BeschrijvingTextBox)
         Me.Controls.Add(Me.TXT_LocatieID)
@@ -268,9 +271,9 @@ Partial Class F_Locatie
         Me.Text = "Locatie van producten"
         CType(Me.LocatieHolderBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         CType(Me.DS_Product, System.ComponentModel.ISupportInitialize).EndInit()
-        CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.GroupBox1.ResumeLayout(False)
         Me.GroupBox1.PerformLayout()
+        CType(Me.LocatieBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
         Me.PerformLayout()
 
@@ -291,10 +294,10 @@ Partial Class F_Locatie
     Friend WithEvents Knop_Sluiten As Button
     Friend WithEvents TXT_LocatieID As TextBox
     Friend WithEvents DS_Product As DS_Product
-    Friend WithEvents LocatieBindingSource As BindingSource
-    Friend WithEvents LocatieTableAdapter As DS_ProductTableAdapters.LocatieTableAdapter
     Friend WithEvents TableAdapterManager As DS_ProductTableAdapters.TableAdapterManager
     Friend WithEvents LocatieHolderBindingSource As BindingSource
     Friend WithEvents LocatieHolderTableAdapter As DS_ProductTableAdapters.LocatieHolderTableAdapter
     Friend WithEvents LH_BeschrijvingTextBox As TextBox
+    Friend WithEvents LocatieBindingSource As BindingSource
+    Friend WithEvents LocatieTableAdapter As DS_ProductTableAdapters.LocatieTableAdapter
 End Class

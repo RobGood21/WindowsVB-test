@@ -25,6 +25,7 @@ Partial Class F_AdmInkoopboek
         Me.components = New System.ComponentModel.Container()
         Dim IB_DatumLabel As System.Windows.Forms.Label
         Dim IB_PaidDatumLabel As System.Windows.Forms.Label
+        Dim Label3 As System.Windows.Forms.Label
         Me.Knop_Sluiten = New System.Windows.Forms.Button()
         Me.GB_JournaalPosten = New System.Windows.Forms.GroupBox()
         Me.TXT_DebetTotaal = New System.Windows.Forms.TextBox()
@@ -64,13 +65,10 @@ Partial Class F_AdmInkoopboek
         Me.Label1 = New System.Windows.Forms.Label()
         Me.Label8 = New System.Windows.Forms.Label()
         Me.GB_Betaling = New System.Windows.Forms.GroupBox()
-        Me.TXT_supplierID = New System.Windows.Forms.TextBox()
-        Me.TXT_SupBetaalWijze = New System.Windows.Forms.TextBox()
-        Me.TXT_GrootboekCR = New System.Windows.Forms.TextBox()
-        Me.BetaalWijzenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
-        Me.TXT_Koers = New System.Windows.Forms.TextBox()
-        Me.txt_grootboekSupplier = New System.Windows.Forms.TextBox()
+        Me.TXT_Document = New System.Windows.Forms.TextBox()
+        Me.Knop_DocOPzoeken = New System.Windows.Forms.Button()
         Me.CB_BetaalWijze = New System.Windows.Forms.ComboBox()
+        Me.BetaalWijzenBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.IB_betaaldatum = New System.Windows.Forms.DateTimePicker()
         Me.Knop_Toon = New System.Windows.Forms.Button()
         Me.Label11 = New System.Windows.Forms.Label()
@@ -78,6 +76,11 @@ Partial Class F_AdmInkoopboek
         Me.IB_DueDatum = New System.Windows.Forms.DateTimePicker()
         Me.CH_Betaald = New System.Windows.Forms.CheckBox()
         Me.Label9 = New System.Windows.Forms.Label()
+        Me.TXT_supplierID = New System.Windows.Forms.TextBox()
+        Me.TXT_SupBetaalWijze = New System.Windows.Forms.TextBox()
+        Me.TXT_GrootboekCR = New System.Windows.Forms.TextBox()
+        Me.TXT_Koers = New System.Windows.Forms.TextBox()
+        Me.txt_grootboekSupplier = New System.Windows.Forms.TextBox()
         Me.AdmInkoopBoekTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmInkoopBoekTableAdapter()
         Me.TableAdapterManager = New WindowsVB_test.DS_AdministratieTableAdapters.TableAdapterManager()
         Me.AdmJournaalTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmJournaalTableAdapter()
@@ -89,6 +92,7 @@ Partial Class F_AdmInkoopboek
         Me.Knop_Nieuw = New System.Windows.Forms.Button()
         IB_DatumLabel = New System.Windows.Forms.Label()
         IB_PaidDatumLabel = New System.Windows.Forms.Label()
+        Label3 = New System.Windows.Forms.Label()
         Me.GB_JournaalPosten.SuspendLayout()
         CType(Me.DG_Journaal, System.ComponentModel.ISupportInitialize).BeginInit()
         CType(Me.AdmGBrekeningBindingSource, System.ComponentModel.ISupportInitialize).BeginInit()
@@ -119,6 +123,15 @@ Partial Class F_AdmInkoopboek
         IB_PaidDatumLabel.Size = New System.Drawing.Size(69, 13)
         IB_PaidDatumLabel.TabIndex = 39
         IB_PaidDatumLabel.Text = "Betaaldatum:"
+        '
+        'Label3
+        '
+        Label3.AutoSize = True
+        Label3.Location = New System.Drawing.Point(16, 126)
+        Label3.Name = "Label3"
+        Label3.Size = New System.Drawing.Size(59, 13)
+        Label3.TabIndex = 41
+        Label3.Text = "Document:"
         '
         'Knop_Sluiten
         '
@@ -467,11 +480,9 @@ Partial Class F_AdmInkoopboek
         '
         'GB_Betaling
         '
-        Me.GB_Betaling.Controls.Add(Me.TXT_supplierID)
-        Me.GB_Betaling.Controls.Add(Me.TXT_SupBetaalWijze)
-        Me.GB_Betaling.Controls.Add(Me.TXT_GrootboekCR)
-        Me.GB_Betaling.Controls.Add(Me.TXT_Koers)
-        Me.GB_Betaling.Controls.Add(Me.txt_grootboekSupplier)
+        Me.GB_Betaling.Controls.Add(Me.TXT_Document)
+        Me.GB_Betaling.Controls.Add(Label3)
+        Me.GB_Betaling.Controls.Add(Me.Knop_DocOPzoeken)
         Me.GB_Betaling.Controls.Add(Me.CB_BetaalWijze)
         Me.GB_Betaling.Controls.Add(IB_PaidDatumLabel)
         Me.GB_Betaling.Controls.Add(Me.IB_betaaldatum)
@@ -488,60 +499,25 @@ Partial Class F_AdmInkoopboek
         Me.GB_Betaling.TabIndex = 1
         Me.GB_Betaling.TabStop = False
         '
-        'TXT_supplierID
+        'TXT_Document
         '
-        Me.TXT_supplierID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Valuta", True))
-        Me.TXT_supplierID.Enabled = False
-        Me.TXT_supplierID.Location = New System.Drawing.Point(62, 140)
-        Me.TXT_supplierID.Name = "TXT_supplierID"
-        Me.TXT_supplierID.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_supplierID.TabIndex = 50
-        Me.TXT_supplierID.TabStop = False
+        Me.TXT_Document.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.AdmInkoopBoekBindingSource, "IB_Doc", True))
+        Me.TXT_Document.Location = New System.Drawing.Point(6, 145)
+        Me.TXT_Document.Name = "TXT_Document"
+        Me.TXT_Document.ReadOnly = True
+        Me.TXT_Document.Size = New System.Drawing.Size(295, 20)
+        Me.TXT_Document.TabIndex = 51
+        Me.TXT_Document.TabStop = False
         '
-        'TXT_SupBetaalWijze
+        'Knop_DocOPzoeken
         '
-        Me.TXT_SupBetaalWijze.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_BetaalWijzen", True))
-        Me.TXT_SupBetaalWijze.Enabled = False
-        Me.TXT_SupBetaalWijze.Location = New System.Drawing.Point(149, 141)
-        Me.TXT_SupBetaalWijze.Name = "TXT_SupBetaalWijze"
-        Me.TXT_SupBetaalWijze.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_SupBetaalWijze.TabIndex = 49
-        Me.TXT_SupBetaalWijze.TabStop = False
-        '
-        'TXT_GrootboekCR
-        '
-        Me.TXT_GrootboekCR.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BetaalWijzenBindingSource, "ID_Grootboek", True))
-        Me.TXT_GrootboekCR.Enabled = False
-        Me.TXT_GrootboekCR.Location = New System.Drawing.Point(194, 141)
-        Me.TXT_GrootboekCR.Name = "TXT_GrootboekCR"
-        Me.TXT_GrootboekCR.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_GrootboekCR.TabIndex = 47
-        Me.TXT_GrootboekCR.TabStop = False
-        '
-        'BetaalWijzenBindingSource
-        '
-        Me.BetaalWijzenBindingSource.DataMember = "BetaalWijzen"
-        Me.BetaalWijzenBindingSource.DataSource = Me.DS_Administratie
-        '
-        'TXT_Koers
-        '
-        Me.TXT_Koers.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ValutaBindingSource, "VT_Koers", True))
-        Me.TXT_Koers.Enabled = False
-        Me.TXT_Koers.Location = New System.Drawing.Point(240, 141)
-        Me.TXT_Koers.Name = "TXT_Koers"
-        Me.TXT_Koers.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_Koers.TabIndex = 45
-        Me.TXT_Koers.TabStop = False
-        '
-        'txt_grootboekSupplier
-        '
-        Me.txt_grootboekSupplier.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Grootboek", True))
-        Me.txt_grootboekSupplier.Enabled = False
-        Me.txt_grootboekSupplier.Location = New System.Drawing.Point(106, 140)
-        Me.txt_grootboekSupplier.Name = "txt_grootboekSupplier"
-        Me.txt_grootboekSupplier.Size = New System.Drawing.Size(40, 20)
-        Me.txt_grootboekSupplier.TabIndex = 43
-        Me.txt_grootboekSupplier.TabStop = False
+        Me.Knop_DocOPzoeken.Location = New System.Drawing.Point(83, 121)
+        Me.Knop_DocOPzoeken.Name = "Knop_DocOPzoeken"
+        Me.Knop_DocOPzoeken.Size = New System.Drawing.Size(75, 23)
+        Me.Knop_DocOPzoeken.TabIndex = 40
+        Me.Knop_DocOPzoeken.TabStop = False
+        Me.Knop_DocOPzoeken.Text = "Opzoeken"
+        Me.Knop_DocOPzoeken.UseVisualStyleBackColor = True
         '
         'CB_BetaalWijze
         '
@@ -555,6 +531,11 @@ Partial Class F_AdmInkoopboek
         Me.CB_BetaalWijze.TabIndex = 6
         Me.CB_BetaalWijze.ValueMember = "ID_BetaalWijzen"
         '
+        'BetaalWijzenBindingSource
+        '
+        Me.BetaalWijzenBindingSource.DataMember = "BetaalWijzen"
+        Me.BetaalWijzenBindingSource.DataSource = Me.DS_Administratie
+        '
         'IB_betaaldatum
         '
         Me.IB_betaaldatum.DataBindings.Add(New System.Windows.Forms.Binding("Value", Me.AdmInkoopBoekBindingSource, "IB_PaidDatum", True))
@@ -566,12 +547,12 @@ Partial Class F_AdmInkoopboek
         '
         'Knop_Toon
         '
-        Me.Knop_Toon.Location = New System.Drawing.Point(208, 14)
+        Me.Knop_Toon.Location = New System.Drawing.Point(164, 121)
         Me.Knop_Toon.Name = "Knop_Toon"
         Me.Knop_Toon.Size = New System.Drawing.Size(75, 23)
         Me.Knop_Toon.TabIndex = 39
         Me.Knop_Toon.TabStop = False
-        Me.Knop_Toon.Text = "&Toon"
+        Me.Knop_Toon.Text = "Tonen"
         Me.Knop_Toon.UseVisualStyleBackColor = True
         '
         'Label11
@@ -622,6 +603,61 @@ Partial Class F_AdmInkoopboek
         Me.Label9.Size = New System.Drawing.Size(63, 13)
         Me.Label9.TabIndex = 31
         Me.Label9.Text = "Betaalwijze:"
+        '
+        'TXT_supplierID
+        '
+        Me.TXT_supplierID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Valuta", True))
+        Me.TXT_supplierID.Enabled = False
+        Me.TXT_supplierID.Location = New System.Drawing.Point(113, 402)
+        Me.TXT_supplierID.Name = "TXT_supplierID"
+        Me.TXT_supplierID.ReadOnly = True
+        Me.TXT_supplierID.Size = New System.Drawing.Size(30, 20)
+        Me.TXT_supplierID.TabIndex = 50
+        Me.TXT_supplierID.TabStop = False
+        '
+        'TXT_SupBetaalWijze
+        '
+        Me.TXT_SupBetaalWijze.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_BetaalWijzen", True))
+        Me.TXT_SupBetaalWijze.Enabled = False
+        Me.TXT_SupBetaalWijze.Location = New System.Drawing.Point(175, 403)
+        Me.TXT_SupBetaalWijze.Name = "TXT_SupBetaalWijze"
+        Me.TXT_SupBetaalWijze.ReadOnly = True
+        Me.TXT_SupBetaalWijze.Size = New System.Drawing.Size(30, 20)
+        Me.TXT_SupBetaalWijze.TabIndex = 49
+        Me.TXT_SupBetaalWijze.TabStop = False
+        '
+        'TXT_GrootboekCR
+        '
+        Me.TXT_GrootboekCR.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BetaalWijzenBindingSource, "ID_Grootboek", True))
+        Me.TXT_GrootboekCR.Enabled = False
+        Me.TXT_GrootboekCR.Location = New System.Drawing.Point(206, 403)
+        Me.TXT_GrootboekCR.Name = "TXT_GrootboekCR"
+        Me.TXT_GrootboekCR.ReadOnly = True
+        Me.TXT_GrootboekCR.Size = New System.Drawing.Size(30, 20)
+        Me.TXT_GrootboekCR.TabIndex = 47
+        Me.TXT_GrootboekCR.TabStop = False
+        '
+        'TXT_Koers
+        '
+        Me.TXT_Koers.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ValutaBindingSource, "VT_Koers", True))
+        Me.TXT_Koers.Enabled = False
+        Me.TXT_Koers.Location = New System.Drawing.Point(237, 403)
+        Me.TXT_Koers.Name = "TXT_Koers"
+        Me.TXT_Koers.ReadOnly = True
+        Me.TXT_Koers.Size = New System.Drawing.Size(30, 20)
+        Me.TXT_Koers.TabIndex = 45
+        Me.TXT_Koers.TabStop = False
+        '
+        'txt_grootboekSupplier
+        '
+        Me.txt_grootboekSupplier.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Grootboek", True))
+        Me.txt_grootboekSupplier.Enabled = False
+        Me.txt_grootboekSupplier.Location = New System.Drawing.Point(144, 402)
+        Me.txt_grootboekSupplier.Name = "txt_grootboekSupplier"
+        Me.txt_grootboekSupplier.ReadOnly = True
+        Me.txt_grootboekSupplier.Size = New System.Drawing.Size(30, 20)
+        Me.txt_grootboekSupplier.TabIndex = 43
+        Me.txt_grootboekSupplier.TabStop = False
         '
         'AdmInkoopBoekTableAdapter
         '
@@ -681,9 +717,14 @@ Partial Class F_AdmInkoopboek
         Me.AutoScaleDimensions = New System.Drawing.SizeF(6.0!, 13.0!)
         Me.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font
         Me.ClientSize = New System.Drawing.Size(647, 454)
+        Me.Controls.Add(Me.TXT_supplierID)
         Me.Controls.Add(Me.Knop_Nieuw)
+        Me.Controls.Add(Me.TXT_SupBetaalWijze)
         Me.Controls.Add(Me.Knop_Close)
+        Me.Controls.Add(Me.TXT_GrootboekCR)
         Me.Controls.Add(Me.GB_Betaling)
+        Me.Controls.Add(Me.TXT_Koers)
+        Me.Controls.Add(Me.txt_grootboekSupplier)
         Me.Controls.Add(Me.GB_Crediteur)
         Me.Controls.Add(Me.GB_JournaalPosten)
         Me.Controls.Add(Me.Knop_Sluiten)
@@ -705,6 +746,7 @@ Partial Class F_AdmInkoopboek
         Me.GB_Betaling.PerformLayout()
         CType(Me.BetaalWijzenBindingSource, System.ComponentModel.ISupportInitialize).EndInit()
         Me.ResumeLayout(False)
+        Me.PerformLayout()
 
     End Sub
     Friend WithEvents Knop_Sluiten As Button
@@ -769,4 +811,6 @@ Partial Class F_AdmInkoopboek
     Friend WithEvents DataGridViewTextBoxColumn4 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
     Friend WithEvents ID_Getontvangst As DataGridViewTextBoxColumn
+    Friend WithEvents Knop_DocOPzoeken As Button
+    Friend WithEvents TXT_Document As TextBox
 End Class

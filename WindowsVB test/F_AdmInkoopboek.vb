@@ -206,9 +206,6 @@
         Return OpslaanInkoop
 
     End Function
-    Private Sub Knop_Toon_Click(sender As Object, e As EventArgs) Handles Knop_Toon.Click
-        MsgBox("met deze knop een document openen, bewijs stuk, scan of pdf van de facuur")
-    End Sub
     Private Sub Knop_Nieuweregel_Click(sender As Object, e As EventArgs) Handles Knop_Nieuweregel.Click
 
         If Me.DG_Journaal.Rows.Count > 1 Then
@@ -402,8 +399,20 @@
         End If
         Me.TXT_WaardeEuro.Text = FormatNumber(Me.TXT_WaardeEuro.Text, -1)
     End Sub
-
     Private Sub TXT_BTW_Validated(sender As Object, e As EventArgs) Handles TXT_BTW.Validated
         Me.TXT_BTW.Text = FormatNumber(Me.TXT_BTW.Text, -1)
+    End Sub
+    Private Sub Knop_DocOPzoeken_Click(sender As Object, e As EventArgs) Handles Knop_DocOPzoeken.Click
+        Dim doc As New OpenFileDialog()
+        doc.Filter = "pdf files (*.pdf)|*.pdf|txt files (*.txt)|*.txt|All files (*.*)|*.*"
+        doc.FilterIndex = 1
+        doc.RestoreDirectory = True
+        doc.InitialDirectory = "E:\Wisselmotor Administratie\Crediteur Facturen\"
+        If doc.ShowDialog = Windows.Forms.DialogResult.OK Then
+            Me.TXT_Document.Text = doc.FileName
+        End If
+    End Sub
+    Private Sub Knop_Toon_Click(sender As Object, e As EventArgs) Handles Knop_Toon.Click
+        System.Diagnostics.Process.Start(Me.TXT_Document.Text)
     End Sub
 End Class

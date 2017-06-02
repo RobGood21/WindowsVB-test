@@ -144,6 +144,8 @@ Partial Class F_Groep
         Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
         Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
+        Me.TableAdapterManager.PicturesTableAdapter = Nothing
+        Me.TableAdapterManager.ProductInfoTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '
@@ -185,7 +187,7 @@ Partial Class F_Groep
         Me.GP_BeschrijvingTextBox.Multiline = True
         Me.GP_BeschrijvingTextBox.Name = "GP_BeschrijvingTextBox"
         Me.GP_BeschrijvingTextBox.Size = New System.Drawing.Size(192, 62)
-        Me.GP_BeschrijvingTextBox.TabIndex = 2
+        Me.GP_BeschrijvingTextBox.TabIndex = 3
         '
         'GP_KenmerkTextBox
         '
@@ -194,7 +196,7 @@ Partial Class F_Groep
         Me.GP_KenmerkTextBox.Multiline = True
         Me.GP_KenmerkTextBox.Name = "GP_KenmerkTextBox"
         Me.GP_KenmerkTextBox.Size = New System.Drawing.Size(192, 55)
-        Me.GP_KenmerkTextBox.TabIndex = 1
+        Me.GP_KenmerkTextBox.TabIndex = 2
         '
         'GroupBox1
         '
@@ -221,11 +223,12 @@ Partial Class F_Groep
         Me.ComboBox1.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.GroepBindingSource, "ID_BTW", True))
         Me.ComboBox1.DataSource = Me.BTWBindingSource
         Me.ComboBox1.DisplayMember = "BTW_Kort"
+        Me.ComboBox1.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.ComboBox1.FormattingEnabled = True
         Me.ComboBox1.Location = New System.Drawing.Point(76, 66)
         Me.ComboBox1.Name = "ComboBox1"
         Me.ComboBox1.Size = New System.Drawing.Size(62, 21)
-        Me.ComboBox1.TabIndex = 19
+        Me.ComboBox1.TabIndex = 1
         Me.ComboBox1.ValueMember = "ID_BTW"
         '
         'Knop_Save
@@ -237,6 +240,7 @@ Partial Class F_Groep
         Me.Knop_Save.Name = "Knop_Save"
         Me.Knop_Save.Size = New System.Drawing.Size(31, 30)
         Me.Knop_Save.TabIndex = 18
+        Me.Knop_Save.TabStop = False
         Me.Knop_Save.UseVisualStyleBackColor = True
         '
         'Knop_Opslaan
@@ -244,7 +248,7 @@ Partial Class F_Groep
         Me.Knop_Opslaan.Location = New System.Drawing.Point(353, 246)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(120, 23)
-        Me.Knop_Opslaan.TabIndex = 2
+        Me.Knop_Opslaan.TabIndex = 4
         Me.Knop_Opslaan.Text = "&Opslaan en sluiten"
         Me.Knop_Opslaan.UseCompatibleTextRendering = True
         Me.Knop_Opslaan.UseVisualStyleBackColor = True

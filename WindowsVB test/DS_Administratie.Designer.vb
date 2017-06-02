@@ -1545,6 +1545,8 @@ Partial Public Class DS_Administratie
         
         Private columnIB_WaardeEuro As Global.System.Data.DataColumn
         
+        Private columnIB_Doc As Global.System.Data.DataColumn
+        
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub New()
@@ -1685,6 +1687,14 @@ Partial Public Class DS_Administratie
         End Property
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public ReadOnly Property IB_DocColumn() As Global.System.Data.DataColumn
+            Get
+                Return Me.columnIB_Doc
+            End Get
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Browsable(false)>  _
         Public ReadOnly Property Count() As Integer
@@ -1721,9 +1731,9 @@ Partial Public Class DS_Administratie
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
-        Public Overloads Function AddAdmInkoopBoekRow(ByVal ID_Supplier As Integer, ByVal IB_Waarde As Decimal, ByVal IB_BTW As Decimal, ByVal IB_Valuta As Integer, ByVal IB_Datum As Date, ByVal IB_DueDatum As Date, ByVal IB_Paid As Boolean, ByVal IB_PaidEuro As Decimal, ByVal IB_PaidDatum As Date, ByVal IB_Kenmerk As String, ByVal ID_BetaalWijzen As Integer, ByVal IB_WaardeEuro As Decimal) As AdmInkoopBoekRow
+        Public Overloads Function AddAdmInkoopBoekRow(ByVal ID_Supplier As Integer, ByVal IB_Waarde As Decimal, ByVal IB_BTW As Decimal, ByVal IB_Valuta As Integer, ByVal IB_Datum As Date, ByVal IB_DueDatum As Date, ByVal IB_Paid As Boolean, ByVal IB_PaidEuro As Decimal, ByVal IB_PaidDatum As Date, ByVal IB_Kenmerk As String, ByVal ID_BetaalWijzen As Integer, ByVal IB_WaardeEuro As Decimal, ByVal IB_Doc As String) As AdmInkoopBoekRow
             Dim rowAdmInkoopBoekRow As AdmInkoopBoekRow = CType(Me.NewRow,AdmInkoopBoekRow)
-            Dim columnValuesArray() As Object = New Object() {Nothing, ID_Supplier, IB_Waarde, IB_BTW, IB_Valuta, IB_Datum, IB_DueDatum, IB_Paid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_BetaalWijzen, IB_WaardeEuro}
+            Dim columnValuesArray() As Object = New Object() {Nothing, ID_Supplier, IB_Waarde, IB_BTW, IB_Valuta, IB_Datum, IB_DueDatum, IB_Paid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_BetaalWijzen, IB_WaardeEuro, IB_Doc}
             rowAdmInkoopBoekRow.ItemArray = columnValuesArray
             Me.Rows.Add(rowAdmInkoopBoekRow)
             Return rowAdmInkoopBoekRow
@@ -1765,6 +1775,7 @@ Partial Public Class DS_Administratie
             Me.columnIB_Kenmerk = MyBase.Columns("IB_Kenmerk")
             Me.columnID_BetaalWijzen = MyBase.Columns("ID_BetaalWijzen")
             Me.columnIB_WaardeEuro = MyBase.Columns("IB_WaardeEuro")
+            Me.columnIB_Doc = MyBase.Columns("IB_Doc")
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -1796,6 +1807,8 @@ Partial Public Class DS_Administratie
             MyBase.Columns.Add(Me.columnID_BetaalWijzen)
             Me.columnIB_WaardeEuro = New Global.System.Data.DataColumn("IB_WaardeEuro", GetType(Decimal), Nothing, Global.System.Data.MappingType.Element)
             MyBase.Columns.Add(Me.columnIB_WaardeEuro)
+            Me.columnIB_Doc = New Global.System.Data.DataColumn("IB_Doc", GetType(String), Nothing, Global.System.Data.MappingType.Element)
+            MyBase.Columns.Add(Me.columnIB_Doc)
             Me.Constraints.Add(New Global.System.Data.UniqueConstraint("Constraint1", New Global.System.Data.DataColumn() {Me.columnID_AdmInkoopboek}, true))
             Me.columnID_AdmInkoopboek.AutoIncrement = true
             Me.columnID_AdmInkoopboek.AutoIncrementSeed = -1
@@ -1804,6 +1817,7 @@ Partial Public Class DS_Administratie
             Me.columnID_AdmInkoopboek.ReadOnly = true
             Me.columnID_AdmInkoopboek.Unique = true
             Me.columnIB_Kenmerk.MaxLength = 50
+            Me.columnIB_Doc.MaxLength = 2147483647
         End Sub
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
@@ -4072,6 +4086,21 @@ Partial Public Class DS_Administratie
         
         <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Property IB_Doc() As String
+            Get
+                Try 
+                    Return CType(Me(Me.tableAdmInkoopBoek.IB_DocColumn),String)
+                Catch e As Global.System.InvalidCastException
+                    Throw New Global.System.Data.StrongTypingException("The value for column 'IB_Doc' in table 'AdmInkoopBoek' is DBNull.", e)
+                End Try
+            End Get
+            Set
+                Me(Me.tableAdmInkoopBoek.IB_DocColumn) = value
+            End Set
+        End Property
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Function IsID_SupplierNull() As Boolean
             Return Me.IsNull(Me.tableAdmInkoopBoek.ID_SupplierColumn)
         End Function
@@ -4212,6 +4241,18 @@ Partial Public Class DS_Administratie
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
         Public Sub SetIB_WaardeEuroNull()
             Me(Me.tableAdmInkoopBoek.IB_WaardeEuroColumn) = Global.System.Convert.DBNull
+        End Sub
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Function IsIB_DocNull() As Boolean
+            Return Me.IsNull(Me.tableAdmInkoopBoek.IB_DocColumn)
+        End Function
+        
+        <Global.System.Diagnostics.DebuggerNonUserCodeAttribute(),  _
+         Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0")>  _
+        Public Sub SetIB_DocNull()
+            Me(Me.tableAdmInkoopBoek.IB_DocColumn) = Global.System.Convert.DBNull
         End Sub
     End Class
     
@@ -6540,6 +6581,7 @@ Namespace DS_AdministratieTableAdapters
             tableMapping.ColumnMappings.Add("IB_Kenmerk", "IB_Kenmerk")
             tableMapping.ColumnMappings.Add("ID_BetaalWijzen", "ID_BetaalWijzen")
             tableMapping.ColumnMappings.Add("IB_WaardeEuro", "IB_WaardeEuro")
+            tableMapping.ColumnMappings.Add("IB_Doc", "IB_Doc")
             Me._adapter.TableMappings.Add(tableMapping)
             Me._adapter.DeleteCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.DeleteCommand.Connection = Me.Connection
@@ -6589,12 +6631,12 @@ Namespace DS_AdministratieTableAdapters
             Me._adapter.InsertCommand.Connection = Me.Connection
             Me._adapter.InsertCommand.CommandText = "INSERT INTO [AdmInkoopBoek] ([ID_Supplier], [IB_Waarde], [IB_BTW], [IB_Valuta], ["& _ 
                 "IB_Datum], [IB_DueDatum], [IB_Paid], [IB_PaidEuro], [IB_PaidDatum], [IB_Kenmerk]"& _ 
-                ", [ID_BetaalWijzen], [IB_WaardeEuro]) VALUES (@ID_Supplier, @IB_Waarde, @IB_BTW,"& _ 
-                " @IB_Valuta, @IB_Datum, @IB_DueDatum, @IB_Paid, @IB_PaidEuro, @IB_PaidDatum, @IB"& _ 
-                "_Kenmerk, @ID_BetaalWijzen, @IB_WaardeEuro);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_AdmInkoopboek, ID_Suppli"& _ 
-                "er, IB_Waarde, IB_BTW, IB_Valuta, IB_Datum, IB_DueDatum, IB_Paid, IB_PaidEuro, I"& _ 
-                "B_PaidDatum, IB_Kenmerk, ID_BetaalWijzen, IB_WaardeEuro FROM AdmInkoopBoek WHERE"& _ 
-                " (ID_AdmInkoopboek = SCOPE_IDENTITY())"
+                ", [ID_BetaalWijzen], [IB_WaardeEuro], [IB_Doc]) VALUES (@ID_Supplier, @IB_Waarde"& _ 
+                ", @IB_BTW, @IB_Valuta, @IB_Datum, @IB_DueDatum, @IB_Paid, @IB_PaidEuro, @IB_Paid"& _ 
+                "Datum, @IB_Kenmerk, @ID_BetaalWijzen, @IB_WaardeEuro, @IB_Doc);"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_AdmIn"& _ 
+                "koopboek, ID_Supplier, IB_Waarde, IB_BTW, IB_Valuta, IB_Datum, IB_DueDatum, IB_P"& _ 
+                "aid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_BetaalWijzen, IB_WaardeEuro, IB_D"& _ 
+                "oc FROM AdmInkoopBoek WHERE (ID_AdmInkoopboek = SCOPE_IDENTITY())"
             Me._adapter.InsertCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_Waarde", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "IB_Waarde", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6608,31 +6650,33 @@ Namespace DS_AdministratieTableAdapters
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_Kenmerk", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IB_Kenmerk", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_BetaalWijzen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_BetaalWijzen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_WaardeEuro", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "IB_WaardeEuro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.InsertCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_Doc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IB_Doc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand = New Global.System.Data.SqlClient.SqlCommand()
             Me._adapter.UpdateCommand.Connection = Me.Connection
             Me._adapter.UpdateCommand.CommandText = "UPDATE [AdmInkoopBoek] SET [ID_Supplier] = @ID_Supplier, [IB_Waarde] = @IB_Waarde"& _ 
                 ", [IB_BTW] = @IB_BTW, [IB_Valuta] = @IB_Valuta, [IB_Datum] = @IB_Datum, [IB_DueD"& _ 
                 "atum] = @IB_DueDatum, [IB_Paid] = @IB_Paid, [IB_PaidEuro] = @IB_PaidEuro, [IB_Pa"& _ 
                 "idDatum] = @IB_PaidDatum, [IB_Kenmerk] = @IB_Kenmerk, [ID_BetaalWijzen] = @ID_Be"& _ 
-                "taalWijzen, [IB_WaardeEuro] = @IB_WaardeEuro WHERE (([ID_AdmInkoopboek] = @Origi"& _ 
-                "nal_ID_AdmInkoopboek) AND ((@IsNull_ID_Supplier = 1 AND [ID_Supplier] IS NULL) O"& _ 
-                "R ([ID_Supplier] = @Original_ID_Supplier)) AND ((@IsNull_IB_Waarde = 1 AND [IB_W"& _ 
-                "aarde] IS NULL) OR ([IB_Waarde] = @Original_IB_Waarde)) AND ((@IsNull_IB_BTW = 1"& _ 
-                " AND [IB_BTW] IS NULL) OR ([IB_BTW] = @Original_IB_BTW)) AND ((@IsNull_IB_Valuta"& _ 
-                " = 1 AND [IB_Valuta] IS NULL) OR ([IB_Valuta] = @Original_IB_Valuta)) AND ((@IsN"& _ 
-                "ull_IB_Datum = 1 AND [IB_Datum] IS NULL) OR ([IB_Datum] = @Original_IB_Datum)) A"& _ 
-                "ND ((@IsNull_IB_DueDatum = 1 AND [IB_DueDatum] IS NULL) OR ([IB_DueDatum] = @Ori"& _ 
-                "ginal_IB_DueDatum)) AND ((@IsNull_IB_Paid = 1 AND [IB_Paid] IS NULL) OR ([IB_Pai"& _ 
-                "d] = @Original_IB_Paid)) AND ((@IsNull_IB_PaidEuro = 1 AND [IB_PaidEuro] IS NULL"& _ 
-                ") OR ([IB_PaidEuro] = @Original_IB_PaidEuro)) AND ((@IsNull_IB_PaidDatum = 1 AND"& _ 
-                " [IB_PaidDatum] IS NULL) OR ([IB_PaidDatum] = @Original_IB_PaidDatum)) AND ((@Is"& _ 
-                "Null_IB_Kenmerk = 1 AND [IB_Kenmerk] IS NULL) OR ([IB_Kenmerk] = @Original_IB_Ke"& _ 
-                "nmerk)) AND ((@IsNull_ID_BetaalWijzen = 1 AND [ID_BetaalWijzen] IS NULL) OR ([ID"& _ 
-                "_BetaalWijzen] = @Original_ID_BetaalWijzen)) AND ((@IsNull_IB_WaardeEuro = 1 AND"& _ 
-                " [IB_WaardeEuro] IS NULL) OR ([IB_WaardeEuro] = @Original_IB_WaardeEuro)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SEL"& _ 
-                "ECT ID_AdmInkoopboek, ID_Supplier, IB_Waarde, IB_BTW, IB_Valuta, IB_Datum, IB_Du"& _ 
-                "eDatum, IB_Paid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_BetaalWijzen, IB_Waar"& _ 
-                "deEuro FROM AdmInkoopBoek WHERE (ID_AdmInkoopboek = @ID_AdmInkoopboek)"
+                "taalWijzen, [IB_WaardeEuro] = @IB_WaardeEuro, [IB_Doc] = @IB_Doc WHERE (([ID_Adm"& _ 
+                "Inkoopboek] = @Original_ID_AdmInkoopboek) AND ((@IsNull_ID_Supplier = 1 AND [ID_"& _ 
+                "Supplier] IS NULL) OR ([ID_Supplier] = @Original_ID_Supplier)) AND ((@IsNull_IB_"& _ 
+                "Waarde = 1 AND [IB_Waarde] IS NULL) OR ([IB_Waarde] = @Original_IB_Waarde)) AND "& _ 
+                "((@IsNull_IB_BTW = 1 AND [IB_BTW] IS NULL) OR ([IB_BTW] = @Original_IB_BTW)) AND"& _ 
+                " ((@IsNull_IB_Valuta = 1 AND [IB_Valuta] IS NULL) OR ([IB_Valuta] = @Original_IB"& _ 
+                "_Valuta)) AND ((@IsNull_IB_Datum = 1 AND [IB_Datum] IS NULL) OR ([IB_Datum] = @O"& _ 
+                "riginal_IB_Datum)) AND ((@IsNull_IB_DueDatum = 1 AND [IB_DueDatum] IS NULL) OR ("& _ 
+                "[IB_DueDatum] = @Original_IB_DueDatum)) AND ((@IsNull_IB_Paid = 1 AND [IB_Paid] "& _ 
+                "IS NULL) OR ([IB_Paid] = @Original_IB_Paid)) AND ((@IsNull_IB_PaidEuro = 1 AND ["& _ 
+                "IB_PaidEuro] IS NULL) OR ([IB_PaidEuro] = @Original_IB_PaidEuro)) AND ((@IsNull_"& _ 
+                "IB_PaidDatum = 1 AND [IB_PaidDatum] IS NULL) OR ([IB_PaidDatum] = @Original_IB_P"& _ 
+                "aidDatum)) AND ((@IsNull_IB_Kenmerk = 1 AND [IB_Kenmerk] IS NULL) OR ([IB_Kenmer"& _ 
+                "k] = @Original_IB_Kenmerk)) AND ((@IsNull_ID_BetaalWijzen = 1 AND [ID_BetaalWijz"& _ 
+                "en] IS NULL) OR ([ID_BetaalWijzen] = @Original_ID_BetaalWijzen)) AND ((@IsNull_I"& _ 
+                "B_WaardeEuro = 1 AND [IB_WaardeEuro] IS NULL) OR ([IB_WaardeEuro] = @Original_IB"& _ 
+                "_WaardeEuro)));"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"SELECT ID_AdmInkoopboek, ID_Supplier, IB_Waarde, IB_BTW, IB_Val"& _ 
+                "uta, IB_Datum, IB_DueDatum, IB_Paid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_B"& _ 
+                "etaalWijzen, IB_WaardeEuro, IB_Doc FROM AdmInkoopBoek WHERE (ID_AdmInkoopboek = "& _ 
+                "@ID_AdmInkoopboek)"
             Me._adapter.UpdateCommand.CommandType = Global.System.Data.CommandType.Text
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_Waarde", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "IB_Waarde", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
@@ -6646,6 +6690,7 @@ Namespace DS_AdministratieTableAdapters
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_Kenmerk", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IB_Kenmerk", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@ID_BetaalWijzen", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_BetaalWijzen", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_WaardeEuro", Global.System.Data.SqlDbType.[Decimal], 0, Global.System.Data.ParameterDirection.Input, 18, 2, "IB_WaardeEuro", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
+            Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IB_Doc", Global.System.Data.SqlDbType.NVarChar, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "IB_Doc", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_AdmInkoopboek", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_AdmInkoopboek", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@IsNull_ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Original, true, Nothing, "", "", ""))
             Me._adapter.UpdateCommand.Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@Original_ID_Supplier", Global.System.Data.SqlDbType.Int, 0, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_Supplier", Global.System.Data.DataRowVersion.Original, false, Nothing, "", "", ""))
@@ -6689,8 +6734,8 @@ Namespace DS_AdministratieTableAdapters
             Me._commandCollection(0).Connection = Me.Connection
             Me._commandCollection(0).CommandText = "SELECT        ID_AdmInkoopboek, ID_Supplier, IB_Waarde, IB_BTW, IB_Valuta, IB_Dat"& _ 
                 "um, IB_DueDatum, IB_Paid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_BetaalWijzen"& _ 
-                ", IB_WaardeEuro"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AdmInkoopBoek"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_AdmInkoopboek ="& _ 
-                " @AdmIK)"
+                ", IB_WaardeEuro, IB_Doc"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"FROM            AdmInkoopBoek"&Global.Microsoft.VisualBasic.ChrW(13)&Global.Microsoft.VisualBasic.ChrW(10)&"WHERE        (ID_AdmInko"& _ 
+                "opboek = @AdmIK)"
             Me._commandCollection(0).CommandType = Global.System.Data.CommandType.Text
             Me._commandCollection(0).Parameters.Add(New Global.System.Data.SqlClient.SqlParameter("@AdmIK", Global.System.Data.SqlDbType.Int, 4, Global.System.Data.ParameterDirection.Input, 0, 0, "ID_AdmInkoopboek", Global.System.Data.DataRowVersion.Current, false, Nothing, "", "", ""))
         End Sub
@@ -6858,7 +6903,7 @@ Namespace DS_AdministratieTableAdapters
          Global.System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "4.0.0.0"),  _
          Global.System.ComponentModel.Design.HelpKeywordAttribute("vs.data.TableAdapter"),  _
          Global.System.ComponentModel.DataObjectMethodAttribute(Global.System.ComponentModel.DataObjectMethodType.Insert, true)>  _
-        Public Overloads Overridable Function Insert(ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal IB_Waarde As Global.System.Nullable(Of Decimal), ByVal IB_BTW As Global.System.Nullable(Of Decimal), ByVal IB_Valuta As Global.System.Nullable(Of Integer), ByVal IB_Datum As Global.System.Nullable(Of Date), ByVal IB_DueDatum As Global.System.Nullable(Of Date), ByVal IB_Paid As Global.System.Nullable(Of Boolean), ByVal IB_PaidEuro As Global.System.Nullable(Of Decimal), ByVal IB_PaidDatum As Global.System.Nullable(Of Date), ByVal IB_Kenmerk As String, ByVal ID_BetaalWijzen As Global.System.Nullable(Of Integer), ByVal IB_WaardeEuro As Global.System.Nullable(Of Decimal)) As Integer
+        Public Overloads Overridable Function Insert(ByVal ID_Supplier As Global.System.Nullable(Of Integer), ByVal IB_Waarde As Global.System.Nullable(Of Decimal), ByVal IB_BTW As Global.System.Nullable(Of Decimal), ByVal IB_Valuta As Global.System.Nullable(Of Integer), ByVal IB_Datum As Global.System.Nullable(Of Date), ByVal IB_DueDatum As Global.System.Nullable(Of Date), ByVal IB_Paid As Global.System.Nullable(Of Boolean), ByVal IB_PaidEuro As Global.System.Nullable(Of Decimal), ByVal IB_PaidDatum As Global.System.Nullable(Of Date), ByVal IB_Kenmerk As String, ByVal ID_BetaalWijzen As Global.System.Nullable(Of Integer), ByVal IB_WaardeEuro As Global.System.Nullable(Of Decimal), ByVal IB_Doc As String) As Integer
             If (ID_Supplier.HasValue = true) Then
                 Me.Adapter.InsertCommand.Parameters(0).Value = CType(ID_Supplier.Value,Integer)
             Else
@@ -6919,6 +6964,11 @@ Namespace DS_AdministratieTableAdapters
             Else
                 Me.Adapter.InsertCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
+            If (IB_Doc Is Nothing) Then
+                Me.Adapter.InsertCommand.Parameters(12).Value = Global.System.DBNull.Value
+            Else
+                Me.Adapter.InsertCommand.Parameters(12).Value = CType(IB_Doc,String)
+            End If
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.InsertCommand.Connection.State
             If ((Me.Adapter.InsertCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -6951,6 +7001,7 @@ Namespace DS_AdministratieTableAdapters
                     ByVal IB_Kenmerk As String,  _
                     ByVal ID_BetaalWijzen As Global.System.Nullable(Of Integer),  _
                     ByVal IB_WaardeEuro As Global.System.Nullable(Of Decimal),  _
+                    ByVal IB_Doc As String,  _
                     ByVal Original_ID_AdmInkoopboek As Integer,  _
                     ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer),  _
                     ByVal Original_IB_Waarde As Global.System.Nullable(Of Decimal),  _
@@ -7025,92 +7076,97 @@ Namespace DS_AdministratieTableAdapters
             Else
                 Me.Adapter.UpdateCommand.Parameters(11).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(12).Value = CType(Original_ID_AdmInkoopboek,Integer)
-            If (Original_ID_Supplier.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(Original_ID_Supplier.Value,Integer)
+            If (IB_Doc Is Nothing) Then
+                Me.Adapter.UpdateCommand.Parameters(12).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(13).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(14).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(12).Value = CType(IB_Doc,String)
+            End If
+            Me.Adapter.UpdateCommand.Parameters(13).Value = CType(Original_ID_AdmInkoopboek,Integer)
+            If (Original_ID_Supplier.HasValue = true) Then
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(Original_ID_Supplier.Value,Integer)
+            Else
+                Me.Adapter.UpdateCommand.Parameters(14).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(15).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_Waarde.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(Original_IB_Waarde.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(Original_IB_Waarde.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(15).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(16).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(16).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(17).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_BTW.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(Original_IB_BTW.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(Original_IB_BTW.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(17).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(18).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(18).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(19).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_Valuta.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(Original_IB_Valuta.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(Original_IB_Valuta.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(19).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(20).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(20).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(21).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_Datum.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(Original_IB_Datum.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(Original_IB_Datum.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(21).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(22).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(22).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(23).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_DueDatum.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(Original_IB_DueDatum.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(Original_IB_DueDatum.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(23).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(24).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(24).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(25).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_Paid.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(Original_IB_Paid.Value,Boolean)
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(Original_IB_Paid.Value,Boolean)
             Else
-                Me.Adapter.UpdateCommand.Parameters(25).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(26).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(26).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(27).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_PaidEuro.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(Original_IB_PaidEuro.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(Original_IB_PaidEuro.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(27).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(28).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(28).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(29).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_PaidDatum.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(Original_IB_PaidDatum.Value,Date)
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(Original_IB_PaidDatum.Value,Date)
             Else
-                Me.Adapter.UpdateCommand.Parameters(29).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(30).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(30).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(31).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_Kenmerk Is Nothing) Then
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = Global.System.DBNull.Value
             Else
-                Me.Adapter.UpdateCommand.Parameters(31).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(Original_IB_Kenmerk,String)
+                Me.Adapter.UpdateCommand.Parameters(32).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(Original_IB_Kenmerk,String)
             End If
             If (Original_ID_BetaalWijzen.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(Original_ID_BetaalWijzen.Value,Integer)
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(Original_ID_BetaalWijzen.Value,Integer)
             Else
-                Me.Adapter.UpdateCommand.Parameters(33).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(34).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(34).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(35).Value = Global.System.DBNull.Value
             End If
             If (Original_IB_WaardeEuro.HasValue = true) Then
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(0,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(Original_IB_WaardeEuro.Value,Decimal)
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(0,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = CType(Original_IB_WaardeEuro.Value,Decimal)
             Else
-                Me.Adapter.UpdateCommand.Parameters(35).Value = CType(1,Object)
-                Me.Adapter.UpdateCommand.Parameters(36).Value = Global.System.DBNull.Value
+                Me.Adapter.UpdateCommand.Parameters(36).Value = CType(1,Object)
+                Me.Adapter.UpdateCommand.Parameters(37).Value = Global.System.DBNull.Value
             End If
-            Me.Adapter.UpdateCommand.Parameters(37).Value = CType(ID_AdmInkoopboek,Integer)
+            Me.Adapter.UpdateCommand.Parameters(38).Value = CType(ID_AdmInkoopboek,Integer)
             Dim previousConnectionState As Global.System.Data.ConnectionState = Me.Adapter.UpdateCommand.Connection.State
             If ((Me.Adapter.UpdateCommand.Connection.State And Global.System.Data.ConnectionState.Open)  _
                         <> Global.System.Data.ConnectionState.Open) Then
@@ -7143,6 +7199,7 @@ Namespace DS_AdministratieTableAdapters
                     ByVal IB_Kenmerk As String,  _
                     ByVal ID_BetaalWijzen As Global.System.Nullable(Of Integer),  _
                     ByVal IB_WaardeEuro As Global.System.Nullable(Of Decimal),  _
+                    ByVal IB_Doc As String,  _
                     ByVal Original_ID_AdmInkoopboek As Integer,  _
                     ByVal Original_ID_Supplier As Global.System.Nullable(Of Integer),  _
                     ByVal Original_IB_Waarde As Global.System.Nullable(Of Decimal),  _
@@ -7156,7 +7213,7 @@ Namespace DS_AdministratieTableAdapters
                     ByVal Original_IB_Kenmerk As String,  _
                     ByVal Original_ID_BetaalWijzen As Global.System.Nullable(Of Integer),  _
                     ByVal Original_IB_WaardeEuro As Global.System.Nullable(Of Decimal)) As Integer
-            Return Me.Update(ID_Supplier, IB_Waarde, IB_BTW, IB_Valuta, IB_Datum, IB_DueDatum, IB_Paid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_BetaalWijzen, IB_WaardeEuro, Original_ID_AdmInkoopboek, Original_ID_Supplier, Original_IB_Waarde, Original_IB_BTW, Original_IB_Valuta, Original_IB_Datum, Original_IB_DueDatum, Original_IB_Paid, Original_IB_PaidEuro, Original_IB_PaidDatum, Original_IB_Kenmerk, Original_ID_BetaalWijzen, Original_IB_WaardeEuro, Original_ID_AdmInkoopboek)
+            Return Me.Update(ID_Supplier, IB_Waarde, IB_BTW, IB_Valuta, IB_Datum, IB_DueDatum, IB_Paid, IB_PaidEuro, IB_PaidDatum, IB_Kenmerk, ID_BetaalWijzen, IB_WaardeEuro, IB_Doc, Original_ID_AdmInkoopboek, Original_ID_Supplier, Original_IB_Waarde, Original_IB_BTW, Original_IB_Valuta, Original_IB_Datum, Original_IB_DueDatum, Original_IB_Paid, Original_IB_PaidEuro, Original_IB_PaidDatum, Original_IB_Kenmerk, Original_ID_BetaalWijzen, Original_IB_WaardeEuro, Original_ID_AdmInkoopboek)
         End Function
     End Class
     

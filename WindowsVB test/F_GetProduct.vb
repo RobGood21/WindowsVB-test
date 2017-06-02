@@ -47,7 +47,6 @@
     Private Sub INITvelden()
         Me.TB_Products.SelectTab(0)
         Me.TB_Doel.SelectTab(0)
-        Me.DA_Datum.Value = Now() 'aanmaakdatum instellen
         Me.txt_Status.Text = 1 'statusveld naar 1 (in behandeling)
         Me.Optie_Open.Checked = True
         Me.CH_AlleBestel.Checked = True
@@ -171,6 +170,7 @@
     End Sub
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
         GetOntvangstBindingSource.AddNew() 'nieuwe order, ontvangst aanmaken
+        Me.DA_Datum.Value = Now() 'aanmaakdatum instellen
         INITvelden()
         Me.TXT_NaamGet.Select()
     End Sub
@@ -396,17 +396,15 @@ Verlaat:
             If IsNumeric(Me.TXT_LijstAantal.Text) = True Then L = Int(Me.TXT_LijstAantal.Text)
             If IsNumeric(Me.TXT_Voorraad.Text) = True Then V = Int(Me.TXT_Voorraad.Text)
             Me.TXT_ontvangen.Text = L
-            Me.TXT_Voorraad.Text = L + V
+            Me.TXT_Voorraad.Text = Int(L + V)
+            ' MsgBox(TXT_Voorraad.Text)
             Me.TXT_Prijs.Text = Prijs
-
-            'Me.TXT_LijstAantal.Text = 0  'nee de lijst hoeft niet gewist te worden. 
-
         Catch ex As Exception
             MsgBox(ErrorToString,, "Waardesmove")
         End Try
     End Sub
     Private Sub OPslaanTables()
-        'gebruikr voor ussendoor opalssn van de datatables
+        'gebruikt voor tussendoor opslaan van de datatables
         Try
             Me.Validate()
             Me.GPA_AantalBindingSource.EndEdit()
@@ -701,6 +699,11 @@ Eindeloop:
     End Function
     Private Sub BoekOntvangst()
         'maakt van de lijst een ontvangst (dus producten ingekocht)
+        'gebruikt worden 3 cellen in de datagridview Bij fouten CHECK of dit klopt...
+        Dim GPA As Integer = 0 'getproductadd id
+        Dim PD As Integer = 2 'Id van product
+        Dim IK As Integer = 8 'de inkoopprijs
+
         If ValidatieOntvangst() = True Then
             Dim jn As Integer
             jn = MsgBox("Wil je de poducten in de productlijst in de voorraad bijboeken?", vbQuestion + vbYesNo, "Bijboeken ontvangst bevestigen...")
@@ -712,14 +715,14 @@ Eindeloop:
                 Try
                     For i = 0 To Me.DG_Lijst.Rows.Count - 1
                         'Verkrijg IDgetproductadd en idProduct
-                        IDGPA = Me.DG_Lijst.Rows(i).Cells(0).Value 'id van Getproductadd van deze regel
-                        IDP = Me.DG_Lijst.Rows(i).Cells(1).Value 'id van product van deze regel
+                        IDGPA = Me.DG_Lijst.Rows(i).Cells(GPA).Value 'id van Getproductadd van deze regel
+                        IDP = Me.DG_Lijst.Rows(i).Cells(PD).Value 'id van product van deze regel
                         'vul de beide datatables 
                         Me.GPA_AantalTableAdapter.Fill(Me.DS_Product.GPA_Aantal, IDGPA)
                         Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDP)
 
-                        If IsNumeric(Me.DG_Lijst.Rows(i).Cells(8).Value) = True Then
-                            BP = Me.DG_Lijst.Rows(i).Cells(8).Value
+                        If IsNumeric(Me.DG_Lijst.Rows(i).Cells(IK).Value) = True Then
+                            BP = Me.DG_Lijst.Rows(i).Cells(IK).Value
                         Else
                             BP = 0
                         End If

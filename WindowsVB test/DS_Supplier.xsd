@@ -592,7 +592,7 @@ FROM            AdmGBrekening</CommandText>
   <xs:element name="DS_Supplier" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="True" msprop:Generator_DataSetName="DS_Supplier" msprop:Generator_UserDSName="DS_Supplier">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="Supplier" msprop:Generator_TableClassName="SupplierDataTable" msprop:Generator_TableVarName="tableSupplier" msprop:Generator_RowChangedName="SupplierRowChanged" msprop:Generator_TablePropName="Supplier" msprop:Generator_RowDeletingName="SupplierRowDeleting" msprop:Generator_RowChangingName="SupplierRowChanging" msprop:Generator_RowEvHandlerName="SupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="SupplierRowDeleted" msprop:Generator_RowClassName="SupplierRow" msprop:Generator_UserTableName="Supplier" msprop:Generator_RowEvArgName="SupplierRowChangeEvent">
+        <xs:element name="Supplier" msprop:Generator_TableClassName="SupplierDataTable" msprop:Generator_TableVarName="tableSupplier" msprop:Generator_TablePropName="Supplier" msprop:Generator_RowDeletingName="SupplierRowDeleting" msprop:Generator_RowChangingName="SupplierRowChanging" msprop:Generator_RowEvHandlerName="SupplierRowChangeEventHandler" msprop:Generator_RowDeletedName="SupplierRowDeleted" msprop:Generator_UserTableName="Supplier" msprop:Generator_RowChangedName="SupplierRowChanged" msprop:Generator_RowEvArgName="SupplierRowChangeEvent" msprop:Generator_RowClassName="SupplierRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_Supplier" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_Supplier" msprop:Generator_ColumnPropNameInRow="ID_Supplier" msprop:Generator_ColumnPropNameInTable="ID_SupplierColumn" msprop:Generator_UserColumnName="ID_Supplier" type="xs:int" />
@@ -705,7 +705,7 @@ FROM            AdmGBrekening</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Valuta" msprop:Generator_TableClassName="ValutaDataTable" msprop:Generator_TableVarName="tableValuta" msprop:Generator_TablePropName="Valuta" msprop:Generator_RowDeletingName="ValutaRowDeleting" msprop:Generator_RowChangingName="ValutaRowChanging" msprop:Generator_RowEvHandlerName="ValutaRowChangeEventHandler" msprop:Generator_RowDeletedName="ValutaRowDeleted" msprop:Generator_UserTableName="Valuta" msprop:Generator_RowChangedName="ValutaRowChanged" msprop:Generator_RowEvArgName="ValutaRowChangeEvent" msprop:Generator_RowClassName="ValutaRow">
+        <xs:element name="Valuta" msprop:Generator_TableClassName="ValutaDataTable" msprop:Generator_TableVarName="tableValuta" msprop:Generator_RowChangedName="ValutaRowChanged" msprop:Generator_TablePropName="Valuta" msprop:Generator_RowDeletingName="ValutaRowDeleting" msprop:Generator_RowChangingName="ValutaRowChanging" msprop:Generator_RowEvHandlerName="ValutaRowChangeEventHandler" msprop:Generator_RowDeletedName="ValutaRowDeleted" msprop:Generator_RowClassName="ValutaRow" msprop:Generator_UserTableName="Valuta" msprop:Generator_RowEvArgName="ValutaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_valuta" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_valuta" msprop:Generator_ColumnPropNameInRow="ID_valuta" msprop:Generator_ColumnPropNameInTable="ID_valutaColumn" msprop:Generator_UserColumnName="ID_valuta" type="xs:int" />
@@ -728,7 +728,7 @@ FROM            AdmGBrekening</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Land" msprop:Generator_TableClassName="LandDataTable" msprop:Generator_TableVarName="tableLand" msprop:Generator_RowChangedName="LandRowChanged" msprop:Generator_TablePropName="Land" msprop:Generator_RowDeletingName="LandRowDeleting" msprop:Generator_RowChangingName="LandRowChanging" msprop:Generator_RowEvHandlerName="LandRowChangeEventHandler" msprop:Generator_RowDeletedName="LandRowDeleted" msprop:Generator_RowClassName="LandRow" msprop:Generator_UserTableName="Land" msprop:Generator_RowEvArgName="LandRowChangeEvent">
+        <xs:element name="Land" msprop:Generator_TableClassName="LandDataTable" msprop:Generator_TableVarName="tableLand" msprop:Generator_TablePropName="Land" msprop:Generator_RowDeletingName="LandRowDeleting" msprop:Generator_RowChangingName="LandRowChanging" msprop:Generator_RowEvHandlerName="LandRowChangeEventHandler" msprop:Generator_RowDeletedName="LandRowDeleted" msprop:Generator_UserTableName="Land" msprop:Generator_RowChangedName="LandRowChanged" msprop:Generator_RowEvArgName="LandRowChangeEvent" msprop:Generator_RowClassName="LandRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_Land" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_Land" msprop:Generator_ColumnPropNameInRow="ID_Land" msprop:Generator_ColumnPropNameInTable="ID_LandColumn" msprop:Generator_UserColumnName="ID_Land" type="xs:int" />
@@ -758,7 +758,7 @@ FROM            AdmGBrekening</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="BetaalWijzen" msprop:Generator_TableClassName="BetaalWijzenDataTable" msprop:Generator_TableVarName="tableBetaalWijzen" msprop:Generator_TablePropName="BetaalWijzen" msprop:Generator_RowDeletingName="BetaalWijzenRowDeleting" msprop:Generator_RowChangingName="BetaalWijzenRowChanging" msprop:Generator_RowEvHandlerName="BetaalWijzenRowChangeEventHandler" msprop:Generator_RowDeletedName="BetaalWijzenRowDeleted" msprop:Generator_UserTableName="BetaalWijzen" msprop:Generator_RowChangedName="BetaalWijzenRowChanged" msprop:Generator_RowEvArgName="BetaalWijzenRowChangeEvent" msprop:Generator_RowClassName="BetaalWijzenRow">
+        <xs:element name="BetaalWijzen" msprop:Generator_TableClassName="BetaalWijzenDataTable" msprop:Generator_TableVarName="tableBetaalWijzen" msprop:Generator_RowChangedName="BetaalWijzenRowChanged" msprop:Generator_TablePropName="BetaalWijzen" msprop:Generator_RowDeletingName="BetaalWijzenRowDeleting" msprop:Generator_RowChangingName="BetaalWijzenRowChanging" msprop:Generator_RowEvHandlerName="BetaalWijzenRowChangeEventHandler" msprop:Generator_RowDeletedName="BetaalWijzenRowDeleted" msprop:Generator_RowClassName="BetaalWijzenRow" msprop:Generator_UserTableName="BetaalWijzen" msprop:Generator_RowEvArgName="BetaalWijzenRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_BetaalWijzen" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_BetaalWijzen" msprop:Generator_ColumnPropNameInRow="ID_BetaalWijzen" msprop:Generator_ColumnPropNameInTable="ID_BetaalWijzenColumn" msprop:Generator_UserColumnName="ID_BetaalWijzen" type="xs:int" />
@@ -787,7 +787,7 @@ FROM            AdmGBrekening</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="Shop" msprop:Generator_TableClassName="ShopDataTable" msprop:Generator_TableVarName="tableShop" msprop:Generator_RowChangedName="ShopRowChanged" msprop:Generator_TablePropName="Shop" msprop:Generator_RowDeletingName="ShopRowDeleting" msprop:Generator_RowChangingName="ShopRowChanging" msprop:Generator_RowEvHandlerName="ShopRowChangeEventHandler" msprop:Generator_RowDeletedName="ShopRowDeleted" msprop:Generator_RowClassName="ShopRow" msprop:Generator_UserTableName="Shop" msprop:Generator_RowEvArgName="ShopRowChangeEvent">
+        <xs:element name="Shop" msprop:Generator_TableClassName="ShopDataTable" msprop:Generator_TableVarName="tableShop" msprop:Generator_TablePropName="Shop" msprop:Generator_RowDeletingName="ShopRowDeleting" msprop:Generator_RowChangingName="ShopRowChanging" msprop:Generator_RowEvHandlerName="ShopRowChangeEventHandler" msprop:Generator_RowDeletedName="ShopRowDeleted" msprop:Generator_UserTableName="Shop" msprop:Generator_RowChangedName="ShopRowChanged" msprop:Generator_RowEvArgName="ShopRowChangeEvent" msprop:Generator_RowClassName="ShopRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_Shop" msdata:ReadOnly="true" msdata:AutoIncrement="true" msdata:AutoIncrementSeed="-1" msdata:AutoIncrementStep="-1" msprop:Generator_ColumnVarNameInTable="columnID_Shop" msprop:Generator_ColumnPropNameInRow="ID_Shop" msprop:Generator_ColumnPropNameInTable="ID_ShopColumn" msprop:Generator_UserColumnName="ID_Shop" type="xs:int" />
@@ -866,7 +866,7 @@ FROM            AdmGBrekening</CommandText>
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="AdmGBrekening" msprop:Generator_TableClassName="AdmGBrekeningDataTable" msprop:Generator_TableVarName="tableAdmGBrekening" msprop:Generator_TablePropName="AdmGBrekening" msprop:Generator_RowDeletingName="AdmGBrekeningRowDeleting" msprop:Generator_RowChangingName="AdmGBrekeningRowChanging" msprop:Generator_RowEvHandlerName="AdmGBrekeningRowChangeEventHandler" msprop:Generator_RowDeletedName="AdmGBrekeningRowDeleted" msprop:Generator_UserTableName="AdmGBrekening" msprop:Generator_RowChangedName="AdmGBrekeningRowChanged" msprop:Generator_RowEvArgName="AdmGBrekeningRowChangeEvent" msprop:Generator_RowClassName="AdmGBrekeningRow">
+        <xs:element name="AdmGBrekening" msprop:Generator_TableClassName="AdmGBrekeningDataTable" msprop:Generator_TableVarName="tableAdmGBrekening" msprop:Generator_RowChangedName="AdmGBrekeningRowChanged" msprop:Generator_TablePropName="AdmGBrekening" msprop:Generator_RowDeletingName="AdmGBrekeningRowDeleting" msprop:Generator_RowChangingName="AdmGBrekeningRowChanging" msprop:Generator_RowEvHandlerName="AdmGBrekeningRowChangeEventHandler" msprop:Generator_RowDeletedName="AdmGBrekeningRowDeleted" msprop:Generator_RowClassName="AdmGBrekeningRow" msprop:Generator_UserTableName="AdmGBrekening" msprop:Generator_RowEvArgName="AdmGBrekeningRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="ID_Grootboek" msprop:Generator_ColumnVarNameInTable="columnID_Grootboek" msprop:Generator_ColumnPropNameInRow="ID_Grootboek" msprop:Generator_ColumnPropNameInTable="ID_GrootboekColumn" msprop:Generator_UserColumnName="ID_Grootboek" type="xs:int" />

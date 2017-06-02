@@ -44,7 +44,7 @@
         End Try
     End Sub
     Private Sub BerekenPrijzen()
-        'berekend de diverse prijzen en steld juiste format in
+        'berekend de diverse prijzen en stelt juiste format in
         If IsNumeric(Me.TXT_Verkoopprijs.Text) = True Then
             TXT_Verkoopprijs.Text = FormatNumber(TXT_Verkoopprijs.Text, -1)
             'btw berekenen
@@ -116,12 +116,20 @@
     Public Sub LoadProduct()
         Try
             LoadTables()
+
             Select Case OPPRODUCT
                 Case 1 'bestaand product
+                    'MsgBox(IDPRODUCT)
                     INITBerekend()
                     Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
                     LUZ = True
-                    Me.TXT_Productnummer.Text = IDPRODUCT
+                    If IDPRODUCT < 0 Then 'is dus Geen product bepaald
+                        Me.TXT_Productnummer.Text = "[Geen Product}"
+                    Else
+                        Me.TXT_Productnummer.Text = IDPRODUCT
+                    End If
+                    BerekenPrijzen()
+
                 Case 2 'nieuw product invoeren.
 
                 Case Else 'opening vrij
@@ -129,6 +137,7 @@
                     Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
                     Me.TXT_Productnummer.Select()
             End Select
+            LaadTB()
         Catch ex As Exception
             MsgBox(ErrorToString,, "Loadproduct (F_product)")
         End Try
@@ -140,7 +149,6 @@
     Private Sub Knop_ZoekProduct_Click(sender As Object, e As EventArgs) Handles Knop_ZoekProduct.Click
         F_ProductZoek.ShowDialog()
         Me.TXT_Productnummer.Text = IDPRODUCT
-
         'LoadProduct() ' dit gaat vanzelf vanwege de changetext op bovenstaand veld
     End Sub
     Private Sub OPSLAAN()
@@ -296,6 +304,9 @@
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
     End Sub
     Private Sub TB_Product_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TB_Product.SelectedIndexChanged
+        LaadTB()
+    End Sub
+    Private Sub LaadTB() 'laad de verschillende velden op de tabbladen 
         Dim T As Integer 'tag voor welke optie gekozen
         Select Case TB_Product.SelectedIndex
             Case 0 'Beschrijving
@@ -304,7 +315,10 @@
                     If control.checked = True Then T = control.tag
                 Next
                 LaadMutLijst(T)
-            Case 3 'not used 27mei2017
+            Case 2 'pictures
+                Me.PicturesTableAdapter.Fill(DS_Product.Pictures, IDPRODUCT)
+            Case 3
+                Me.ProductInfoTableAdapter.Fill(DS_Product.ProductInfo, IDPRODUCT)
             Case 4 'not used 27mei2017
         End Select
         'MsgBox(Me.TB_Product.SelectedIndex)
@@ -333,11 +347,9 @@
     Private Sub Tknop_Opslaan_Click(sender As Object, e As EventArgs) Handles Tknop_Opslaan.Click
         OPSLAAN()
     End Sub
-
     Private Sub Tknop_annuleren_Click(sender As Object, e As EventArgs) Handles Tknop_annuleren.Click
         LoadProduct()
     End Sub
-
     Private Sub Tknop_Kopieer_Click(sender As Object, e As EventArgs) Handles Tknop_Kopieer.Click
         'kopieert het getoonde product naar een nieuw product, maakt nieuw record aan
         Dim jn As Integer
@@ -351,7 +363,6 @@
             End If
         End If
     End Sub
-
     Private Sub Tknop_Delete_Click(sender As Object, e As EventArgs) Handles Tknop_Delete.Click
         Dim JaNee As Integer
         JaNee = MsgBox("Weet je zeker dat je dit product wilt verwijderen?", vbYesNo, " Product verwijderen.")
@@ -360,5 +371,48 @@
             OPSLAAN()
             Me.Knop_ZoekProduct.Select()
         End If
+    End Sub
+    Private Sub Knop_Pics_Opslaan_Click(sender As Object, e As EventArgs) Handles Knop_Pics_Opslaan.Click
+        Me.Validate()
+        Me.PicturesBindingSource.EndEdit()
+        Me.PicturesTableAdapter.Update(DS_Product.Pictures)
+    End Sub
+    Private Sub Knop_Pics_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Pics_Nieuw.Click
+        If Me.TXT_Productnummer.Text = True Then
+            Me.PicturesBindingSource.AddNew()
+            Me.TXT_Pics_Idproduct.Text = Me.TXT_Productnummer.Text
+            Me.TXT_Pics_Naam.Select()
+        Else
+            MsgBox("Product is niet bepaald.", vbExclamation, "Geen product gekozen")
+        End If
+
+    End Sub
+    Private Sub Knop_Pics_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Pics_Annuleren.Click
+        LaadTB()
+    End Sub
+    Private Sub TXT_Pics_Url_TextChanged(sender As Object, e As EventArgs) Handles TXT_Pics_Url.TextChanged
+        Me.Pic_Pic.ImageLocation = Me.TXT_Pics_Url.Text
+    End Sub
+    Private Sub Knop_links_opslaan_Click(sender As Object, e As EventArgs) Handles Knop_links_opslaan.Click
+        Me.Validate()
+        Me.ProductInfoBindingSource.EndEdit()
+        Me.ProductInfoTableAdapter.Update(DS_Product.ProductInfo)
+    End Sub
+    Private Sub Knop_Links_Annuleren_Click(sender As Object, e As EventArgs) Handles Knop_Links_Annuleren.Click
+        LaadTB()
+    End Sub
+    Private Sub Knop_Links_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Links_Nieuw.Click
+        If Me.TXT_Productnummer.Text = True Then
+            Me.ProductInfoBindingSource.AddNew()
+            Me.TXT_Links_IDproduct.Text = Me.TXT_Productnummer.Text
+            Me.txt_Links_Naam.Select()
+        Else
+            MsgBox("Product is niet bepaald.", vbExclamation, "Geen product gekozen")
+        End If
+    End Sub
+    Private Sub Knop_Links_Toon_Click(sender As Object, e As EventArgs) Handles Knop_Links_Toon.Click
+        Dim HyperLink As String
+        HyperLink = Me.TXT_Links_URL.Text
+        System.Diagnostics.Process.Start(HyperLink)
     End Sub
 End Class

@@ -40,8 +40,10 @@
         Select Case Me.OptieBetaald.Checked
             Case True
                 Me.DG_AdmInkoopLijst.BackgroundColor = Color.LightGreen
+                Me.DG_AdmInkoopLijst.Columns(6).Visible = False
             Case False
                 Me.DG_AdmInkoopLijst.BackgroundColor = Color.LightSalmon
+                Me.DG_AdmInkoopLijst.Columns(6).Visible = True
         End Select
     End Sub
     Private Sub Optie_openstaand_CheckedChanged(sender As Object, e As EventArgs) Handles Optie_openstaand.CheckedChanged

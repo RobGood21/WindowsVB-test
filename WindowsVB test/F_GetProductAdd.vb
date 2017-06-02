@@ -22,6 +22,7 @@
                     '3=opslaan niet mogelijk 4 = openen vanuit een besteld artikel
                     'dus het BESTEL getontvangstadd nu laden... bij het opslaan een NIEUW record voor de ontvangst aanmaken.
                     Me.GetProductAddTableAdapter.Fill(Me.DS_Product.GetProductAdd, IDGETPRODUCTADD)
+                    'Me.TXT_aantal.Text = Me.TXT_LijstAAntal.Text
                     Me.TXT_aantal.Select()
             End Select
         Catch ex As Exception
@@ -124,7 +125,8 @@
                         Me.TXT_IDONTV.Text = IDGETONTVANGST
                         ' Me.TXT_LijstAAntal.Text = Me.TXT_aantal.Text
                         GPAUpdate()
-                    Case 3 'niet toegestaan iets op te slaan
+                   ' Case 3 'niet toegestaan iets op te slaan
+
                     Case 4 'besteld product naar ontvangst zetten
                         'nieuw record aanmaken voor ontvangen spullejes
                         MsgBox(Me.TXT_aantal.Text)
@@ -228,16 +230,20 @@
         End If
     End Sub
     Private Sub Knop_Verwijder_Click(sender As Object, e As EventArgs) Handles Knop_Verwijder.Click
-        Dim jn As Integer
-        jn = MsgBox("weet je zeker dat je dit product van de productlijst af wilt?" & Chr(13) & "(Product wordt niet verwijderd, alleen uit de lijst gehaald.)", vbExclamation + vbYesNo, "Product uit de lijst halen?")
-        If jn = 6 Then
-            Me.GetProductAddBindingSource.RemoveCurrent()
-            Me.Validate()
-            Me.GetProductAddBindingSource.EndEdit()
-            Me.GetProductAddTableAdapter.Update(DS_Product.GetProductAdd)
-            Me.Close()
-        End If
-
+        Select Case OPGETPRODUCTADD
+            Case 3 'opslaan verwijderen niet toegestaan
+                MsgBox("Deze productlijst is al afgesloten, verwijderen van een product uit de lijst is niet meer mogelijk.", vbExclamation, "Verwijderen niet mogelijk...")
+            Case Else
+                Dim jn As Integer
+                jn = MsgBox("weet je zeker dat je dit product van de productlijst af wilt?" & Chr(13) & "(Product wordt niet verwijderd, alleen uit de lijst gehaald.)", vbExclamation + vbYesNo, "Product uit de lijst halen?")
+                If jn = 6 Then
+                    Me.GetProductAddBindingSource.RemoveCurrent()
+                    Me.Validate()
+                    Me.GetProductAddBindingSource.EndEdit()
+                    Me.GetProductAddTableAdapter.Update(DS_Product.GetProductAdd)
+                    Me.Close()
+                End If
+        End Select
     End Sub
     Private Sub Knop_Reset_Click(sender As Object, e As EventArgs) Handles Knop_Reset.Click
         If IsNumeric(Me.TXT_Product_Inkoop.Text) = True Then Me.TXT_Prijs.Text = Me.TXT_Product_Inkoop.Text
@@ -258,8 +264,10 @@
 
     End Sub
     Private Sub TXT_LijstAAntal_TextChanged(sender As Object, e As EventArgs) Handles TXT_LijstAAntal.TextChanged
+
         Select Case OPGETPRODUCTADD
-            Case 2
+            Case 2, 3, 4
+                'MsgBox("text changed")
                 Me.TXT_aantal.Text = Me.TXT_LijstAAntal.Text
         End Select
     End Sub
