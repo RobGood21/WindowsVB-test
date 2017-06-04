@@ -135,6 +135,11 @@
                 Case Else 'opening vrij
                     INITBerekend()
                     Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
+
+                    If IDPRODUCT = 0 Then
+                        LUZ = True
+                        Me.TXT_Productnummer.Text = "[Geen Product]"
+                    End If
                     Me.TXT_Productnummer.Select()
             End Select
             LaadTB()
@@ -156,6 +161,10 @@
         Me.Validate()
         Me.DT_productBindingSource.EndEdit()
         Me.DT_productTableAdapter.Update(DS_Product.DT_product)
+
+        If IsNumeric(Me.TXT_Productnummer.Text) = False Then Me.TXT_Productnummer.Text = Me.TXT_IDP.Text
+
+
     End Sub
     Private Sub Knop_Delete_Click(sender As Object, e As EventArgs)
 
@@ -414,5 +423,18 @@
         Dim HyperLink As String
         HyperLink = Me.TXT_Links_URL.Text
         System.Diagnostics.Process.Start(HyperLink)
+    End Sub
+    Private Sub DG_Mutaties_DoubleClick(sender As Object, e As EventArgs) Handles DG_Mutaties.DoubleClick
+        Dim i As Integer
+        Dim ID As Integer
+        Dim Oid As Integer
+        Oid = IDGETONTVANGST
+        If Me.DG_Mutaties.Rows.Count > 0 Then
+            For i = 0 To Me.DG_Mutaties.Rows.Count - 1
+                If Me.DG_Mutaties.Rows(i).Selected = True Then ID = Me.DG_Mutaties.Rows(i).Cells(1).Value
+            Next
+        End If
+        MsgBox("Getontvangst=: " & ID & ". Maar volgens mij heb je hier echt niks aan, ga hier niet mee verder, getontvangst formulier exclusief voor 1 record openen is echt een hele toer en volgens mij 3 juni heb je der niks aan", vbEmpty, "???")
+
     End Sub
 End Class

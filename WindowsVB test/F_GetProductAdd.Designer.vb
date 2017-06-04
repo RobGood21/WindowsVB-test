@@ -322,8 +322,7 @@ Partial Class F_GetProductAdd
         Me.CB_valuta.Location = New System.Drawing.Point(77, 22)
         Me.CB_valuta.Name = "CB_valuta"
         Me.CB_valuta.Size = New System.Drawing.Size(66, 21)
-        Me.CB_valuta.TabIndex = 25
-        Me.CB_valuta.TabStop = False
+        Me.CB_valuta.TabIndex = 2
         Me.CB_valuta.ValueMember = "ID_valuta"
         '
         'ValutaBindingSource
@@ -364,7 +363,7 @@ Partial Class F_GetProductAdd
         Me.TXT_TotaalBetaaldVAL.Location = New System.Drawing.Point(77, 45)
         Me.TXT_TotaalBetaaldVAL.Name = "TXT_TotaalBetaaldVAL"
         Me.TXT_TotaalBetaaldVAL.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_TotaalBetaaldVAL.TabIndex = 2
+        Me.TXT_TotaalBetaaldVAL.TabIndex = 3
         Me.TXT_TotaalBetaaldVAL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'TXT_TotaalBetaaldEur
@@ -420,7 +419,7 @@ Partial Class F_GetProductAdd
         Me.Knop_Opslaan.Location = New System.Drawing.Point(217, 347)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(111, 23)
-        Me.Knop_Opslaan.TabIndex = 3
+        Me.Knop_Opslaan.TabIndex = 4
         Me.Knop_Opslaan.Text = "&Opslaan en sluiten "
         Me.Knop_Opslaan.UseVisualStyleBackColor = True
         '
@@ -446,6 +445,8 @@ Partial Class F_GetProductAdd
         Me.TableAdapterManager.LocatieHolderTableAdapter = Nothing
         Me.TableAdapterManager.LocatieTableAdapter = Nothing
         Me.TableAdapterManager.MerkTableAdapter = Nothing
+        Me.TableAdapterManager.PicturesTableAdapter = Nothing
+        Me.TableAdapterManager.ProductInfoTableAdapter = Nothing
         Me.TableAdapterManager.UpdateOrder = WindowsVB_test.DS_ProductTableAdapters.TableAdapterManager.UpdateOrderOption.InsertUpdateDelete
         Me.TableAdapterManager.ValutaTableAdapter = Nothing
         '

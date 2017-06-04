@@ -44,6 +44,8 @@
         Me.ValutaTableAdapter.Fill(Me.DS_Administratie.Valuta)
     End Sub
     Public Sub LoadForm()
+        ' MsgBox(OPADMINKOOP)
+
         Try
             ToolTipsInstellen()
             JourNaalInstellen() 'opmaak van het datagridview
@@ -54,6 +56,10 @@
                     Me.AdmInkoopBoekBindingSource.AddNew()
                     Me.SupplierTableAdapter.Fill(Me.DS_Administratie.Supplier) 'alle suppliers in de combobox
                     Me.CB_Supplier.SelectedValue = IDSUPPLIER
+
+                    ClearControls()
+                    CheckBoxLoad()
+
                     'nieuwe record direct vastleggen
                     Me.Validate()
                     Me.AdmInkoopBoekBindingSource.EndEdit()
@@ -65,6 +71,7 @@
                     F_GetProduct.Validate()
                     F_GetProduct.GetOntvangstBindingSource.EndEdit()
                     F_GetProduct.GetOntvangstTableAdapter.Update(F_GetProduct.DS_Product.GetOntvangst)
+
                     'F_GetProduct.TXT_Boekwaarde.Text = Me.TXT_WaardeEuro.Text
                     IDADMINKOOP = Me.TXT_Boeknummer.Text 'publieke variable aanpassen
                     Me.AdmJournaalTableAdapter.Fill(Me.DS_Administratie.AdmJournaal, IDADMINKOOP) 'journaalposten laden
@@ -78,6 +85,7 @@
                     Me.TXT_DebetTotaal.Text = DEBETT
                     Me.TXT_CreditTotaal.Text = CREDITT
                     ' LoadTables()
+
                     CheckBoxLoad() 'velden instellen afhankelijk van betaald
                     Me.Knop_Nieuw.Enabled = False 'nieuw record aanmaken onmogelijk maken
                     Me.Knop_Annuleren.Enabled = False
@@ -143,11 +151,12 @@
         'gebruik om teksten in controls en dergelijke een beginwaarde te geven bij aanmaak NIEUW record
         Me.IB_Datum.Value = Now
         Me.IB_DueDatum.Value = Now
-        Me.IB_betaaldatum.Value = Me.IB_betaaldatum.MinDate
         Me.TXT_Waarde.Text = FormatNumber(0, -1)
         Me.TXT_WaardeEuro.Text = FormatNumber(0, -1)
         Me.TXT_BTW.Text = FormatNumber(0, -1)
-        Me.CH_Betaald.Checked = False
+        Me.CH_Betaald.Checked = False 'alleen heen en weer zetten lukt...
+        Me.CH_Betaald.Checked = True
+        Me.IB_betaaldatum.Value = Now()
     End Sub
     Private Sub Knop_Sluiten_Click(sender As Object, e As EventArgs) Handles Knop_Sluiten.Click
         OpslaanAlles(True)

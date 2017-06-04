@@ -1,9 +1,9 @@
-﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()> _
+﻿<Global.Microsoft.VisualBasic.CompilerServices.DesignerGenerated()>
 Partial Class F_AdmInkoopboek
     Inherits System.Windows.Forms.Form
 
     'Form overrides dispose to clean up the component list.
-    <System.Diagnostics.DebuggerNonUserCode()> _
+    <System.Diagnostics.DebuggerNonUserCode()>
     Protected Overrides Sub Dispose(ByVal disposing As Boolean)
         Try
             If disposing AndAlso components IsNot Nothing Then
@@ -20,7 +20,7 @@ Partial Class F_AdmInkoopboek
     'NOTE: The following procedure is required by the Windows Form Designer
     'It can be modified using the Windows Form Designer.  
     'Do not modify it using the code editor.
-    <System.Diagnostics.DebuggerStepThrough()> _
+    <System.Diagnostics.DebuggerStepThrough()>
     Private Sub InitializeComponent()
         Me.components = New System.ComponentModel.Container()
         Dim IB_DatumLabel As System.Windows.Forms.Label
@@ -152,7 +152,7 @@ Partial Class F_AdmInkoopboek
         Me.GB_JournaalPosten.Controls.Add(Me.Knop_Nieuweregel)
         Me.GB_JournaalPosten.Location = New System.Drawing.Point(12, 188)
         Me.GB_JournaalPosten.Name = "GB_JournaalPosten"
-        Me.GB_JournaalPosten.Size = New System.Drawing.Size(616, 209)
+        Me.GB_JournaalPosten.Size = New System.Drawing.Size(619, 209)
         Me.GB_JournaalPosten.TabIndex = 2
         Me.GB_JournaalPosten.TabStop = False
         Me.GB_JournaalPosten.Text = "Journaalposten"
@@ -315,9 +315,9 @@ Partial Class F_AdmInkoopboek
         Me.GB_Crediteur.Controls.Add(Me.Label2)
         Me.GB_Crediteur.Controls.Add(Me.TXT_Kenmerk)
         Me.GB_Crediteur.Controls.Add(Me.Label1)
-        Me.GB_Crediteur.Location = New System.Drawing.Point(12, 14)
+        Me.GB_Crediteur.Location = New System.Drawing.Point(12, 12)
         Me.GB_Crediteur.Name = "GB_Crediteur"
-        Me.GB_Crediteur.Size = New System.Drawing.Size(306, 168)
+        Me.GB_Crediteur.Size = New System.Drawing.Size(306, 170)
         Me.GB_Crediteur.TabIndex = 0
         Me.GB_Crediteur.TabStop = False
         Me.GB_Crediteur.Text = "Boekstuk"

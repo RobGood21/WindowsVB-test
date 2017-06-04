@@ -203,7 +203,7 @@
         Try
             Select Case Control
                 Case 1 'vanuit de totaal betaald vreemde valuta
-                    Me.TXT_TotaalBetaaldEur.Text = FormatNumber(Me.TXT_TotaalBetaaldVAL.Text / TXT_Koers.Text, -1)
+                    Me.TXT_TotaalBetaaldEur.Text = FormatNumber(Me.TXT_TotaalBetaaldVAL.Text * TXT_Koers.Text, -1)
                     Me.TXT_TotaalBetaaldVAL.Text = FormatNumber(Me.TXT_TotaalBetaaldVAL.Text, -1)
 
                 Case 2 '

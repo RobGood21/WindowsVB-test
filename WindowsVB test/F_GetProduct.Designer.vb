@@ -26,25 +26,27 @@ Partial Class F_GetProduct
         Dim GV_DatumLabel As System.Windows.Forms.Label
         Dim Label4 As System.Windows.Forms.Label
         Dim Label5 As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle13 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle14 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle15 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle16 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle17 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle18 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle19 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle22 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle23 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle24 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle25 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle26 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle27 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle28 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle29 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle30 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle31 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle32 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle33 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle34 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle35 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle36 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle37 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle38 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle39 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle40 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle41 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle42 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.Knop_Supplier = New System.Windows.Forms.Button()
         Me.Knop_DetailsShop = New System.Windows.Forms.Button()
         Me.CB_Shop = New System.Windows.Forms.ComboBox()
@@ -168,12 +170,6 @@ Partial Class F_GetProduct
         Me.Tpage_Product_Ontvang = New System.Windows.Forms.TabPage()
         Me.CH_AlleOntvangst = New System.Windows.Forms.CheckBox()
         Me.DG_ontvangen = New System.Windows.Forms.DataGridView()
-        Me.GVDatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.IDProductDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.ProDuctDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GPOntvangenDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.GPBuyPriceEURDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
-        Me.PDSalePrijsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
         Me.Tpage_Product_Lijst = New System.Windows.Forms.TabPage()
         Me.Knop_Toon = New System.Windows.Forms.Button()
         Me.Knop_ProductPLus = New System.Windows.Forms.Button()
@@ -201,6 +197,17 @@ Partial Class F_GetProduct
         Me.BTWTableAdapter = New WindowsVB_test.DS_ProductTableAdapters.BTWTableAdapter()
         Me.AdmJournaalTableAdapter = New WindowsVB_test.DS_AdministratieTableAdapters.AdmJournaalTableAdapter()
         Me.JN_LijstDatatable = New WindowsVB_test.DS_AdministratieTableAdapters.JN_LijstDatatable()
+        Me.GVDatumDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDProductDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GVDatumDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GPOntvangenDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDProductDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PDBeschrijving2DataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.GPBuyPriceEURDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.PDSalePrijsDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDGetOntvangstDataGridViewTextBoxColumn2 = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDSupplierDataGridViewTextBoxColumn = New System.Windows.Forms.DataGridViewTextBoxColumn()
+        Me.IDGetProductAddDataGridViewTextBoxColumn1 = New System.Windows.Forms.DataGridViewTextBoxColumn()
         GV_DatumLabel = New System.Windows.Forms.Label()
         Label4 = New System.Windows.Forms.Label()
         Label5 = New System.Windows.Forms.Label()
@@ -316,6 +323,7 @@ Partial Class F_GetProduct
         Me.CB_Supplier.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.GetOntvangstBindingSource, "ID_Supplier", True))
         Me.CB_Supplier.DataSource = Me.SupplierBindingSource
         Me.CB_Supplier.DisplayMember = "SP_Naam"
+        Me.CB_Supplier.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Supplier.FormattingEnabled = True
         Me.CB_Supplier.Location = New System.Drawing.Point(90, 65)
         Me.CB_Supplier.Name = "CB_Supplier"
@@ -433,11 +441,13 @@ Partial Class F_GetProduct
         '
         'CB_Ontvangen
         '
+        Me.CB_Ontvangen.AllowDrop = True
         Me.CB_Ontvangen.DataSource = Me.GetOntvangstBindingSource
         Me.CB_Ontvangen.DisplayMember = "GV_Naam"
-        Me.CB_Ontvangen.DropDownWidth = 300
+        Me.CB_Ontvangen.DropDownWidth = 400
         Me.CB_Ontvangen.FormattingEnabled = True
         Me.CB_Ontvangen.Location = New System.Drawing.Point(90, 20)
+        Me.CB_Ontvangen.MaxDropDownItems = 15
         Me.CB_Ontvangen.Name = "CB_Ontvangen"
         Me.CB_Ontvangen.Size = New System.Drawing.Size(21, 21)
         Me.CB_Ontvangen.TabIndex = 103
@@ -1175,8 +1185,8 @@ Partial Class F_GetProduct
         'IDJournaalPostDataGridViewTextBoxColumn
         '
         Me.IDJournaalPostDataGridViewTextBoxColumn.DataPropertyName = "ID_JournaalPost"
-        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.IDJournaalPostDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle1
+        DataGridViewCellStyle22.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IDJournaalPostDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle22
         Me.IDJournaalPostDataGridViewTextBoxColumn.HeaderText = "ID"
         Me.IDJournaalPostDataGridViewTextBoxColumn.Name = "IDJournaalPostDataGridViewTextBoxColumn"
         Me.IDJournaalPostDataGridViewTextBoxColumn.ReadOnly = True
@@ -1185,8 +1195,8 @@ Partial Class F_GetProduct
         'JPDatumDataGridViewTextBoxColumn
         '
         Me.JPDatumDataGridViewTextBoxColumn.DataPropertyName = "JP_Datum"
-        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.JPDatumDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle2
+        DataGridViewCellStyle23.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.JPDatumDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle23
         Me.JPDatumDataGridViewTextBoxColumn.HeaderText = "Datum"
         Me.JPDatumDataGridViewTextBoxColumn.Name = "JPDatumDataGridViewTextBoxColumn"
         Me.JPDatumDataGridViewTextBoxColumn.ReadOnly = True
@@ -1203,8 +1213,8 @@ Partial Class F_GetProduct
         'IDGrootboekDataGridViewTextBoxColumn
         '
         Me.IDGrootboekDataGridViewTextBoxColumn.DataPropertyName = "ID_Grootboek"
-        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.IDGrootboekDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle3
+        DataGridViewCellStyle24.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IDGrootboekDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle24
         Me.IDGrootboekDataGridViewTextBoxColumn.HeaderText = "Rekening"
         Me.IDGrootboekDataGridViewTextBoxColumn.Name = "IDGrootboekDataGridViewTextBoxColumn"
         Me.IDGrootboekDataGridViewTextBoxColumn.ReadOnly = True
@@ -1213,8 +1223,8 @@ Partial Class F_GetProduct
         'JPDebetDataGridViewTextBoxColumn
         '
         Me.JPDebetDataGridViewTextBoxColumn.DataPropertyName = "JP_Debet"
-        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.JPDebetDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle4
+        DataGridViewCellStyle25.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.JPDebetDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle25
         Me.JPDebetDataGridViewTextBoxColumn.HeaderText = "Debet"
         Me.JPDebetDataGridViewTextBoxColumn.Name = "JPDebetDataGridViewTextBoxColumn"
         Me.JPDebetDataGridViewTextBoxColumn.ReadOnly = True
@@ -1223,8 +1233,8 @@ Partial Class F_GetProduct
         'JPCreditDataGridViewTextBoxColumn
         '
         Me.JPCreditDataGridViewTextBoxColumn.DataPropertyName = "JP_Credit"
-        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.JPCreditDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle5
+        DataGridViewCellStyle26.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.JPCreditDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle26
         Me.JPCreditDataGridViewTextBoxColumn.HeaderText = "Credit"
         Me.JPCreditDataGridViewTextBoxColumn.Name = "JPCreditDataGridViewTextBoxColumn"
         Me.JPCreditDataGridViewTextBoxColumn.ReadOnly = True
@@ -1297,8 +1307,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn12
         '
         Me.DataGridViewTextBoxColumn12.DataPropertyName = "ID_Supplier"
-        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn12.DefaultCellStyle = DataGridViewCellStyle6
+        DataGridViewCellStyle27.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn12.DefaultCellStyle = DataGridViewCellStyle27
         Me.DataGridViewTextBoxColumn12.HeaderText = "Supplier"
         Me.DataGridViewTextBoxColumn12.Name = "DataGridViewTextBoxColumn12"
         Me.DataGridViewTextBoxColumn12.ReadOnly = True
@@ -1323,8 +1333,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn15
         '
         Me.DataGridViewTextBoxColumn15.DataPropertyName = "GP_Besteld"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle28.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn15.DefaultCellStyle = DataGridViewCellStyle28
         Me.DataGridViewTextBoxColumn15.HeaderText = "Aantal"
         Me.DataGridViewTextBoxColumn15.Name = "DataGridViewTextBoxColumn15"
         Me.DataGridViewTextBoxColumn15.ReadOnly = True
@@ -1333,8 +1343,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn16
         '
         Me.DataGridViewTextBoxColumn16.DataPropertyName = "ID_Product"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle29.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn16.DefaultCellStyle = DataGridViewCellStyle29
         Me.DataGridViewTextBoxColumn16.HeaderText = "Product"
         Me.DataGridViewTextBoxColumn16.Name = "DataGridViewTextBoxColumn16"
         Me.DataGridViewTextBoxColumn16.ReadOnly = True
@@ -1390,7 +1400,7 @@ Partial Class F_GetProduct
         Me.DG_ontvangen.AutoGenerateColumns = False
         Me.DG_ontvangen.BackgroundColor = System.Drawing.Color.Azure
         Me.DG_ontvangen.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize
-        Me.DG_ontvangen.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.GVDatumDataGridViewTextBoxColumn, Me.IDProductDataGridViewTextBoxColumn2, Me.ProDuctDataGridViewTextBoxColumn1, Me.GPOntvangenDataGridViewTextBoxColumn1, Me.GPBuyPriceEURDataGridViewTextBoxColumn2, Me.PDSalePrijsDataGridViewTextBoxColumn})
+        Me.DG_ontvangen.Columns.AddRange(New System.Windows.Forms.DataGridViewColumn() {Me.GVDatumDataGridViewTextBoxColumn1, Me.GPOntvangenDataGridViewTextBoxColumn, Me.IDProductDataGridViewTextBoxColumn1, Me.PDBeschrijving2DataGridViewTextBoxColumn, Me.GPBuyPriceEURDataGridViewTextBoxColumn1, Me.PDSalePrijsDataGridViewTextBoxColumn, Me.IDGetOntvangstDataGridViewTextBoxColumn2, Me.IDSupplierDataGridViewTextBoxColumn, Me.IDGetProductAddDataGridViewTextBoxColumn1})
         Me.DG_ontvangen.DataSource = Me.GPAOntvangenLijstBindingSource
         Me.DG_ontvangen.Location = New System.Drawing.Point(10, 35)
         Me.DG_ontvangen.Name = "DG_ontvangen"
@@ -1398,64 +1408,6 @@ Partial Class F_GetProduct
         Me.DG_ontvangen.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect
         Me.DG_ontvangen.Size = New System.Drawing.Size(659, 301)
         Me.DG_ontvangen.TabIndex = 2
-        '
-        'GVDatumDataGridViewTextBoxColumn
-        '
-        Me.GVDatumDataGridViewTextBoxColumn.DataPropertyName = "GV_Datum"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.GVDatumDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle9
-        Me.GVDatumDataGridViewTextBoxColumn.HeaderText = "Datum"
-        Me.GVDatumDataGridViewTextBoxColumn.Name = "GVDatumDataGridViewTextBoxColumn"
-        Me.GVDatumDataGridViewTextBoxColumn.ReadOnly = True
-        Me.GVDatumDataGridViewTextBoxColumn.Width = 70
-        '
-        'IDProductDataGridViewTextBoxColumn2
-        '
-        Me.IDProductDataGridViewTextBoxColumn2.DataPropertyName = "ID_Product"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.IDProductDataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle10
-        Me.IDProductDataGridViewTextBoxColumn2.HeaderText = "Product"
-        Me.IDProductDataGridViewTextBoxColumn2.Name = "IDProductDataGridViewTextBoxColumn2"
-        Me.IDProductDataGridViewTextBoxColumn2.ReadOnly = True
-        Me.IDProductDataGridViewTextBoxColumn2.Width = 50
-        '
-        'ProDuctDataGridViewTextBoxColumn1
-        '
-        Me.ProDuctDataGridViewTextBoxColumn1.DataPropertyName = "ProDuct"
-        Me.ProDuctDataGridViewTextBoxColumn1.HeaderText = "Beschrijving"
-        Me.ProDuctDataGridViewTextBoxColumn1.Name = "ProDuctDataGridViewTextBoxColumn1"
-        Me.ProDuctDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.ProDuctDataGridViewTextBoxColumn1.Width = 250
-        '
-        'GPOntvangenDataGridViewTextBoxColumn1
-        '
-        Me.GPOntvangenDataGridViewTextBoxColumn1.DataPropertyName = "GP__Ontvangen"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.GPOntvangenDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle11
-        Me.GPOntvangenDataGridViewTextBoxColumn1.HeaderText = "Aantal"
-        Me.GPOntvangenDataGridViewTextBoxColumn1.Name = "GPOntvangenDataGridViewTextBoxColumn1"
-        Me.GPOntvangenDataGridViewTextBoxColumn1.ReadOnly = True
-        Me.GPOntvangenDataGridViewTextBoxColumn1.Width = 50
-        '
-        'GPBuyPriceEURDataGridViewTextBoxColumn2
-        '
-        Me.GPBuyPriceEURDataGridViewTextBoxColumn2.DataPropertyName = "GP_BuyPriceEUR"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.GPBuyPriceEURDataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle12
-        Me.GPBuyPriceEURDataGridViewTextBoxColumn2.HeaderText = "Inkoop"
-        Me.GPBuyPriceEURDataGridViewTextBoxColumn2.Name = "GPBuyPriceEURDataGridViewTextBoxColumn2"
-        Me.GPBuyPriceEURDataGridViewTextBoxColumn2.ReadOnly = True
-        Me.GPBuyPriceEURDataGridViewTextBoxColumn2.Width = 55
-        '
-        'PDSalePrijsDataGridViewTextBoxColumn
-        '
-        Me.PDSalePrijsDataGridViewTextBoxColumn.DataPropertyName = "PD_Sale_Prijs"
-        DataGridViewCellStyle13.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.PDSalePrijsDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle13
-        Me.PDSalePrijsDataGridViewTextBoxColumn.HeaderText = "Verkoop"
-        Me.PDSalePrijsDataGridViewTextBoxColumn.Name = "PDSalePrijsDataGridViewTextBoxColumn"
-        Me.PDSalePrijsDataGridViewTextBoxColumn.ReadOnly = True
-        Me.PDSalePrijsDataGridViewTextBoxColumn.Width = 55
         '
         'Tpage_Product_Lijst
         '
@@ -1524,8 +1476,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "ID_Product"
-        DataGridViewCellStyle14.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle14
+        DataGridViewCellStyle30.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle30
         Me.DataGridViewTextBoxColumn5.HeaderText = "Product"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -1551,8 +1503,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "GP_Lijst"
-        DataGridViewCellStyle15.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle15
+        DataGridViewCellStyle31.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle31
         Me.DataGridViewTextBoxColumn7.HeaderText = "aantal"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -1569,8 +1521,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "PD_Voorraad"
-        DataGridViewCellStyle16.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle16
+        DataGridViewCellStyle32.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle32
         Me.DataGridViewTextBoxColumn4.HeaderText = "Voorraad"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -1579,8 +1531,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn3
         '
         Me.DataGridViewTextBoxColumn3.DataPropertyName = "GP_BuyPriceEUR"
-        DataGridViewCellStyle17.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle17
+        DataGridViewCellStyle33.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn3.DefaultCellStyle = DataGridViewCellStyle33
         Me.DataGridViewTextBoxColumn3.HeaderText = "Inkoop"
         Me.DataGridViewTextBoxColumn3.Name = "DataGridViewTextBoxColumn3"
         Me.DataGridViewTextBoxColumn3.ReadOnly = True
@@ -1589,8 +1541,8 @@ Partial Class F_GetProduct
         'PD_Sale_Prijs
         '
         Me.PD_Sale_Prijs.DataPropertyName = "PD_Sale_Prijs"
-        DataGridViewCellStyle18.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.PD_Sale_Prijs.DefaultCellStyle = DataGridViewCellStyle18
+        DataGridViewCellStyle34.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.PD_Sale_Prijs.DefaultCellStyle = DataGridViewCellStyle34
         Me.PD_Sale_Prijs.HeaderText = "Verkoop"
         Me.PD_Sale_Prijs.Name = "PD_Sale_Prijs"
         Me.PD_Sale_Prijs.ReadOnly = True
@@ -1599,8 +1551,8 @@ Partial Class F_GetProduct
         'DataGridViewTextBoxColumn10
         '
         Me.DataGridViewTextBoxColumn10.DataPropertyName = "LK_Code"
-        DataGridViewCellStyle19.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn10.DefaultCellStyle = DataGridViewCellStyle19
+        DataGridViewCellStyle35.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn10.DefaultCellStyle = DataGridViewCellStyle35
         Me.DataGridViewTextBoxColumn10.HeaderText = "Locatie"
         Me.DataGridViewTextBoxColumn10.Name = "DataGridViewTextBoxColumn10"
         Me.DataGridViewTextBoxColumn10.ReadOnly = True
@@ -1722,6 +1674,106 @@ Partial Class F_GetProduct
         'JN_LijstDatatable
         '
         Me.JN_LijstDatatable.ClearBeforeFill = True
+        '
+        'GVDatumDataGridViewTextBoxColumn
+        '
+        Me.GVDatumDataGridViewTextBoxColumn.DataPropertyName = "GV_Datum"
+        DataGridViewCellStyle36.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.GVDatumDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle36
+        Me.GVDatumDataGridViewTextBoxColumn.HeaderText = "Datum"
+        Me.GVDatumDataGridViewTextBoxColumn.Name = "GVDatumDataGridViewTextBoxColumn"
+        Me.GVDatumDataGridViewTextBoxColumn.Width = 70
+        '
+        'IDProductDataGridViewTextBoxColumn2
+        '
+        Me.IDProductDataGridViewTextBoxColumn2.DataPropertyName = "ID_Product"
+        DataGridViewCellStyle37.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IDProductDataGridViewTextBoxColumn2.DefaultCellStyle = DataGridViewCellStyle37
+        Me.IDProductDataGridViewTextBoxColumn2.HeaderText = "Product"
+        Me.IDProductDataGridViewTextBoxColumn2.Name = "IDProductDataGridViewTextBoxColumn2"
+        Me.IDProductDataGridViewTextBoxColumn2.Width = 50
+        '
+        'GVDatumDataGridViewTextBoxColumn1
+        '
+        Me.GVDatumDataGridViewTextBoxColumn1.DataPropertyName = "GV_Datum"
+        DataGridViewCellStyle38.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.GVDatumDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle38
+        Me.GVDatumDataGridViewTextBoxColumn1.HeaderText = "Datum"
+        Me.GVDatumDataGridViewTextBoxColumn1.Name = "GVDatumDataGridViewTextBoxColumn1"
+        Me.GVDatumDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.GVDatumDataGridViewTextBoxColumn1.Width = 70
+        '
+        'GPOntvangenDataGridViewTextBoxColumn
+        '
+        Me.GPOntvangenDataGridViewTextBoxColumn.DataPropertyName = "GP__Ontvangen"
+        DataGridViewCellStyle39.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.GPOntvangenDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle39
+        Me.GPOntvangenDataGridViewTextBoxColumn.HeaderText = "Aantal"
+        Me.GPOntvangenDataGridViewTextBoxColumn.Name = "GPOntvangenDataGridViewTextBoxColumn"
+        Me.GPOntvangenDataGridViewTextBoxColumn.ReadOnly = True
+        Me.GPOntvangenDataGridViewTextBoxColumn.Width = 50
+        '
+        'IDProductDataGridViewTextBoxColumn1
+        '
+        Me.IDProductDataGridViewTextBoxColumn1.DataPropertyName = "ID_Product"
+        DataGridViewCellStyle40.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.IDProductDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle40
+        Me.IDProductDataGridViewTextBoxColumn1.HeaderText = "Product"
+        Me.IDProductDataGridViewTextBoxColumn1.Name = "IDProductDataGridViewTextBoxColumn1"
+        Me.IDProductDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.IDProductDataGridViewTextBoxColumn1.Width = 60
+        '
+        'PDBeschrijving2DataGridViewTextBoxColumn
+        '
+        Me.PDBeschrijving2DataGridViewTextBoxColumn.DataPropertyName = "PD_Beschrijving(2)"
+        Me.PDBeschrijving2DataGridViewTextBoxColumn.HeaderText = "Beschrijving"
+        Me.PDBeschrijving2DataGridViewTextBoxColumn.Name = "PDBeschrijving2DataGridViewTextBoxColumn"
+        Me.PDBeschrijving2DataGridViewTextBoxColumn.ReadOnly = True
+        Me.PDBeschrijving2DataGridViewTextBoxColumn.Width = 300
+        '
+        'GPBuyPriceEURDataGridViewTextBoxColumn1
+        '
+        Me.GPBuyPriceEURDataGridViewTextBoxColumn1.DataPropertyName = "GP_BuyPriceEUR"
+        DataGridViewCellStyle41.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.GPBuyPriceEURDataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle41
+        Me.GPBuyPriceEURDataGridViewTextBoxColumn1.HeaderText = "Inkoop"
+        Me.GPBuyPriceEURDataGridViewTextBoxColumn1.Name = "GPBuyPriceEURDataGridViewTextBoxColumn1"
+        Me.GPBuyPriceEURDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.GPBuyPriceEURDataGridViewTextBoxColumn1.Width = 50
+        '
+        'PDSalePrijsDataGridViewTextBoxColumn
+        '
+        Me.PDSalePrijsDataGridViewTextBoxColumn.DataPropertyName = "PD_Sale_Prijs"
+        DataGridViewCellStyle42.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.PDSalePrijsDataGridViewTextBoxColumn.DefaultCellStyle = DataGridViewCellStyle42
+        Me.PDSalePrijsDataGridViewTextBoxColumn.HeaderText = "Verkoop"
+        Me.PDSalePrijsDataGridViewTextBoxColumn.Name = "PDSalePrijsDataGridViewTextBoxColumn"
+        Me.PDSalePrijsDataGridViewTextBoxColumn.ReadOnly = True
+        Me.PDSalePrijsDataGridViewTextBoxColumn.Width = 50
+        '
+        'IDGetOntvangstDataGridViewTextBoxColumn2
+        '
+        Me.IDGetOntvangstDataGridViewTextBoxColumn2.DataPropertyName = "ID_GetOntvangst"
+        Me.IDGetOntvangstDataGridViewTextBoxColumn2.HeaderText = "ID_GetOntvangst"
+        Me.IDGetOntvangstDataGridViewTextBoxColumn2.Name = "IDGetOntvangstDataGridViewTextBoxColumn2"
+        Me.IDGetOntvangstDataGridViewTextBoxColumn2.ReadOnly = True
+        Me.IDGetOntvangstDataGridViewTextBoxColumn2.Visible = False
+        '
+        'IDSupplierDataGridViewTextBoxColumn
+        '
+        Me.IDSupplierDataGridViewTextBoxColumn.DataPropertyName = "ID_Supplier"
+        Me.IDSupplierDataGridViewTextBoxColumn.HeaderText = "ID_Supplier"
+        Me.IDSupplierDataGridViewTextBoxColumn.Name = "IDSupplierDataGridViewTextBoxColumn"
+        Me.IDSupplierDataGridViewTextBoxColumn.ReadOnly = True
+        Me.IDSupplierDataGridViewTextBoxColumn.Visible = False
+        '
+        'IDGetProductAddDataGridViewTextBoxColumn1
+        '
+        Me.IDGetProductAddDataGridViewTextBoxColumn1.DataPropertyName = "ID_GetProductAdd"
+        Me.IDGetProductAddDataGridViewTextBoxColumn1.HeaderText = "ID_GetProductAdd"
+        Me.IDGetProductAddDataGridViewTextBoxColumn1.Name = "IDGetProductAddDataGridViewTextBoxColumn1"
+        Me.IDGetProductAddDataGridViewTextBoxColumn1.ReadOnly = True
+        Me.IDGetProductAddDataGridViewTextBoxColumn1.Visible = False
         '
         'F_GetProduct
         '
@@ -1916,12 +1968,6 @@ Partial Class F_GetProduct
     Friend WithEvents DataGridViewTextBoxColumn17 As DataGridViewTextBoxColumn
     Friend WithEvents ID_GetProductAdd As DataGridViewTextBoxColumn
     Friend WithEvents Knop_Bestel_Ontvangst As Button
-    Friend WithEvents GVDatumDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
-    Friend WithEvents IDProductDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents ProDuctDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents GPOntvangenDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
-    Friend WithEvents GPBuyPriceEURDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
-    Friend WithEvents PDSalePrijsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn6 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn5 As DataGridViewTextBoxColumn
@@ -1934,4 +1980,15 @@ Partial Class F_GetProduct
     Friend WithEvents PD_Sale_Prijs As DataGridViewTextBoxColumn
     Friend WithEvents DataGridViewTextBoxColumn10 As DataGridViewTextBoxColumn
     Friend WithEvents DA_Datum As DateTimePicker
+    Friend WithEvents GVDatumDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDProductDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents GVDatumDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents GPOntvangenDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDProductDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents PDBeschrijving2DataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents GPBuyPriceEURDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
+    Friend WithEvents PDSalePrijsDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDGetOntvangstDataGridViewTextBoxColumn2 As DataGridViewTextBoxColumn
+    Friend WithEvents IDSupplierDataGridViewTextBoxColumn As DataGridViewTextBoxColumn
+    Friend WithEvents IDGetProductAddDataGridViewTextBoxColumn1 As DataGridViewTextBoxColumn
 End Class

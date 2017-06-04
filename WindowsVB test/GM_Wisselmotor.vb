@@ -4,12 +4,13 @@
     Public IDGROEP As Integer, IDGROEPINDEX As Integer
     Public IDPRODUCT As Integer
     Public IDGETPRODUCTADD As Integer
+    ' Public IDGETPRODUCT As Integer = 0
 
     '*****
     'ín gebruik bij orders, ontvangsten
     Public IDSUPPLIER As Integer
     Public IDSHOP As Integer
-    Public IDGETONTVANGST As Integer
+    Public IDGETONTVANGST As Integer = 0
     Public IDADMINKOOP As Integer
     Public IDLOCATIE As Integer 'Locatie id van de plek waar een product standaard ligt
 

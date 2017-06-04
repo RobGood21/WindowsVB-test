@@ -58,9 +58,11 @@
         'F_LocatieHolder.BringToFront()
     End Sub
     Private Sub ProductenToolStripMenuItem_Click_1(sender As Object, e As EventArgs) Handles ProductenToolStripMenuItem.Click
+        IDPRODUCT = 0
         F_Product.MdiParent = Me
         F_Product.Show()
         F_Product.BringToFront()
+
 
     End Sub
     Private Sub ProductLijstToolStripMenuItem_Click(sender As Object, e As EventArgs) Handles ProductLijstToolStripMenuItem.Click

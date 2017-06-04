@@ -41,6 +41,7 @@ Partial Class F_Shop
         Me.DS_Supplier = New WindowsVB_test.DS_Supplier()
         Me.SH_PhoneTextBox = New System.Windows.Forms.TextBox()
         Me.SH_EmailTextBox = New System.Windows.Forms.TextBox()
+        Me.Knop_Link = New System.Windows.Forms.Button()
         Me.CB_Land = New System.Windows.Forms.ComboBox()
         Me.LandBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.SH_ContactTextBox = New System.Windows.Forms.TextBox()
@@ -50,7 +51,6 @@ Partial Class F_Shop
         Me.SH_AdresTextBox = New System.Windows.Forms.TextBox()
         Me.SH_NaamTextBox = New System.Windows.Forms.TextBox()
         Me.Knop_opslaan = New System.Windows.Forms.Button()
-        Me.Knop_Link = New System.Windows.Forms.Button()
         Me.TXT_IDSHOP = New System.Windows.Forms.TextBox()
         Me.TableAdapterManager = New WindowsVB_test.DS_SupplierTableAdapters.TableAdapterManager()
         Me.LandTableAdapter = New WindowsVB_test.DS_SupplierTableAdapters.LandTableAdapter()
@@ -63,14 +63,14 @@ Partial Class F_Shop
         Me.txt_IDSupplier_Shop = New System.Windows.Forms.TextBox()
         Me.ToolStrip1 = New System.Windows.Forms.ToolStrip()
         Me.TKnop_Sluit = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_Nieuw = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_Annuleren = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_Opslaan = New System.Windows.Forms.ToolStripButton()
-        Me.Tknop_Delete = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator1 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_Nieuw = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator2 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_Annuleren = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator3 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_Opslaan = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator4 = New System.Windows.Forms.ToolStripSeparator()
+        Me.Tknop_Delete = New System.Windows.Forms.ToolStripButton()
         Me.ToolStripSeparator5 = New System.Windows.Forms.ToolStripSeparator()
         SH_NaamLabel = New System.Windows.Forms.Label()
         SH_AdresLabel = New System.Windows.Forms.Label()
@@ -263,11 +263,23 @@ Partial Class F_Shop
         Me.SH_EmailTextBox.Size = New System.Drawing.Size(275, 20)
         Me.SH_EmailTextBox.TabIndex = 10
         '
+        'Knop_Link
+        '
+        Me.Knop_Link.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Insert_hyperlink_icon
+        Me.Knop_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
+        Me.Knop_Link.Location = New System.Drawing.Point(317, 217)
+        Me.Knop_Link.Name = "Knop_Link"
+        Me.Knop_Link.Size = New System.Drawing.Size(30, 30)
+        Me.Knop_Link.TabIndex = 57
+        Me.Knop_Link.TabStop = False
+        Me.Knop_Link.UseVisualStyleBackColor = True
+        '
         'CB_Land
         '
         Me.CB_Land.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.ShopBindingSource, "ID_Land", True))
         Me.CB_Land.DataSource = Me.LandBindingSource
         Me.CB_Land.DisplayMember = "LD_Naam"
+        Me.CB_Land.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Land.FormattingEnabled = True
         Me.CB_Land.Location = New System.Drawing.Point(73, 126)
         Me.CB_Land.Name = "CB_Land"
@@ -336,17 +348,6 @@ Partial Class F_Shop
         Me.Knop_opslaan.TabIndex = 13
         Me.Knop_opslaan.Text = "&Opslaan en sluiten"
         Me.Knop_opslaan.UseVisualStyleBackColor = True
-        '
-        'Knop_Link
-        '
-        Me.Knop_Link.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.Insert_hyperlink_icon
-        Me.Knop_Link.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
-        Me.Knop_Link.Location = New System.Drawing.Point(317, 217)
-        Me.Knop_Link.Name = "Knop_Link"
-        Me.Knop_Link.Size = New System.Drawing.Size(30, 30)
-        Me.Knop_Link.TabIndex = 57
-        Me.Knop_Link.TabStop = False
-        Me.Knop_Link.UseVisualStyleBackColor = True
         '
         'TXT_IDSHOP
         '
@@ -446,6 +447,11 @@ Partial Class F_Shop
         Me.TKnop_Sluit.Size = New System.Drawing.Size(63, 22)
         Me.TKnop_Sluit.Text = "Sluiten"
         '
+        'ToolStripSeparator1
+        '
+        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
+        '
         'Tknop_Nieuw
         '
         Me.Tknop_Nieuw.Image = Global.WindowsVB_test.My.Resources.Resources.Button_Add_icon
@@ -453,6 +459,11 @@ Partial Class F_Shop
         Me.Tknop_Nieuw.Name = "Tknop_Nieuw"
         Me.Tknop_Nieuw.Size = New System.Drawing.Size(61, 22)
         Me.Tknop_Nieuw.Text = "Nieuw"
+        '
+        'ToolStripSeparator2
+        '
+        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
+        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
         '
         'Tknop_Annuleren
         '
@@ -462,6 +473,11 @@ Partial Class F_Shop
         Me.Tknop_Annuleren.Size = New System.Drawing.Size(82, 22)
         Me.Tknop_Annuleren.Text = "Annuleren"
         '
+        'ToolStripSeparator3
+        '
+        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
+        '
         'Tknop_Opslaan
         '
         Me.Tknop_Opslaan.Image = Global.WindowsVB_test.My.Resources.Resources.Save_as_icon
@@ -470,6 +486,11 @@ Partial Class F_Shop
         Me.Tknop_Opslaan.Size = New System.Drawing.Size(70, 22)
         Me.Tknop_Opslaan.Text = "Opslaan"
         '
+        'ToolStripSeparator4
+        '
+        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
+        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
+        '
         'Tknop_Delete
         '
         Me.Tknop_Delete.Image = Global.WindowsVB_test.My.Resources.Resources.Windows_Close_Program_icon
@@ -477,26 +498,6 @@ Partial Class F_Shop
         Me.Tknop_Delete.Name = "Tknop_Delete"
         Me.Tknop_Delete.Size = New System.Drawing.Size(63, 22)
         Me.Tknop_Delete.Text = "Delete "
-        '
-        'ToolStripSeparator1
-        '
-        Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator2
-        '
-        Me.ToolStripSeparator2.Name = "ToolStripSeparator2"
-        Me.ToolStripSeparator2.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator3
-        '
-        Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(6, 25)
-        '
-        'ToolStripSeparator4
-        '
-        Me.ToolStripSeparator4.Name = "ToolStripSeparator4"
-        Me.ToolStripSeparator4.Size = New System.Drawing.Size(6, 25)
         '
         'ToolStripSeparator5
         '

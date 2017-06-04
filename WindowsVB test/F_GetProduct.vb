@@ -12,6 +12,7 @@
     ' verwijderen uit datagridview  DG_Lijst.Rows.Remove(DG_Lijst.Rows(DG_Lijst.SelectedCells.Item(0).RowIndex))
     Dim BeVat As Boolean = False
     Dim STATUS As Integer = 1 'als boven 
+    Dim UZ As Boolean = False 'vlag om opnieuw laden van lijsten, door aanpassingen in control values tijdens openen tegen te houden
     Public Sub ToolTipsInstellen()
         Dim TT_GetProduct As New ToolTip()
         ' Set up the delays for the ToolTip.
@@ -53,6 +54,7 @@
         Me.CH_AlleOntvangst.Checked = True
         INITkosten()
         Me.CB_Push_soort.SelectedIndex = 0
+        Me.CB_Supplier.DropDownStyle = ComboBoxStyle.DropDownList
     End Sub
     Private Sub INITkosten()
         Me.TXT_Boekwaarde.Text = FormatNumber(0, -1)
@@ -91,31 +93,38 @@
     End Sub
     Public Sub LaadForm()
         Try
+            UZ = True
+            'normaal openen voor nieuwe of bestaande invoer
             Me.SupplierTableAdapter.Fill(Me.DS_Product.Supplier)
-
             Me.LaadShop(1)
             LaadGetOntvangst(1)
-
             INITvelden()
             OpmaakJournaal() 'opmaak van datagrid journaal
+            LaadProductList()
 
-            ' MsgBox("laadform")
-            'LaadProductList()
-
-
+            UZ = False
         Catch ex As Exception
-            MsgBox(ErrorToString,, "Laadform")
+            MsgBox(ErrorToString, "Fout in sub Laadform")
         End Try
     End Sub
     Private Sub LaadGetOntvangst(STATUS As Integer)
         'Laad in het zoekvak container records (getontvangst) per sectie 
         '1=inbehandeling(ope) 2=bestelling bij leverancier(besteld) 3=ontvangst aan voorraad(onvangst) 4=verkoop, gebruik(verbruik) 5=Project
         Me.GetOntvangstTableAdapter.Fill(Me.DS_Product.GetOntvangst, STATUS)
-        Select Case STATUS
-            Case 5
-                'productenlijst herladen
-                LaadProductList()
-        End Select
+        'laden met een getontvangst
+
+        If UZ = False Then
+
+            Select Case STATUS
+                Case 1
+                Case 5
+                    'productenlijst herladen
+                    LaadProductList()
+                Case 40
+                    LaadProductList()
+            End Select
+        End If
+
     End Sub
     Private Sub LaadProduct()
         'laad de product gegevens (voor project)
@@ -135,6 +144,9 @@
         End Select
     End Sub
     Public Sub LaadProductList()
+
+        'MsgBox("Laad productlist     " & Me.TB_Products.SelectedIndex & " -- " & Me.CB_Ontvangen.SelectedValue, vbExclamation)
+
         Select Case Me.TB_Products.SelectedIndex
             Case 0 'productlijst
                 Me.GetProductListTableAdapter.Fill(Me.DS_Product.GetProductList, Me.CB_Ontvangen.SelectedValue)
@@ -169,16 +181,20 @@
         End Select
     End Sub
     Private Sub Knop_Nieuw_Click(sender As Object, e As EventArgs) Handles Knop_Nieuw.Click
+        UZ = True
         GetOntvangstBindingSource.AddNew() 'nieuwe order, ontvangst aanmaken
         Me.DA_Datum.Value = Now() 'aanmaakdatum instellen
         INITvelden()
         Me.TXT_NaamGet.Select()
+        LaadProductList()
+        UZ = False
     End Sub
     Private Sub CB_Supplier_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Supplier.SelectionChangeCommitted
 
     End Sub
     Private Sub TXT_getontvangstid_TextChanged(sender As Object, e As EventArgs) Handles TXT_getontvangstid.TextChanged
-        LaadProductList()
+        'MsgBox(Me.TXT_getontvangstid.Text & "    txt_getontvangstid_textchanged")
+        If UZ = False Then LaadProductList()
     End Sub
     Private Sub CB_Shop_Enter(sender As Object, e As EventArgs) Handles CB_Shop.Enter
         LaadShop(2)
@@ -192,9 +208,9 @@
     Private Sub Button1_Click(sender As Object, e As EventArgs)
         LaadForm()
     End Sub
-    Private Sub EditGrid()
+    Private Sub EditGridjes()
 
-        '13mei2017 ?? Wat is dit nakijken of het wel wordt gebruikt...
+        '13mei2017 ?? Wat is dit nakijken of het wel wordt gebruikt...naam veranderd 
         Dim I As Integer, a As Integer, b As Integer
         Try
             For I = 0 To DG_Lijst.Rows.Count - 1
@@ -221,6 +237,7 @@
 
                 MsgBox(DG_Lijst.Rows(I).Cells(1).Value & "' " & DG_Lijst.Rows(I).Cells(3).Value)
             Next
+            MsgBox("ëditgrid")
             LaadProductList()
             'op = DG_List.Rows(1).Cells(2).Value
         Catch ex As Exception
@@ -452,6 +469,7 @@ Eindeloop:
             IDGETONTVANGST = Me.TXT_getontvangstid.Text
             F_GetProductAdd.ShowDialog()
             'Productlijst herladen
+            'MsgBox("producttonen")
             LaadProductList()
 
         End If
@@ -739,6 +757,7 @@ Eindeloop:
                     Me.Optie_Ontvangst.Checked = True
                     Me.CH_AlleOntvangst.Checked = False
                     Me.TB_Products.SelectTab(1)
+                    'MsgBox("boekontvangst")
                     LaadProductList()
 
                     'Me.GB_Get.Select() '??? wat is dit 24mei uit
@@ -828,6 +847,7 @@ Eindeloop:
             Me.DT_productTableAdapter.Fill(DS_Product.DT_product, Me.DG_Lijst.Rows(i).Cells(LIDP).Value)
             Me.TXT_Voorraad.Text = Int(Me.TXT_Voorraad.Text) - Int((Me.DG_Lijst.Rows(i).Cells(LA).Value * Me.TXT_Project_AantalMaak.Text))
             Opslaanproduct()
+            'MsgBox("boekprojecten")
             LaadProductList()
             BerekenProject()
         Next
@@ -836,10 +856,20 @@ Eindeloop:
     End Sub
     Private Sub Tpage_Product_Ontvang_Enter(sender As Object, e As EventArgs) Handles Tpage_Product_Ontvang.Enter
         'als tabblad ontvangen wordt getoond nu de datable vullen met ontvangsten van deze leverancier
-        LaadProductList()
+        '  MsgBox("tpage_productopen")
+        ' If UZ = False Then
+        'UZ = True
+        'LaadProductList()
+        'UZ = False
+        'End If
     End Sub
     Private Sub Tpage_Product_Besteld_Enter(sender As Object, e As EventArgs) Handles Tpage_Product_Besteld.Enter
-        LaadProductList()
+        '  MsgBox("tpage product besteld")
+        ' If UZ = False Then
+        'UZ = True
+        'LaadProductList()
+        'UZ = False
+        'End If
     End Sub
     Private Sub MaakVerbruik()
         'Maakt deze getontvangst record container tot een verbruik, verkoop. 
@@ -867,54 +897,70 @@ Eindeloop:
         Opslaan()
     End Sub
     Private Sub Optie_besteld_Click(sender As Object, e As EventArgs) Handles Optie_besteld.Click
-        'MsgBox("besteld")
+        UZ = True
         LaadGetOntvangst(2)
         Me.TB_Doel.SelectTab(1)
         Me.TB_Products.SelectTab(2)
         STATUS = 2
         LaadProductList()
-
+        UZ = False
     End Sub
     Private Sub Optie_Open_Click(sender As Object, e As EventArgs) Handles Optie_Open.Click
-        'MsgBox("open")
+        UZ = True
         LaadGetOntvangst(1)
         STATUS = 1
         Me.TB_Doel.SelectTab(0)
         Me.TB_Products.SelectTab(0)
+        ' MsgBox("Optie_open.click      ")
         LaadProductList()
+        UZ = False
     End Sub
     Private Sub Optie_Ontvangst_Click(sender As Object, e As EventArgs) Handles Optie_Ontvangst.Click
-        'MsgBox("Ontvangst")
+        UZ = True
         LaadGetOntvangst(3)
         Me.TB_Doel.SelectTab(0)
         Me.TB_Products.SelectTab(1)
         STATUS = 3
         'MsgBox("optieontvangst")
         LaadProductList()
-
+        UZ = False
     End Sub
     Private Sub Optie_Verbruik_Click(sender As Object, e As EventArgs) Handles Optie_Verbruik.Click
-        'MsgBox("Ontvangst")
+        UZ = True
         LaadGetOntvangst(4)
         Me.TB_Doel.SelectTab(3)
         Me.TB_Products.SelectTab(0)
         STATUS = 4
         Me.CB_Push_soort.SelectedIndex = 0
+        ' MsgBox("optie verbruik klik")
         LaadProductList()
+        UZ = False
 
     End Sub
     Private Sub Optie_Project_Click(sender As Object, e As EventArgs) Handles Optie_Project.Click
-        'MsgBox("Project")
+        UZ = True
         LaadGetOntvangst(5)
         Me.TB_Doel.SelectTab(2)
         Me.TB_Products.SelectTab(0)
+        'MsgBox("optie project klik")
         LaadProductList()
+        UZ = False
     End Sub
     Private Sub CH_AlleBestel_CheckedChanged(sender As Object, e As EventArgs) Handles CH_AlleBestel.CheckedChanged
-        LaadProductList()
+        'MsgBox(UZ & "     ch_allebestel_chekedchanged")
+        If UZ = False Then
+            UZ = True
+            LaadProductList()
+            UZ = False
+        End If
     End Sub
     Private Sub CH_AlleOntvangst_CheckedChanged(sender As Object, e As EventArgs) Handles CH_AlleOntvangst.CheckedChanged
-        LaadProductList()
+        'MsgBox(UZ & "     ch_alleontvangst_chekedchanged")
+        If UZ = False Then
+            UZ = True
+            LaadProductList()
+            UZ = False
+        End If
     End Sub
     Private Sub Knop_Project_Product_Click(sender As Object, e As EventArgs) Handles Knop_Project_Product.Click
         Dim N As Boolean = False
@@ -968,11 +1014,14 @@ Eindeloop:
     Private Sub Knop_ProductPLus_Click(sender As Object, e As EventArgs) Handles Knop_ProductPLus.Click
         If ValidatieProductPlus() = True Then
             Try
+
                 IDGETONTVANGST = Me.CB_Ontvangen.SelectedValue
                 OPGETPRODUCTADD = 1
                 IDPRODUCT = -1
                 F_GetProductAdd.ShowDialog()
+                UZ = True
                 LaadProductList()
+                UZ = False
                 BerekenProject()
 
             Catch ex As Exception
@@ -1139,8 +1188,14 @@ Eindeloop:
     End Sub
     Private Sub CB_Push_soort_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Push_soort.SelectionChangeCommitted
         'instellen getontvangst voor opzoeken de diverse verbruiken
-        Dim s As Integer = Me.txt_Status.Text
+        Dim s As Integer
         Dim st As Integer
+        If IsNumeric(Me.txt_Status.Text) = True Then
+            s = Me.txt_Status.Text
+        Else
+            s = 4 'voor wanneer er Geen record is geladen
+            'MsgBox("Geen Status", vbCritical, "Er gaat iets mis, probeer opnieuw")
+        End If
         If s = 4 Or s = 40 Or s = 41 Or s = 42 Then s = 4 'enz
 
         If s = 4 Then 'is dus al een verbruik ingesteld
@@ -1155,10 +1210,10 @@ Eindeloop:
                     st = 42
             End Select
             'sTATUS = st
+            MsgBox("cb push soort")
             LaadGetOntvangst(st)
+
         End If
-        ' Me.TXT_Push_Omzet.Select()
-        ' Me.Knop_Push_Maak.Enabled = False
     End Sub
     Private Sub txt_Status_TextChanged(sender As Object, e As EventArgs) Handles txt_Status.TextChanged
         Select Case Me.txt_Status.Text
@@ -1196,16 +1251,24 @@ Eindeloop:
         BerekenBTWVerbruik()
     End Sub
     Private Sub TB_Products_SelectedIndexChanged(sender As Object, e As EventArgs) Handles TB_Products.SelectedIndexChanged
-        LaadProductList()
+        ' MsgBox("tb_products.selected index changed")
+        If UZ = False Then
+            UZ = True
+            LaadProductList()
+            UZ = False
+        End If
+        'MsgBox("deze was voor de tb_product enz")
     End Sub
-
     Private Sub OpmaakJournaal()
         'verzorgt de opmaak van de datagrid journaal
         'Me.DG_Journaal.Columns(1).DefaultCellStyle.Alignment = DataGridViewContentAlignment.MiddleCenter
         Me.DG_Journaal.ColumnHeadersDefaultCellStyle.Alignment = DataGridViewContentAlignment.TopCenter
     End Sub
     Private Sub CB_Ontvangen_SelectionChangeCommitted(sender As Object, e As EventArgs) Handles CB_Ontvangen.SelectionChangeCommitted
-        LaadProductList()
+        '  UZ = True
+        ' MsgBox("cb ontvangen commited enzo")
+        ' LaadProductList()
+        ' UZ = False
     End Sub
     Private Sub ToonBesteld()
         If ValidatieOntvangBesteld() = True Then
@@ -1244,7 +1307,7 @@ GeVonden:
 
         Select Case N
             Case "Optie_Open"
-                Me.CB_Supplier.DropDownStyle = ComboBoxStyle.DropDown
+                Me.CB_Supplier.DropDownStyle = ComboBoxStyle.DropDownList
 
             Case Else
                 Me.CB_Supplier.DropDownStyle = ComboBoxStyle.Simple
