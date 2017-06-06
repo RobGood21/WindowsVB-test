@@ -35,12 +35,12 @@ Partial Class F_Product
         Dim Label1 As System.Windows.Forms.Label
         Dim Label2 As System.Windows.Forms.Label
         Dim Label3 As System.Windows.Forms.Label
-        Dim DataGridViewCellStyle7 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle8 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle9 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle10 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle11 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
-        Dim DataGridViewCellStyle12 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle1 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle2 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle3 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle4 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle5 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
+        Dim DataGridViewCellStyle6 As System.Windows.Forms.DataGridViewCellStyle = New System.Windows.Forms.DataGridViewCellStyle()
         Me.DT_productBindingSource = New System.Windows.Forms.BindingSource(Me.components)
         Me.DS_Product = New WindowsVB_test.DS_Product()
         Me.MerkBindingSource = New System.Windows.Forms.BindingSource(Me.components)
@@ -87,15 +87,15 @@ Partial Class F_Product
         Me.TXT_Minimal = New System.Windows.Forms.TextBox()
         Me.Label4 = New System.Windows.Forms.Label()
         Me.TXT_BTW = New System.Windows.Forms.TextBox()
-        Me.CB_Locatie = New System.Windows.Forms.ComboBox()
         Me.Knop_Locatie = New System.Windows.Forms.Button()
         Me.TXT_Beschrijving2 = New System.Windows.Forms.TextBox()
-        Me.TXT_Locatie = New System.Windows.Forms.TextBox()
+        Me.TXT_Locatie_Code = New System.Windows.Forms.TextBox()
         Me.LBL_BTWperc = New System.Windows.Forms.Label()
         Me.Label5 = New System.Windows.Forms.Label()
         Me.TXT_prijsexBTW = New System.Windows.Forms.TextBox()
         Me.Knop_Opslaan = New System.Windows.Forms.Button()
         Me.GroupBox3 = New System.Windows.Forms.GroupBox()
+        Me.TXT_locatie_id = New System.Windows.Forms.TextBox()
         Me.TabPage2 = New System.Windows.Forms.TabPage()
         Me.GB_Mutaties = New System.Windows.Forms.GroupBox()
         Me.Optie_mutatie_Verbuik = New System.Windows.Forms.RadioButton()
@@ -255,7 +255,7 @@ Partial Class F_Product
         'PD_VoorraadLabel
         '
         PD_VoorraadLabel.AutoSize = True
-        PD_VoorraadLabel.Location = New System.Drawing.Point(32, 89)
+        PD_VoorraadLabel.Location = New System.Drawing.Point(32, 88)
         PD_VoorraadLabel.Name = "PD_VoorraadLabel"
         PD_VoorraadLabel.Size = New System.Drawing.Size(56, 13)
         PD_VoorraadLabel.TabIndex = 28
@@ -264,7 +264,7 @@ Partial Class F_Product
         'PD_MinimumVoorraadLabel
         '
         PD_MinimumVoorraadLabel.AutoSize = True
-        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(142, 89)
+        PD_MinimumVoorraadLabel.Location = New System.Drawing.Point(142, 88)
         PD_MinimumVoorraadLabel.Name = "PD_MinimumVoorraadLabel"
         PD_MinimumVoorraadLabel.Size = New System.Drawing.Size(51, 13)
         PD_MinimumVoorraadLabel.TabIndex = 30
@@ -273,7 +273,7 @@ Partial Class F_Product
         'Label1
         '
         Label1.AutoSize = True
-        Label1.Location = New System.Drawing.Point(32, 113)
+        Label1.Location = New System.Drawing.Point(32, 117)
         Label1.Name = "Label1"
         Label1.Size = New System.Drawing.Size(45, 13)
         Label1.TabIndex = 38
@@ -382,7 +382,7 @@ Partial Class F_Product
         Me.TKnop_Sluiten.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.TKnop_Sluiten.Name = "TKnop_Sluiten"
         Me.TKnop_Sluiten.Size = New System.Drawing.Size(63, 22)
-        Me.TKnop_Sluiten.Text = "Sluiten"
+        Me.TKnop_Sluiten.Text = "&Sluiten"
         '
         'ToolStripSeparator1
         '
@@ -395,7 +395,7 @@ Partial Class F_Product
         Me.Tknop_Nieuw.ImageTransparentColor = System.Drawing.Color.Magenta
         Me.Tknop_Nieuw.Name = "Tknop_Nieuw"
         Me.Tknop_Nieuw.Size = New System.Drawing.Size(106, 22)
-        Me.Tknop_Nieuw.Text = "Nieuw Product"
+        Me.Tknop_Nieuw.Text = "&Nieuw Product"
         '
         'ToolStripSeparator2
         '
@@ -470,7 +470,7 @@ Partial Class F_Product
         Me.Knop_ZoekProduct.Size = New System.Drawing.Size(75, 23)
         Me.Knop_ZoekProduct.TabIndex = 18
         Me.Knop_ZoekProduct.TabStop = False
-        Me.Knop_ZoekProduct.Text = "Zoek.."
+        Me.Knop_ZoekProduct.Text = "&Zoek"
         Me.Knop_ZoekProduct.UseVisualStyleBackColor = True
         '
         'TXT_Productnummer
@@ -609,7 +609,7 @@ Partial Class F_Product
         'TXT_Voorraad
         '
         Me.TXT_Voorraad.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_Voorraad", True))
-        Me.TXT_Voorraad.Location = New System.Drawing.Point(102, 86)
+        Me.TXT_Voorraad.Location = New System.Drawing.Point(102, 84)
         Me.TXT_Voorraad.Name = "TXT_Voorraad"
         Me.TXT_Voorraad.Size = New System.Drawing.Size(34, 20)
         Me.TXT_Voorraad.TabIndex = 29
@@ -617,7 +617,7 @@ Partial Class F_Product
         'TXT_Minimal
         '
         Me.TXT_Minimal.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "PD_MinimumVoorraad", True))
-        Me.TXT_Minimal.Location = New System.Drawing.Point(199, 86)
+        Me.TXT_Minimal.Location = New System.Drawing.Point(199, 84)
         Me.TXT_Minimal.Name = "TXT_Minimal"
         Me.TXT_Minimal.Size = New System.Drawing.Size(34, 20)
         Me.TXT_Minimal.TabIndex = 31
@@ -640,25 +640,12 @@ Partial Class F_Product
         Me.TXT_BTW.TabIndex = 35
         Me.TXT_BTW.TabStop = False
         '
-        'CB_Locatie
-        '
-        Me.CB_Locatie.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.DT_productBindingSource, "ID_Locatie", True))
-        Me.CB_Locatie.DataSource = Me.LocatieBindingSource
-        Me.CB_Locatie.DisplayMember = "LK_Code"
-        Me.CB_Locatie.Enabled = False
-        Me.CB_Locatie.Location = New System.Drawing.Point(239, 109)
-        Me.CB_Locatie.MaxDropDownItems = 2
-        Me.CB_Locatie.Name = "CB_Locatie"
-        Me.CB_Locatie.Size = New System.Drawing.Size(22, 21)
-        Me.CB_Locatie.TabIndex = 39
-        Me.CB_Locatie.ValueMember = "ID_Locatie"
-        '
         'Knop_Locatie
         '
         Me.Knop_Locatie.BackgroundImage = Global.WindowsVB_test.My.Resources.Resources.location_icon
         Me.Knop_Locatie.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch
         Me.Knop_Locatie.ImageAlign = System.Drawing.ContentAlignment.TopLeft
-        Me.Knop_Locatie.Location = New System.Drawing.Point(235, 105)
+        Me.Knop_Locatie.Location = New System.Drawing.Point(239, 108)
         Me.Knop_Locatie.Name = "Knop_Locatie"
         Me.Knop_Locatie.Size = New System.Drawing.Size(31, 30)
         Me.Knop_Locatie.TabIndex = 40
@@ -674,14 +661,14 @@ Partial Class F_Product
         Me.TXT_Beschrijving2.TabIndex = 35
         Me.TXT_Beschrijving2.TabStop = False
         '
-        'TXT_Locatie
+        'TXT_Locatie_Code
         '
-        Me.TXT_Locatie.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LocatieBindingSource, "LK_Code", True))
-        Me.TXT_Locatie.Location = New System.Drawing.Point(102, 110)
-        Me.TXT_Locatie.Name = "TXT_Locatie"
-        Me.TXT_Locatie.Size = New System.Drawing.Size(131, 20)
-        Me.TXT_Locatie.TabIndex = 42
-        Me.TXT_Locatie.TabStop = False
+        Me.TXT_Locatie_Code.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.LocatieBindingSource, "LK_Code", True))
+        Me.TXT_Locatie_Code.Location = New System.Drawing.Point(102, 113)
+        Me.TXT_Locatie_Code.Name = "TXT_Locatie_Code"
+        Me.TXT_Locatie_Code.Size = New System.Drawing.Size(131, 20)
+        Me.TXT_Locatie_Code.TabIndex = 42
+        Me.TXT_Locatie_Code.TabStop = False
         '
         'LBL_BTWperc
         '
@@ -723,16 +710,16 @@ Partial Class F_Product
         '
         'GroupBox3
         '
+        Me.GroupBox3.Controls.Add(Me.TXT_locatie_id)
         Me.GroupBox3.Controls.Add(Me.Knop_Opslaan)
         Me.GroupBox3.Controls.Add(Label3)
         Me.GroupBox3.Controls.Add(Me.TXT_prijsexBTW)
         Me.GroupBox3.Controls.Add(Me.Label5)
         Me.GroupBox3.Controls.Add(Me.LBL_BTWperc)
-        Me.GroupBox3.Controls.Add(Me.TXT_Locatie)
+        Me.GroupBox3.Controls.Add(Me.TXT_Locatie_Code)
         Me.GroupBox3.Controls.Add(Label2)
         Me.GroupBox3.Controls.Add(Me.TXT_Beschrijving2)
         Me.GroupBox3.Controls.Add(Me.Knop_Locatie)
-        Me.GroupBox3.Controls.Add(Me.CB_Locatie)
         Me.GroupBox3.Controls.Add(Label1)
         Me.GroupBox3.Controls.Add(Me.TXT_BTW)
         Me.GroupBox3.Controls.Add(Me.Label4)
@@ -750,6 +737,17 @@ Partial Class F_Product
         Me.GroupBox3.TabIndex = 202
         Me.GroupBox3.TabStop = False
         Me.GroupBox3.Text = "Prijzen"
+        '
+        'TXT_locatie_id
+        '
+        Me.TXT_locatie_id.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.DT_productBindingSource, "ID_Locatie", True))
+        Me.TXT_locatie_id.Enabled = False
+        Me.TXT_locatie_id.Location = New System.Drawing.Point(317, 113)
+        Me.TXT_locatie_id.Name = "TXT_locatie_id"
+        Me.TXT_locatie_id.ReadOnly = True
+        Me.TXT_locatie_id.Size = New System.Drawing.Size(34, 20)
+        Me.TXT_locatie_id.TabIndex = 47
+        Me.TXT_locatie_id.TabStop = False
         '
         'TabPage2
         '
@@ -849,8 +847,8 @@ Partial Class F_Product
         'DataGridViewTextBoxColumn1
         '
         Me.DataGridViewTextBoxColumn1.DataPropertyName = "ID_Product"
-        DataGridViewCellStyle7.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle7
+        DataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn1.DefaultCellStyle = DataGridViewCellStyle1
         Me.DataGridViewTextBoxColumn1.HeaderText = "ID"
         Me.DataGridViewTextBoxColumn1.Name = "DataGridViewTextBoxColumn1"
         Me.DataGridViewTextBoxColumn1.ReadOnly = True
@@ -884,8 +882,8 @@ Partial Class F_Product
         'DataGridViewTextBoxColumn4
         '
         Me.DataGridViewTextBoxColumn4.DataPropertyName = "GV_Datum"
-        DataGridViewCellStyle8.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle8
+        DataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn4.DefaultCellStyle = DataGridViewCellStyle2
         Me.DataGridViewTextBoxColumn4.HeaderText = "Datum"
         Me.DataGridViewTextBoxColumn4.Name = "DataGridViewTextBoxColumn4"
         Me.DataGridViewTextBoxColumn4.ReadOnly = True
@@ -894,8 +892,8 @@ Partial Class F_Product
         'GP_Lijst
         '
         Me.GP_Lijst.DataPropertyName = "GP_Lijst"
-        DataGridViewCellStyle9.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.GP_Lijst.DefaultCellStyle = DataGridViewCellStyle9
+        DataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.GP_Lijst.DefaultCellStyle = DataGridViewCellStyle3
         Me.GP_Lijst.HeaderText = "Aantal"
         Me.GP_Lijst.Name = "GP_Lijst"
         Me.GP_Lijst.ReadOnly = True
@@ -904,8 +902,8 @@ Partial Class F_Product
         'DataGridViewTextBoxColumn5
         '
         Me.DataGridViewTextBoxColumn5.DataPropertyName = "GP__Ontvangen"
-        DataGridViewCellStyle10.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle10
+        DataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn5.DefaultCellStyle = DataGridViewCellStyle4
         Me.DataGridViewTextBoxColumn5.HeaderText = "Ontvangen"
         Me.DataGridViewTextBoxColumn5.Name = "DataGridViewTextBoxColumn5"
         Me.DataGridViewTextBoxColumn5.ReadOnly = True
@@ -914,8 +912,8 @@ Partial Class F_Product
         'DataGridViewTextBoxColumn6
         '
         Me.DataGridViewTextBoxColumn6.DataPropertyName = "GP_Besteld"
-        DataGridViewCellStyle11.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
-        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle11
+        DataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter
+        Me.DataGridViewTextBoxColumn6.DefaultCellStyle = DataGridViewCellStyle5
         Me.DataGridViewTextBoxColumn6.HeaderText = "Backorder"
         Me.DataGridViewTextBoxColumn6.Name = "DataGridViewTextBoxColumn6"
         Me.DataGridViewTextBoxColumn6.ReadOnly = True
@@ -924,8 +922,8 @@ Partial Class F_Product
         'DataGridViewTextBoxColumn7
         '
         Me.DataGridViewTextBoxColumn7.DataPropertyName = "GP_BuyPriceEUR"
-        DataGridViewCellStyle12.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
-        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle12
+        DataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleRight
+        Me.DataGridViewTextBoxColumn7.DefaultCellStyle = DataGridViewCellStyle6
         Me.DataGridViewTextBoxColumn7.HeaderText = "Inkoop"
         Me.DataGridViewTextBoxColumn7.Name = "DataGridViewTextBoxColumn7"
         Me.DataGridViewTextBoxColumn7.ReadOnly = True
@@ -1422,10 +1420,9 @@ Partial Class F_Product
     Friend WithEvents TXT_Minimal As TextBox
     Friend WithEvents Label4 As Label
     Friend WithEvents TXT_BTW As TextBox
-    Friend WithEvents CB_Locatie As ComboBox
     Friend WithEvents Knop_Locatie As Button
     Friend WithEvents TXT_Beschrijving2 As TextBox
-    Friend WithEvents TXT_Locatie As TextBox
+    Friend WithEvents TXT_Locatie_Code As TextBox
     Friend WithEvents LBL_BTWperc As Label
     Friend WithEvents Label5 As Label
     Friend WithEvents TXT_prijsexBTW As TextBox
@@ -1492,4 +1489,5 @@ Partial Class F_Product
     Friend WithEvents ProductInfoTableAdapter As DS_ProductTableAdapters.ProductInfoTableAdapter
     Friend WithEvents TXT_Links_IDproduct As TextBox
     Friend WithEvents TXT_Links_ID As TextBox
+    Friend WithEvents TXT_locatie_id As TextBox
 End Class

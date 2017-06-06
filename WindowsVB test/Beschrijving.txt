@@ -1,0 +1,5 @@
+﻿5juni2016
+Mijn toetsen board geeft een unt op het numerieke pad waar het een komma moet zijn. 
+Oplossing gemaakt met omzetten van het punt teken in de valuta velden. 
+e.KeyChar = PuntKomma(e.KeyChar)
+

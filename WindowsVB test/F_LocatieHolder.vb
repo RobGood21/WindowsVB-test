@@ -28,4 +28,22 @@
 
 
     End Sub
+
+    Private Sub DG_Locatie_holder_Click(sender As Object, e As EventArgs) Handles DG_Locatie_holder.Click
+        'welke colums is de locatieholder kolom 0
+        Dim i As Integer
+        Dim ID As Integer
+        If Me.DG_Locatie_holder.Rows.Count > 0 Then 'voor de volledigheid.
+            For i = 0 To Me.DG_Locatie_holder.Rows.Count - 1
+                If Me.DG_Locatie_holder.Rows(i).Selected = True Then
+                    ID = Me.DG_Locatie_holder.Rows(i).Cells(0).Value
+                    GoTo Verlaat 'spring uit de lus
+                End If
+            Next
+Verlaat:
+            'MsgBox(ID)
+            Me.LocatieInhoudTableAdapter.Fill(DS_Product.LocatieInhoud, ID)
+        End If
+    End Sub
+
 End Class

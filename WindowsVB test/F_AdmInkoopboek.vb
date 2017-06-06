@@ -424,4 +424,16 @@
     Private Sub Knop_Toon_Click(sender As Object, e As EventArgs) Handles Knop_Toon.Click
         System.Diagnostics.Process.Start(Me.TXT_Document.Text)
     End Sub
+
+    Private Sub TXT_Waarde_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Waarde.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
+    End Sub
+
+    Private Sub TXT_WaardeEuro_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_WaardeEuro.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
+    End Sub
+
+    Private Sub TXT_BTW_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_BTW.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
+    End Sub
 End Class

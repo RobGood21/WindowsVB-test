@@ -4,8 +4,6 @@
     Public IDGROEP As Integer, IDGROEPINDEX As Integer
     Public IDPRODUCT As Integer
     Public IDGETPRODUCTADD As Integer
-    ' Public IDGETPRODUCT As Integer = 0
-
     '*****
     'ín gebruik bij orders, ontvangsten
     Public IDSUPPLIER As Integer
@@ -26,7 +24,23 @@
     Public ZOEKGROEPCH As Boolean
     Public ZOEKTXTCH As Boolean
 
+    'Gebruiker opties.
+    'Deze opties zijn door gebruiker instelbaar, in later stadium dit opslaan in Database
+    Public PERIOD As Boolean = True 'true zet een punt om in een komma in valuta velden
+    Public LOCATIESTART As Integer = 1 'default locatie
+    Public LOCATIEHOLDERSTART As Integer = 4 'default locatie holder
 
-
+    Public Function PuntKomma(T As String) As String
+        'beetje kromme truck om de punt in een komma te zetten voor valuta velden
+        Dim R As String = ""
+        If PERIOD = True Then
+            If T = "." Then
+                R = ","
+            Else
+                R = T
+            End If
+        End If
+        Return R
+    End Function
 
 End Module

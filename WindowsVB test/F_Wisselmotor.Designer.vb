@@ -69,14 +69,15 @@ Partial Class F_Wisselmotor
         'OpeningToolStripMenuItem
         '
         Me.OpeningToolStripMenuItem.Name = "OpeningToolStripMenuItem"
-        Me.OpeningToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.B), System.Windows.Forms.Keys)
+        Me.OpeningToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.B), System.Windows.Forms.Keys)
         Me.OpeningToolStripMenuItem.Size = New System.Drawing.Size(186, 22)
         Me.OpeningToolStripMenuItem.Text = "Opening"
         '
         'ToolStripSeparator1
         '
         Me.ToolStripSeparator1.Name = "ToolStripSeparator1"
-        Me.ToolStripSeparator1.Size = New System.Drawing.Size(118, 6)
+        Me.ToolStripSeparator1.Size = New System.Drawing.Size(183, 6)
         '
         'AfsluitenToolStripMenuItem
         '
@@ -96,41 +97,46 @@ Partial Class F_Wisselmotor
         'ProductLijstToolStripMenuItem
         '
         Me.ProductLijstToolStripMenuItem.Name = "ProductLijstToolStripMenuItem"
-        Me.ProductLijstToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
-        Me.ProductLijstToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.ProductLijstToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.O), System.Windows.Forms.Keys)
+        Me.ProductLijstToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.ProductLijstToolStripMenuItem.Text = "Product-Lijst"
         '
         'ProductenToolStripMenuItem
         '
         Me.ProductenToolStripMenuItem.Name = "ProductenToolStripMenuItem"
-        Me.ProductenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
+        Me.ProductenToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.P), System.Windows.Forms.Keys)
         Me.ProductenToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
         Me.ProductenToolStripMenuItem.Text = "Producten"
         '
         'ToolStripSeparator3
         '
         Me.ToolStripSeparator3.Name = "ToolStripSeparator3"
-        Me.ToolStripSeparator3.Size = New System.Drawing.Size(180, 6)
+        Me.ToolStripSeparator3.Size = New System.Drawing.Size(199, 6)
         '
         'ProductgroepenToolStripMenuItem
         '
         Me.ProductgroepenToolStripMenuItem.Name = "ProductgroepenToolStripMenuItem"
-        Me.ProductgroepenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
-        Me.ProductgroepenToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.ProductgroepenToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.G), System.Windows.Forms.Keys)
+        Me.ProductgroepenToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.ProductgroepenToolStripMenuItem.Text = "Productgroepen"
         '
         'MerkenToolStripMenuItem
         '
         Me.MerkenToolStripMenuItem.Name = "MerkenToolStripMenuItem"
-        Me.MerkenToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
-        Me.MerkenToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.MerkenToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.M), System.Windows.Forms.Keys)
+        Me.MerkenToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.MerkenToolStripMenuItem.Text = "Merken"
         '
         'OpbergersToolStripMenuItem
         '
         Me.OpbergersToolStripMenuItem.Name = "OpbergersToolStripMenuItem"
-        Me.OpbergersToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.K), System.Windows.Forms.Keys)
-        Me.OpbergersToolStripMenuItem.Size = New System.Drawing.Size(202, 22)
+        Me.OpbergersToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.K), System.Windows.Forms.Keys)
+        Me.OpbergersToolStripMenuItem.Size = New System.Drawing.Size(225, 22)
         Me.OpbergersToolStripMenuItem.Text = "Opbergers"
         '
         'RelatiesToolStripMenuItem
@@ -143,20 +149,21 @@ Partial Class F_Wisselmotor
         'SuppliersToolStripMenuItem
         '
         Me.SuppliersToolStripMenuItem.Name = "SuppliersToolStripMenuItem"
-        Me.SuppliersToolStripMenuItem.ShortcutKeys = CType((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
-        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
+        Me.SuppliersToolStripMenuItem.ShortcutKeys = CType(((System.Windows.Forms.Keys.Control Or System.Windows.Forms.Keys.Alt) _
+            Or System.Windows.Forms.Keys.S), System.Windows.Forms.Keys)
+        Me.SuppliersToolStripMenuItem.Size = New System.Drawing.Size(185, 22)
         Me.SuppliersToolStripMenuItem.Text = "Suppliers"
         '
         'ShopsToolStripMenuItem
         '
         Me.ShopsToolStripMenuItem.Name = "ShopsToolStripMenuItem"
-        Me.ShopsToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.ShopsToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.ShopsToolStripMenuItem.Text = "Shops"
         '
         'KlantenToolStripMenuItem
         '
         Me.KlantenToolStripMenuItem.Name = "KlantenToolStripMenuItem"
-        Me.KlantenToolStripMenuItem.Size = New System.Drawing.Size(122, 22)
+        Me.KlantenToolStripMenuItem.Size = New System.Drawing.Size(162, 22)
         Me.KlantenToolStripMenuItem.Text = "Klanten"
         '
         'FinancieelToolStripMenuItem

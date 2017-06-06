@@ -524,8 +524,9 @@ Partial Class F_AdmInkoopboek
         Me.CB_BetaalWijze.DataBindings.Add(New System.Windows.Forms.Binding("SelectedValue", Me.AdmInkoopBoekBindingSource, "ID_BetaalWijzen", True))
         Me.CB_BetaalWijze.DataSource = Me.BetaalWijzenBindingSource
         Me.CB_BetaalWijze.DisplayMember = "BW_Kort"
+        Me.CB_BetaalWijze.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_BetaalWijze.FormattingEnabled = True
-        Me.CB_BetaalWijze.Location = New System.Drawing.Point(209, 77)
+        Me.CB_BetaalWijze.Location = New System.Drawing.Point(209, 74)
         Me.CB_BetaalWijze.Name = "CB_BetaalWijze"
         Me.CB_BetaalWijze.Size = New System.Drawing.Size(74, 21)
         Me.CB_BetaalWijze.TabIndex = 6
@@ -588,7 +589,7 @@ Partial Class F_AdmInkoopboek
         '
         Me.CH_Betaald.AutoSize = True
         Me.CH_Betaald.DataBindings.Add(New System.Windows.Forms.Binding("CheckState", Me.AdmInkoopBoekBindingSource, "IB_Paid", True))
-        Me.CH_Betaald.Location = New System.Drawing.Point(83, 79)
+        Me.CH_Betaald.Location = New System.Drawing.Point(83, 77)
         Me.CH_Betaald.Name = "CH_Betaald"
         Me.CH_Betaald.Size = New System.Drawing.Size(62, 17)
         Me.CH_Betaald.TabIndex = 5
@@ -598,7 +599,7 @@ Partial Class F_AdmInkoopboek
         'Label9
         '
         Me.Label9.AutoSize = True
-        Me.Label9.Location = New System.Drawing.Point(146, 80)
+        Me.Label9.Location = New System.Drawing.Point(146, 78)
         Me.Label9.Name = "Label9"
         Me.Label9.Size = New System.Drawing.Size(63, 13)
         Me.Label9.TabIndex = 31
@@ -608,7 +609,7 @@ Partial Class F_AdmInkoopboek
         '
         Me.TXT_supplierID.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Valuta", True))
         Me.TXT_supplierID.Enabled = False
-        Me.TXT_supplierID.Location = New System.Drawing.Point(113, 402)
+        Me.TXT_supplierID.Location = New System.Drawing.Point(113, 404)
         Me.TXT_supplierID.Name = "TXT_supplierID"
         Me.TXT_supplierID.ReadOnly = True
         Me.TXT_supplierID.Size = New System.Drawing.Size(30, 20)
@@ -619,7 +620,7 @@ Partial Class F_AdmInkoopboek
         '
         Me.TXT_SupBetaalWijze.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_BetaalWijzen", True))
         Me.TXT_SupBetaalWijze.Enabled = False
-        Me.TXT_SupBetaalWijze.Location = New System.Drawing.Point(175, 403)
+        Me.TXT_SupBetaalWijze.Location = New System.Drawing.Point(175, 404)
         Me.TXT_SupBetaalWijze.Name = "TXT_SupBetaalWijze"
         Me.TXT_SupBetaalWijze.ReadOnly = True
         Me.TXT_SupBetaalWijze.Size = New System.Drawing.Size(30, 20)
@@ -630,7 +631,7 @@ Partial Class F_AdmInkoopboek
         '
         Me.TXT_GrootboekCR.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.BetaalWijzenBindingSource, "ID_Grootboek", True))
         Me.TXT_GrootboekCR.Enabled = False
-        Me.TXT_GrootboekCR.Location = New System.Drawing.Point(206, 403)
+        Me.TXT_GrootboekCR.Location = New System.Drawing.Point(206, 404)
         Me.TXT_GrootboekCR.Name = "TXT_GrootboekCR"
         Me.TXT_GrootboekCR.ReadOnly = True
         Me.TXT_GrootboekCR.Size = New System.Drawing.Size(30, 20)
@@ -641,7 +642,7 @@ Partial Class F_AdmInkoopboek
         '
         Me.TXT_Koers.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.ValutaBindingSource, "VT_Koers", True))
         Me.TXT_Koers.Enabled = False
-        Me.TXT_Koers.Location = New System.Drawing.Point(237, 403)
+        Me.TXT_Koers.Location = New System.Drawing.Point(237, 404)
         Me.TXT_Koers.Name = "TXT_Koers"
         Me.TXT_Koers.ReadOnly = True
         Me.TXT_Koers.Size = New System.Drawing.Size(30, 20)
@@ -652,7 +653,7 @@ Partial Class F_AdmInkoopboek
         '
         Me.txt_grootboekSupplier.DataBindings.Add(New System.Windows.Forms.Binding("Text", Me.SupplierBindingSource, "ID_Grootboek", True))
         Me.txt_grootboekSupplier.Enabled = False
-        Me.txt_grootboekSupplier.Location = New System.Drawing.Point(144, 402)
+        Me.txt_grootboekSupplier.Location = New System.Drawing.Point(144, 404)
         Me.txt_grootboekSupplier.Name = "txt_grootboekSupplier"
         Me.txt_grootboekSupplier.ReadOnly = True
         Me.txt_grootboekSupplier.Size = New System.Drawing.Size(30, 20)

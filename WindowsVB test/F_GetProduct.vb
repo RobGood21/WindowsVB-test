@@ -1210,7 +1210,7 @@ Eindeloop:
                     st = 42
             End Select
             'sTATUS = st
-            MsgBox("cb push soort")
+            'MsgBox("cb push soort")
             LaadGetOntvangst(st)
 
         End If
@@ -1312,5 +1312,13 @@ GeVonden:
             Case Else
                 Me.CB_Supplier.DropDownStyle = ComboBoxStyle.Simple
         End Select
+    End Sub
+
+    Private Sub TXT_Push_Bank_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Push_Bank.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
+    End Sub
+
+    Private Sub TXT_Push_Kas_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Push_Kas.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
     End Sub
 End Class

@@ -114,14 +114,13 @@
 
     End Sub
     Public Sub LoadProduct()
+        'MsgBox(OPPRODUCT)
         Try
-            LoadTables()
+            INITBerekend()
+            LaadDatatables()
 
             Select Case OPPRODUCT
                 Case 1 'bestaand product
-                    'MsgBox(IDPRODUCT)
-                    INITBerekend()
-                    Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
                     LUZ = True
                     If IDPRODUCT < 0 Then 'is dus Geen product bepaald
                         Me.TXT_Productnummer.Text = "[Geen Product}"
@@ -129,27 +128,34 @@
                         Me.TXT_Productnummer.Text = IDPRODUCT
                     End If
                     BerekenPrijzen()
-
                 Case 2 'nieuw product invoeren.
 
                 Case Else 'opening vrij
-                    INITBerekend()
-                    Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
-
                     If IDPRODUCT = 0 Then
                         LUZ = True
                         Me.TXT_Productnummer.Text = "[Geen Product]"
                     End If
                     Me.TXT_Productnummer.Select()
             End Select
+
             LaadTB()
         Catch ex As Exception
             MsgBox(ErrorToString,, "Loadproduct (F_product)")
         End Try
     End Sub
-    Private Sub LoadTables()
+    Private Sub LaadDatatables()
+        'aanroep vanuit form load
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
-        Me.LocatieTableAdapter.FillByALL(Me.DS_Product.Locatie)
+        Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
+        If IsNumeric(TXT_locatie_id.Text) = False Then Me.TXT_locatie_id.Text = LOCATIESTART
+        IDLOCATIE = TXT_locatie_id.Text
+        Laadlocatie()
+        'locatie laden
+        'als dit veranderd?? dan 
+
+    End Sub
+    Private Sub Laadlocatie()
+        Me.LocatieTableAdapter.Fill(DS_Product.Locatie, IDLOCATIE)
     End Sub
     Private Sub Knop_ZoekProduct_Click(sender As Object, e As EventArgs) Handles Knop_ZoekProduct.Click
         F_ProductZoek.ShowDialog()
@@ -204,12 +210,15 @@
         'velden
         With Me
             NUZ = True
+            IDLOCATIE = LOCATIESTART
+            .TXT_locatie_id.Text = IDLOCATIE
             .TXT_Productnummer.Text = Nothing
             .TXT_Verkoopprijs.Text = FormatNumber(0, -1)
             .TXT_Inkoopwaarde.Text = FormatNumber(0, -1)
             .TXT_Voorraad.Text = 0
             .TXT_Minimal.Text = 0
-            .CB_Locatie.SelectedValue = 1
+
+            Laadlocatie()
             Me.CB_Groep.Select()
         End With
     End Sub
@@ -219,14 +228,10 @@
         Me.TXT_prijsexBTW.Text = FormatNumber(0, -1)
     End Sub
     Private Sub Knop_Locatie_Click(sender As Object, e As EventArgs) Handles Knop_Locatie.Click
-        Try
-            IDLOCATIE = Me.CB_Locatie.SelectedValue
-            F_Locatie.ShowDialog()
-            Me.LocatieTableAdapter.FillByALL(Me.DS_Product.Locatie) 'combobox opnieuw laden, requery zeg maar ...
-            Me.CB_Locatie.SelectedValue = IDLOCATIE
-        Catch ex As Exception
-            MsgBox(ErrorToString,, "Knop_locatie")
-        End Try
+        IDLOCATIE = Me.TXT_locatie_id.Text
+        F_Locatie.ShowDialog()
+        Me.TXT_locatie_id.Text = IDLOCATIE 'dit veld is in tabel product
+        Laadlocatie()
     End Sub
     Private Sub TXT_Productnummer_TextChanged(sender As Object, e As EventArgs) Handles TXT_Productnummer.TextChanged
         If LUZ = False Then 'voorkomt dat als het idproduct wordt ingeschreven opnieuw het product wordt geladen
@@ -436,5 +441,30 @@
         End If
         MsgBox("Getontvangst=: " & ID & ". Maar volgens mij heb je hier echt niks aan, ga hier niet mee verder, getontvangst formulier exclusief voor 1 record openen is echt een hele toer en volgens mij 3 juni heb je der niks aan", vbEmpty, "???")
 
+    End Sub
+    Private Sub TB_Product_Enter(sender As Object, e As EventArgs) Handles TB_Product.Enter
+        'automatisch oslaan nieuw artikel
+        If Me.TXT_IDP.Text < 0 Then
+            OPSLAAN()
+        End If
+    End Sub
+    Private Sub TXT_Verkoopprijs_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Verkoopprijs.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
+        'MsgBox(e.KeyChar)
+        '  If e.KeyChar = "." Then
+        ' e.KeyChar = ","
+        '  End If
+    End Sub
+    Private Sub TXT_Inkoopwaarde_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_Inkoopwaarde.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
+    End Sub
+    Private Sub TXT_locatie_id_TextChanged(sender As Object, e As EventArgs) Handles TXT_locatie_id.TextChanged
+
+    End Sub
+
+    Private Sub TXT_Naam_Enter(sender As Object, e As EventArgs) Handles TXT_Naam.Enter
+        If IsNumeric(Me.TXT_IDP.Text) = False Then
+            MsgBox("Er is geen product bepaald." & Chr(13) & "Zoek een product of druk op nieuw (ALT+N) voor een nieuw product", vbExclamation, "Geen product bepaald")
+        End If
     End Sub
 End Class

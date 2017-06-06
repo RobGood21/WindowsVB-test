@@ -71,7 +71,7 @@ Partial Class F_ProductZoek
         Me.GroupBox1.Location = New System.Drawing.Point(12, 12)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(641, 41)
-        Me.GroupBox1.TabIndex = 3
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         '
         'CH_TXT
@@ -98,8 +98,8 @@ Partial Class F_ProductZoek
         Me.Knop_Sluit.Name = "Knop_Sluit"
         Me.Knop_Sluit.RightToLeft = System.Windows.Forms.RightToLeft.Yes
         Me.Knop_Sluit.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Sluit.TabIndex = 9
-        Me.Knop_Sluit.Text = "Sluiten"
+        Me.Knop_Sluit.TabIndex = 4
+        Me.Knop_Sluit.Text = "&Sluiten"
         Me.Knop_Sluit.UseVisualStyleBackColor = True
         '
         'LBL_Zoektekst
@@ -116,7 +116,7 @@ Partial Class F_ProductZoek
         Me.TXT_Zoektekst.Location = New System.Drawing.Point(312, 14)
         Me.TXT_Zoektekst.Name = "TXT_Zoektekst"
         Me.TXT_Zoektekst.Size = New System.Drawing.Size(66, 20)
-        Me.TXT_Zoektekst.TabIndex = 7
+        Me.TXT_Zoektekst.TabIndex = 1
         '
         'LBL_ProductGroep
         '
@@ -131,11 +131,12 @@ Partial Class F_ProductZoek
         '
         Me.CB_Groep.DataSource = Me.GroepBindingSource
         Me.CB_Groep.DisplayMember = "GP_Naam"
+        Me.CB_Groep.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_Groep.FormattingEnabled = True
         Me.CB_Groep.Location = New System.Drawing.Point(97, 14)
         Me.CB_Groep.Name = "CB_Groep"
         Me.CB_Groep.Size = New System.Drawing.Size(98, 21)
-        Me.CB_Groep.TabIndex = 4
+        Me.CB_Groep.TabIndex = 0
         Me.CB_Groep.ValueMember = "ID_Groep"
         '
         'GroepBindingSource

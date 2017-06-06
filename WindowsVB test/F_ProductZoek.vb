@@ -47,6 +47,9 @@
         LaadLijst(2)
     End Sub
     Private Sub Knop_Sluit_Click(sender As Object, e As EventArgs) Handles Knop_Sluit.Click
+        sluiten()
+    End Sub
+    Public Sub sluiten()
         ZOEKGROEPCH = Me.CH_Groep.Checked
         ZOEKTXTCH = Me.CH_TXT.Checked
         ZOEKGROEP = CB_Groep.SelectedValue
@@ -101,7 +104,6 @@
         End If
         LaadLijst(3)
     End Sub
-
     Private Sub CH_TXT_CheckedChanged(sender As Object, e As EventArgs) Handles CH_TXT.CheckedChanged
         If Me.CH_TXT.Checked = True Then
             Me.TXT_Zoektekst.Enabled = True
@@ -109,5 +111,9 @@
             Me.TXT_Zoektekst.Enabled = False
         End If
         LaadLijst(3)
+    End Sub
+
+    Private Sub DG_Products_DoubleClick(sender As Object, e As EventArgs) Handles DG_Products.DoubleClick
+        sluiten()
     End Sub
 End Class

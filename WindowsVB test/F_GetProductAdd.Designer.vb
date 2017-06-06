@@ -126,7 +126,7 @@ Partial Class F_GetProductAdd
         Me.GroupBox1.Location = New System.Drawing.Point(19, 68)
         Me.GroupBox1.Name = "GroupBox1"
         Me.GroupBox1.Size = New System.Drawing.Size(309, 151)
-        Me.GroupBox1.TabIndex = 2
+        Me.GroupBox1.TabIndex = 0
         Me.GroupBox1.TabStop = False
         Me.GroupBox1.Text = "Aan de productlijst toe te voegen producten"
         '
@@ -135,8 +135,8 @@ Partial Class F_GetProductAdd
         Me.Knop_Zoek.Location = New System.Drawing.Point(144, 25)
         Me.Knop_Zoek.Name = "Knop_Zoek"
         Me.Knop_Zoek.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Zoek.TabIndex = 1
-        Me.Knop_Zoek.Text = "Zoek"
+        Me.Knop_Zoek.TabIndex = 0
+        Me.Knop_Zoek.Text = "&Zoek"
         Me.Knop_Zoek.UseVisualStyleBackColor = True
         '
         'PD_VoorraadTextBox
@@ -198,16 +198,15 @@ Partial Class F_GetProductAdd
         Me.TXT_aantal.Location = New System.Drawing.Point(77, 120)
         Me.TXT_aantal.Name = "TXT_aantal"
         Me.TXT_aantal.Size = New System.Drawing.Size(63, 20)
-        Me.TXT_aantal.TabIndex = 1
+        Me.TXT_aantal.TabIndex = 3
         '
         'Knop_Details
         '
         Me.Knop_Details.Location = New System.Drawing.Point(221, 25)
         Me.Knop_Details.Name = "Knop_Details"
         Me.Knop_Details.Size = New System.Drawing.Size(75, 23)
-        Me.Knop_Details.TabIndex = 6
-        Me.Knop_Details.TabStop = False
-        Me.Knop_Details.Text = "Details"
+        Me.Knop_Details.TabIndex = 1
+        Me.Knop_Details.Text = "&Details"
         Me.Knop_Details.UseVisualStyleBackColor = True
         '
         'Label3
@@ -266,7 +265,7 @@ Partial Class F_GetProductAdd
         Me.GB_Prijs.Location = New System.Drawing.Point(19, 225)
         Me.GB_Prijs.Name = "GB_Prijs"
         Me.GB_Prijs.Size = New System.Drawing.Size(309, 116)
-        Me.GB_Prijs.TabIndex = 3
+        Me.GB_Prijs.TabIndex = 1
         Me.GB_Prijs.TabStop = False
         Me.GB_Prijs.Text = "Bereken stuks inkoopprijs"
         '
@@ -318,11 +317,12 @@ Partial Class F_GetProductAdd
         '
         Me.CB_valuta.DataSource = Me.ValutaBindingSource
         Me.CB_valuta.DisplayMember = "VT_Short"
+        Me.CB_valuta.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList
         Me.CB_valuta.FormattingEnabled = True
         Me.CB_valuta.Location = New System.Drawing.Point(77, 22)
         Me.CB_valuta.Name = "CB_valuta"
         Me.CB_valuta.Size = New System.Drawing.Size(66, 21)
-        Me.CB_valuta.TabIndex = 2
+        Me.CB_valuta.TabIndex = 1
         Me.CB_valuta.ValueMember = "ID_valuta"
         '
         'ValutaBindingSource
@@ -363,7 +363,7 @@ Partial Class F_GetProductAdd
         Me.TXT_TotaalBetaaldVAL.Location = New System.Drawing.Point(77, 45)
         Me.TXT_TotaalBetaaldVAL.Name = "TXT_TotaalBetaaldVAL"
         Me.TXT_TotaalBetaaldVAL.Size = New System.Drawing.Size(40, 20)
-        Me.TXT_TotaalBetaaldVAL.TabIndex = 3
+        Me.TXT_TotaalBetaaldVAL.TabIndex = 2
         Me.TXT_TotaalBetaaldVAL.TextAlign = System.Windows.Forms.HorizontalAlignment.Right
         '
         'TXT_TotaalBetaaldEur
@@ -419,7 +419,7 @@ Partial Class F_GetProductAdd
         Me.Knop_Opslaan.Location = New System.Drawing.Point(217, 347)
         Me.Knop_Opslaan.Name = "Knop_Opslaan"
         Me.Knop_Opslaan.Size = New System.Drawing.Size(111, 23)
-        Me.Knop_Opslaan.TabIndex = 4
+        Me.Knop_Opslaan.TabIndex = 3
         Me.Knop_Opslaan.Text = "&Opslaan en sluiten "
         Me.Knop_Opslaan.UseVisualStyleBackColor = True
         '

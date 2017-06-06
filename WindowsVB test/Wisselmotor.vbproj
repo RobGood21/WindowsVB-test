@@ -435,6 +435,7 @@
     <None Include="Resources\Calculator-icon %281%29.png" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Beschrijving.txt" />
     <Content Include="Icons8-Ios7-Transport-Train.ico" />
     <Content Include="train-5-multi-size.ico" />
     <None Include="Resources\copy-icon.png" />

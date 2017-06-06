@@ -25,6 +25,10 @@
                     'Me.TXT_aantal.Text = Me.TXT_LijstAAntal.Text
                     Me.TXT_aantal.Select()
             End Select
+            'bedragvelden nulstellen
+
+            Me.TXT_TotaalBetaaldVAL.Text = FormatNumber(0, -1)
+            Me.TXT_TotaalBetaaldEur.Text = FormatNumber(0, -1)
         Catch ex As Exception
             MsgBox(ErrorToString,, "loadform (getproductadd)")
         End Try
@@ -205,15 +209,10 @@
                 Case 1 'vanuit de totaal betaald vreemde valuta
                     Me.TXT_TotaalBetaaldEur.Text = FormatNumber(Me.TXT_TotaalBetaaldVAL.Text * TXT_Koers.Text, -1)
                     Me.TXT_TotaalBetaaldVAL.Text = FormatNumber(Me.TXT_TotaalBetaaldVAL.Text, -1)
-
-                Case 2 '
-
-
+                Case 2
                 Case 3
             End Select
             If IsNumeric(Me.TXT_aantal.Text) = True Then Me.TXT_Prijs.Text = FormatNumber(TXT_TotaalBetaaldEur.Text / Me.TXT_aantal.Text, -1)
-            'prijs is veranderd dus vlag naar true, bij sluiten inkoopprijs in product aanpassen
-            'Vprijs = True
         Catch ex As Exception
             ' MsgBox(ErrorToString,, "Bereken")
         End Try
@@ -270,5 +269,9 @@
                 'MsgBox("text changed")
                 Me.TXT_aantal.Text = Me.TXT_LijstAAntal.Text
         End Select
+    End Sub
+
+    Private Sub TXT_TotaalBetaaldVAL_KeyPress(sender As Object, e As KeyPressEventArgs) Handles TXT_TotaalBetaaldVAL.KeyPress
+        e.KeyChar = PuntKomma(e.KeyChar)
     End Sub
 End Class
