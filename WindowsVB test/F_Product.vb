@@ -117,7 +117,8 @@
         'MsgBox(OPPRODUCT)
         Try
             INITBerekend()
-            LaadDatatables()
+            Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
+            Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
 
             Select Case OPPRODUCT
                 Case 1 'bestaand product
@@ -126,6 +127,7 @@
                         Me.TXT_Productnummer.Text = "[Geen Product}"
                     Else
                         Me.TXT_Productnummer.Text = IDPRODUCT
+                        Me.TXT_Productnummer.Select()
                     End If
                     BerekenPrijzen()
                 Case 2 'nieuw product invoeren.
@@ -147,11 +149,7 @@
         'aanroep vanuit form load
         Me.MerkTableAdapter.Fill(Me.DS_Product.Merk, "%") 'alle merken laden
         Me.DT_productTableAdapter.Fill(Me.DS_Product.DT_product, IDPRODUCT)
-        If IsNumeric(TXT_locatie_id.Text) = False Then Me.TXT_locatie_id.Text = LOCATIESTART
-        IDLOCATIE = TXT_locatie_id.Text
-        Laadlocatie()
-        'locatie laden
-        'als dit veranderd?? dan 
+
 
     End Sub
     Private Sub Laadlocatie()
@@ -459,9 +457,11 @@
         e.KeyChar = PuntKomma(e.KeyChar)
     End Sub
     Private Sub TXT_locatie_id_TextChanged(sender As Object, e As EventArgs) Handles TXT_locatie_id.TextChanged
-
+        If IsNumeric(TXT_locatie_id.Text) = True Then
+            IDLOCATIE = TXT_locatie_id.Text
+            Laadlocatie()
+        End If
     End Sub
-
     Private Sub TXT_Naam_Enter(sender As Object, e As EventArgs) Handles TXT_Naam.Enter
         If IsNumeric(Me.TXT_IDP.Text) = False Then
             MsgBox("Er is geen product bepaald." & Chr(13) & "Zoek een product of druk op nieuw (ALT+N) voor een nieuw product", vbExclamation, "Geen product bepaald")
